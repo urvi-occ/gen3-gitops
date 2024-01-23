@@ -9,6 +9,8 @@ fence:
     usersync: true
     userYamlS3Path: s3://cdis-gen3-users/staging-chords-health/user.yaml
 
+  USER_YAML:
+
   # -- (map) External Secrets settings.
   externalSecrets:
     # -- (string) Will override the name of the aws secrets manager secret. Default is "fence-jwt-keys"
