@@ -116,3 +116,7 @@ hatchery:
 # disabling audit service
 audit:
   enabled: false
+
+# disabling argo-wrapper service
+argo-wrapper:
+  enabled: false
