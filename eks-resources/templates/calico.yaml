@@ -23,6 +23,8 @@ spec:
     namespace: kube-system
   syncPolicy:
     syncOptions:
+    - Force=true
+    - Replace=true
     - serverSideApply=true
     - CreateNamespace=false
     automated:
