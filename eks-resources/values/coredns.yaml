@@ -1,7 +1,3 @@
-
-service:
-  name: kube-dns
-
 autoscaler:
   enabled: true
   replicas: 2
