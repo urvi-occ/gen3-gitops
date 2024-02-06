@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: vpc-cni
+  name: calico
   namespace: argocd
   finalizers:
   - resources-finalizer.argocd.argoproj.io
@@ -9,12 +9,12 @@ spec:
   project: default
   sources:
     - chart: aws-vpc-cni
-      repoURL: https://aws.github.io/eks-charts
-      targetRevision: "v1.16.2"
+      repoURL: https://docs.tigera.io/calico/charts
+      targetRevision: "v3.27.0"
       helm:
-        releaseName: vpc-cni
+        releaseName: calico
         valueFiles:
-          - $values/eks-resources/values/vpc-cni.yaml
+          - $values/eks-resources/values/calico.yaml
     - repoURL: 'https://github.com/uc-cdis/gen3-gitops.git'
       targetRevision: feat/eks-resources
       ref: values

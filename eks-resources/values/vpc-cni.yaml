@@ -1,2 +1,2 @@
-enableNetworkPolicy: true
+enableNetworkPolicy: false
 originalMatchLabels: true
