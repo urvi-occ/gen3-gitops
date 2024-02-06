@@ -8,7 +8,7 @@ metadata:
 spec:
   project: default
   sources:
-    - chart: aws-vpc-cni
+    - chart: tigera-operator
       repoURL: https://docs.tigera.io/calico/charts
       targetRevision: "v3.27.0"
       helm:
