@@ -5,3 +5,5 @@ service:
 autoscaler:
   enabled: true
   replicas: 2
+
+k8sAppLabelOverride: "kube-dns"
