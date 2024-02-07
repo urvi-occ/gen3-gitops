@@ -1,0 +1,7 @@
+service:
+ clusterIP: "10.100.0.10"
+ name: "kube-dns"
+
+autoscaler:
+  enabled: true
+  replicas: 2
