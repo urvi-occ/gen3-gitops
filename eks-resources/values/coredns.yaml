@@ -5,3 +5,8 @@ service:
 autoscaler:
   enabled: true
   replicas: 2
+
+k8sAppLabelOverride: "kube-dns"
+
+deployment:
+  name: "coredns-argo"
