@@ -7,3 +7,6 @@ autoscaler:
   replicas: 2
 
 k8sAppLabelOverride: "kube-dns"
+
+deployment:
+  name: "kubedns"
