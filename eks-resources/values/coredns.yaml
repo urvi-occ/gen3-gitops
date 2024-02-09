@@ -9,4 +9,4 @@ autoscaler:
 k8sAppLabelOverride: "kube-dns"
 
 deployment:
-  name: "kubedns"
+  name: "coredns-argo"

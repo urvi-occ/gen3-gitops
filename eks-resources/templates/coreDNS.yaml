@@ -23,8 +23,6 @@ spec:
     namespace: kube-system
   syncPolicy:
     syncOptions:
-    - Replace=true
-    - Force=true
     - CreateNamespace=false
     automated:
       selfHeal: false
