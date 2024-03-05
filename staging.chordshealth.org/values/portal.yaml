@@ -5,7 +5,11 @@ portal:
     tag: 2023.12
     #repository: quay.io/cdis/data-portal-prebuilt
     #tag: caninedc.org-feat-pr_comment
-
+  
+  # Extra images to pull in to serve in portal container
+  extraImages:
+    - url: https://raw.githubusercontent.com/NIEHS/pcor_gen3_artifacts/main/custom_configs/images/tox21.jpg
+    - url: https://raw.githubusercontent.com/NIEHS/pcor_gen3_artifacts/main/custom_configs/images/chordstk.jpg
   # GitOps config for portal
   gitops:
     css: |
