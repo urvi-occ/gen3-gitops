@@ -5,7 +5,11 @@ portal:
     tag: 2023.12
     #repository: quay.io/cdis/data-portal-prebuilt
     #tag: caninedc.org-feat-pr_comment
-
+  
+  # Extra images to pull in to serve in portal container
+  extraImages:
+    - url: https://raw.githubusercontent.com/NIEHS/pcor_gen3_artifacts/main/custom_configs/images/tox21.jpg
+    - url: https://raw.githubusercontent.com/NIEHS/pcor_gen3_artifacts/main/custom_configs/images/chordstk.jpg
   # GitOps config for portal
   gitops:
     css: |
@@ -432,14 +436,14 @@ portal:
             "category": "Notebooks",
             "description": "This can be used to provide insight into specific Tox21 chemicals, or to generate sets of similar chemicals to be used in subsequent read across or enrichment type analysis.",
             "link": "https://rstudio.niehs.nih.gov/correlation-browser/",
-            "imageUrl": "custom/tox21.jpg"
+            "imageUrl": "custom/images/tox21.jpg"
           },
           {
             "title": "CHORDS Toolkit book",
             "category": "Tutorial books html",
             "description": "The CHORDS Toolkit for Health and Geospatial Exposures Research.",
             "link": "https://sandbox-staging.ntp.niehs.nih.gov/rsconnect/CHORDS_Toolkit_dev/",
-            "imageUrl": "custom/chordstk.jpg"
+            "imageUrl": "custom/images/chordstk.jpg"
           }
         ]
       },
