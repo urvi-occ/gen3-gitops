@@ -23,7 +23,7 @@ arborist:
     dbcreds: "canineprod-arborist"
   image: 
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/arborist
-    tag: 2023.05
+    tag: 2023.12
 
 aws-es-proxy:
   esEndpoint: vpc-unfunded-gen3-metadata-m3smitcxhtdmrypqtstf4dfgqi.us-east-1.es.amazonaws.com
@@ -33,15 +33,6 @@ aws-es-proxy:
   image:
     repository: quay.io/cdis/aws-es-proxy
     tag: 0.8
-
-fence:
-  enabled: true
-  externalSecrets:
-    dbcreds: "canineprod-fence"
-    fenceConfig: "canine-fence-config"
-  image:
-    tag: 2023.05
-    repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/fence 
 
 indexd:
   defaultPrefix: "dg.C78ne/"
@@ -53,7 +44,7 @@ indexd:
   enabled: true
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/indexd
-    tag: 2023.05
+    tag: 2023.12
 
 peregrine:
   externalSecrets:
@@ -68,13 +59,13 @@ pidgin:
   enabled: true
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/pidgin
-    tag: 2023.05
+    tag: 2023.12
 
 revproxy:
   enabled: true
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/nginx
-    tag: 2023.05
+    tag: 2023.12
 
 sheepdog:
   externalSecrets:
@@ -88,13 +79,13 @@ sheepdog:
 
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/sheepdog
-    tag: 2023.05
+    tag: 2023.12
 
 manifestservice:
   enabled: true
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/manifestservice
-    tag: 2023.05
+    tag: 2023.12
   externalSecrets:
     manifestserviceG3auto: "canine-manifestservice-g3auto" 
 
@@ -103,23 +94,23 @@ etl:
   spark:
     image:
       repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/gen3-spark
-      tag: 2023.05
+      tag: 2023.12
   tube:
     image:
       repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/tube
-      tag: 2023.05
+      tag: 2023.12
 
 sower:
   enabled: false
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/sower
-    tag: 2023.05
+    tag: 2023.12
 
 ssjdispatcher:
   enabled: true
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/ssjdispatcher
-    tag: 2023.05
+    tag: 2023.12
 
 metadata:
   externalSecrets:
@@ -127,7 +118,7 @@ metadata:
   enabled: true
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/metadata-service
-    tag: 2023.05
+    tag: 2023.12
 
 # disabling workspace services
 ambassador:
