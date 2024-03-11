@@ -78,7 +78,7 @@ sheepdog:
     tag: 2023.12
 
 manifestservice:
-  enabled: false
+  enabled: true
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/manifestservice
     tag: 2023.12
@@ -86,10 +86,10 @@ manifestservice:
     manifestserviceG3auto: "niaiddata-manifestservice-g3auto" 
 
 sower:
-  enabled: true
+  enabled: false
 
 ssjdispatcher:
-  enabled: true
+  enabled: false
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/ssjdispatcher
     tag: 2023.12
@@ -98,20 +98,26 @@ metadata:
   useAggMds: False
   externalSecrets:
     dbcreds: "niaiddata-metadata-db-creds"
-  enabled: true
+  enabled: false
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/metadata-service
     tag: 2023.12
     esEndpoint: http://elasticsearch:9200
 
+# disabling Pelican service
+pelican:
+  enabled: false
+
 # disabling workspace services
 ambassador:
   enabled: false
+
+hatchery:
+  enabled: false
+
 wts:
   externalSecrets:
     dbcreds: "niaiddata-wts-db-creds"
-  enabled: false
-hatchery:
   enabled: false
 
 # disabling audit service
