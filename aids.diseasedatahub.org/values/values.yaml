@@ -8,7 +8,7 @@ global:
     useLocalSecret:
         enabled: true
         localSecretName: external-secrets-charlie-secret 
-  revproxyArn: arn:aws:acm:us-east-1:662843554732:certificate/5874502e-5b67-415f-80ee-dcb814d2883f
+  revproxyArn: arn:aws:acm:us-east-1:662843554732:certificate/176af316-6175-4213-af46-766e0bbd8b5a
   dictionaryUrl: "https://s3.amazonaws.com/dictionary-artifacts/charlie-datadictionary/v1.3.2/schema.json"
   postgres:
     dbCreate: false
