@@ -1,6 +1,6 @@
 apiVersion: v2
-name: staging.chordshealth.org
-description: staging.chordshealth.org argo application
+name: diseasedatahub.org
+description: diseasedatahub.org argo application
 
 # A chart can be either an 'application' or a 'library' chart.
 #

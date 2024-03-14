@@ -2,17 +2,17 @@ global:
   dev: false
   # uncomment once we cutover, so we can use shared ALB
   #environment: "unfunded"
-  hostname: "caninedc.org"
+  hostname: "aids.diseasedatahub.org"
   aws: 
     enabled: true
     useLocalSecret:
         enabled: true
-        localSecretName: external-secrets-canine-secret
+        localSecretName: external-secrets-charlie-secret 
   revproxyArn: arn:aws:acm:us-east-1:662843554732:certificate/5874502e-5b67-415f-80ee-dcb814d2883f
-  dictionaryUrl: "https://s3.amazonaws.com/dictionary-artifacts/canine_dictionary/1.1.0/schema.json"
+  dictionaryUrl: "https://s3.amazonaws.com/dictionary-artifacts/charlie-datadictionary/v1.3.2/schema.json"
   postgres:
     dbCreate: false
-    externalSecret: "pg-master"
+    externalSecret: "charlie-master-password"
   externalSecrets:
     # -- (bool) Will use ExternalSecret resources to pull secrets from Secrets Manager instead of creating them locally. Be cautious as this will override secrets you have deployed.
     deploy: true
@@ -20,26 +20,25 @@ global:
 arborist:
   enabled: true
   externalSecrets:
-    dbcreds: "canineprod-arborist"
+    dbcreds: "charlie-arborist-db-creds"
   image: 
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/arborist
     tag: 2023.12
 
 aws-es-proxy:
-  esEndpoint: vpc-unfunded-gen3-metadata-m3smitcxhtdmrypqtstf4dfgqi.us-east-1.es.amazonaws.com
+  esEndpoint: vpc-unfunded-gen3-metadata-2-tf3gyjftzrgm5asaxuvqxxwv2m.us-east-1.es.amazonaws.com
   externalSecrets:
-    awsCreds: "canineprod-aws-es-proxy-creds"
+    awsCreds: "charlie-aws-es-proxy-creds"
   enabled: true
   image:
     repository: quay.io/cdis/aws-es-proxy
-    tag: 0.8
+    tag: v1.3.1
 
 indexd:
-  defaultPrefix: "dg.C78ne/"
-
+  # defaultPrefix: "dg.C78ch/"
   externalSecrets:
-    dbcreds: "canineprod-indexd" 
-    serviceCreds: "canineprod-indexd-service-creds"
+    dbcreds: "charlie-indexd-db-creds" 
+    serviceCreds: "charlie-indexd-service-creds"
   
   enabled: true
   image:
@@ -48,7 +47,7 @@ indexd:
 
 peregrine:
   externalSecrets:
-    dbcreds: "canineprod-peregrine" 
+    dbcreds: "charlie-peregrine-db-creds" 
   enabled: true
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/peregrine
@@ -56,10 +55,7 @@ peregrine:
     pullPolicy: Always
 
 pidgin:
-  enabled: true
-  image:
-    repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/pidgin
-    tag: 2023.12
+  enabled: false
 
 revproxy:
   enabled: true
@@ -69,7 +65,7 @@ revproxy:
 
 sheepdog:
   externalSecrets:
-    dbcreds: "canineprod-sheepdog" 
+    dbcreds: "charlie-sheepdog-db-creds" 
   enabled: true
   volumeMounts:
     - name: "config-volume"
@@ -87,47 +83,41 @@ manifestservice:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/manifestservice
     tag: 2023.12
   externalSecrets:
-    manifestserviceG3auto: "canine-manifestservice-g3auto" 
-
-etl:
-  enabled: true
-  spark:
-    image:
-      repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/gen3-spark
-      tag: 2023.12
-  tube:
-    image:
-      repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/tube
-      tag: 2023.12
+    manifestserviceG3auto: "charlie-manifestservice-g3auto" 
 
 sower:
   enabled: false
-  image:
-    repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/sower
-    tag: 2023.12
 
 ssjdispatcher:
-  enabled: true
+  enabled: false
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/ssjdispatcher
     tag: 2023.12
 
 metadata:
+  useAggMds: False
   externalSecrets:
-    dbcreds: "canineprod-metadata"
-  enabled: true
+    dbcreds: "charlie-metadata-db-creds"
+  enabled: false
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/metadata-service
     tag: 2023.12
+    esEndpoint: http://elasticsearch:9200
 
 # disabling workspace services
 ambassador:
   enabled: false
 wts:
+  externalSecrets:
+    dbcreds: "charlie-wts-db-creds"
   enabled: false
 hatchery:
   enabled: false
 
 # disabling audit service
 audit:
+  enabled: false
+
+# disabling argo-wrapper service
+argo-wrapper:
   enabled: false
