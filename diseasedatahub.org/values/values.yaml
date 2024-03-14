@@ -8,7 +8,7 @@ global:
     useLocalSecret:
         enabled: true
         localSecretName: external-secrets-niaiddata-secret 
-  revproxyArn: arn:aws:acm:us-east-1:662843554732:certificate/176af316-6175-4213-af46-766e0bbd8b5a
+  revproxyArn: arn:aws:acm:us-east-1:662843554732:certificate/86eca425-c2c3-4911-a49f-20beca8c7e99
   dictionaryUrl: "https://s3.amazonaws.com/dictionary-artifacts/chords-health-dictionary/0.1.0/schema.json"
   postgres:
     dbCreate: false
