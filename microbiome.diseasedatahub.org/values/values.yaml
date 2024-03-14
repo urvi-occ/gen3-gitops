@@ -8,7 +8,7 @@ global:
     useLocalSecret:
         enabled: true
         localSecretName: external-secrets-microbiome-secret 
-  revproxyArn: arn:aws:acm:us-east-1:636151780898:certificate/adc67d43-afe0-41e4-be66-28b8f705a848
+  revproxyArn: arn:aws:acm:us-east-1:662843554732:certificate/176af316-6175-4213-af46-766e0bbd8b5a
   dictionaryUrl: "https://dictionary-artifacts.s3.amazonaws.com/microbiome_datadictionary/1.1.1/schema.json"
   postgres:
     dbCreate: false
