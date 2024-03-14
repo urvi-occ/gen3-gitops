@@ -104,20 +104,16 @@ metadata:
     tag: 2023.12
     esEndpoint: http://elasticsearch:9200
 
-# disabling Pelican service
-pelican:
-  enabled: false
-
-# disabling workspace services
 ambassador:
-  enabled: false
-
-hatchery:
-  enabled: false
+  enabled: true
 
 wts:
   externalSecrets:
     dbcreds: "niaiddata-wts-db-creds"
+  enabled: true
+
+# disabling Pelican service
+pelican:
   enabled: false
 
 # disabling audit service

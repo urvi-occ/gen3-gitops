@@ -18,12 +18,13 @@ spec:
           - $values/diseasedatahub.org/values/fence.yaml
           - $values/diseasedatahub.org/values/portal.yaml
           - $values/diseasedatahub.org/values/guppy.yaml
+          - $values/diseasedatahub.org/values/hatchery.yaml
     - repoURL: 'https://github.com/uc-cdis/gen3-gitops.git'
       targetRevision: master
       ref: values
   destination:
     server: "https://kubernetes.default.svc"
-    namespace: niaiddatahelm
+    namespace: diseasedatahub
   syncPolicy:
     syncOptions:
     - CreateNamespace=false
