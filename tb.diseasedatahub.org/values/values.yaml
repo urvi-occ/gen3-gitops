@@ -3,6 +3,16 @@ global:
   # uncomment once we cutover, so we can use shared ALB
   #environment: "unfunded"
   hostname: "tb.diseasedatahub.org"
+  origins_allow_credentials: https://diseasedatahub.org
+  manifestGlobalExtraValues:
+    fence_url: "https://diseasedatahub.org/user"
+    arborist_url: "http://arborist-service.diseasedatahub.svc.cluster.local"
+    indexd_url: "https://diseasedatahub.org/index/"
+    workspace_url: "https://diseasedatahub.org/lw-workspace"
+    manifest_service_url: "https://diseasedatahub.org/manifests"
+    wts_url: "https://diseasedatahub.org/wts/oauth2/"
+    cookie_domain: "diseasedatahub.org"
+    des_namespace: "diseasedatahub"
   aws: 
     enabled: true
     useLocalSecret:
@@ -104,12 +114,13 @@ metadata:
     tag: 2023.12
     esEndpoint: http://elasticsearch:9200
 
-# disabling workspace services
-ambassador:
-  enabled: false
 wts:
   externalSecrets:
     dbcreds: "tb-wts-db-creds"
+  enabled: true
+
+# disabling workspace services
+ambassador:
   enabled: false
 hatchery:
   enabled: false

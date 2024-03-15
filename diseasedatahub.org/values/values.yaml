@@ -3,6 +3,9 @@ global:
   # uncomment once we cutover, so we can use shared ALB
   #environment: "unfunded"
   hostname: "diseasedatahub.org"
+  origins_allow_credentials: ["https://tb.diseasedatahub.org", "https://aids.diseasedatahub.org", "https://microbiome.diseasedatahub.org", "https://flu.diseasedatahub.org"]
+  manifestGlobalExtraValues:
+    cookie_domain: "diseasedatahub.org"
   aws: 
     enabled: true
     useLocalSecret:
