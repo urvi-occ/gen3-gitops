@@ -113,12 +113,13 @@ metadata:
     tag: 2023.12
     esEndpoint: http://elasticsearch:9200
 
-# disabling workspace services
-ambassador:
-  enabled: false
 wts:
   externalSecrets:
     dbcreds: "microbiome-wts-db-creds"
+  enabled: true
+
+# disabling workspace services
+ambassador:
   enabled: false
 hatchery:
   enabled: false
