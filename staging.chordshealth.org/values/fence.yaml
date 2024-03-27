@@ -1,11 +1,11 @@
 fence:
   enabled: true
   image:
-    repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/fence  
+    repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/fence
     tag: 2023.12
 
   usersync:
-    # -- (bool) Whether to run Fence usersync or not.
+     #-- (bool) Whether to run Fence usersync or not.
     usersync: true
     userYamlS3Path: s3://cdis-gen3-users/staging-chords-health/user.yaml
 
@@ -17,7 +17,7 @@ fence:
 
       # policies automatically given to authenticated users (in addition to their other policies)
       all_users_policies: []
-
+      
       groups:
       # can CRUD programs and projects and upload data files
       - name: data_submitters
@@ -62,7 +62,8 @@ fence:
             - name: AQS
             - name: BenMAP-CE
             - name: CDC-ATSDR
-            - name: CRE
+            - name: CSL
+            - name: CRE-032224
             - name: DiseasePathfinder
             - name: EJI
             - name: EJScreen
@@ -78,15 +79,18 @@ fence:
             - name: HumanImpactPathFinder
             - name: InciWeb
             - name: KP
+            - name: LANDFIRE
             - name: MODIS
             - name: MTBS
             - name: NDI
             - name: NEPHTN
             - name: NHANES
             - name: NIFC
+            - name: OpenAQ
             - name: PLACES
             - name: PM2.5
             - name: PurpleAir
+            - name: RAP
             - name: SDOH
             - name: TrackingNetwork
             - name: USFA
@@ -147,7 +151,8 @@ fence:
         - /programs/CHORDS/projects/AQS
         - /programs/CHORDS/projects/BenMAP-CE
         - /programs/CHORDS/projects/CDC-ATSDR
-        - /programs/CHORDS/projects/CRE
+        - /programs/CHORDS/projects/CSL
+        - /programs/CHORDS/projects/CRE-032224
         - /programs/CHORDS/projects/DiseasePathfinder
         - /programs/CHORDS/projects/EJI
         - /programs/CHORDS/projects/EJScreen
@@ -168,9 +173,12 @@ fence:
         - /programs/CHORDS/projects/NDI
         - /programs/CHORDS/projects/NEPHTN
         - /programs/CHORDS/projects/NHANES
+        - /programs/CHORDS/projects/LANDFIRE
         - /programs/CHORDS/projects/NIFC
+        - /programs/CHORDS/projects/OpenAQ
         - /programs/CHORDS/projects/PLACES
         - /programs/CHORDS/projects/PM2.5
+        - /programs/CHORDS/projects/RAP
         - /programs/CHORDS/projects/PurpleAir
         - /programs/CHORDS/projects/SDOH
         - /programs/CHORDS/projects/TrackingNetwork
@@ -206,7 +214,8 @@ fence:
         - /programs/CHORDS/projects/AQS
         - /programs/CHORDS/projects/BenMAP-CE
         - /programs/CHORDS/projects/CDC-ATSDR
-        - /programs/CHORDS/projects/CRE
+        - /programs/CHORDS/projects/CSL
+        - /programs/CHORDS/projects/CRE-032224
         - /programs/CHORDS/projects/DiseasePathfinder
         - /programs/CHORDS/projects/EJI
         - /programs/CHORDS/projects/EJScreen
@@ -222,15 +231,18 @@ fence:
         - /programs/CHORDS/projects/HumanImpactPathFinder
         - /programs/CHORDS/projects/InciWeb
         - /programs/CHORDS/projects/KP
+        - /programs/CHORDS/projects/LANDFIRE
         - /programs/CHORDS/projects/MODIS
         - /programs/CHORDS/projects/MTBS
         - /programs/CHORDS/projects/NDI
         - /programs/CHORDS/projects/NEPHTN
         - /programs/CHORDS/projects/NHANES
         - /programs/CHORDS/projects/NIFC
+        - /programs/CHORDS/projects/OpenAQ
         - /programs/CHORDS/projects/PLACES
         - /programs/CHORDS/projects/PM2.5
         - /programs/CHORDS/projects/PurpleAir
+        - /programs/CHORDS/projects/RAP
         - /programs/CHORDS/projects/SDOH
         - /programs/CHORDS/projects/TrackingNetwork
         - /programs/CHORDS/projects/USFA
@@ -395,6 +407,7 @@ fence:
           - mds_admin
           - data_upload
           - services.sheepdog-admin
+
 
   # -- (map) External Secrets settings.
   externalSecrets:

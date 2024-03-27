@@ -3,11 +3,11 @@ global:
   # uncomment once we cutover, so we can use shared ALB
   #environment: "unfunded"
   hostname: "staging.chordshealth.org"
-  aws: 
+  aws:
     enabled: true
     useLocalSecret:
         enabled: true
-        localSecretName: external-secrets-chords-secret 
+        localSecretName: external-secrets-chords-secret
         localSecretNamespace: chordstaginghelm
   revproxyArn: arn:aws:acm:us-east-1:048463324059:certificate/b85556ab-b13b-45bf-afd3-1a70b9234b6e
   dictionaryUrl: "https://s3.amazonaws.com/dictionary-artifacts/chords-health-dictionary/0.1.0/schema.json"
@@ -22,7 +22,7 @@ arborist:
   enabled: true
   externalSecrets:
     dbcreds: "chords_chords-arborist-db-creds"
-  image: 
+  image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/arborist
     tag: 2023.12
 
@@ -38,9 +38,9 @@ aws-es-proxy:
 indexd:
   defaultPrefix: "dg.C78ch/"
   externalSecrets:
-    dbcreds: "chords_chords-indexd-db-creds" 
+    dbcreds: "chords_chords-indexd-db-creds"
     serviceCreds: "chordstaging-indexd-service-creds"
-  
+
   enabled: true
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/indexd
@@ -48,11 +48,11 @@ indexd:
 
 peregrine:
   externalSecrets:
-    dbcreds: "chords_chords-peregrine-db-creds" 
+    dbcreds: "chords_chords-peregrine-db-creds"
   enabled: true
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/peregrine
-    tag: feat_jq-audience 
+    tag: feat_jq-audience
     pullPolicy: Always
 
 pidgin:
@@ -66,7 +66,7 @@ revproxy:
 
 sheepdog:
   externalSecrets:
-    dbcreds: "chords_chords-sheepdog-db-creds" 
+    dbcreds: "chords_chords-sheepdog-db-creds"
   enabled: true
   volumeMounts:
     - name: "config-volume"
@@ -83,9 +83,6 @@ manifestservice:
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/manifestservice
     tag: 2023.12
-
-sower:
-  enabled: false
 
 ssjdispatcher:
   enabled: true
@@ -110,6 +107,11 @@ wts:
   externalSecrets:
     dbcreds: "chords_chords-wts-db-creds"
   enabled: false
+
+
+sower:
+  enabled: false
+
 hatchery:
   enabled: false
 

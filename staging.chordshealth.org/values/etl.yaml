@@ -9,6 +9,7 @@ etl:
       repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/tube
       tag: 2023.12
   esEndpoint: elasticsearch
+
   etlMapping:
     mappings:
       - name: chordstaging_geospatial_data_resource
@@ -20,6 +21,9 @@ etl:
           - name: submitter_id
           - name: intended_use
           - name: has_api
+          - name: measures_parent_category
+          - name: measures_subcategory_major
+          - name: measures_subcategory_minor
           - name: measures
           - name: time_extent_start
           - name: time_extent_end
@@ -51,6 +55,9 @@ etl:
           - name: submitter_id
           - name: intended_use
           - name: has_api
+          - name: measures_parent_category
+          - name: measures_subcategory_major
+          - name: measures_subcategory_minor
           - name: measures
           - name: time_extent_start
           - name: time_extent_end
