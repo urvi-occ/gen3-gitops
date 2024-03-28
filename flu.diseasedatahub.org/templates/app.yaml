@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: gen3
+  name: gen3-flu
   namespace: argocd
   finalizers:
   - resources-finalizer.argocd.argoproj.io
@@ -12,20 +12,20 @@ spec:
       repoURL: https://github.com/uc-cdis/gen3-helm
       targetRevision: master
       helm:
-        releaseName: canineprod
+        releaseName: flu
         valueFiles:
-          - $values/caninedc.org/values/values.yaml
-          - $values/caninedc.org/values/fence.yaml
-          - $values/caninedc.org/values/portal.yaml
-          - $values/caninedc.org/values/guppy.yaml
+          - $values/flu.diseasedatahub.org/values/values.yaml
+          - $values/flu.diseasedatahub.org/values/fence.yaml
+          - $values/flu.diseasedatahub.org/values/portal.yaml
+          - $values/flu.diseasedatahub.org/values/guppy.yaml
     - repoURL: 'https://github.com/uc-cdis/gen3-gitops.git'
       targetRevision: master
       ref: values
   destination:
     server: "https://kubernetes.default.svc"
-    namespace: canineprod
+    namespace: fluhelm
   syncPolicy:
     syncOptions:
-    - CreateNamespace=true
+    - CreateNamespace=false
     automated:
       selfHeal: true

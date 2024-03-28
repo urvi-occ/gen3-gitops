@@ -2,17 +2,27 @@ global:
   dev: false
   # uncomment once we cutover, so we can use shared ALB
   #environment: "unfunded"
-  hostname: "staging.chordshealth.org"
-  aws:
+  hostname: "flu.diseasedatahub.org"
+  origins_allow_credentials: https://diseasedatahub.org
+  manifestGlobalExtraValues:
+    fence_url: "https://diseasedatahub.org/user"
+    arborist_url: "http://arborist-service.diseasedatahub.svc.cluster.local"
+    indexd_url: "https://diseasedatahub.org/index/"
+    workspace_url: "https://diseasedatahub.org/lw-workspace"
+    manifest_service_url: "https://diseasedatahub.org/manifests"
+    wts_url: "https://diseasedatahub.org/wts/oauth2/"
+    cookie_domain: "diseasedatahub.org"
+    des_namespace: "diseasedatahub"
+  aws: 
     enabled: true
     useLocalSecret:
         enabled: true
-        localSecretName: external-secrets-chords-secret
-  revproxyArn: arn:aws:acm:us-east-1:048463324059:certificate/b85556ab-b13b-45bf-afd3-1a70b9234b6e
-  dictionaryUrl: "https://s3.amazonaws.com/dictionary-artifacts/chords-health-dictionary/0.1.0/schema.json"
+        localSecretName: external-secrets-flu-secret 
+  revproxyArn: arn:aws:acm:us-east-1:662843554732:certificate/86eca425-c2c3-4911-a49f-20beca8c7e99
+  dictionaryUrl: "https://s3.amazonaws.com/dictionary-artifacts/flu-datadictionary/1.0.1/schema.json"
   postgres:
     dbCreate: false
-    externalSecret: "chords_aurora-master-password"
+    externalSecret: "flu-master-password"
   externalSecrets:
     # -- (bool) Will use ExternalSecret resources to pull secrets from Secrets Manager instead of creating them locally. Be cautious as this will override secrets you have deployed.
     deploy: true
@@ -20,26 +30,26 @@ global:
 arborist:
   enabled: true
   externalSecrets:
-    dbcreds: "chords_chords-arborist-db-creds"
-  image:
+    dbcreds: "flu-arborist-db-creds"
+  image: 
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/arborist
     tag: 2023.12
 
 aws-es-proxy:
-  esEndpoint: vpc-chords-gen3-metadata-2-lbdmlev6ocn5pneieeympkp6vy.us-east-1.es.amazonaws.com
+  esEndpoint: vpc-unfunded-gen3-metadata-2-tf3gyjftzrgm5asaxuvqxxwv2m.us-east-1.es.amazonaws.com
   externalSecrets:
-    awsCreds: "chordstaging-aws-es-proxy-creds"
+    awsCreds: "flu-aws-es-proxy-creds"
   enabled: true
   image:
     repository: quay.io/cdis/aws-es-proxy
     tag: v1.3.1
 
 indexd:
-  defaultPrefix: "dg.C78ch/"
+  # defaultPrefix: "dg.C78ch/"
   externalSecrets:
-    dbcreds: "chords_chords-indexd-db-creds"
-    serviceCreds: "chordstaging-indexd-service-creds"
-
+    dbcreds: "flu-indexd-db-creds" 
+    serviceCreds: "flu-indexd-service-creds"
+  
   enabled: true
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/indexd
@@ -47,11 +57,11 @@ indexd:
 
 peregrine:
   externalSecrets:
-    dbcreds: "chords_chords-peregrine-db-creds"
+    dbcreds: "flu-peregrine-db-creds" 
   enabled: true
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/peregrine
-    tag: feat_jq-audience
+    tag: feat_jq-audience 
     pullPolicy: Always
 
 pidgin:
@@ -65,7 +75,7 @@ revproxy:
 
 sheepdog:
   externalSecrets:
-    dbcreds: "chords_chords-sheepdog-db-creds"
+    dbcreds: "flu-sheepdog-db-creds" 
   enabled: true
   volumeMounts:
     - name: "config-volume"
@@ -83,10 +93,13 @@ manifestservice:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/manifestservice
     tag: 2023.12
   externalSecrets:
-    manifestserviceG3auto: "chords_chords-manifestservice-g3auto"
+    manifestserviceG3auto: "flu-manifestservice-g3auto" 
+
+sower:
+  enabled: false
 
 ssjdispatcher:
-  enabled: true
+  enabled: false
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/ssjdispatcher
     tag: 2023.12
@@ -94,26 +107,21 @@ ssjdispatcher:
 metadata:
   useAggMds: False
   externalSecrets:
-    dbcreds: "chords_chords-metadata-db-creds"
-    metadataG3auto: "chords_chord-metadata-g3auto"
-  enabled: true
+    dbcreds: "flu-metadata-db-creds"
+  enabled: false
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/metadata-service
     tag: 2023.12
     esEndpoint: http://elasticsearch:9200
 
+wts:
+  externalSecrets:
+    dbcreds: "flu-wts-db-creds"
+  enabled: true
+
 # disabling workspace services
 ambassador:
   enabled: false
-wts:
-  externalSecrets:
-    dbcreds: "chords_chords-wts-db-creds"
-  enabled: false
-
-
-sower:
-  enabled: false
-
 hatchery:
   enabled: false
 

@@ -6,9 +6,9 @@ fence:
 
   usersync:
     # -- (bool) Whether to run Fence usersync or not.
-    usersync: false
-    userYamlS3Path: s3://cdis-gen3-users/canine/user.yaml
-  
+    usersync: true
+    userYamlS3Path: s3://cdis-gen3-users/nde/user.yaml
+
   USER_YAML:
 
   # -- (map) External Secrets settings.
@@ -24,6 +24,6 @@ fence:
     # -- (string) Will override the name of the aws secrets manager secret. Default is "fence-google-storage-creds-secret"
     fenceGoogleStorageCredsSecret:
     # -- (string) Will override the name of the aws secrets manager secret. Default is "fence-config"
-    fenceConfig: "canine-fence-config"
+    fenceConfig: "niaiddata-fence-config"
     # -- (string) Will override the name of the aws secrets manager secret. Default is "Values.global.environment-.Chart.Name-creds"
-    dbcreds: "canineprod-fence"
+    dbcreds: "niaiddata-fence-db-creds"
