@@ -3,7 +3,7 @@ global:
   # uncomment once we cutover, so we can use shared ALB
   #environment: "unfunded"
   hostname: "microbiome.diseasedatahub.org"
-  origins_allow_credentials: https://diseasedatahub.org
+  origins_allow_credentials: ["https://diseasedatahub.org"]
   manifestGlobalExtraValues:
     fence_url: "https://diseasedatahub.org/user"
     arborist_url: "http://arborist-service.diseasedatahub.svc.cluster.local"

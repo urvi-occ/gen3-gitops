@@ -1,10 +1,10 @@
 portal:
   enabled: true
   image:
-    # repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/data-portal
-    # tag: 2023.12
-    repository: quay.io/cdis/data-portal-prebuilt
-    tag: tb.diseasedatahub.org-prebuilt-prc
+    repository: quay.io/cdis/data-portal
+    tag: 2.24.1
+    #repository: quay.io/cdis/data-portal-prebuilt
+    #tag: tb.diseasedatahub.org-prebuilt-prc
 
   # GitOps config for portal
   gitops:
@@ -159,7 +159,7 @@ portal:
             },
             "footerLogos": [
               {
-                "src": "/custom/sponsors/gitops-sponsors/gen3.png",
+                "src": "/src/img/logo.png",
                 "href": "https://ctds.uchicago.edu/gen3",
                 "alt": "Gen3 Data Commons"
               },
