@@ -8,9 +8,9 @@ portal:
 
   # Extra images to pull in to serve in portal container
   extraImages:
-    # - url: https://raw.githubusercontent.com/NIEHS/pcor_gen3_artifacts/main/custom_configs/images/lit.jpeg
-    - url: https://raw.githubusercontent.com/NIEHS/pcor_gen3_artifacts/main/custom_configs/images/chordstk.jpg
-    - url:  https://raw.githubusercontent.com/NIEHS/pcor_gen3_artifacts/main/custom_configs/images/ospcortf_logo.jpg
+    - url: https://raw.githubusercontent.com/NIEHS/pcor_gen3_artifacts/develop/custom_configs/images/lit.jpeg
+    - url: https://raw.githubusercontent.com/NIEHS/pcor_gen3_artifacts/develop/custom_configs/images/chordstk.jpg
+    - url:  https://raw.githubusercontent.com/NIEHS/pcor_gen3_artifacts/develop/custom_configs/images/ospcortf_logo.jpg
   # GitOps config for portal
   gitops:
     css: |
@@ -324,6 +324,39 @@ portal:
         text-align: center;
         background-color: var(--secondary-color);
       }
+
+      .discovery-table__expanded-row-content {
+        background: inherit;
+        margin-top: -25px;
+        cursor: pointer;
+        height: 90px  !important;
+        width: 100%;
+        overflow: hidden;
+        padding: 0 16px 0 16px  !important;
+        margin: 10px 0 10px 0  !important;
+        display: -webkit-box;
+        font-size: medium  !important;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        text-overflow: ellipsis;
+      }
+
+      .discovery-table__row-horizontal-content {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: flex-start;
+        padding: 10px 16px 0 16px  !important;
+        width: 100%;
+        flex-wrap: wrap;
+      }
+
+      .discovery-table__row {
+        cursor: pointer;
+        font-weight: bold  !important;
+        overflow: visible;
+        position: relative;
+      }
     json: |
       {
       "graphql": {
@@ -417,6 +450,25 @@ portal:
             }
           ]
         },
+        "topBar": { 
+          "items": [
+            {
+              "icon": "upload",
+              "link": "/submission",
+              "name": "Submit Data"
+            },
+            {
+              "link": "https://gen3.org/resources/user/",
+              "name": "Documentation"
+            },
+            {
+              "link": "https://www.niehs.nih.gov/research/programs/chords",
+              "name": "About"
+            }
+
+          ]
+      },
+        "useProfileDropdown": false,
         "login": {
           "title": "CHORDS - Climate and Health Outcomes Research Data Systems",
           "subTitle": "Explore, Analyze, and Share Climate and Health Resources",
@@ -451,14 +503,14 @@ portal:
             "title": "Examples",
             "category": "Notebooks",
             "description": "Example literature use cases linking climate and health",
-            "link": "https://dev.posit.niehs.nih.gov/content/4f7ea292-ac44-4313-a2ba-cfe4ff447141/literature_tool_v4.html",
+            "link": "https://niehs.github.io/CHORDSLiteratureExamples/",
             "imageUrl": "custom/images/lit.jpeg"
           },
           {
             "title": "Tools",
             "category": "Tutorial books html",
             "description": "The CHORDS Toolkit for Health and Geospatial Exposures Research.",
-            "link": "https://sandbox-staging.ntp.niehs.nih.gov/rsconnect/CHORDS_Toolkit_dev/",
+            "link": "https://niehs.github.io/PCOR_bookdown_tools/",
             "imageUrl": "custom/images/chordstk.jpg"
           }
         ]
@@ -506,13 +558,7 @@ portal:
             "displayName": "Show Search Filters",
             "filters": [
               {
-                "key": "Resource Type"
-              },
-              {
                 "key": "Project Sponsor"
-              },
-              {
-                "key": "Project"
               },
               {
                 "key": "Variables"
@@ -523,10 +569,10 @@ portal:
             ]
           },
           "tagsColumn": {
-            "enabled": true
+            "enabled": false
           },
           "tagsInDescription": {
-            "enabled": false
+            "enabled": true
           },
           "authorization": {
             "enabled": false
@@ -544,20 +590,8 @@ portal:
         },
         "studyColumns": [
           {
-            "name": "Resource Type",
-            "field": "type",
-            "errorIfNotAvailable": false,
-            "valueIfNotAvailable": "n/a"
-          },
-          {
             "name": "Resource Name",
             "field": "name",
-            "errorIfNotAvailable": false,
-            "valueIfNotAvailable": "n/a"
-          },
-          {
-            "name": "Project Name",
-            "field": "project_name",
             "errorIfNotAvailable": false,
             "valueIfNotAvailable": "n/a"
           },
@@ -566,7 +600,14 @@ portal:
             "field": "project_sponsor",
             "errorIfNotAvailable": false,
             "valueIfNotAvailable": "n/a"
+          },
+          {
+            "name": "Domain",
+            "field": "domain",
+            "errorIfNotAvailable": false,
+            "valueIfNotAvailable": "n/a"
           }
+
         ],
         "studyPreviewField": {
           "name": "Description",
@@ -714,6 +755,30 @@ portal:
                       "label": "Payment Required?",
                       "sourceField": "payment_required",
                       "default": "n/a"
+                    },
+                    {
+                      "type": "text",
+                      "label": "Time Extent Start",
+                      "sourceField": "time_extent_start",
+                      "default": ""
+                    },
+                    {
+                      "type": "text",
+                      "label": "Time Extent End",
+                      "sourceField": "time_extent_end",
+                      "default": ""
+                    },
+                    {
+                      "type": "text",
+                      "label": "Spatial Resolution",
+                      "sourceField": "spatial_resolution",
+                      "default": ""
+                    },
+                    {
+                      "type": "text",
+                      "label": "Spatial Coverage",
+                      "sourceField": "spatial_coverage",
+                      "default": ""
                     }
                   ]
                 }
@@ -810,7 +875,7 @@ portal:
           "tabTitle": "Geospatial Data Resources",
           "charts": {
             "domain": {
-              "chartType": "bar",
+              "chartType": "count",
               "title": "Domain"
             }
           },
@@ -824,10 +889,7 @@ portal:
                   "domain",
                   "access_type",
                   "has_api",
-                  "time_extent_start",
-                  "time_extent_end",
                   "temporal_resolution",
-                  "spatial_resolution",
                   "spatial_coverage",
                   "exposure_media"
                 ]
@@ -922,7 +984,7 @@ portal:
           "tabTitle": "Population Data Resources",
           "charts": {
             "domain": {
-              "chartType": "bar",
+              "chartType": "count",
               "title": "Domain"
             }
           },
@@ -936,10 +998,7 @@ portal:
                   "domain",
                   "access_type",
                   "has_api",
-                  "time_extent_start",
-                  "time_extent_end",
                   "temporal_resolution",
-                  "spatial_resolution",
                   "spatial_coverage"
                 ]
               },
@@ -1033,7 +1092,7 @@ portal:
           "tabTitle": "Geospatial Tool Resources",
           "charts": {
             "domain": {
-              "chartType": "bar",
+              "chartType": "count",
               "title": "Domain"
             }
           },
