@@ -70,12 +70,6 @@ sheepdog:
   externalSecrets:
     dbcreds: "niaiddata-sheepdog-db-creds" 
   enabled: true
-  volumeMounts:
-    - name: "config-volume"
-      readOnly: true
-      mountPath: "/var/www/sheepdog/settings.py"
-      subPath: "wsgi.py"
-
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/sheepdog
     tag: 2023.12
