@@ -135,7 +135,7 @@ portal:
             },
             "footerLogos": [
               {
-                "src": "/custom/sponsors/gitops-sponsors/gen3.png",
+                "src": "/src/img/logo.png",
                 "href": "https://ctds.uchicago.edu/gen3",
                 "alt": "Gen3 Data Commons"
               },
