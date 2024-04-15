@@ -10,7 +10,7 @@ spec:
   sources:
     - path: master
       repoURL: https://github.com/uc-cdis/gen3-helm
-      targetRevision: "feat/GPE-1032-portal-images"
+      targetRevision: "master"
       helm:
         releaseName: chordstagingargo
         valueFiles:
