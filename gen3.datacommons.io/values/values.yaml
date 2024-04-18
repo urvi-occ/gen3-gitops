@@ -2,14 +2,14 @@ global:
   dev: false
   # uncomment once we cutover, so we can use shared ALB
   #environment: "unfunded"
-  hostname: "caninedc.org"
+  hostname: "gen3.datacommons.io"
   aws: 
     enabled: true
     useLocalSecret:
         enabled: true
-        localSecretName: external-secrets-canine-secret
-  revproxyArn: arn:aws:acm:us-east-1:662843554732:certificate/5874502e-5b67-415f-80ee-dcb814d2883f
-  dictionaryUrl: "https://s3.amazonaws.com/dictionary-artifacts/canine_dictionary/1.1.0/schema.json"
+        localSecretName: external-secrets-oadc-secret
+  revproxyArn: arn:aws:acm:us-east-1:662843554732:certificate/42215b51-29cc-47de-b189-c51bb2e07d97
+  dictionaryUrl: "http://s3.amazonaws.com/dictionary-artifacts/openaccess_dictionary/0.3.0/schema.json"
   postgres:
     dbCreate: false
     externalSecret: "pg-master"
@@ -20,7 +20,7 @@ global:
 arborist:
   enabled: true
   externalSecrets:
-    dbcreds: "canineprod-arborist"
+    dbcreds: "oadc-arborist-db-creds"
   image: 
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/arborist
     tag: 2023.12
@@ -28,7 +28,7 @@ arborist:
 aws-es-proxy:
   esEndpoint: vpc-unfunded-gen3-metadata-2-tf3gyjftzrgm5asaxuvqxxwv2m.us-east-1.es.amazonaws.com
   externalSecrets:
-    awsCreds: "canineprod-aws-es-proxy-creds"
+    awsCreds: "oadc-aws-es-proxy-creds"
   enabled: true
   image:
     repository: quay.io/cdis/aws-es-proxy
@@ -38,8 +38,8 @@ indexd:
   defaultPrefix: "dg.C78ne/"
 
   externalSecrets:
-    dbcreds: "canineprod-indexd" 
-    serviceCreds: "canineprod-indexd-service-creds"
+    dbcreds: "oadc-indexd-db-creds" 
+    serviceCreds: "oadc-indexd-service-creds"
   
   enabled: true
   image:
@@ -48,7 +48,7 @@ indexd:
 
 peregrine:
   externalSecrets:
-    dbcreds: "canineprod-peregrine" 
+    dbcreds: "oadc-peregrine-db-creds" 
   enabled: true
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/peregrine
@@ -63,7 +63,7 @@ revproxy:
 
 sheepdog:
   externalSecrets:
-    dbcreds: "canineprod-sheepdog" 
+    dbcreds: "oadc-sheepdog-db-creds"
   enabled: true
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/sheepdog
@@ -75,18 +75,7 @@ manifestservice:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/manifestservice
     tag: 2023.12
   externalSecrets:
-    manifestserviceG3auto: "canine-manifestservice-g3auto" 
-
-etl:
-  enabled: true
-  spark:
-    image:
-      repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/gen3-spark
-      tag: 2023.12
-  tube:
-    image:
-      repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/tube
-      tag: 2023.12
+    manifestserviceG3auto: "oadc-manifestservice-g3auto" 
 
 sower:
   enabled: true
@@ -94,7 +83,7 @@ sower:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/sower
     tag: 2023.12
   externalSecrets:
-    pelicanserviceG3auto: "canine-pelicanservice-g3auto"
+    pelicanserviceG3auto: "oadc-pelicanservice-g3auto"
 
 ssjdispatcher:
   enabled: true
@@ -104,8 +93,8 @@ ssjdispatcher:
 
 metadata:
   externalSecrets:
-    dbcreds: "canineprod-metadata"
-    metadataG3auto: "canine-metadata-g3auto" 
+    dbcreds: "oadc-metadata-db-creds"
+    metadataG3auto: "oadc-metadata-g3auto" 
   enabled: true
   esEndpoint: http://elasticsearch:9200
   image:
@@ -114,12 +103,14 @@ metadata:
 
 # disabling workspace services
 ambassador:
-  enabled: true
+  enabled: false
 wts:
   enabled: false
 hatchery:
   enabled: false
 
-# disabling audit service
+# Disabled services
 audit:
   enabled: false
+pidgin: 
+  enabled: fals

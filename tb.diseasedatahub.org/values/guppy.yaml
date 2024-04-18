@@ -2,7 +2,7 @@ guppy:
   enabled: true
   dbRestore: false
   image:
-    repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/guppy
+    repository: quay.io/cdis/guppy
     tag: 2023.12
   indices:
     - index: tb
@@ -13,4 +13,4 @@ guppy:
       type: file
   configIndex: tb_array-config 
   authFilterField: auth_resource_path
-  esEndpoint: elasticsearch:9200
+  esEndpoint: http://elasticsearch:9200
