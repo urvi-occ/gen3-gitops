@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: gen3
+  name: gen3-oadc
   namespace: argocd
   finalizers:
   - resources-finalizer.argocd.argoproj.io
@@ -14,10 +14,11 @@ spec:
       helm:
         releaseName: oadc
         valueFiles:
-          - $values/gen3.datacommons.org/values/values.yaml
-          - $values/gen3.datacommons.org/values/fence.yaml
-          - $values/gen3.datacommons.org/values/portal.yaml
-          - $values/gen3.datacommons.org/values/guppy.yaml
+          - $values/gen3.datacommons.io/values/values.yaml
+          - $values/gen3.datacommons.io/values/fence.yaml
+          - $values/gen3.datacommons.io/values/portal.yaml
+          - $values/gen3.datacommons.io/values/guppy.yaml
+          - $values/gen3.datacommons.io/values/etl.yaml
     - repoURL: 'https://github.com/uc-cdis/gen3-gitops.git'
       targetRevision: master
       ref: values
