@@ -32,7 +32,7 @@ arborist:
   externalSecrets:
     dbcreds: "tb-arborist-db-creds"
   image: 
-    repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/arborist
+    repository: quay.io/cdis/arborist
     tag: 2023.12
 
 aws-es-proxy:
@@ -52,7 +52,7 @@ indexd:
   
   enabled: true
   image:
-    repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/indexd
+    repository: quay.io/cdis/indexd
     tag: 2023.12
 
 peregrine:
@@ -60,17 +60,14 @@ peregrine:
     dbcreds: "tb-peregrine-db-creds" 
   enabled: true
   image:
-    repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/peregrine
+    repository: quay.io/cdis/peregrine
     tag: feat_jq-audience 
     pullPolicy: Always
-
-pidgin:
-  enabled: false
 
 revproxy:
   enabled: true
   image:
-    repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/nginx
+    repository: quay.io/cdis/nginx
     tag: 2023.12
 
 sheepdog:
@@ -78,51 +75,39 @@ sheepdog:
     dbcreds: "tb-sheepdog-db-creds" 
   enabled: true
   image:
-    repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/sheepdog
+    repository: quay.io/cdis/sheepdog
     tag: 2023.12
 
 manifestservice:
   enabled: true
   image:
-    repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/manifestservice
+    repository: quay.io/cdis/manifestservice
     tag: 2023.12
   externalSecrets:
     manifestserviceG3auto: "tb-manifestservice-g3auto" 
-
-sower:
-  enabled: false
-
-ssjdispatcher:
-  enabled: false
-  image:
-    repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/ssjdispatcher
-    tag: 2023.12
-
-metadata:
-  useAggMds: False
-  externalSecrets:
-    dbcreds: "tb-metadata-db-creds"
-  enabled: false
-  image:
-    repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/metadata-service
-    tag: 2023.12
-    esEndpoint: http://elasticsearch:9200
 
 wts:
   externalSecrets:
     dbcreds: "tb-wts-db-creds"
   enabled: true
+  image:
+    repository: quay.io/cdis/workspace-token-service
+    tag: 2023.12
 
-# disabling workspace services
+# Disabled services
 ambassador:
   enabled: false
 hatchery:
   enabled: false
-
-# disabling audit service
 audit:
   enabled: false
-
-# disabling argo-wrapper service
 argo-wrapper:
+  enabled: false
+pidgin:
+  enabled: false
+sower:
+  enabled: false
+ssjdispatcher:
+  enabled: false
+metadata:
   enabled: false

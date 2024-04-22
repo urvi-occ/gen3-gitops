@@ -6,7 +6,7 @@ fence:
 
   usersync:
     # -- (bool) Whether to run Fence usersync or not.
-    usersync: false
+    usersync: true
     userYamlS3Path: s3://cdis-gen3-users/canine/user.yaml
   
   USER_YAML:
