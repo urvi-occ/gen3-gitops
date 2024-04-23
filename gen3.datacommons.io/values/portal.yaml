@@ -15,8 +15,8 @@ portal:
 
   # Extra images to pull in to serve in portal container
   extraImages:
-    - url: https://raw.githubusercontent.com/gen3.datacommons.io/dashboard/Public/notebooks/notebook_canine.png
-    - url: https://raw.githubusercontent.com/gen3.datacommons.io/dashboard/Public/notebooks/notebook_gene.png
+    - url: https://raw.githubusercontent.com/uc-cdis/cdis-manifest/master/gen3.datacommons.io/dashboard/Public/notebooks/notebook_canine.png
+    - url: https://raw.githubusercontent.com/uc-cdis/cdis-manifest/master/gen3.datacommons.io/dashboard/Public/notebooks/notebook_gene.png
 
   # GitOps config for portal
   gitops:
