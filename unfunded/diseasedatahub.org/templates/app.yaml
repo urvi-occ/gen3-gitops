@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: gen3-canine
+  name: gen3-niaiddata
   namespace: argocd
   finalizers:
   - resources-finalizer.argocd.argoproj.io
@@ -12,21 +12,21 @@ spec:
       repoURL: https://github.com/uc-cdis/gen3-helm
       targetRevision: master
       helm:
-        releaseName: canineprod
+        releaseName: niaiddata
         valueFiles:
-          - $values/caninedc.org/values/values.yaml
-          - $values/caninedc.org/values/fence.yaml
-          - $values/caninedc.org/values/portal.yaml
-          - $values/caninedc.org/values/guppy.yaml
-          - $values/caninedc.org/values/etl.yaml
+          - $values/unfunded/diseasedatahub.org/values/values.yaml
+          - $values/unfunded/diseasedatahub.org/values/fence.yaml
+          - $values/unfunded/diseasedatahub.org/values/portal.yaml
+          - $values/unfunded/diseasedatahub.org/values/guppy.yaml
+          - $values/unfunded/diseasedatahub.org/values/hatchery.yaml
     - repoURL: 'https://github.com/uc-cdis/gen3-gitops.git'
       targetRevision: master
       ref: values
   destination:
     server: "https://kubernetes.default.svc"
-    namespace: canineprod
+    namespace: diseasedatahub
   syncPolicy:
     syncOptions:
-    - CreateNamespace=true
+    - CreateNamespace=false
     automated:
       selfHeal: true
