@@ -10,7 +10,7 @@ serviceAccount:
   name: karpenter
   create: false
 
-conroller:
+controller:
   env:
     - name: AWS_REGION
       value: us-east-1
