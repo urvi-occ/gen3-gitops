@@ -8,17 +8,20 @@ metadata:
 spec:
   project: default
   sources:
-    - path: helm/gen3
+    - path: helm/karpenter-templates
       repoURL: https://github.com/uc-cdis/gen3-helm
-      targetRevision: master
+      targetRevision: chore/unfunded-karpenter
       helm:
-        releaseName: canineprod
+        releaseName: karpenter-templates
         valueFiles:
-          - $values/unfunded/cluster-resources/values/karpenter.yaml
           - $values/unfunded/cluster-resources/values/karpenter-templates.yaml
-    - repoURL: 'https://github.com/uc-cdis/gen3-gitops.git'
-      targetRevision: master
-      ref: values
+    - repoURL: 'https://github.com/aws/karpenter-provider-aws'
+      targetRevision: v0.32.9
+      path: charts/karpenter
+      helm:
+        releaseName: karpenter
+        valueFiles:
+          - $values/unfunded/cluster-resources/values/karpenter.yaml        
   destination:
     server: "https://kubernetes.default.svc"
     namespace: karpenter
