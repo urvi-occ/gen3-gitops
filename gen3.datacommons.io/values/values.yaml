@@ -23,7 +23,7 @@ arborist:
     dbcreds: "oadc-arborist-db-creds"
   image: 
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/arborist
-    tag: 2023.12
+    tag: 2024.04
 
 aws-es-proxy:
   esEndpoint: vpc-unfunded-gen3-metadata-2-tf3gyjftzrgm5asaxuvqxxwv2m.us-east-1.es.amazonaws.com
@@ -44,7 +44,7 @@ indexd:
   enabled: true
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/indexd
-    tag: 2023.12
+    tag: 2024.04
 
 peregrine:
   externalSecrets:
@@ -59,7 +59,7 @@ revproxy:
   enabled: true
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/nginx
-    tag: 2023.12
+    tag: 2024.04
 
 sheepdog:
   externalSecrets:
@@ -67,13 +67,13 @@ sheepdog:
   enabled: true
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/sheepdog
-    tag: 2023.12
+    tag: 2024.04
 
 manifestservice:
   enabled: true
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/manifestservice
-    tag: 2023.12
+    tag: 2024.04
   externalSecrets:
     manifestserviceG3auto: "oadc-manifestservice-g3auto" 
 
@@ -81,7 +81,7 @@ sower:
   enabled: true
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/sower
-    tag: 2023.12
+    tag: 2024.04
   externalSecrets:
     pelicanserviceG3auto: "oadc-pelicanservice-g3auto"
 
@@ -89,7 +89,7 @@ ssjdispatcher:
   enabled: true
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/ssjdispatcher
-    tag: 2023.12
+    tag: 2024.04
 
 metadata:
   externalSecrets:
@@ -99,7 +99,7 @@ metadata:
   esEndpoint: http://elasticsearch:9200
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/metadata-service
-    tag: 2023.12
+    tag: 2024.04
 
 # disabling workspace services
 ambassador:
