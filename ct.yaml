@@ -3,7 +3,7 @@ target-branch: master
 chart-dirs:
   - .
 chart-repos:
-  - gen3=https://github.com/uc-cdis/gen3-helm
+  - gen3=https://helm.gen3.org/
   - eks=https://aws.github.io/eks-charts
   - projectcalico=https://docs.tigera.io/calico/charts
   - coredns=https://coredns.github.io/helm
