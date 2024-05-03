@@ -33,7 +33,7 @@ jobs:
           fi
 
       - name: Run chart-testing (lint)
-        run: ct lint --config .github/ct.yaml
+        run: ct lint --config ct.yaml
       
   # TODO: add back in when we have tests
   # deploy-and-test-chart:
