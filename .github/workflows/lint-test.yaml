@@ -52,3 +52,33 @@ jobs:
               helm lint "$chart_dir"
             fi
           done
+
+      - name: Validate app.yaml References to Values Files
+        run: |
+          # Loop through each Helm chart directory
+          find . -type f -name 'Chart.yaml' | sed 's|/Chart.yaml||' | while read chart_dir; do
+            echo "Checking $chart_dir/templates/app.yaml for references to values files in $chart_dir/values/"
+            
+            # Check if the app.yaml file exists
+            if [[ -f "$chart_dir/templates/app.yaml" ]]; then
+              # Loop over each values file in the values directory
+              missing_references=""
+              for values_file in $chart_dir/values/*.yaml; do
+                values_filename=$(basename "$values_file")
+                # Check if values_filename is referenced in app.yaml
+                if ! grep -q "$values_filename" "$chart_dir/templates/app.yaml"; then
+                  missing_references="$missing_references $values_filename"
+                fi
+              done
+              
+              # Print results
+              if [[ -n "$missing_references" ]]; then
+                echo "Missing references in $chart_dir/templates/app.yaml for:$missing_references"
+                exit 1
+              else
+                echo "All values files are correctly referenced in $chart_dir/templates/app.yaml"
+              fi
+            else
+              echo "No app.yaml found in $chart_dir/templates/; skipping..."
+            fi
+          done
