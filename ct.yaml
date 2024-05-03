@@ -1,7 +1,7 @@
 remote: origin
 target-branch: master
 chart-dirs:
-  - .
+  - gen3-gitops
 chart-repos:
   - gen3=https://github.com/uc-cdis/gen3-helm
   - eks=https://aws.github.io/eks-charts
