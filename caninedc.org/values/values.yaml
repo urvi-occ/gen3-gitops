@@ -3,8 +3,9 @@ global:
   # uncomment once we cutover, so we can use shared ALB
   #environment: "unfunded"
   hostname: "caninedc.org"
-  aws: 
+  aws:
     enabled: true
+    accessKey: test
     useLocalSecret:
         enabled: true
         localSecretName: external-secrets-canine-secret
@@ -21,7 +22,7 @@ arborist:
   enabled: true
   externalSecrets:
     dbcreds: "canineprod-arborist"
-  image: 
+  image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/arborist
     tag: 2023.12
 
@@ -38,9 +39,9 @@ indexd:
   defaultPrefix: "dg.C78ne/"
 
   externalSecrets:
-    dbcreds: "canineprod-indexd" 
+    dbcreds: "canineprod-indexd"
     serviceCreds: "canineprod-indexd-service-creds"
-  
+
   enabled: true
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/indexd
@@ -48,11 +49,11 @@ indexd:
 
 peregrine:
   externalSecrets:
-    dbcreds: "canineprod-peregrine" 
+    dbcreds: "canineprod-peregrine"
   enabled: true
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/peregrine
-    tag: feat_jq-audience 
+    tag: feat_jq-audience
     pullPolicy: Always
 
 revproxy:
@@ -63,7 +64,7 @@ revproxy:
 
 sheepdog:
   externalSecrets:
-    dbcreds: "canineprod-sheepdog" 
+    dbcreds: "canineprod-sheepdog"
   enabled: true
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/sheepdog
@@ -75,7 +76,7 @@ manifestservice:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/manifestservice
     tag: 2023.12
   externalSecrets:
-    manifestserviceG3auto: "canine-manifestservice-g3auto" 
+    manifestserviceG3auto: "canine-manifestservice-g3auto"
 
 etl:
   enabled: true
@@ -105,7 +106,7 @@ ssjdispatcher:
 metadata:
   externalSecrets:
     dbcreds: "canineprod-metadata"
-    metadataG3auto: "canine-metadata-g3auto" 
+    metadataG3auto: "canine-metadata-g3auto"
   enabled: true
   esEndpoint: http://elasticsearch:9200
   image:
