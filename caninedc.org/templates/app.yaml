@@ -24,7 +24,7 @@ spec:
       ref: values
   destination:
     server: "https://kubernetes.default.svc"
-    namespace: {{.values.test}}
+    namespace: canineprod
   syncPolicy:
     syncOptions:
     - CreateNamespace=true
