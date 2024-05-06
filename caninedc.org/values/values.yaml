@@ -5,7 +5,6 @@ global:
   hostname: "caninedc.org"
   aws:
     enabled: true
-    accessKey: test
     useLocalSecret:
         enabled: true
         localSecretName: external-secrets-canine-secret

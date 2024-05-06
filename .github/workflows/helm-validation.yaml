@@ -45,12 +45,15 @@ jobs:
 
             # Check if the values directory exists and contains any yaml files
             if [ -d "$values_dir" ] && [ -n "$(ls $values_dir/*.yaml 2>/dev/null)" ]; then
+              values_args=""  # Initialize the string to hold the --values arguments
               for values_file in $values_dir/*.yaml; do
-                echo "Rendering chart $chart_dir with values file $values_file"
-                helm template "$chart_dir" --values "$values_file"
+                echo "Including values file $values_file"
+                values_args+=" --values $values_file"
               done
+              echo "Rendering chart $chart_dir with all values files"
+              helm template "$chart_dir" $values_args
             else
-              echo "No custom values found in $values_dir, rendering chart with default values"
+              echo "No values directory found or it is empty, rendering chart with default values"
               helm template "$chart_dir"
             fi
           done
