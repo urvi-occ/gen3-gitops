@@ -34,7 +34,27 @@ jobs:
 
       - name: Run chart-testing (lint)
         run: ct lint --config ct.yaml
-      
+
+      - name: Validate Helm Templates for All Charts
+        run: |
+          # Find all chart directories containing a Chart.yaml file
+          find . -name 'Chart.yaml' | while read chart_yaml; do
+            chart_dir=$(dirname "$chart_yaml")  # Get the directory path of the chart
+            values_dir="$chart_dir/values"  # Assume a 'values' subdirectory for custom values files
+            echo "Processing chart directory: $chart_dir"
+
+            # Check if the values directory exists and contains any yaml files
+            if [ -d "$values_dir" ] && [ -n "$(ls $values_dir/*.yaml 2>/dev/null)" ]; then
+              for values_file in $values_dir/*.yaml; do
+                echo "Rendering chart $chart_dir with values file $values_file"
+                helm template "$chart_dir" --values "$values_file"
+              done
+            else
+              echo "No custom values found in $values_dir, rendering chart with default values"
+              helm template "$chart_dir"
+            fi
+          done
+
       - name: Lint All Charts with Custom Values Files
         run: |
           # Find all directories containing a 'Chart.yaml', which indicates a helm chart directory
@@ -58,7 +78,7 @@ jobs:
           # Loop through each Helm chart directory
           find . -type f -name 'Chart.yaml' | sed 's|/Chart.yaml||' | while read chart_dir; do
             echo "Checking $chart_dir/templates/app.yaml for references to values files in $chart_dir/values/"
-            
+
             # Check if the app.yaml file exists
             if [[ -f "$chart_dir/templates/app.yaml" ]]; then
               # Loop over each values file in the values directory
@@ -70,7 +90,7 @@ jobs:
                   missing_references="$missing_references $values_filename"
                 fi
               done
-              
+
               # Print results
               if [[ -n "$missing_references" ]]; then
                 echo "Missing references in $chart_dir/templates/app.yaml for:$missing_references"
