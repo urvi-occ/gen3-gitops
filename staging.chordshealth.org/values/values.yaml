@@ -23,7 +23,7 @@ arborist:
     dbcreds: "chords_chords-arborist-db-creds"
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/arborist
-    tag: 2023.12
+    tag: 2024.05
 
 aws-es-proxy:
   esEndpoint: vpc-chords-gen3-metadata-2-lbdmlev6ocn5pneieeympkp6vy.us-east-1.es.amazonaws.com
@@ -43,7 +43,7 @@ indexd:
   enabled: true
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/indexd
-    tag: 2023.12
+    tag: 2024.05
 
 peregrine:
   externalSecrets:
@@ -61,7 +61,7 @@ revproxy:
   enabled: true
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/nginx
-    tag: 2023.12
+    tag: 2024.05
 
 sheepdog:
   externalSecrets:
@@ -75,7 +75,7 @@ manifestservice:
   enabled: true
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/manifestservice
-    tag: 2023.12
+    tag: 2024.05
   externalSecrets:
     manifestserviceG3auto: "chords_chords-manifestservice-g3auto"
 
@@ -83,7 +83,7 @@ ssjdispatcher:
   enabled: true
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/ssjdispatcher
-    tag: 2023.12
+    tag: 2024.05
 
 metadata:
   useAggMds: False
@@ -93,7 +93,7 @@ metadata:
   enabled: true
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/metadata-service
-    tag: 2023.12
+    tag: 2024.05
     esEndpoint: http://elasticsearch:9200
 
 # disabling workspace services
