@@ -1,5 +1,8 @@
 fence:
   enabled: true
+  replicaCount: 2
+  global:
+    pdb: true
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/fence
     tag: 2024.05
@@ -17,7 +20,7 @@ fence:
 
       # policies automatically given to authenticated users (in addition to their other policies)
       all_users_policies: []
-      
+
       groups:
       # can CRUD programs and projects and upload data files
       - name: data_submitters

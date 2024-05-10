@@ -57,6 +57,9 @@ peregrine:
 
 revproxy:
   enabled: true
+  replicaCount: 2
+  global:
+    pdb: true
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/nginx
     tag: 2023.12
