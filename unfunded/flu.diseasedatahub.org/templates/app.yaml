@@ -18,6 +18,7 @@ spec:
           - $values/unfunded/flu.diseasedatahub.org/values/fence.yaml
           - $values/unfunded/flu.diseasedatahub.org/values/portal.yaml
           - $values/unfunded/flu.diseasedatahub.org/values/guppy.yaml
+          - $values/unfunded/flu.diseasedatahub.org/values/etl.yaml
     - repoURL: 'https://github.com/uc-cdis/gen3-gitops.git'
       targetRevision: master
       ref: values
