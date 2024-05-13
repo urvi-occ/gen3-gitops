@@ -20,7 +20,6 @@ spec:
           - $values/unfunded/diseasedatahub.org/values/guppy.yaml
           - $values/unfunded/diseasedatahub.org/values/hatchery.yaml
           - $values/unfunded/diseasedatahub.org/values/etl.yaml
->>>>>>> 9f86c99776ef150f1904ed442ab09532778a6b78:diseasedatahub.org/templates/app.yaml
     - repoURL: 'https://github.com/uc-cdis/gen3-gitops.git'
       targetRevision: master
       ref: values
