@@ -16,6 +16,7 @@ global:
   externalSecrets:
     # -- (bool) Will use ExternalSecret resources to pull secrets from Secrets Manager instead of creating them locally. Be cautious as this will override secrets you have deployed.
     deploy: true
+  pdb: true
 
 arborist:
   enabled: true
@@ -59,6 +60,7 @@ pidgin:
 
 revproxy:
   enabled: true
+  replicaCount: 2
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/nginx
     tag: 2024.05

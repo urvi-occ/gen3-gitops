@@ -1,14 +1,15 @@
 fence:
   enabled: true
+  replicaCount: 2
   image:
-    repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/fence  
+    repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/fence
     tag: 2023.12
 
   usersync:
     # -- (bool) Whether to run Fence usersync or not.
     usersync: true
     userYamlS3Path: s3://cdis-gen3-users/canine/user.yaml
-  
+
   USER_YAML:
 
   # -- (map) External Secrets settings.
@@ -18,7 +19,7 @@ fence:
     # -- (string) Will create the Helm "fence-google-app-creds-secret" and "fence-google-storage-creds-secret" secrets even if Secrets Manager is enabled. This is helpful if you are wanting to use External Secrets for some, but not all secrets.
     createK8sGoogleAppSecrets: true
     # -- (string) Will override the name of the aws secrets manager secret. Default is "fence-jwt-keys"
-    fenceJwtKeys:
+    fenceJwtKeys: "canine-fence-jwt"
     # -- (string) Will override the name of the aws secrets manager secret. Default is "fence-google-app-creds-secret"
     fenceGoogleAppCredsSecret:
     # -- (string) Will override the name of the aws secrets manager secret. Default is "fence-google-storage-creds-secret"
