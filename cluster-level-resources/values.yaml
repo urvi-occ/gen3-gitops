@@ -1,0 +1,18 @@
+cluster: unfunded
+
+gitRevision: master
+
+configuration:
+  configurationRepo: https://github.com/uc-cdis/gen3-gitops
+  configurationRevision: master
+
+karpenter:
+  enabled: false
+  targetRevision: v0.32.9
+  configuration:
+    enabled: false
+
+# No enabled flag, because we want this to come up with karpenter at all times
+karpenter-templates:
+  configuration:
+    enabled: false

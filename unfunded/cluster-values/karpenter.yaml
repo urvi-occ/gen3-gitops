@@ -1,14 +1,12 @@
 serviceAccount:
+  name: karpenter
+  create: true
   annotations:
     eks.amazonaws.com/role-arn: "arn:aws:iam::662843554732:role/gen3_service/karpenter-controller-role-unfunded"
 
 settings:
   clusterName: "unfunded"
   clusterEndpoint: "https://6C2AE7CA3FD03E1BC0C2003FB597D5CC.gr7.us-east-1.eks.amazonaws.com"
-
-serviceAccount:
-  name: karpenter
-  create: false
 
 controller:
   image:
@@ -23,4 +21,4 @@ controller:
       cpu: "2"
     limits:
       memory: "2Gi"
-      cpu: "2" 
+      cpu: "2"

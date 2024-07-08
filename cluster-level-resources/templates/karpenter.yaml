@@ -1,27 +1,24 @@
+{{ if index .Values "karpenter" "enabled" }}
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: karpenter
   namespace: argocd
-  finalizers:
-  - resources-finalizer.argocd.argoproj.io
 spec:
   project: default
   sources:
-    - path: helm/karpenter-templates
-      repoURL: https://github.com/uc-cdis/gen3-helm
-      targetRevision: chore/unfunded-karpenter
-      helm:
-        releaseName: karpenter-templates
-        valueFiles:
-          - $values/unfunded/cluster-resources/values/karpenter-templates.yaml
     - repoURL: 'https://github.com/aws/karpenter-provider-aws'
-      targetRevision: v0.32.9
+      targetRevision: {{ .Values.karpenter.targetRevision }}
       path: charts/karpenter
       helm:
         releaseName: karpenter
+      {{- if index .Values "karpenter" "configuration" "enabled" }}
         valueFiles:
-          - $values/unfunded/cluster-resources/values/karpenter.yaml        
+          - "$values/{{ .Values.cluster }}/cluster-values/karpenter.yaml"
+    - repoURL: {{ .Values.configuration.configurationRepo }}
+      targetRevision: {{ .Values.configuration.configurationRevision }}
+      ref: values
+      {{- end }}
   destination:
     server: "https://kubernetes.default.svc"
     namespace: karpenter
@@ -30,3 +27,4 @@ spec:
     - CreateNamespace=true
     automated:
       selfHeal: true
+{{ end }}
