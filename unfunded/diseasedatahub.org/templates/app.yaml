@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: gen3-charlie
+  name: gen3-niaiddata
   namespace: argocd
   finalizers:
   - resources-finalizer.argocd.argoproj.io
@@ -12,19 +12,20 @@ spec:
       repoURL: https://github.com/uc-cdis/gen3-helm
       targetRevision: master
       helm:
-        releaseName: charlie
+        releaseName: niaiddata
         valueFiles:
-          - $values/aids.diseasedatahub.org/values/values.yaml
-          - $values/aids.diseasedatahub.org/values/fence.yaml
-          - $values/aids.diseasedatahub.org/values/portal.yaml
-          - $values/aids.diseasedatahub.org/values/guppy.yaml
-          - $values/aids.diseasedatahub.org/values/etl.yaml
+          - $values/unfunded/diseasedatahub.org/values/values.yaml
+          - $values/unfunded/diseasedatahub.org/values/fence.yaml
+          - $values/unfunded/diseasedatahub.org/values/portal.yaml
+          - $values/unfunded/diseasedatahub.org/values/guppy.yaml
+          - $values/unfunded/diseasedatahub.org/values/hatchery.yaml
+          - $values/unfunded/diseasedatahub.org/values/etl.yaml
     - repoURL: 'https://github.com/uc-cdis/gen3-gitops.git'
       targetRevision: master
       ref: values
   destination:
     server: "https://kubernetes.default.svc"
-    namespace: charliehelm
+    namespace: diseasedatahub
   syncPolicy:
     syncOptions:
     - CreateNamespace=false

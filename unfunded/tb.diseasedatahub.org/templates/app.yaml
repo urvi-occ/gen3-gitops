@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: gen3-niaiddata
+  name: gen3-tb
   namespace: argocd
   finalizers:
   - resources-finalizer.argocd.argoproj.io
@@ -12,20 +12,19 @@ spec:
       repoURL: https://github.com/uc-cdis/gen3-helm
       targetRevision: master
       helm:
-        releaseName: niaiddata
+        releaseName: tbargo
         valueFiles:
-          - $values/diseasedatahub.org/values/values.yaml
-          - $values/diseasedatahub.org/values/fence.yaml
-          - $values/diseasedatahub.org/values/portal.yaml
-          - $values/diseasedatahub.org/values/guppy.yaml
-          - $values/diseasedatahub.org/values/hatchery.yaml
-          - $values/diseasedatahub.org/values/etl.yaml
+          - $values/unfunded/tb.diseasedatahub.org/values/values.yaml
+          - $values/unfunded/tb.diseasedatahub.org/values/fence.yaml
+          - $values/unfunded/tb.diseasedatahub.org/values/portal.yaml
+          - $values/unfunded/tb.diseasedatahub.org/values/guppy.yaml
+          - $values/unfunded/tb.diseasedatahub.org/values/etl.yaml
     - repoURL: 'https://github.com/uc-cdis/gen3-gitops.git'
       targetRevision: master
       ref: values
   destination:
     server: "https://kubernetes.default.svc"
-    namespace: diseasedatahub
+    namespace: tbhelm
   syncPolicy:
     syncOptions:
     - CreateNamespace=false

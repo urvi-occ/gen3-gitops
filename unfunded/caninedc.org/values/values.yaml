@@ -2,17 +2,17 @@ global:
   dev: false
   # uncomment once we cutover, so we can use shared ALB
   #environment: "unfunded"
-  hostname: "gen3.datacommons.io"
+  hostname: "caninedc.org"
   aws:
     enabled: true
     useLocalSecret:
         enabled: true
-        localSecretName: external-secrets-oadc-secret
-  revproxyArn: arn:aws:acm:us-east-1:662843554732:certificate/42215b51-29cc-47de-b189-c51bb2e07d97
-  dictionaryUrl: "http://s3.amazonaws.com/dictionary-artifacts/openaccess_dictionary/0.3.0/schema.json"
+        localSecretName: external-secrets-canine-secret # pragma: allowlist secret
+  revproxyArn: arn:aws:acm:us-east-1:662843554732:certificate/5874502e-5b67-415f-80ee-dcb814d2883f
+  dictionaryUrl: "https://s3.amazonaws.com/dictionary-artifacts/canine_dictionary/1.1.0/schema.json"
   postgres:
     dbCreate: false
-    externalSecret: "pg-master"
+    externalSecret: "pg-master" # pragma: allowlist secret
   externalSecrets:
     # -- (bool) Will use ExternalSecret resources to pull secrets from Secrets Manager instead of creating them locally. Be cautious as this will override secrets you have deployed.
     deploy: true
@@ -21,15 +21,15 @@ global:
 arborist:
   enabled: true
   externalSecrets:
-    dbcreds: "oadc-arborist-db-creds"
+    dbcreds: "canineprod-arborist"
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/arborist
-    tag: 2024.04
+    tag: 2023.12
 
 aws-es-proxy:
   esEndpoint: vpc-unfunded-gen3-metadata-2-tf3gyjftzrgm5asaxuvqxxwv2m.us-east-1.es.amazonaws.com
   externalSecrets:
-    awsCreds: "oadc-aws-es-proxy-creds"
+    awsCreds: "canineprod-aws-es-proxy-creds"
   enabled: true
   image:
     repository: quay.io/cdis/aws-es-proxy
@@ -39,17 +39,17 @@ indexd:
   defaultPrefix: "dg.C78ne/"
 
   externalSecrets:
-    dbcreds: "oadc-indexd-db-creds"
-    serviceCreds: "oadc-indexd-service-creds"
+    dbcreds: "canineprod-indexd"
+    serviceCreds: "canineprod-indexd-service-creds"
 
   enabled: true
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/indexd
-    tag: 2024.04
+    tag: 2023.12
 
 peregrine:
   externalSecrets:
-    dbcreds: "oadc-peregrine-db-creds"
+    dbcreds: "canineprod-peregrine"
   enabled: true
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/peregrine
@@ -61,58 +61,67 @@ revproxy:
   replicaCount: 2
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/nginx
-    tag: 2024.04
+    tag: 2023.12
 
 sheepdog:
   externalSecrets:
-    dbcreds: "oadc-sheepdog-db-creds"
+    dbcreds: "canineprod-sheepdog"
   enabled: true
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/sheepdog
-    tag: 2024.04
+    tag: 2023.12
 
 manifestservice:
   enabled: true
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/manifestservice
-    tag: 2024.04
+    tag: 2023.12
   externalSecrets:
-    manifestserviceG3auto: "oadc-manifestservice-g3auto"
+    manifestserviceG3auto: "canine-manifestservice-g3auto"
+
+etl:
+  enabled: true
+  spark:
+    image:
+      repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/gen3-spark
+      tag: 2023.12
+  tube:
+    image:
+      repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/tube
+      tag: 2023.12
 
 sower:
   enabled: true
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/sower
-    tag: 2024.04
+    tag: 2023.12
   externalSecrets:
-    pelicanserviceG3auto: "oadc-pelicanservice-g3auto"
+    pelicanserviceG3auto: "canine-pelicanservice-g3auto"
 
 ssjdispatcher:
   enabled: true
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/ssjdispatcher
-    tag: 2024.04
+    tag: 2023.12
 
 metadata:
   externalSecrets:
-    dbcreds: "oadc-metadata-db-creds"
-    metadataG3auto: "oadc-metadata-g3auto"
+    dbcreds: "canineprod-metadata"
+    metadataG3auto: "canine-metadata-g3auto"
   enabled: true
   esEndpoint: http://elasticsearch:9200
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/metadata-service
-    tag: 2024.04
+    tag: 2023.12
 
 # disabling workspace services
 ambassador:
-  enabled: false
+  enabled: true
 wts:
   enabled: false
 hatchery:
   enabled: false
 
-# Disabled services
+# disabling audit service
 audit:
   enabled: false
-pidgin:
-  enabled: fals

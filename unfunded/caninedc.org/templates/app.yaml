@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: gen3-oadc
+  name: gen3-canine
   namespace: argocd
   finalizers:
   - resources-finalizer.argocd.argoproj.io
@@ -12,19 +12,19 @@ spec:
       repoURL: https://github.com/uc-cdis/gen3-helm
       targetRevision: master
       helm:
-        releaseName: oadc
+        releaseName: canineprod
         valueFiles:
-          - $values/gen3.datacommons.io/values/values.yaml
-          - $values/gen3.datacommons.io/values/fence.yaml
-          - $values/gen3.datacommons.io/values/portal.yaml
-          - $values/gen3.datacommons.io/values/guppy.yaml
-          - $values/gen3.datacommons.io/values/etl.yaml
+          - $values/unfunded/caninedc.org/values/values.yaml
+          - $values/unfunded/caninedc.org/values/fence.yaml
+          - $values/unfunded/caninedc.org/values/portal.yaml
+          - $values/unfunded/caninedc.org/values/guppy.yaml
+          - $values/unfunded/caninedc.org/values/etl.yaml
     - repoURL: 'https://github.com/uc-cdis/gen3-gitops.git'
       targetRevision: master
       ref: values
   destination:
     server: "https://kubernetes.default.svc"
-    namespace: oadchelm
+    namespace: canineprod
   syncPolicy:
     syncOptions:
     - CreateNamespace=true

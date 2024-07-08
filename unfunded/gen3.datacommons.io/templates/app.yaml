@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: gen3-microbiome
+  name: gen3-oadc
   namespace: argocd
   finalizers:
   - resources-finalizer.argocd.argoproj.io
@@ -12,21 +12,21 @@ spec:
       repoURL: https://github.com/uc-cdis/gen3-helm
       targetRevision: master
       helm:
-        releaseName: microbiomeargo
+        releaseName: oadc
         valueFiles:
-          - $values/aids.diseasedatahub.org/values/values.yaml
-          - $values/aids.diseasedatahub.org/values/fence.yaml
-          - $values/aids.diseasedatahub.org/values/portal.yaml
-          - $values/aids.diseasedatahub.org/values/guppy.yaml
-          - $values/aids.diseasedatahub.org/values/etl.yaml
+          - $values/unfunded/gen3.datacommons.io/values/values.yaml
+          - $values/unfunded/gen3.datacommons.io/values/fence.yaml
+          - $values/unfunded/gen3.datacommons.io/values/portal.yaml
+          - $values/unfunded/gen3.datacommons.io/values/guppy.yaml
+          - $values/unfunded/gen3.datacommons.io/values/etl.yaml
     - repoURL: 'https://github.com/uc-cdis/gen3-gitops.git'
       targetRevision: master
       ref: values
   destination:
     server: "https://kubernetes.default.svc"
-    namespace: microbiomehelm
+    namespace: oadchelm
   syncPolicy:
     syncOptions:
-    - CreateNamespace=false
+    - CreateNamespace=true
     automated:
       selfHeal: true
