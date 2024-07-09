@@ -7,6 +7,18 @@ configuration:
   configurationRepo: https://github.com/uc-cdis/gen3-gitops
   configurationRevision: master
 
+calico:
+  enabled: false
+  targetRevision: v3.27.0
+  configuration:
+    enabled: false
+
+coreDNS:
+  enabled: false
+  targetRevision: v1.29.0
+  configuration:
+    enabled: false
+
 karpenter:
   enabled: false
   targetRevision: v0.32.9
@@ -18,3 +30,9 @@ karpenter-templates:
   configuration:
     enabled: false
   targetRevision: master
+
+vpc-cni:
+  enabled: false
+  targetRevision: v1.16.2
+  configuration:
+    enabled: false

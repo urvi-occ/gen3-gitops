@@ -9,7 +9,7 @@ spec:
   sources:
     - path: helm/karpenter-templates
       repoURL: https://github.com/uc-cdis/gen3-helm
-      targetRevision: {{ index .Values "karpenter-templates" "gitRevision" }}
+      targetRevision: {{ index .Values "karpenter-templates" "targetRevision" }}
       helm:
         releaseName: karpenter-templates
       {{- if index .Values "karpenter-templates" "configuration" "enabled" }}
