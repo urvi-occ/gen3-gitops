@@ -9,7 +9,7 @@ spec:
   sources:
     - chart: aws-vpc-cni
       repoURL: https://aws.github.io/eks-charts
-      targetRevision: {{ index .Values "vpc-cni" "gitRevision" }}
+      targetRevision: {{ index .Values "vpc-cni" "targetRevision" }}
       helm:
         releaseName: vpc-cni
       {{- if index .Values "vpc-cni" "configuration" "enabled" }}
