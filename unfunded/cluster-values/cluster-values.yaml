@@ -1,10 +1,20 @@
-environment: unfunded
-
-gitRevision: feat/flexible-gitops
+cluster: unfunded
 
 configuration:
   configurationRepo: https://github.com/uc-cdis/gen3-gitops
   configurationRevision: feat/flexible-gitops
+
+calico:
+  enabled: true
+  targetRevision: v3.27.0
+  configuration:
+    enabled: false
+
+coreDNS:
+  enabled: true
+  targetRevision: v1.29.0
+  configuration:
+    enabled: false
 
 karpenter:
   enabled: true
@@ -16,3 +26,10 @@ karpenter:
 karpenter-templates:
   configuration:
     enabled: true
+  targetRevision: master
+
+vpc-cni:
+  enabled: true
+  targetRevision: v1.16.2
+  configuration:
+    enabled: false
