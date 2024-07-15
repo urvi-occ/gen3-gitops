@@ -27,6 +27,7 @@ karpenter:
 
 # No enabled flag, because we want this to come up with karpenter at all times
 karpenter-templates:
+  enabled: false
   configuration:
     enabled: false
   targetRevision: feat/karpenter-templates
