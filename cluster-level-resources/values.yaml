@@ -29,7 +29,7 @@ karpenter:
 karpenter-templates:
   configuration:
     enabled: false
-  targetRevision: master
+  targetRevision: feat/karpenter-templates
 
 vpc-cni:
   enabled: false
