@@ -7,6 +7,7 @@ serviceAccount:
 settings:
   clusterName: "unfunded"
   clusterEndpoint: "https://6C2AE7CA3FD03E1BC0C2003FB597D5CC.gr7.us-east-1.eks.amazonaws.com"
+  defaultInstanceProfile: "unfunded_EKS_workers"
 
 controller:
   image:

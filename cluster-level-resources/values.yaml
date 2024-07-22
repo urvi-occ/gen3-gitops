@@ -36,7 +36,7 @@ karpenter-templates:
   enabled: false
   configuration:
     enabled: false
-  targetRevision: master'
+  targetRevision: feat/karpenter-templates
 
 kube-state-metrics:
   enabled: false
