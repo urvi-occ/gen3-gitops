@@ -1,4 +1,5 @@
-# The name of the cluster this configuration is going to. This should match the directory name
+# The name of the cluster this configuration is going to. This should match the name of the directory configuration
+# is stored in
 cluster: unfunded
 
 # This is universal for all of our configuration, we assume that all of the configuration (i.e. values files)
@@ -19,17 +20,29 @@ coreDNS:
   configuration:
     enabled: false
 
+grafana-alloy:
+  enabled: false
+  targetRevision: 0.4.0
+  configuration:
+    enabled: false
+
 karpenter:
   enabled: false
   targetRevision: v0.32.9
   configuration:
     enabled: false
 
-# No enabled flag, because we want this to come up with karpenter at all times
 karpenter-templates:
+  enabled: false
   configuration:
     enabled: false
-  targetRevision: master
+  targetRevision: master'
+
+kube-state-metrics:
+  enabled: false
+  configuration:
+    enabled: false
+  targetRevision: 4.0.4
 
 vpc-cni:
   enabled: false
