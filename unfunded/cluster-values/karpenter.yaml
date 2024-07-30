@@ -1,0 +1,25 @@
+serviceAccount:
+  name: karpenter
+  create: true
+  annotations:
+    eks.amazonaws.com/role-arn: "arn:aws:iam::662843554732:role/gen3_service/karpenter-controller-role-unfunded"
+
+settings:
+  clusterName: "unfunded"
+  clusterEndpoint: "https://6C2AE7CA3FD03E1BC0C2003FB597D5CC.gr7.us-east-1.eks.amazonaws.com"
+  defaultInstanceProfile: "unfunded_EKS_workers"
+
+controller:
+  image:
+    tag: "v0.32.9"
+    digest: "sha256:0c142050d872cb0ac7b30a188ec36aa765b449718cde0c7e49f7495b28f47c29"
+  env:
+    - name: AWS_REGION
+      value: us-east-1
+  resources:
+    requests:
+      memory: "2Gi"
+      cpu: "2"
+    limits:
+      memory: "2Gi"
+      cpu: "2"
