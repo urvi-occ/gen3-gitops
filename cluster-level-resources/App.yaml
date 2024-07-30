@@ -12,6 +12,10 @@ spec:
     repoURL: https://github.com/uc-cdis/gen3-gitops.git
     targetRevision: master
     path: cluster-level-resources
+    helm:
+      valueFiles:
+        - unfunded/cluster-values/cluster-values.yaml
+      releaseName: cluster-level-resources
   syncPolicy:
     automated:
       selfHeal: true
