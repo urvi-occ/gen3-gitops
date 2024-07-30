@@ -448,7 +448,7 @@ data:
     // prometheus write endpoint
     prometheus.remote_write "default" {
       external_labels = {
-        cluster = "unfunded",
+        cluster = "{{ .Values.cluster }}",
       }
       endpoint {
         url = "https://mimir.planx-pla.net/api/v1/push"
@@ -463,7 +463,7 @@ data:
     // loki write endpoint
     loki.write "endpoint" {
       external_labels =  {
-        cluster = "unfunded",
+        cluster = "{{ .Values.cluster }}",
       }
       endpoint {
         url = "https://loki.planx-pla.net/loki/api/v1/push"
