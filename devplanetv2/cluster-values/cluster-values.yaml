@@ -1,51 +1,17 @@
-# The name of the cluster this configuration is going to. This should match the name of the directory configuration
-# is stored in
-cluster: devplanetv2
+environment: devplanetv2
 
-# This is universal for all of our configuration, we assume that all of the configuration (i.e. values files)
-# live in the same repo, on the same branch
+gitRevision: feat/flexible-gitops
+
 configuration:
   configurationRepo: https://github.com/uc-cdis/gen3-gitops
-  configurationRevision: master
-
-calico:
-  enabled: false
-  targetRevision: v3.27.0
-  configuration:
-    enabled: false
-
-coreDNS:
-  enabled: false
-  targetRevision: v1.29.0
-  configuration:
-    enabled: false
-
-grafana-alloy:
-  enabled: true
-  targetRevision: 0.4.0
-  configuration:
-    enabled: false
+  configurationRevision: feat/flexible-gitops
 
 karpenter:
-  enabled: false
+  enabled: true
   targetRevision: v0.32.9
   configuration:
-    enabled: false
+    enabled: true
 
 karpenter-templates:
-  enabled: false
   configuration:
-    enabled: false
-  targetRevision: feat/karpenter-templates
-
-kube-state-metrics:
-  enabled: false
-  configuration:
-    enabled: false
-  targetRevision: 4.0.4
-
-vpc-cni:
-  enabled: false
-  targetRevision: v1.16.2
-  configuration:
-    enabled: false
+    enabled: true
