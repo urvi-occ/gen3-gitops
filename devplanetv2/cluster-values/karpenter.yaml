@@ -6,7 +6,7 @@ serviceAccount:
 
 settings:
   clusterName: "devplanetv2"
-  clusterEndpoint: "https://6C2AE7CA3FD03E1BC0C2003FB597D5CC.gr7.us-east-1.eks.amazonaws.com"
+  clusterEndpoint: "https://F057519C0E32B7DE2580904C4007BB21.gr7.us-east-1.eks.amazonaws.com"
 
 controller:
   image:
