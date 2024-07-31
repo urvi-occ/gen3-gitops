@@ -1,0 +1,14 @@
+# The name of the cluster this configuration is going to. This should match the name of the directory configuration
+# is stored in
+cluster: midrcprod
+
+# This is universal for all of our configuration, we assume that all of the configuration (i.e. values files)
+# live in the same repo, on the same branch
+configuration:
+  configurationRepo: https://github.com/uc-cdis/gen3-gitops
+  configurationRevision: chore/alloy-va-dcf
+
+grafana-alloy:
+  enabled: true
+  configuration:
+    enabled: false
