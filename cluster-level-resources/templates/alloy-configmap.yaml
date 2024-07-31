@@ -421,14 +421,14 @@ data:
       forward_to = [prometheus.relabel.metrics_service.receiver]
     }
 
-    // Alloy exporter meta/self monitoring
-    prometheus.exporter.self "default" {
-    }
+    # // Alloy exporter meta/self monitoring
+    # prometheus.exporter.self "default" {
+    # }
 
-    prometheus.scrape "metamonitoring" {
-      targets    = prometheus.exporter.self.default.targets
-      forward_to = [prometheus.remote_write.default.receiver]
-    }
+    # prometheus.scrape "metamonitoring" {
+    #   targets    = prometheus.exporter.self.default.targets
+    #   forward_to = [prometheus.remote_write.default.receiver]
+    # }
 
     // Cluster Events
     loki.source.kubernetes_events "cluster_events" {
