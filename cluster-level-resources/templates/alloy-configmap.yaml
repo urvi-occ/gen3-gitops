@@ -292,29 +292,29 @@ data:
     //  }
     // }
 
-    prometheus.scrape "cadvisor" {
-      job_name   = "integrations/kubernetes/cadvisor"
-      targets    = discovery.relabel.cadvisor.output
-      scheme     = "https"
-      scrape_interval = "60s"
-      bearer_token_file = "/var/run/secrets/kubernetes.io/serviceaccount/token"
-      tls_config {
-        insecure_skip_verify = true
-      }
-      clustering {
-        enabled = true
-      }
-      forward_to = [prometheus.relabel.cadvisor.receiver]
-    }
+    // prometheus.scrape "cadvisor" {
+    //  job_name   = "integrations/kubernetes/cadvisor"
+    //  targets    = discovery.relabel.cadvisor.output
+    //  scheme     = "https"
+    //  scrape_interval = "60s"
+    //  bearer_token_file = "/var/run/secrets/kubernetes.io/serviceaccount/token"
+    //  tls_config {
+    //    insecure_skip_verify = true
+    //  }
+    //  clustering {
+    //    enabled = true
+    //  }
+    //  forward_to = [prometheus.relabel.cadvisor.receiver]
+    //}
 
-    prometheus.relabel "cadvisor" {
-      rule {
-        source_labels = ["__name__"]
-        regex = "up|container_cpu_cfs_periods_total|container_cpu_cfs_throttled_periods_total|container_cpu_usage_seconds_total|container_fs_reads_bytes_total|container_fs_reads_total|container_fs_writes_bytes_total|container_fs_writes_total|container_memory_cache|container_memory_rss|container_memory_swap|container_memory_working_set_bytes|container_network_receive_bytes_total|container_network_receive_packets_dropped_total|container_network_receive_packets_total|container_network_transmit_bytes_total|container_network_transmit_packets_dropped_total|container_network_transmit_packets_total|machine_memory_bytes"
-        action = "keep"
-      }
-      forward_to = [prometheus.relabel.metrics_service.receiver]
-    }
+    //prometheus.relabel "cadvisor" {
+    //  rule {
+    //    source_labels = ["__name__"]
+    //    regex = "up|container_cpu_cfs_periods_total|container_cpu_cfs_throttled_periods_total|container_cpu_usage_seconds_total|container_fs_reads_bytes_total|container_fs_reads_total|container_fs_writes_bytes_total|container_fs_writes_total|container_memory_cache|container_memory_rss|container_memory_swap|container_memory_working_set_bytes|container_network_receive_bytes_total|container_network_receive_packets_dropped_total|container_network_receive_packets_total|container_network_transmit_bytes_total|container_network_transmit_packets_dropped_total|container_network_transmit_packets_total|machine_memory_bytes"
+    //    action = "keep"
+    //  }
+    //  forward_to = [prometheus.relabel.metrics_service.receiver]
+    // }
 
     // Logs from all pods
     discovery.relabel "all_pods" {
