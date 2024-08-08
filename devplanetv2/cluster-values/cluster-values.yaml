@@ -1,0 +1,17 @@
+environment: devplanetv2
+
+gitRevision: feat/flexible-gitops
+
+configuration:
+  configurationRepo: https://github.com/uc-cdis/gen3-gitops
+  configurationRevision: feat/flexible-gitops
+
+karpenter:
+  enabled: true
+  targetRevision: v0.32.9
+  configuration:
+    enabled: true
+
+karpenter-templates:
+  configuration:
+    enabled: true

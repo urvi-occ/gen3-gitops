@@ -1,0 +1,32 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: gen3-flu
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  sources:
+    - path: helm/gen3
+      repoURL: https://github.com/uc-cdis/gen3-helm
+      targetRevision: master
+      helm:
+        releaseName: flu
+        valueFiles:
+          - $values/unfunded/flu.diseasedatahub.org/values/values.yaml
+          - $values/unfunded/flu.diseasedatahub.org/values/fence.yaml
+          - $values/unfunded/flu.diseasedatahub.org/values/portal.yaml
+          - $values/unfunded/flu.diseasedatahub.org/values/guppy.yaml
+          - $values/unfunded/flu.diseasedatahub.org/values/etl.yaml
+    - repoURL: 'https://github.com/uc-cdis/gen3-gitops.git'
+      targetRevision: master
+      ref: values
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: fluhelm
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=false
+    automated:
+      selfHeal: true
