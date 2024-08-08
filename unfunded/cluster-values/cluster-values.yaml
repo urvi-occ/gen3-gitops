@@ -1,10 +1,6 @@
 cluster: unfunded
 project: unfunded
 
-configuration:
-  configurationRepo: https://github.com/uc-cdis/gen3-gitops
-  configurationRevision: feat/flexible-gitops
-
 calico:
   enabled: true
   targetRevision: v3.27.0

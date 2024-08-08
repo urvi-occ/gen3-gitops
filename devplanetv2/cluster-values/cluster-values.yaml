@@ -1,11 +1,10 @@
 cluster: devplanetv2
-project:: dev
+project: dev
 
-gitRevision: feat/flexible-gitops
-
-configuration:
-  configurationRepo: https://github.com/uc-cdis/gen3-gitops
-  configurationRevision: feat/flexible-gitops
+grafana-alloy:
+  enabled: true
+  configuration:
+    enabled: false
 
 karpenter:
   enabled: true
