@@ -1,5 +1,5 @@
 cluster: devplanetv2
-environment: dev
+project:: dev
 
 gitRevision: feat/flexible-gitops
 

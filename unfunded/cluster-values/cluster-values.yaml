@@ -1,4 +1,5 @@
 cluster: unfunded
+project: unfunded
 
 configuration:
   configurationRepo: https://github.com/uc-cdis/gen3-gitops
@@ -27,12 +28,6 @@ karpenter:
   targetRevision: v0.32.9
   configuration:
     enabled: true
-
-# No enabled flag, because we want this to come up with karpenter at all times
-karpenter-templates:
-  configuration:
-    enabled: true
-  targetRevision: master
 
 vpc-cni:
   enabled: true
