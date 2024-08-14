@@ -14,7 +14,7 @@ spec:
       helm:
         releaseName: bihstaging
         valueFiles:
-          - $values/bihstaging.data-commons.org/values/values.yaml
+          - $values/bihprod/bihstaging.data-commons.org/values/values.yaml
     - repoURL: 'https://github.com/uc-cdis/gen3-gitops.git'
       targetRevision: master
       ref: values

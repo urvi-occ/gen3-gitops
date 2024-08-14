@@ -40,6 +40,10 @@ spec:
             configMap:
               name: alloy-gen3
               key: config
+            resources:
+              requests:
+                cpu: 1000m
+                memory: 1Gi
       {{- end }}
   syncPolicy:
     syncOptions:
