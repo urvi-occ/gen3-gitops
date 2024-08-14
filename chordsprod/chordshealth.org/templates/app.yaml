@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: gen3-chordstaging
+  name: gen3-chordsprod
   namespace: argocd
   finalizers:
   - resources-finalizer.argocd.argoproj.io
@@ -12,19 +12,19 @@ spec:
       repoURL: https://github.com/uc-cdis/gen3-helm
       targetRevision: "master"
       helm:
-        releaseName: chordstagingargo
+        releaseName: chordsprodargo
         valueFiles:
-          - $values/staging.chordshealth.org/values/etl.yaml
-          - $values/staging.chordshealth.org/values/values.yaml
-          - $values/staging.chordshealth.org/values/fence.yaml
-          - $values/staging.chordshealth.org/values/portal.yaml
-          - $values/staging.chordshealth.org/values/guppy.yaml
+          - $values/chordsprod/chordshealth.org/values/etl.yaml
+          - $values/chordsprod/chordshealth.org/values/values.yaml
+          - $values/chordsprod/chordshealth.org/values/fence.yaml
+          - $values/chordsprod/chordshealth.org/values/portal.yaml
+          - $values/chordsprod/chordshealth.org/values/guppy.yaml
     - repoURL: 'https://github.com/uc-cdis/gen3-gitops.git'
       targetRevision: master
       ref: values
   destination:
     server: "https://kubernetes.default.svc"
-    namespace: chordstaginghelm
+    namespace: default
   syncPolicy:
     syncOptions:
     - CreateNamespace=false
