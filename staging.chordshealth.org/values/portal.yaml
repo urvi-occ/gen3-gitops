@@ -448,7 +448,7 @@ portal:
       },
       "components": {
         "appName": "CHORDS",
-        "homepageHref": "https://chordshealth.org/",
+        "homepageHref": "https://staging.chordshealth.org/",
         "index": {
           "introduction": {
             "heading": "CHORDS - Climate and Health Outcomes Research Data Systems Catalog",
