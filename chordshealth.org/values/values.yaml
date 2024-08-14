@@ -2,14 +2,14 @@ global:
   dev: false
   # uncomment once we cutover, so we can use shared ALB
   #environment: "unfunded"
-  hostname: "staging.chordshealth.org"
+  hostname: "chordshealth.org"
   aws:
     enabled: true
     useLocalSecret:
         enabled: true
         localSecretName: external-secrets-chords-secret
   revproxyArn: arn:aws:acm:us-east-1:048463324059:certificate/b85556ab-b13b-45bf-afd3-1a70b9234b6e
-  dictionaryUrl: "https://s3.amazonaws.com/dictionary-artifacts/chords-health-dictionary/1.5.2/schema.json"
+  dictionaryUrl: "https://s3.amazonaws.com/dictionary-artifacts/chords-health-dictionary/master/schema.json"
   postgres:
     dbCreate: false
     externalSecret: "chords_aurora-master-password"
@@ -21,7 +21,7 @@ global:
 arborist:
   enabled: true
   externalSecrets:
-    dbcreds: "chords_staging-arborist-db-creds"
+    dbcreds: "chords_chords-arborist-db-creds"
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/arborist
     tag: 2024.05
@@ -38,8 +38,8 @@ aws-es-proxy:
 indexd:
   defaultPrefix: "dg.C78ch/"
   externalSecrets:
-    dbcreds: "chords_staging-indexd-db-creds"
-    serviceCreds: "chordstaging-indexd-service-creds"
+    dbcreds: "chords_chords-indexd-db-creds"
+    serviceCreds: "chordsprod-indexd-service-creds"
 
   enabled: true
   image:
@@ -48,7 +48,7 @@ indexd:
 
 peregrine:
   externalSecrets:
-    dbcreds: "chords_staging-peregrine-db-creds"
+    dbcreds: "chords_chords-peregrine-db-creds"
   enabled: true
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/peregrine
@@ -67,7 +67,7 @@ revproxy:
 
 sheepdog:
   externalSecrets:
-    dbcreds: "chords_staging-sheepdog-db-creds"
+    dbcreds: "chords_chords-sheepdog-db-creds"
   enabled: true
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/sheepdog
@@ -79,7 +79,7 @@ manifestservice:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/manifestservice
     tag: 2024.05
   externalSecrets:
-    manifestserviceG3auto: "chords_staging-manifestservice-g3auto"
+    manifestserviceG3auto: "chords_chords-manifestservice-g3auto"
 
 ssjdispatcher:
   enabled: true
@@ -90,8 +90,8 @@ ssjdispatcher:
 metadata:
   useAggMds: False
   externalSecrets:
-    dbcreds: "chords_staging-metadata-db-creds"
-    metadataG3auto: "chords_staging-metadata-g3auto"
+    dbcreds: "chords_chords-metadata-db-creds"
+    metadataG3auto: "chords_chord-metadata-g3auto"
   enabled: true
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/metadata-service
@@ -102,6 +102,8 @@ metadata:
 ambassador:
   enabled: false
 wts:
+  externalSecrets:
+    dbcreds: "chords_chords-wts-db-creds"
   enabled: false
 
 

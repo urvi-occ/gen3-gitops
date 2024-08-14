@@ -395,7 +395,6 @@ portal:
 
         background-color: var();
       }
-
     json: |
       {
       "graphql": {
@@ -448,7 +447,7 @@ portal:
       },
       "components": {
         "appName": "CHORDS",
-        "homepageHref": "https://chordshealth.org/",
+        "homepageHref": "https://chords.niehs.nih.gov/",
         "index": {
           "introduction": {
             "heading": "CHORDS - Climate and Health Outcomes Research Data Systems Catalog",
@@ -582,9 +581,6 @@ portal:
                 "key": "Project Sponsor"
               },
               {
-                "key": "Resource Type"
-              },
-              {
                 "key": "Measures(category)"
               },
               {
@@ -702,39 +698,21 @@ portal:
                       "default": ""
                     },
                     {
-                      "type": "text",
+                      "type": "link",
                       "label": "Publication 1",
                       "sourceField": "publications_1",
-                      "default": "n/a"
-                    },
-                    {
-                      "type": "link",
-                      "label": "Publication Link 1",
-                      "sourceField": "publication_link_1",
                       "default": ""
                     },
                     {
-                      "type": "text",
+                      "type": "link",
                       "label": "Publication 2",
                       "sourceField": "publications_2",
                       "default": ""
                     },
                     {
                       "type": "link",
-                      "label": "Publication Link 2",
-                      "sourceField": "publication_link_2",
-                      "default": ""
-                    },
-                    {
-                      "type": "text",
                       "label": "Publication 3",
                       "sourceField": "publications_3",
-                      "default": "n/a"
-                    },
-                    {
-                      "type": "link",
-                      "label": "Publication Link 3",
-                      "sourceField": "publication_link_3",
                       "default": ""
                     }
                   ]
