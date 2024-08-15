@@ -618,4 +618,4 @@ fence:
     # -- (string) Will override the name of the aws secrets manager secret. Default is "fence-config"
     fenceConfig: "chordstaging-fence-config"
     # -- (string) Will override the name of the aws secrets manager secret. Default is "Values.global.environment-.Chart.Name-creds"
-    dbcreds: "chords_chords-fence-db-creds"
+    dbcreds: "chords_staging-fence-db-creds"

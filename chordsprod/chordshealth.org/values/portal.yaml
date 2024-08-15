@@ -7,6 +7,19 @@ portal:
     #repository: quay.io/cdis/data-portal-prebuilt
     #tag: caninedc.org-feat-pr_comment
 
+  # -- (map) Resource requests and limits for the containers in the pod
+  resources:
+    # -- (map) The amount of resources that the container requests
+    requests:
+      # -- (string) The amount of CPU requested
+      cpu: 4.0
+      # -- (string) The amount of memory requested
+      memory: 6Gi
+    # -- (map) The maximum amount of resources that the container is allowed to use
+    limits:
+      # -- (string) The maximum amount of memory the container can use
+      memory: 6Gi
+
   # Extra images to pull in to serve in portal container
   extraImages:
     - url: https://raw.githubusercontent.com/NIEHS/pcor_gen3_artifacts/develop/custom_configs/images/lit.jpeg
@@ -382,7 +395,6 @@ portal:
 
         background-color: var();
       }
-
     json: |
       {
       "graphql": {
@@ -435,7 +447,7 @@ portal:
       },
       "components": {
         "appName": "CHORDS",
-        "homepageHref": "https://chordshealth.org/",
+        "homepageHref": "https://chords.niehs.nih.gov/",
         "index": {
           "introduction": {
             "heading": "CHORDS - Climate and Health Outcomes Research Data Systems Catalog",
@@ -513,7 +525,7 @@ portal:
             "alt": "Center for Translational Data Science at the University of Chicago"
           },
           {
-            "src": "custom/ospcortf_logo.jpg",
+            "src": "custom/images/ospcortf_logo.jpg",
             "href": "https://aspe.hhs.gov/enhancing-patient-centered-outcomes-research-pcor-creating-national-small-area-social-determinants",
             "alt": "Patient-Centered Outcomes Research Trust Fund"
           }
@@ -567,9 +579,6 @@ portal:
             "filters": [
               {
                 "key": "Project Sponsor"
-              },
-              {
-                "key": "Resource Type"
               },
               {
                 "key": "Measures(category)"
@@ -689,39 +698,21 @@ portal:
                       "default": ""
                     },
                     {
-                      "type": "text",
+                      "type": "link",
                       "label": "Publication 1",
                       "sourceField": "publications_1",
-                      "default": "n/a"
-                    },
-                    {
-                      "type": "link",
-                      "label": "Publication Link 1",
-                      "sourceField": "publication_link_1",
                       "default": ""
                     },
                     {
-                      "type": "text",
+                      "type": "link",
                       "label": "Publication 2",
                       "sourceField": "publications_2",
                       "default": ""
                     },
                     {
                       "type": "link",
-                      "label": "Publication Link 2",
-                      "sourceField": "publication_link_2",
-                      "default": ""
-                    },
-                    {
-                      "type": "text",
                       "label": "Publication 3",
                       "sourceField": "publications_3",
-                      "default": "n/a"
-                    },
-                    {
-                      "type": "link",
-                      "label": "Publication Link 3",
-                      "sourceField": "publication_link_3",
                       "default": ""
                     }
                   ]
