@@ -5,13 +5,13 @@ metadata:
   name: workflow
 spec:
   subnetSelector:
-    karpenter.sh/discovery: {{ index .Values "karpenter-crds.selectorTag" }}
+    karpenter.sh/discovery: {{ index .Values "karpenter-crds" "selectorTag" }}
   securityGroupSelector:
-    karpenter.sh/discovery: {{ index .Values "karpenter-crds.selectorTag" }}-workflow
+    karpenter.sh/discovery: {{ index .Values "karpenter-crds" "selectorTag" }}-workflow
   tags:
     Environment: {{ .Values.cluster }}
     Name: eks-{{ .Values.cluster }}-workflow-karpenter
-    karpenter.sh/discovery: {{ index .Values "karpenter-crds.selectorTag" }}
+    karpenter.sh/discovery: {{ index .Values "karpenter-crds" "selectorTag" }}
     purpose: workflow
   metadataOptions:
     httpEndpoint: enabled
