@@ -1,6 +1,9 @@
 cluster: unfunded
 project: unfunded
 
+configuration:
+  configurationRevision: feat/karpenter-crds
+
 calico:
   enabled: true
   targetRevision: v3.27.0
