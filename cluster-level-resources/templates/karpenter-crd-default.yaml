@@ -8,11 +8,11 @@ spec:
     aws::name: EKS-FIPS*
     aws::owners: "143731057154"
   subnetSelector:
-    karpenter.sh/discovery: {{ .Values.cluster }}
+    karpenter.sh/discovery: {{ index .Values "karpenter-crds.selectorTag" }}
   securityGroupSelector:
-    karpenter.sh/discovery: {{ .Values.cluster }}
+    karpenter.sh/discovery: {{ index .Values "karpenter-crds.selectorTag" }}
   tags:
-    karpenter.sh/discovery: {{ .Values.cluster }}
+    karpenter.sh/discovery: {{ index .Values "karpenter-crds.selectorTag" }}
     Environment: {{ .Values.cluster }}
     Name: eks-{{ .Values.cluster }}-karpenter
     purpose: default

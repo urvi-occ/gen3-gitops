@@ -42,6 +42,7 @@ karpenter-templates:
 karpenter-crds:
   enabled: true
   targetRevision: master
+  selectorTag: ""
   default:
     enabled: true
     consolidation: true

@@ -5,13 +5,13 @@ metadata:
   name: jupyter
 spec:
   subnetSelector:
-    karpenter.sh/discovery: {{ .Values.cluster }}
+    karpenter.sh/discovery: {{ index .Values "karpenter-crds.selectorTag" }}
   securityGroupSelector:
-    karpenter.sh/discovery: {{ .Values.cluster }}-jupyter
+    karpenter.sh/discovery: {{ index .Values "karpenter-crds.selectorTag" }}-jupyter
   tags:
     Environment: {{ .Values.cluster }}
     Name: eks-{{ .Values.cluster }}-jupyter-karpenter
-    karpenter.sh/discovery: {{ .Values.cluster }}
+    karpenter.sh/discovery: {{ index .Values "karpenter-crds.selectorTag" }}
     purpose: jupyter
   metadataOptions:
     httpEndpoint: enabled
