@@ -22,6 +22,16 @@ spec:
         values: |
           controller:
             type: "deployment"
+            affinity:
+              nodeAffinity:
+                requiredDuringSchedulingIgnoredDuringExecution:
+                  nodeSelectorTerms:
+                  - matchExpressions:
+                    - key: topology.kubernetes.io/zone
+                      operator: In
+                      values:
+                      - us-east-1a
+
           alloy:
             stabilityLevel: "public-preview"
             uiPathPrefix: /alloy
@@ -44,16 +54,6 @@ spec:
               requests:
                 cpu: 1000m
                 memory: 1Gi
-            affinity:
-              nodeAffinity:
-                requiredDuringSchedulingIgnoredDuringExecution:
-                  nodeSelectorTerms:
-                  - matchExpressions:
-                    - key: topology.kubernetes.io/zone
-                      operator: In
-                      values:
-                      - us-east-1a
-
       {{- end }}
   syncPolicy:
     syncOptions:
