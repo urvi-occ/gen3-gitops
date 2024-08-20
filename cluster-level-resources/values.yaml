@@ -35,9 +35,23 @@ karpenter:
 
 karpenter-templates:
   enabled: false
+  targetRevision: feat/karpenter-templates
   configuration:
     enabled: false
-  targetRevision: feat/karpenter-templates
+
+karpenter-crds:
+  enabled: false
+  targetRevision: master
+  selectorTag: ""
+  default:
+    enabled: true
+    consolidation: true
+  jupyter:
+    enabled: true
+    consolidation: true
+  workflow:
+    enabled: true
+    consolidation: true
 
 kube-state-metrics:
   enabled: false
