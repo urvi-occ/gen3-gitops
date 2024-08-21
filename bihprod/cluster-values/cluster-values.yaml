@@ -1,6 +1,9 @@
 cluster: bihprod
 project: bih
 
+coreDNS:
+  enabled: true
+
 grafana-alloy:
   enabled: true
   configuration:
@@ -9,3 +12,6 @@ grafana-alloy:
 karpenter-crds:
   enabled: true
   selectorTag: bihprod
+
+vpc-cni:
+  enabled: true
