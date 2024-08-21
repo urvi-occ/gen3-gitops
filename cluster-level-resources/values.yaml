@@ -52,6 +52,7 @@ karpenter-crds:
   workflow:
     enabled: true
     consolidation: true
+    sgSelector: ""
 
 kube-state-metrics:
   enabled: false

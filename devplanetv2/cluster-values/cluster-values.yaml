@@ -15,3 +15,5 @@ karpenter:
 karpenter-crds:
   enabled: true
   selectorTag: "devplanetv2"
+  workflow:
+    sgSelector: devplanetv2
