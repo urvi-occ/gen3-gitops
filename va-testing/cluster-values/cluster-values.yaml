@@ -1,5 +1,3 @@
-# The name of the cluster this configuration is going to. This should match the name of the directory configuration
-# is stored in
 cluster: va-testing
 project: va
 
@@ -7,3 +5,7 @@ grafana-alloy:
   enabled: true
   configuration:
     enabled: false
+
+karpenter-crds:
+  enabled: true
+  selectorTag: va-testing
