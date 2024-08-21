@@ -12,7 +12,6 @@ karpenter:
   configuration:
     enabled: true
 
-karpenter-templates:
-  configuration:
-    enabled: true
-    selectorTag: devplanetv2
+karpenter-crds:
+  enabled: true
+  selectorTag: "devplanetv2"

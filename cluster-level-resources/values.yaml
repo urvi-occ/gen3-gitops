@@ -40,7 +40,7 @@ karpenter-templates:
     enabled: false
 
 karpenter-crds:
-  enabled: true
+  enabled: false
   targetRevision: master
   selectorTag: ""
   default:
