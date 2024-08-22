@@ -3,7 +3,12 @@ fence:
   replicaCount: 2
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/fence
-    tag: 2023.12
+    tag: 10.2.0
+
+  # -- (map) Annotations to add to the pod
+  podAnnotations:
+    prometheus.io/path: /metrics
+    prometheus.io/scrape: "true"
 
   usersync:
     # -- (bool) Whether to run Fence usersync or not.
@@ -133,3 +138,6 @@ fence:
     # using the `/data/upload` endpoint. This must be one of the first keys under
     # `S3_BUCKETS` (since these are the buckets fence has credentials for).
     DATA_UPLOAD_BUCKET: 'canineprod-data-bucket'
+
+    ENABLE_PROMETHEUS_METRICS: true
+    ENABLE_DB_MIGRATION: true
