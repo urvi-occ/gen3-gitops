@@ -582,6 +582,9 @@ portal:
                 "key": "Project Sponsor"
               },
               {
+                "key": "Sponsor Type"
+              },
+              {
                 "key": "Resource Type"
               },
               {
@@ -682,13 +685,17 @@ portal:
                   ]
                 },
                 {
-                  "header": "Reference",
+                  "header": "Usage Notes",
                   "fields": [
                     {
                       "type": "block",
-                      "sourceField": "comment",
-                      "default": ""
-                    },
+                      "sourceField": "comment"
+                    }
+                  ]
+                },
+                {
+                  "header": "Reference",
+                  "fields": [
                     {
                       "type": "link",
                       "label": "Reference 1",
@@ -1287,6 +1294,7 @@ portal:
               "resource_name",
               "resource_description",
               "keywords",
+              "domain",
               "comments",
               "metrics_derived_from_data_set",
               "data_formats",
