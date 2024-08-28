@@ -2,12 +2,22 @@ fence:
   enabled: true
   image:
     repository: quay.io/cdis/fence
-    tag: 2023.12
+    tag: 10.2.0
+
+  # -- (map) Annotations to add to the pod
+  podAnnotations:
+    prometheus.io/path: /metrics
+    prometheus.io/scrape: "true"
 
   usersync:
     # -- (bool) Whether to run Fence usersync or not.
     usersync: true
     userYamlS3Path: s3://cdis-gen3-users/nde/user.yaml
+
+  # -- (map) Public configuration settings for Fence app
+  FENCE_CONFIG_PUBLIC:
+    ENABLE_PROMETHEUS_METRICS: true
+    ENABLE_DB_MIGRATION: true
 
   # -- (map) External Secrets settings.
   externalSecrets:

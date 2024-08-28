@@ -25,6 +25,10 @@ karpenter:
   configuration:
     enabled: true
 
+karpenter-crds:
+  enabled: true
+  selectorTag: unfunded
+
 vpc-cni:
   enabled: true
   targetRevision: v1.16.2
