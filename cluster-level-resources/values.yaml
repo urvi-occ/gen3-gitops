@@ -417,12 +417,6 @@ alloy-configmap-data: |
     forward_to = [loki.write.endpoint.receiver]
   }
 
-
-
-
-
-
-
   // kube-state-metrics
   discovery.relabel "relabel_kube_state_metrics" {
     targets = discovery.kubernetes.services.targets
