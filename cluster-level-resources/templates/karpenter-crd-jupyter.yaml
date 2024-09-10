@@ -1,4 +1,4 @@
-{{ if and (index .Values "karpenter-crds" "enabled") (index .Values "karpenter-crds" "default" "enabled") }}
+{{ if and (index .Values "karpenter-crds" "enabled") (index .Values "karpenter-crds" "jupyter" "enabled") }}
   {{ if eq (index .Values "karpenter-crds" "migration") true }}
 ---
 apiVersion: karpenter.k8s.aws/v1beta1
