@@ -39,7 +39,7 @@ spec:
   tags:
     Environment: {{ .Values.cluster }}
     Name: eks-{{ .Values.cluster }}-karpenter
-    karpenter.sh/discovery: {{ .Values.cluster }}
+    karpenter.sh/discovery: {{ index .Values "karpenter-crds" "selectorTag" }}
     purpose: workflow
 
   userData: |
