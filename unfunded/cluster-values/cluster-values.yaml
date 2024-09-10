@@ -28,6 +28,7 @@ karpenter:
 karpenter-crds:
   enabled: true
   selectorTag: unfunded
+  migration: true
 
 vpc-cni:
   enabled: true

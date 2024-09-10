@@ -43,6 +43,7 @@ karpenter-crds:
   enabled: false
   targetRevision: master
   selectorTag: ""
+  migration: false
   default:
     enabled: true
     consolidation: true
