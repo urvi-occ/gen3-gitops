@@ -32,6 +32,19 @@ spec:
 
           deployment:
             name: "coredns-argo"
+
+          affinity:
+            podAntiAffinity:
+              preferredDuringSchedulingIgnoredDuringExecution:
+              - weight: 100
+                podAffinityTerm:
+                  labelSelector:
+                    matchExpressions:
+                    - key: k8s-app
+                      operator: In
+                      values:
+                      - kube-dns
+                  topologyKey: kubernetes.io/hostname
       {{- end }}
   destination:
     server: "https://kubernetes.default.svc"

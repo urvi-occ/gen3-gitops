@@ -1,6 +1,11 @@
 cluster: va-testing
 project: va
 
+coreDNS:
+  enabled: true
+  configuration:
+    enabled: false
+
 grafana-alloy:
   enabled: true
   configuration:
