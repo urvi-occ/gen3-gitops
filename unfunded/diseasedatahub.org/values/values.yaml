@@ -6,11 +6,11 @@ global:
   origins_allow_credentials: ["https://tb.diseasedatahub.org", "https://aids.diseasedatahub.org", "https://microbiome.diseasedatahub.org", "https://flu.diseasedatahub.org"]
   manifestGlobalExtraValues:
     cookie_domain: "diseasedatahub.org"
-  aws: 
+  aws:
     enabled: true
     useLocalSecret:
         enabled: true
-        localSecretName: external-secrets-niaiddata-secret 
+        localSecretName: external-secrets-niaiddata-secret
   revproxyArn: arn:aws:acm:us-east-1:662843554732:certificate/176af316-6175-4213-af46-766e0bbd8b5a
   dictionaryUrl: "https://s3.amazonaws.com/dictionary-artifacts/chords-health-dictionary/0.1.0/schema.json"
   postgres:
@@ -24,9 +24,9 @@ arborist:
   enabled: true
   externalSecrets:
     dbcreds: "niaiddata-arborist-db-creds"
-  image: 
+  image:
     repository: quay.io/cdis/arborist
-    tag: 2023.12
+    tag: 2024.09
 
 aws-es-proxy:
   esEndpoint: vpc-unfunded-gen3-metadata-2-tf3gyjftzrgm5asaxuvqxxwv2m.us-east-1.es.amazonaws.com
@@ -40,44 +40,44 @@ aws-es-proxy:
 indexd:
   # defaultPrefix: "dg.C78ch/"
   externalSecrets:
-    dbcreds: "niaiddata-indexd-db-creds" 
+    dbcreds: "niaiddata-indexd-db-creds"
     serviceCreds: "niaiddata-indexd-service-creds"
-  
+
   enabled: true
   image:
     repository: quay.io/cdis/indexd
-    tag: 2023.12
+    tag: 2024.09
 
 peregrine:
   externalSecrets:
-    dbcreds: "niaiddata-peregrine-db-creds" 
+    dbcreds: "niaiddata-peregrine-db-creds"
   enabled: true
   image:
     repository: quay.io/cdis/peregrine
-    tag: feat_jq-audience 
+    tag: 2024.09
     pullPolicy: Always
 
 revproxy:
   enabled: true
   image:
     repository: quay.io/cdis/nginx
-    tag: 2023.12
+    tag: 2024.09
 
 sheepdog:
   externalSecrets:
-    dbcreds: "niaiddata-sheepdog-db-creds" 
+    dbcreds: "niaiddata-sheepdog-db-creds"
   enabled: true
   image:
     repository: quay.io/cdis/sheepdog
-    tag: 2023.12
+    tag: 2024.09
 
 manifestservice:
   enabled: true
   image:
     repository: quay.io/cdis/manifestservice
-    tag: 2023.12
+    tag: 2024.09
   externalSecrets:
-    manifestserviceG3auto: "niaiddata-manifestservice-g3auto" 
+    manifestserviceG3auto: "niaiddata-manifestservice-g3auto"
 
 ambassador:
   enabled: true
@@ -88,7 +88,7 @@ wts:
   enabled: true
   image:
     repository: quay.io/cdis/workspace-token-service
-    tag: 2023.12
+    tag: 2024.09
 
 # disabled services
 pelican:
@@ -105,4 +105,3 @@ argo-wrapper:
   enabled: false
 metadata:
   enabled: false
-

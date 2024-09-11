@@ -13,11 +13,11 @@ global:
     wts_url: "https://diseasedatahub.org/wts/oauth2/"
     cookie_domain: "diseasedatahub.org"
     des_namespace: "diseasedatahub"
-  aws: 
+  aws:
     enabled: true
     useLocalSecret:
         enabled: true
-        localSecretName: external-secrets-tb-secret 
+        localSecretName: external-secrets-tb-secret
   revproxyArn: arn:aws:acm:us-east-1:662843554732:certificate/86eca425-c2c3-4911-a49f-20beca8c7e99
   dictionaryUrl: "https://s3.amazonaws.com/dictionary-artifacts/tb-datadictionary/1.1.5/schema.json"
   postgres:
@@ -31,9 +31,9 @@ arborist:
   enabled: true
   externalSecrets:
     dbcreds: "tb-arborist-db-creds"
-  image: 
+  image:
     repository: quay.io/cdis/arborist
-    tag: 2023.12
+    tag: 2024.09
 
 aws-es-proxy:
   esEndpoint: vpc-unfunded-gen3-metadata-2-tf3gyjftzrgm5asaxuvqxxwv2m.us-east-1.es.amazonaws.com
@@ -47,44 +47,44 @@ aws-es-proxy:
 indexd:
   # defaultPrefix: "dg.C78ch/"
   externalSecrets:
-    dbcreds: "tb-indexd-db-creds" 
+    dbcreds: "tb-indexd-db-creds"
     serviceCreds: "tb-indexd-service-creds"
-  
+
   enabled: true
   image:
     repository: quay.io/cdis/indexd
-    tag: 2023.12
+    tag: 2024.09
 
 peregrine:
   externalSecrets:
-    dbcreds: "tb-peregrine-db-creds" 
+    dbcreds: "tb-peregrine-db-creds"
   enabled: true
   image:
     repository: quay.io/cdis/peregrine
-    tag: feat_jq-audience 
+    tag: 2024.09
     pullPolicy: Always
 
 revproxy:
   enabled: true
   image:
     repository: quay.io/cdis/nginx
-    tag: 2023.12
+    tag: 2024.09
 
 sheepdog:
   externalSecrets:
-    dbcreds: "tb-sheepdog-db-creds" 
+    dbcreds: "tb-sheepdog-db-creds"
   enabled: true
   image:
     repository: quay.io/cdis/sheepdog
-    tag: 2023.12
+    tag: 2024.09
 
 manifestservice:
   enabled: true
   image:
     repository: quay.io/cdis/manifestservice
-    tag: 2023.12
+    tag: 2024.09
   externalSecrets:
-    manifestserviceG3auto: "tb-manifestservice-g3auto" 
+    manifestserviceG3auto: "tb-manifestservice-g3auto"
 
 wts:
   externalSecrets:
@@ -92,7 +92,7 @@ wts:
   enabled: true
   image:
     repository: quay.io/cdis/workspace-token-service
-    tag: 2023.12
+    tag: 2024.09
 
 # Disabled services
 ambassador:
