@@ -26,11 +26,11 @@ spec:
 
   securityGroupSelectorTerms:
   - tags:
-    karpenter.sh/discovery: {{ index .Values "karpenter-crds" "selectorTag" }}
+      karpenter.sh/discovery: {{ index .Values "karpenter-crds" "selectorTag" }}
 
   subnetSelectorTerms:
   - tags:
-    karpenter.sh/discovery: {{ index .Values "karpenter-crds" "selectorTag" }}
+      karpenter.sh/discovery: {{ index .Values "karpenter-crds" "selectorTag" }}
 
   tags:
     Environment: {{ .Values.cluster }}

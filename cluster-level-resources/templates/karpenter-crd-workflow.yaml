@@ -27,14 +27,14 @@ spec:
   securityGroupSelectorTerms:
   - tags:
     {{- if ne (index .Values "karpenter-crds" "workflow" "sgSelector") "" }}
-    karpenter.sh/discovery: {{ index .Values "karpenter-crds" "workflow" "sgSelector" }}
+      karpenter.sh/discovery: {{ index .Values "karpenter-crds" "workflow" "sgSelector" }}
     {{- else }}
-    karpenter.sh/discovery: {{ index .Values "karpenter-crds" "selectorTag" }}-workflow
+      karpenter.sh/discovery: {{ index .Values "karpenter-crds" "selectorTag" }}-workflow
     {{- end }}
 
   subnetSelectorTerms:
   - tags:
-    karpenter.sh/discovery: {{ index .Values "karpenter-crds" "selectorTag" }}
+     karpenter.sh/discovery: {{ index .Values "karpenter-crds" "selectorTag" }}
 
   tags:
     Environment: {{ .Values.cluster }}
