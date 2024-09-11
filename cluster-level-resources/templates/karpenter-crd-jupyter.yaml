@@ -182,7 +182,7 @@ spec:
       value: jupyter
       effect: NoSchedule
     - key: karpenter.sh/legacy
-      value: true
+      value: "true"
       effect: NoSchedule
   labels:
     role: jupyter

@@ -180,7 +180,7 @@ spec:
         - t
   taints:
     - key: karpenter.sh/legacy
-      value: true
+      value: "true"
       effect: NoSchedule
   # Set a limit of 1000 vcpus
   limits:

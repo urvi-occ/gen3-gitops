@@ -191,7 +191,7 @@ spec:
       value: workflow
       effect: NoSchedule
     - key: karpenter.sh/legacy
-      value: true
+      value: "true"
       effect: NoSchedule
   labels:
     role: workflow
