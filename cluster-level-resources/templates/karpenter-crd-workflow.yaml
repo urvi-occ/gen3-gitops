@@ -7,7 +7,12 @@ spec:
   subnetSelector:
     karpenter.sh/discovery: {{ index .Values "karpenter-crds" "selectorTag" }}
   securityGroupSelector:
+    # TODO this is an example of how to parameterize this, we should expand this when helpful
+    {{- if ne (index .Values "karpenter-crds" "workflow" "sgSelector") "" }}
+    karpenter.sh/discovery: {{ index .Values "karpenter-crds" "workflow" "sgSelector" }}
+    {{- else }}
     karpenter.sh/discovery: {{ index .Values "karpenter-crds" "selectorTag" }}-workflow
+    {{- end }}
   tags:
     Environment: {{ .Values.cluster }}
     Name: eks-{{ .Values.cluster }}-workflow-karpenter

@@ -81,7 +81,7 @@ spec:
     name: default
   # Allow pods to be rearranged
   consolidation:
-    enabled: {{ index .Values "karpenter-crds.default.consolidation" }}
+    enabled: {{ index .Values "karpenter-crds" "default" "consolidation" }}
   # Kill nodes after 7 days to ensure they stay up to date
   ttlSecondsUntilExpired: 604800
 
