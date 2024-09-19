@@ -1,0 +1,201 @@
+tempo:
+  global_overrides:
+    metrics_generator_processors: [service-graphs, span-metrics]
+  enabled: false
+  metricsGenerator:
+    enabled:
+      true
+    config:
+      # Specifies which processors to use.
+      # Configures where the store for metrics is located.
+      storage:
+        # WAL for metrics generation.
+        path: /var/tempo/generator/wal
+        # Where to remote write metrics to.
+        remote_write:
+          - url: http://monitoring-mimir-nginx.monitoring:80/api/v1/push  # URL of locally running Mimir instance.
+            send_exemplars: true # Send exemplars along with their metrics.
+      traces_storage:
+        path: /var/tempo/generator/traces
+      processor:
+        # Span metrics create metrics based on span type, duration, name and service.
+        span_metrics:
+            # Configure extra dimensions to add as metric labels.
+            dimensions:
+              - http.method
+              - http.target
+              - http.status_code
+              - service.version
+        # Service graph metrics create node and edge metrics for determinng service interactions.
+        service_graphs:
+
+            # Configure extra dimensions to add as metric labels.
+            dimensions:
+              - http.method
+              - http.target
+              - http.status_code
+              - service.version
+  distributor:
+    config:
+      log_received_spans:
+        enabled: false
+  traces:
+    otlp:
+      http:
+        enabled: true
+      grpc:
+        enabled: true
+mimir:
+  minio:
+    enabled: false
+  serviceAccount:
+    # -- Whether to create a service account or not. In case 'create' is false, do set 'name' to an existing service account name.
+    create: false
+    # -- Override for the generated service account name.
+    name: observability
+  # ingester:
+  #   persistentVolume:
+  #     size: 50Gi
+  mimir:
+    structuredConfig:
+      limits:
+        max_global_series_per_user: 0
+      common:
+        storage:
+          backend: s3
+          s3:
+            endpoint: s3.us-east-1.amazonaws.com
+            region: us-east-1
+            bucket_name: devplanetv2-observability-bucket
+      blocks_storage:
+        storage_prefix: blocks
+      alertmanager_storage:
+        storage_prefix: alertmanager
+      ruler_storage:
+        storage_prefix: ruler
+      query_scheduler:
+        service_discovery_mode: "dns"
+
+loki:
+  serviceAccount:
+    name: observability
+    annotations:
+      eks.amazonaws.com/role-arn: arn:aws:iam::433568766270:role/gen3_service/csoc-main-vpc-observability-role
+  loki:
+    schemaConfig:
+      configs:
+        - from: 2024-04-01
+          store: tsdb
+          object_store: s3
+          schema: v13
+          index:
+            prefix: loki_index_
+            period: 24h
+    gateway:
+      ingress:
+        enabled: true
+        # Newly added optional property
+        ingressClassName: nginx
+        hosts:
+          - host: gateway.loki.example.com
+            paths:
+              # New data structure introduced
+              - path: /
+                # Newly added optional property
+                pathType: Prefix
+
+    structuredConfig:
+      frontend:
+        query_stats_enabled: true
+      querier:
+        query_store_only: true
+      query_range:
+        cache_results: false
+        results_cache:
+          cache:
+            embedded_cache:
+              enabled: false
+      server:
+        log_level: debug
+      common:
+        path_prefix: /var/loki
+        storage:
+          filesystem: null
+          s3:
+            region: us-east-1
+            bucketnames: devplanetv2-observability-bucket,qaplanetv1-observability-bucket
+      # storage_config:
+      #   aws:
+      #     bucketnames: devplanetv2-observability-bucket,qaplanetv1-observability-bucket
+      #     endpoint: s3.amazonaws.com
+grafana:
+  ingress:
+    enabled: true
+    annotations:
+      alb.ingress.kubernetes.io/actions.ssl-redirect: '{"Type": "redirect", "RedirectConfig": { "Protocol": "HTTPS", "Port": "443", "StatusCode": "HTTP_301"}}'
+      alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:us-east-1:433568766270:certificate/8cd01903-a34d-41c3-9800-34584e8e32c7
+      alb.ingress.kubernetes.io/group.name: csoc
+      alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTPS":443}]'
+      alb.ingress.kubernetes.io/load-balancer-attributes: idle_timeout.timeout_seconds=600
+      alb.ingress.kubernetes.io/scheme: internet-facing
+      alb.ingress.kubernetes.io/ssl-policy: ELBSecurityPolicy-TLS-1-2-2017-01
+      alb.ingress.kubernetes.io/tags: Environment=csoc_main_vpc
+      alb.ingress.kubernetes.io/target-type: 'ip'
+    hosts:
+      - monitoring.planx-pla.net
+    ingressClassName: "alb"
+    tls:
+      - secretName: aws-load-balancer-tls
+  persistence:
+    enabled: false
+    # size: 10Gi
+  image:
+    tag: 11.0.0
+  dashboardProviders:
+    dashboardproviders.yaml:
+      apiVersion: 1
+      providers:
+      - name: 'grafana-dashboards-kubernetes'
+        orgId: 1
+        folder: 'Kubernetes'
+        type: file
+        disableDeletion: true
+        editable: true
+        options:
+          path: /var/lib/grafana/dashboards/grafana-dashboards-kubernetes
+  dashboards:
+    grafana-dashboards-kubernetes:
+      k8s-system-api-server:
+        url: https://raw.githubusercontent.com/dotdc/grafana-dashboards-kubernetes/master/dashboards/k8s-system-api-server.json
+        token: ''
+      k8s-system-coredns:
+        url: https://raw.githubusercontent.com/dotdc/grafana-dashboards-kubernetes/master/dashboards/k8s-system-coredns.json
+        token: ''
+      k8s-views-global:
+        url: https://raw.githubusercontent.com/dotdc/grafana-dashboards-kubernetes/master/dashboards/k8s-views-global.json
+        token: ''
+      k8s-views-namespaces:
+        url: https://raw.githubusercontent.com/dotdc/grafana-dashboards-kubernetes/master/dashboards/k8s-views-namespaces.json
+        token: ''
+      k8s-views-nodes:
+        url: https://raw.githubusercontent.com/dotdc/grafana-dashboards-kubernetes/master/dashboards/k8s-views-nodes.json
+        token: ''
+      k8s-views-pods:
+        url: https://raw.githubusercontent.com/dotdc/grafana-dashboards-kubernetes/master/dashboards/k8s-views-pods.json
+        token: ''
+  grafana.ini:
+    log:
+      level: debug
+    server:
+      domain: monitoring.planx-pla.net
+      root_url: https://monitoring.planx-pla.net/grafana
+      serve_from_sub_path: true
+    # server:
+    #   domain: monitoring.planx-pla.net
+    #   root_url: "%(protocol)s://%(domain)s/grafana"
+    #   serve_from_sub_path: true
+    # adminPassword: "notthis1either"
+    auth.anonymous:
+      enabled: true
+      org_name: Main Org.
+      org_role: Admin

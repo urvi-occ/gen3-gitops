@@ -8,6 +8,11 @@ global:
     useLocalSecret:
         enabled: true
         localSecretName: external-secrets-canine-secret # pragma: allowlist secret
+    wafv2:
+      # -- (bool) Set to true if using AWS WAFv2
+      enabled: true
+      # -- (string) ARN for the WAFv2 ACL.
+      wafAclArn: arn:aws:wafv2:us-east-1:662843554732:regional/webacl/unfunded-waf/e10ae423-8e4e-48ba-9a0e-52b43f28f6d4
   revproxyArn: arn:aws:acm:us-east-1:662843554732:certificate/5874502e-5b67-415f-80ee-dcb814d2883f
   dictionaryUrl: "https://s3.amazonaws.com/dictionary-artifacts/canine_dictionary/1.1.0/schema.json"
   postgres:

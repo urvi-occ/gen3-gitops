@@ -11,6 +11,11 @@ global:
     useLocalSecret:
         enabled: true
         localSecretName: external-secrets-niaiddata-secret
+    wafv2:
+      # -- (bool) Set to true if using AWS WAFv2
+      enabled: true
+      # -- (string) ARN for the WAFv2 ACL.
+      wafAclArn: arn:aws:wafv2:us-east-1:662843554732:regional/webacl/unfunded-waf/e10ae423-8e4e-48ba-9a0e-52b43f28f6d4
   revproxyArn: arn:aws:acm:us-east-1:662843554732:certificate/176af316-6175-4213-af46-766e0bbd8b5a
   dictionaryUrl: "https://s3.amazonaws.com/dictionary-artifacts/chords-health-dictionary/0.1.0/schema.json"
   postgres:
