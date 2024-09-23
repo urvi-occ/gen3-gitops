@@ -15,6 +15,9 @@ karpenter-crds:
   enabled: true
   selectorTag: va-testing
 
+kube-state-metrics:
+  enabled: true
+
 alloy-configmap-data: |
   logging {
     level    = "info"
