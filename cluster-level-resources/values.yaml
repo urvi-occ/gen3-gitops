@@ -42,9 +42,10 @@ karpenter-templates:
 karpenter-crds:
   enabled: false
   targetRevision: master
-  amiSelectorTerms:
-  - name: "EKS-FIPS*"
-    owner: "143731057154"
+  amiSelector:
+    amiSelectorTerms:
+    - name: "EKS-FIPS*"
+      owner: "143731057154"
   selectorTag: ""
   migration: false
   default:
