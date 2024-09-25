@@ -7,9 +7,7 @@ metadata:
   name: default
 spec:
   amiFamily: AL2
-  amiSelectorTerms:
-  - name: "EKS-FIPS*"
-    owner: "143731057154"
+  {{- toYaml .Values.karpenter-crds.amiSelectorTerms | nindent 2 }}
   blockDeviceMappings:
   - deviceName: /dev/xvda
     ebs:
