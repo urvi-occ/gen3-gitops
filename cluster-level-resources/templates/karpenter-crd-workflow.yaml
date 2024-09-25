@@ -8,7 +8,7 @@ metadata:
 spec:
   amiFamily: AL2
   amiSelectorTerms:
-  - name: "EKS-FIPS*"
+  - name: {{ index .Values "karpenter-crds" "amiSelectorName" }}
     owner: "143731057154"
   blockDeviceMappings:
   - deviceName: /dev/xvda

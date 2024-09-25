@@ -26,9 +26,7 @@ karpenter:
     enabled: true
 
 karpenter-crds:
-  amiSelectorTerms:
-    - name: "1-29-EKS-FIPS*"
-      owner: "143731057154"
+  amiSelectoName: "1-29-EKS-FIPS*"
   enabled: true
   selectorTag: unfunded
   migration: true

@@ -7,8 +7,9 @@ metadata:
   name: default
 spec:
   amiFamily: AL2
-
-  {{- toYaml .Values.karpenter-crds.amiSelector | nindent 2 }}
+  amiSelectorTerms:
+  - name: {{ index .Values "karpenter-crds" "amiSelectorName" }}
+    owner: "143731057154"
   blockDeviceMappings:
   - deviceName: /dev/xvda
     ebs:
@@ -110,7 +111,7 @@ metadata:
   name: default
 spec:
   amiSelector:
-    aws::name: EKS-FIPS*
+    aws::name: {{ index .Values "karpenter-crds" "amiSelectorName" }}
     aws::owners: "143731057154"
   subnetSelector:
     karpenter.sh/discovery: {{ index .Values "karpenter-crds" "selectorTag" }}
@@ -201,7 +202,7 @@ metadata:
   name: default
 spec:
   amiSelector:
-    aws::name: EKS-FIPS*
+    aws::name: {{ index .Values "karpenter-crds" "amiSelectorName" }}
     aws::owners: "143731057154"
   subnetSelector:
     karpenter.sh/discovery: {{ index .Values "karpenter-crds" "selectorTag" }}
