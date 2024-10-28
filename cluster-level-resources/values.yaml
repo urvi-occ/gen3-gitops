@@ -42,7 +42,7 @@ karpenter-templates:
 karpenter-crds:
   enabled: false
   targetRevision: master
-  amiSelectorName: "1-29-EKS-FIPS*"
+  amiSelectorName: "EKS-FIPS**"
   selectorTag: ""
   migration: false
   default:
