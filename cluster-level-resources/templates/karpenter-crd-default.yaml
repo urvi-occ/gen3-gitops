@@ -269,6 +269,10 @@ spec:
         - m
         - r
         - t
+    - key: karpenter.k8s.aws/instance-cpu
+      operator: Gt
+      values: 
+        - "7"
   # Set a limit of 1000 vcpus
   limits:
     resources:

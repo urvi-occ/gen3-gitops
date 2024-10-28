@@ -8,6 +8,11 @@ global:
     useLocalSecret:
         enabled: true
         localSecretName: external-secrets-canine-secret # pragma: allowlist secret
+    wafv2:
+      # -- (bool) Set to true if using AWS WAFv2
+      enabled: true
+      # -- (string) ARN for the WAFv2 ACL.
+      wafAclArn: arn:aws:wafv2:us-east-1:662843554732:regional/webacl/unfunded-waf/e10ae423-8e4e-48ba-9a0e-52b43f28f6d4
   revproxyArn: arn:aws:acm:us-east-1:662843554732:certificate/5874502e-5b67-415f-80ee-dcb814d2883f
   dictionaryUrl: "https://s3.amazonaws.com/dictionary-artifacts/canine_dictionary/1.1.0/schema.json"
   postgres:
@@ -24,7 +29,7 @@ arborist:
     dbcreds: "canineprod-arborist"
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/arborist
-    tag: 2023.12
+    tag: 2024.09
 
 aws-es-proxy:
   esEndpoint: vpc-unfunded-gen3-metadata-2-tf3gyjftzrgm5asaxuvqxxwv2m.us-east-1.es.amazonaws.com
@@ -45,7 +50,7 @@ indexd:
   enabled: true
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/indexd
-    tag: 2023.12
+    tag: 2024.09
 
 peregrine:
   externalSecrets:
@@ -53,7 +58,7 @@ peregrine:
   enabled: true
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/peregrine
-    tag: feat_jq-audience
+    tag: 2024.09
     pullPolicy: Always
 
 revproxy:
@@ -61,7 +66,7 @@ revproxy:
   replicaCount: 2
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/nginx
-    tag: 2023.12
+    tag: 2024.09
 
 sheepdog:
   externalSecrets:
@@ -69,13 +74,13 @@ sheepdog:
   enabled: true
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/sheepdog
-    tag: 2023.12
+    tag: 2024.09
 
 manifestservice:
   enabled: true
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/manifestservice
-    tag: 2023.12
+    tag: 2024.09
   externalSecrets:
     manifestserviceG3auto: "canine-manifestservice-g3auto"
 
@@ -84,17 +89,17 @@ etl:
   spark:
     image:
       repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/gen3-spark
-      tag: 2023.12
+      tag: 2024.09
   tube:
     image:
       repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/tube
-      tag: 2023.12
+      tag: 2024.09
 
 sower:
   enabled: true
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/sower
-    tag: 2023.12
+    tag: 2024.09
   externalSecrets:
     pelicanserviceG3auto: "canine-pelicanservice-g3auto"
 
@@ -102,7 +107,7 @@ ssjdispatcher:
   enabled: true
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/ssjdispatcher
-    tag: 2023.12
+    tag: 2024.09
 
 metadata:
   externalSecrets:
@@ -112,7 +117,7 @@ metadata:
   esEndpoint: http://elasticsearch:9200
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/metadata-service
-    tag: 2023.12
+    tag: 2024.09
 
 # disabling workspace services
 ambassador:
