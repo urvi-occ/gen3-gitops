@@ -60,7 +60,7 @@ kube-state-metrics:
   enabled: false
   configuration:
     enabled: false
-  targetRevision: 4.0.4
+  targetRevision: 4.2.13
 
 vpc-cni:
   enabled: false
