@@ -1,6 +1,11 @@
 cluster: vhdcprod
 project: va
 
+coreDNS:
+  enabled: true
+  configuration:
+    enabled: true
+
 grafana-alloy:
   enabled: true
   configuration:

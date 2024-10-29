@@ -9,3 +9,4 @@ grafana-alloy:
 karpenter-crds:
   enabled: true
   selectorTag: "anvilprod"
+  migration: true
