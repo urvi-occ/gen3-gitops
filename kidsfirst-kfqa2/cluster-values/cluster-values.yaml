@@ -10,4 +10,4 @@ karpenter-crds:
   amiSelectorName: "1-31-EKS-FIPS*"
   enabled: true
   migration: true
-  selectorTag: skfqa
+  selectorTag: kfqa2
