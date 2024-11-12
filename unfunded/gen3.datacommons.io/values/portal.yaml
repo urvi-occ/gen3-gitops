@@ -10,7 +10,8 @@ portal:
   resources:
     # -- (map) The amount of resources that the container requests
     requests:
-      memory: 5Gi
+      cpu: 1000m
+      memory: 2Gi
     limits:
       memory: 5Gi
 
