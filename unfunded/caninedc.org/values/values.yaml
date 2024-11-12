@@ -37,6 +37,11 @@ arborist:
     tag: 2024.09
 
 aws-es-proxy:
+  # Lower cost
+  resources:
+    requests:
+      memory: "105Mi"
+      cpu: "15m"
   esEndpoint: vpc-unfunded-gen3-metadata-2-tf3gyjftzrgm5asaxuvqxxwv2m.us-east-1.es.amazonaws.com
   externalSecrets:
     awsCreds: "canineprod-aws-es-proxy-creds"
