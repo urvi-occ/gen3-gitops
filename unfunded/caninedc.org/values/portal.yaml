@@ -120,7 +120,8 @@ portal:
           }
         },
         "featureFlags": {
-          "explorer": true
+          "explorer": true,
+          "explorerPublic": true
         },
         "dataExplorerConfig": {
           "charts": {
