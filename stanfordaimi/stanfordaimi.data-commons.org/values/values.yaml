@@ -143,6 +143,10 @@ manifestservice:
 
 metadata:
   # Lower cost
+  initResources:
+    requests:
+      memory: "105Mi"
+      cpu: "15m"
   resources:
     requests:
       memory: "105Mi"
