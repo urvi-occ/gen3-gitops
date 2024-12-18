@@ -38,6 +38,9 @@ karpenter-crds:
   enabled: true
   selectorTag: stanfordaimi
   migration: true
+  default:
+    consolidationPolicy: "WhenUnderutilized"
+    consolidateAfter: ""
 
 vpc-cni:
   enabled: true
