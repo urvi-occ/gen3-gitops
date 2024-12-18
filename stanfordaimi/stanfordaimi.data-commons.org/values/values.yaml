@@ -157,9 +157,9 @@ metadata:
     dbcreds: "stanfordaimi_default-metadata-creds"
 
 peregrine:
-  enabled: false
+  enabled: true
   externalSecrets:
-    dbcreds: "stanfordaimi_default-sheepdg-creds"
+    dbcreds: "stanfordaimi_default-sheepdog-creds"
 
 pidgin:
   enabled: false
@@ -236,7 +236,7 @@ s3-mountpoint:
   enabled: true
 
 sheepdog:
-  enabled: false
+  enabled: true
   externalSecrets:
     dbcreds: "stanfordaimi_default-sheepdog-creds"
 
