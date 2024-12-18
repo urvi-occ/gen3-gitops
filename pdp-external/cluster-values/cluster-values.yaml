@@ -36,6 +36,9 @@ karpenter-crds:
   enabled: true
   selectorTag: externalgen3
   migration: true
+  default:
+    consolidationPolicy: "WhenUnderutilized"
+    consolidateAfter: ""
 
 vpc-cni:
   enabled: true
