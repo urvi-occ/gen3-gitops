@@ -157,6 +157,11 @@ metadata:
     dbcreds: "stanfordaimi_default-metadata-creds"
 
 peregrine:
+ # Lower cost
+  resources:
+    requests:
+      memory: "105Mi"
+      cpu: "15m"
   enabled: true
   externalSecrets:
     dbcreds: "stanfordaimi_default-sheepdog-creds"
@@ -236,6 +241,11 @@ s3-mountpoint:
   enabled: true
 
 sheepdog:
+ # Lower cost
+  resources:
+    requests:
+      memory: "105Mi"
+      cpu: "15m"
   enabled: true
   externalSecrets:
     dbcreds: "stanfordaimi_default-sheepdog-creds"
