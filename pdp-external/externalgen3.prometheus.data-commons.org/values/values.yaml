@@ -97,13 +97,13 @@ fence:
 
   # -- (map) External Secrets settings.
   externalSecrets:
-    fenceJwtKeys: ""
+    fenceJwtKeys: externalgen3_default-fence-jwt-keys
     fenceConfig: externalgen3_default-fence-config
     fenceGoogleAppCredsSecret: ""
     fenceGoogleStorageCredsSecret: ""
-    createK8sJwtKeysSecret: true
+    createK8sJwtKeysSecret: false
     createK8sGoogleAppSecrets: true
-    createK8sFenceConfigSecret: true
+    createK8sFenceConfigSecret: false
     dbcreds: "externalgen3_default-fence-creds"
 
   # -- (map) Public configuration settings for Fence app
