@@ -166,8 +166,8 @@ portal:
   # # Lower cost
   resources:
     requests:
-      memory: "105Mi"
-      cpu: "15m"
+      memory: "205Mi"
+      cpu: "80m"
   enabled: true
   replicaCount: 1
   image:
