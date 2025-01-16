@@ -63,7 +63,7 @@ aws-es-proxy:
     awsCreds: "externalgen3_default-aws-es-proxy-creds"
 
 frontend-framework:
-  enabled: true
+  enabled: false
   port: 3000
   image:
     repository: quay.io/cdis/prometheus-data-platform
