@@ -175,7 +175,7 @@ portal:
     requests:
       memory: "500Mi"
       cpu: "300m"
-  enabled: true
+  enabled: false
   gitops:
     gen3Bundle: workspace
     json: |
