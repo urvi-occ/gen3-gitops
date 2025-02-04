@@ -173,8 +173,8 @@ portal:
   # lower cost for workspace bundle portal
   resources:
     requests:
-      memory: "300Mi"
-      cpu: "200m"
+      memory: "500Mi"
+      cpu: "300m"
   enabled: true
   gitops:
     gen3Bundle: workspace
