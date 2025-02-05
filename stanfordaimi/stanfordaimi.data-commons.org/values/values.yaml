@@ -23,7 +23,7 @@ global:
   netPolicy:
     enabled: false
   dispatcherJobNum: "10"
-  frontendRoot: "gen3ff"
+  frontendRoot: "portal"
   ddEnabled: false
 
 ambassador:
@@ -110,7 +110,7 @@ fence:
     slack_send_dbgap: false
 
 frontend-framework:
-  enabled: true
+  enabled: false
   image:
     repository: quay.io/cdis/frontend-framework
     tag: develop
@@ -173,11 +173,10 @@ portal:
   # lower cost for workspace bundle portal
   resources:
     requests:
-      memory: "500Mi"
-      cpu: "300m"
-  enabled: false
+      memory: "2Gi"
+      cpu: "2"
+  enabled: true
   gitops:
-    gen3Bundle: workspace
     json: |
       {
         "graphql": {
