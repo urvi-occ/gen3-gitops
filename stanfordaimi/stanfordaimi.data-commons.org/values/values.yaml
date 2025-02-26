@@ -110,7 +110,7 @@ fence:
     slack_send_dbgap: false
 
 frontend-framework:
-  enabled: true
+  enabled: false
   image:
     repository: quay.io/cdis/frontend-framework
     tag: develop
