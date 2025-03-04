@@ -1,15 +1,17 @@
 cluster: emalinowskiv1
 project: dev
 
+eksClusterEndpoint: https://60E5A0594C0DD93E53A5D1DC91CD0C07.gr7.us-east-1.eks.amazonaws.com
+
 accountNumber: "707767160287"
 
 configuration:
-  configurationRevision: calico-dev
+  configurationRevision: feat/karpenter-1-0
 
 alb-controller:
   enabled: true
   configuration:
-    enabled: true
+    enabled: false
 
 aws-s3-mountpoint:
   enabled: false
@@ -48,6 +50,9 @@ grafana-alloy:
 
 karpenter:
   enabled: true
+  targetRevision: "1.0.8"
+  configuration:
+    enabled: false
 
 karpenter-crds:
   amiSelectorName: "1-31-EKS-FIPS*"
