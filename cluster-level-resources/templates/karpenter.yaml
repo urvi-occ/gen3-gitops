@@ -22,8 +22,9 @@ spec:
       ref: values
       {{- else }}
         values: |
+          dnsPolicy: Default
           webhook:
-            enabled: falsex
+            enabled: false
           serviceAccount:
             name: karpenter
             create: true
