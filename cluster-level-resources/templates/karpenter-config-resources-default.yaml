@@ -53,8 +53,6 @@ spec:
     curl https://raw.githubusercontent.com/uc-cdis/cloud-automation/master/files/authorized_keys/ops_team >> /home/ec2-user/.ssh/authorized_keys &
     sysctl -w fs.inotify.max_user_watches=12000 &
 
-    sudo yum update -y
-
     --BOUNDARY--
 {{- if eq .Values.karpenter.targetRevision "1.0.8" }}
   kubelet:
