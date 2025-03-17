@@ -50,6 +50,9 @@ karpenter-crds:
   migration: true
   workflow:
     sgSelector: dcfprod
+  default:
+    consolidationPolicy: "WhenUnderutilized"
+    consolidateAfter: ""
 
 vpc-cni:
   enabled: true
