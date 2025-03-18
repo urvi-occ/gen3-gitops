@@ -48,6 +48,9 @@ karpenter-crds:
   enabled: true
   selectorTag: bdcatprod
   migration: true
+  default:
+    consolidationPolicy: "WhenUnderutilized"
+    consolidateAfter: ""
 
 vpc-cni:
   enabled: true
