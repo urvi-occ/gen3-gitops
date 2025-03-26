@@ -53,7 +53,7 @@ karpenter-crds:
   selectorTag: dataguids
   migration: true
   default:
-    consolidationPolicy: "WhenUnderutilized"
+    consolidationPolicy: "WhenEmptyOrUnderutilized"
     consolidateAfter: ""
 
 vpc-cni:
