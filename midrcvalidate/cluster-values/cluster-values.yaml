@@ -51,6 +51,11 @@ karpenter-crds:
   workflow:
     sgSelector: midrcvalidate
 
+
+karpenter:
+  enabled: true
+  targetRevision: "1.0.8"
+
 vpc-cni:
   enabled: true
   configuration:
