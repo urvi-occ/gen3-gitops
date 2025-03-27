@@ -54,7 +54,6 @@ karpenter-crds:
   migration: true
   default:
     consolidationPolicy: "WhenEmptyOrUnderutilized"
-    consolidateAfter: ""
 
 vpc-cni:
   enabled: true
