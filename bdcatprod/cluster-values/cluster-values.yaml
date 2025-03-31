@@ -53,8 +53,14 @@ karpenter-crds:
   selectorTag: bdcatprod
   migration: true
   default:
-    consolidationPolicy: "WhenUnderutilized"
-    consolidateAfter: ""
+    consolidationPolicy: "WhenEmptyOrUnderutilized"
+    consolidateAfter: "10m"
+  jupyter:
+    consolidationPolicy: "WhenEmptyOrUnderutilized"
+    consolidateAfter: "10m"
+  workflow:
+    consolidationPolicy: "WhenEmptyOrUnderutilized"
+    consolidateAfter: "10m"
 
 vpc-cni:
   enabled: true
