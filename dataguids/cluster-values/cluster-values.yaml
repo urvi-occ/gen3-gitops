@@ -55,6 +55,12 @@ karpenter-crds:
   default:
     consolidationPolicy: "WhenEmptyOrUnderutilized"
     consolidateAfter: "10m"
+  jupyter:
+    consolidationPolicy: "WhenEmptyOrUnderutilized"
+    consolidateAfter: "10m"
+  workflow:
+    consolidationPolicy: "WhenEmptyOrUnderutilized"
+    consolidateAfter: "10m"
 
 vpc-cni:
   enabled: true
