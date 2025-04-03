@@ -1,3 +1,4 @@
+# Note- Won't deploy via argocd in CI
 # apiVersion: argoproj.io/v1alpha1
 # kind: Application
 # metadata:
@@ -30,4 +31,3 @@
 #     - CreateNamespace=true
 #     automated:
 #       selfHeal: true
-# Note- likely won't deploy via argocd, but keeping for now.
