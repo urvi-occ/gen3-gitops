@@ -43,9 +43,9 @@ grafana-alloy:
   configuration:
     enabled: false
 
-# karpenter:
-#   enabled: true
-#   targetRevision: "1.0.8"
+karpenter:
+  enabled: true
+  targetRevision: "1.0.8"
 
 karpenter-crds:
   enabled: true
