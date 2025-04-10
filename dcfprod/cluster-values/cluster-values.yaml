@@ -43,6 +43,10 @@ grafana-alloy:
   configuration:
     enabled: false
 
+karpenter:
+  enabled: true
+  targetRevision: "1.0.8"
+
 karpenter-crds:
   amiSelectorName: "1-31-EKS-FIPS*"
   enabled: true
@@ -51,8 +55,8 @@ karpenter-crds:
   workflow:
     sgSelector: dcfprod
   default:
-    consolidationPolicy: "WhenUnderutilized"
-    consolidateAfter: ""
+    consolidationPolicy: "WhenEmptyOrUnderutilized"
+    consolidateAfter: "5m"
 
 vpc-cni:
   enabled: true
