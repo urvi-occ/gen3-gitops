@@ -14,11 +14,11 @@ spec:
       helm:
         releaseName: microbiomeargo
         valueFiles:
-          - $values/unfunded/aids.diseasedatahub.org/values/values.yaml
-          - $values/unfunded/aids.diseasedatahub.org/values/fence.yaml
-          - $values/unfunded/aids.diseasedatahub.org/values/portal.yaml
-          - $values/unfunded/aids.diseasedatahub.org/values/guppy.yaml
-          - $values/unfunded/aids.diseasedatahub.org/values/etl.yaml
+          - $values/unfunded/microbiome.diseasedatahub.org/values/values.yaml
+          - $values/unfunded/microbiome.diseasedatahub.org/values/fence.yaml
+          - $values/unfunded/microbiome.diseasedatahub.org/values/portal.yaml
+          - $values/unfunded/microbiome.diseasedatahub.org/values/guppy.yaml
+          - $values/unfunded/microbiome.diseasedatahub.org/values/etl.yaml
     - repoURL: 'https://github.com/uc-cdis/gen3-gitops.git'
       targetRevision: master
       ref: values
