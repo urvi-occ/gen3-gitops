@@ -71,7 +71,8 @@ sheepdog:
   enabled: true
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/sheepdog
-    tag: bug_auth-audience-2
+    tag: 2025.03
+  fenceUrl: https://staging.chordshealth.org/user
 
 manifestservice:
   enabled: true
