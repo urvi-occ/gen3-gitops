@@ -71,7 +71,7 @@ sheepdog:
   enabled: true
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/sheepdog
-    tag: master
+    tag: 2025.03
   fenceUrl: https://chordshealth.org/user
 
 manifestservice:
