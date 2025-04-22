@@ -5,6 +5,7 @@ accountNumber: "419939494982"
 
 alb-controller:
   enabled: true
+  configurationRevision: "feat/headneck"
   configuration:
     enabled: true
 
