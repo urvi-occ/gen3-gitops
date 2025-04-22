@@ -52,6 +52,9 @@ karpenter-crds:
   enabled: true
   selectorTag: healprod
   migration: true
+  default:
+    consolidationPolicy: "WhenEmptyOrUnderutilized"
+    consolidateAfter: "5m"
 
 vpc-cni:
   enabled: true
