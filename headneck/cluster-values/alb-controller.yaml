@@ -1,0 +1,6 @@
+clusterName: headneck
+serviceAccount:
+  create: true
+  annotations:
+    eks.amazonaws.com/role-arn: arn:aws:iam::419939494982:role/gen3-service/headneck-aws-load-balancer-controller-sa
+  name: aws-load-balancer-controller
