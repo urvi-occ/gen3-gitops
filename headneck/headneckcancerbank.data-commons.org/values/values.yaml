@@ -262,6 +262,11 @@ requestor:
     dbcreds: "headneck_default-requestor-creds"
 
 revproxy:
+# Lower cost
+  resources:
+    requests:
+      memory: "100Mi"
+      cpu: "15m"
   enabled: true
 
 s3-mountpoint:
