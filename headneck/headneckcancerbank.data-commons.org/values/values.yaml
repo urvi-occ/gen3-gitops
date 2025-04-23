@@ -30,15 +30,25 @@ global:
   ddEnabled: false
 
 ambassador:
+  # Lower cost
+  resources:
+    requests:
+      memory: "105Mi"
+      cpu: "15m"
   enabled: true
 
 arborist:
+  # Lower cost
+  resources:
+    requests:
+      memory: "105Mi"
+      cpu: "15m"
   enabled: true
   externalSecrets:
     dbcreds: "headneck_default-arborist-creds"
 
 argo-wrapper:
-  enabled: true
+  enabled: false
 
 audit:
   # Lower cost
@@ -56,6 +66,11 @@ audit:
 
 
 aws-es-proxy:
+  # Lower cost
+  resources:
+    requests:
+      memory: "105Mi"
+      cpu: "15m"
   enabled: true
   esEndpoint: vpc-headneck-gen3-metadata-nqv355pim7ge3dduo5kexxoilu.us-east-1.es.amazonaws.com
   externalSecrets:
@@ -106,6 +121,11 @@ fence:
     slack_send_dbgap: false
 
 frontend-framework:
+  # Lower cost
+  resources:
+    requests:
+      memory: "105Mi"
+      cpu: "15m"
   enabled: true
   image:
     repository: quay.io/cdis/commons-frontend-app
