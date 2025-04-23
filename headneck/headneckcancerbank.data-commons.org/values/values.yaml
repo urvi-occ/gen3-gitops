@@ -215,11 +215,21 @@ indexd:
 
 
 manifestservice:
+  # Lower cost
+  resources:
+    requests:
+      memory: "105Mi"
+      cpu: "15m"
   enabled: true
   externalSecrets:
     createK8sManifestServiceSecret: true
 
 metadata:
+ # Lower cost
+  initResources:
+    requests:
+      memory: "105Mi"
+      cpu: "15m"
   # Lower cost
   resources:
     requests:
