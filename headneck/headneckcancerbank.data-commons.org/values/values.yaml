@@ -23,7 +23,8 @@ global:
   publicDataSets: false
   tierAccessLevel: "private"
   tierAccessLimit: 100
-  netPolicy: false
+  netPolicy:
+    enabled: false
   dispatcherJobNum: "10"
   frontendRoot: "gen3ff"
   ddEnabled: false
