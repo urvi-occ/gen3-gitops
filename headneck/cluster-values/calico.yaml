@@ -1,0 +1,4 @@
+tolerations: {}
+installation:
+  kubernetesProvider: EKS
+  registry: quay.io/
