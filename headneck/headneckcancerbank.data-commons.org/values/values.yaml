@@ -119,7 +119,7 @@ guppy:
     requests:
       memory: "105Mi"
       cpu: "15m"
-  enabled: true
+  enabled: false
 
 hatchery:
   # Lower cost
