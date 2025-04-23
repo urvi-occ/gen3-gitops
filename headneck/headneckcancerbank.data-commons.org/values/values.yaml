@@ -25,7 +25,7 @@ global:
   tierAccessLimit: 100
   netPolicy: false
   dispatcherJobNum: "10"
-  frontendRoot: "portal"
+  frontendRoot: "gen3ff"
   ddEnabled: false
 
 ambassador:
@@ -40,6 +40,11 @@ argo-wrapper:
   enabled: true
 
 audit:
+  # Lower cost
+  resources:
+    requests:
+      memory: "105Mi"
+      cpu: "15m"
   enabled: true
   serviceAccount:
     annotations:
@@ -67,6 +72,11 @@ dicom-viewer:
 
 
 fence:
+  # Lower cost
+  resources:
+    requests:
+      memory: "105Mi"
+      cpu: "15m"
   enabled: true
   serviceAccount:
     annotations:
@@ -95,18 +105,28 @@ fence:
     slack_send_dbgap: false
 
 frontend-framework:
-  enabled: false
+  enabled: true
   image:
-    repository: quay.io/cdis/frontend-framework
+    repository: quay.io/cdis/commons-frontend-app
     tag: main
 
 grafana:
   enabled: false
 
 guppy:
+  # Lower cost
+  resources:
+    requests:
+      memory: "105Mi"
+      cpu: "15m"
   enabled: true
 
 hatchery:
+  # Lower cost
+  resources:
+    requests:
+      memory: "105Mi"
+      cpu: "15m"
   enabled: true
 
   hatchery:
@@ -161,6 +181,11 @@ hatchery:
 
 
 indexd:
+  # Lower cost
+  resources:
+    requests:
+      memory: "105Mi"
+      cpu: "15m"
   enabled: true
   defaultPrefix: dg.XXXX/
   externalSecrets:
@@ -174,12 +199,22 @@ manifestservice:
     createK8sManifestServiceSecret: true
 
 metadata:
+  # Lower cost
+  resources:
+    requests:
+      memory: "105Mi"
+      cpu: "15m"
   enabled: true
   externalSecrets:
     dbcreds: "headneck_default-metadata-creds"
     createK8sMetadataSecret: true
 
 peregrine:
+  # Lower cost
+  resources:
+    requests:
+      memory: "105Mi"
+      cpu: "15m"
   enabled: true
   externalSecrets:
     dbcreds: "headneck_default-sheepdg-creds"
@@ -188,7 +223,7 @@ pidgin:
   enabled: false
 
 portal:
-  enabled: true
+  enabled: false
 
 requestor:
   enabled: false
@@ -202,17 +237,27 @@ s3-mountpoint:
   enabled: false
 
 sheepdog:
+  # Lower cost
+  resources:
+    requests:
+      memory: "105Mi"
+      cpu: "15m"
   enabled: true
   externalSecrets:
     dbcreds: "headneck_default-sheepdog-creds"
 
 ssjdispatcher:
-  enabled: true
+  enabled: false
 
 sower:
-  enabled: true
+  enabled: false
 
 wts:
+  # Lower cost
+  resources:
+    requests:
+      memory: "105Mi"
+      cpu: "15m"
   enabled: true
   externalSecrets:
     dbcreds: "headneck_default-wts-creds"
