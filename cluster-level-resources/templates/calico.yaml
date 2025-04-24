@@ -23,6 +23,12 @@ spec:
           installation:
             kubernetesProvider: EKS
             registry: quay.io/
+            typhaDeployment:
+              spec:
+                template: 
+                  spec:
+                    nodeSelector:
+                      role: default
       {{- end }}
   destination:
     server: "https://kubernetes.default.svc"
