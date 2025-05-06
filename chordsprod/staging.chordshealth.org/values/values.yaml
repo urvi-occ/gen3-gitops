@@ -47,6 +47,8 @@ indexd:
     tag: 2025.03
 
 peregrine:
+  # temporarily scaling up peregrine so it can handle the extra load without giving a 502. 
+  replicaCount: 3
   externalSecrets:
     dbcreds: "chords_staging-peregrine-db-creds"
   enabled: true
