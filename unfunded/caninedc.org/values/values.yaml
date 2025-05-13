@@ -66,6 +66,8 @@ indexd:
     tag: 2024.09
 
 peregrine:
+  env:
+    FENCE_URL: https://caninedc.org/user
   # Lower cost
   resources:
     requests:
