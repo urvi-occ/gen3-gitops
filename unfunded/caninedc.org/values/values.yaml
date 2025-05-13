@@ -22,6 +22,8 @@ global:
     # -- (bool) Will use ExternalSecret resources to pull secrets from Secrets Manager instead of creating them locally. Be cautious as this will override secrets you have deployed.
     deploy: true
   pdb: true
+  manifestGlobalExtraValues:
+    fence_url: https://caninedc.org/user
 
 arborist:
   # Lower cost
@@ -66,9 +68,6 @@ indexd:
     tag: 2024.09
 
 peregrine:
-  env:
-  - name: FENCE_URL
-    value: https://caninedc.org/user
   # Lower cost
   resources:
     requests:
