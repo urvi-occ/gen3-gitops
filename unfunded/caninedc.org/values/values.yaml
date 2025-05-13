@@ -67,7 +67,8 @@ indexd:
 
 peregrine:
   env:
-    FENCE_URL: https://caninedc.org/user
+  - name: FENCE_URL
+    value: https://caninedc.org/user
   # Lower cost
   resources:
     requests:
