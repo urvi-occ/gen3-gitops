@@ -55,7 +55,7 @@ karpenter-crds:
   selectorTag: qaplanetv1
   migration: true
   default:
-    consolidationPolicy: "WhenEmpty"
+    consolidationPolicy: "WhenEmptyOrUnderutilized"
     consolidateAfter: "5m"
 
 vpc-cni:
