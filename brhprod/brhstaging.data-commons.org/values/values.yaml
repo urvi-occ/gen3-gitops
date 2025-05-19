@@ -416,6 +416,9 @@ requestor:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/requestor
     tag: '2024.08'
 revproxy:
+  ingress:
+    aws:
+      group: brhstaging-helm
   autoscaling:
     enabled: true
     maxReplicas: 1
