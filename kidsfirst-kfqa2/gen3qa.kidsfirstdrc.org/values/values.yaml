@@ -151,6 +151,9 @@ portal:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/data-portal
     tag: '2025.01'
 revproxy:
+  ingress:
+    aws:
+      group: kfqa2-helm
   autoscaling:
     enabled: true
     maxReplicas: 2
