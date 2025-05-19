@@ -11,7 +11,7 @@ arborist:
 audit:
   enabled: true
   externalSecrets:
-    auditG3auto: null-audit-g3auto
+    auditG3auto: bihprod-audit-g3auto
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/audit-service
     tag: '2025.03'
@@ -29,8 +29,8 @@ fence:
   enabled: true
   externalSecrets:
     createK8sGoogleAppSecrets: true
-    fenceConfig: null-fence-config
-    fenceJwtKeys: null-fence-jwt
+    fenceConfig: bihprod-fence-config
+    fenceJwtKeys: bihprod-fence-jwt
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/fence
     tag: '2025.03'
@@ -47,7 +47,7 @@ frontend-framework:
 global:
   aws:
     account: '533267425233'
-    awsEsProxyRole: bihprod--null--es-access
+    awsEsProxyRole: bihprod--default--es-access
     enabled: true
   dev: false
   dictionaryUrl: https://s3.amazonaws.com/dictionary-artifacts/bih_dictionary/0.1.4/schema.json
@@ -207,7 +207,7 @@ tube:
 wts:
   enabled: true
   externalSecrets:
-    wtsG3auto: null-wts-g3auto
+    wtsG3auto: bihprod-wts-g3auto
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/workspace-token-service
     tag: '2025.03'

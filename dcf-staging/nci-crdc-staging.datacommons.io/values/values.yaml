@@ -11,7 +11,7 @@ arborist:
 audit:
   enabled: true
   externalSecrets:
-    auditG3auto: null-audit-g3auto
+    auditG3auto: dcf-staging-audit-g3auto
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/audit-service
     tag: '2025.04'
@@ -39,10 +39,10 @@ fence:
   enabled: true
   externalSecrets:
     createK8sGoogleAppSecrets: false
-    fenceConfig: null-fence-config
-    fenceGoogleAppCredsSecret: null-fence-google-app-creds
-    fenceGoogleStorageCredsSecret: null-fence-google-storage-creds
-    fenceJwtKeys: null-fence-jwt
+    fenceConfig: dcf-staging-fence-config
+    fenceGoogleAppCredsSecret: dcf-staging-fence-google-app-creds
+    fenceGoogleStorageCredsSecret: dcf-staging-fence-google-storage-creds
+    fenceJwtKeys: dcf-staging-fence-jwt
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/fence
     tag: '2025.04'
@@ -54,12 +54,12 @@ fluentd:
 global:
   aws:
     account: '584476192960'
-    awsEsProxyRole: dcf-staging--null--es-access
+    awsEsProxyRole: dcf-staging--default--es-access
     enabled: true
   dev: false
   dictionaryUrl: https://s3.amazonaws.com/dictionary-artifacts/datadictionary/develop/schema.json
   dispatcherJobNum: '10'
-  environment: 'null'
+  environment: dcf-staging
   externalSecrets:
     deploy: true
   hostname: nci-crdc-staging.datacommons.io
@@ -229,8 +229,8 @@ sheepdog:
 sower:
   enabled: true
   externalSecrets:
-    pelicanserviceG3auto: null-pelicanservice-g3auto
-    sowerjobsG3auto: null-sower-jobs-g3auto
+    pelicanserviceG3auto: dcf-staging-pelicanservice-g3auto
+    sowerjobsG3auto: dcf-staging-sower-jobs-g3auto
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/sower
     tag: '2025.04'
@@ -290,7 +290,7 @@ sower:
 ssjdispatcher:
   enabled: true
   externalSecrets:
-    credsFile: null-ssjdispatcher-creds
+    credsFile: dcf-staging-ssjdispatcher-creds
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/ssjdispatcher
     tag: '2025.04'
