@@ -14,8 +14,8 @@ spec:
       helm:
         releaseName: gen3-midrcvalidate
         valueFiles:
-          - $values/midrcvalidate/validatestaging.midrc.org/values/values.yaml
-    - repoURL: 'https://github.com/uc-cdis/gen3-gitops.git'
+          - $values/midrcvalidate/staging.midrc.org/values/values.yaml
+    - repoURL: 'https://github.com/uc-cdis/gen3-gitops'
       targetRevision: master
       ref: values
   destination:
