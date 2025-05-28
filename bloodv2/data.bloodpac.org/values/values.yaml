@@ -860,6 +860,7 @@ wts:
   enabled: true
   externalSecrets:
     wtsG3auto: bloodv2-wts-g3auto
+    wtsOidcClient: bloodv2-wts-client-secret
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/workspace-token-service
     tag: '2025.03'
