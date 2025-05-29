@@ -58,7 +58,7 @@ fluentd:
 global:
   aws:
     account: "813684607867"
-    awsEsProxyRoleArn: midrcvalidate--default--es-access
+    awsEsProxyRoleArn: arn:aws:iam::813684607867:role/gen3_service/midrcvalidate--default--es-access
     enabled: true
     secretStoreServiceAccount:
       enabled: true
