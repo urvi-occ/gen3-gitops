@@ -79,7 +79,7 @@ indexd:
     minReplicas: 2
     targetCPUUtilizationPercentage: 40
   enabled: true
-  external-secrets:
+  externalSecrets:
     serviceCreds: dcf-staging-indexd-service-creds
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/indexd
@@ -90,7 +90,7 @@ metadata:
     maxReplicas: 5
     minReplicas: 2
     targetCPUUtilizationPercentage: 40
-  external-secrets:
+  externalSecrets:
     metadataG3auto: dcf-staging-metadata-g3auto
   enabled: true
   image:
