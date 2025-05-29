@@ -14,6 +14,7 @@ arborist:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/arborist
     tag: "2025.04"
 audit:
+  enabled: false
   externalSecrets:
     auditG3auto: midrcvalidate-audit-g3auto
 aws-es-proxy:
@@ -92,20 +93,19 @@ guppy:
     minReplicas: 1
     targetCPUUtilizationPercentage: 40
   enabled: true
-  guppy:
-    authFilterField: auth_resource_path
-    configIndex: validate_array-config
-    indices:
-      - index: validate_case
-        type: case
-      - index: validate_measurement
-        type: measurement
-      - index: validate_annotation
-        type: annotation
-      - index: validate_data_file
-        type: data_file
-      - index: validate_imaging_study
-        type: imaging_study
+  authFilterField: auth_resource_path
+  configIndex: validate_array-config
+  indices:
+    - index: validate_case
+      type: case
+    - index: validate_measurement
+      type: measurement
+    - index: validate_annotation
+      type: annotation
+    - index: validate_data_file
+      type: data_file
+    - index: validate_imaging_study
+      type: imaging_study
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/guppy
     tag: "2025.04"
