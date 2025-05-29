@@ -23,6 +23,6 @@ spec:
     namespace: covid19prod-helm
   syncPolicy:
     syncOptions:
-    - CreateNamespace=false
+    - CreateNamespace=true
     automated:
       selfHeal: true

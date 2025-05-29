@@ -23,6 +23,6 @@ spec:
     namespace: bdcat-stagingdatastage-helm
   syncPolicy:
     syncOptions:
-    - CreateNamespace=false
+    - CreateNamespace=true
     automated:
       selfHeal: true

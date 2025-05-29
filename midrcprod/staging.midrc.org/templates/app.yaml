@@ -23,6 +23,6 @@ spec:
     namespace: midrcprod-helm
   syncPolicy:
     syncOptions:
-    - CreateNamespace=false
+    - CreateNamespace=true
     automated:
       selfHeal: true

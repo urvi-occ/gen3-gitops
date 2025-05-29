@@ -23,6 +23,6 @@ spec:
     namespace: dcfprod-helm
   syncPolicy:
     syncOptions:
-    - CreateNamespace=false
+    - CreateNamespace=true
     automated:
       selfHeal: true

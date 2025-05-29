@@ -23,6 +23,6 @@ spec:
     namespace: bloodv2-helm
   syncPolicy:
     syncOptions:
-    - CreateNamespace=false
+    - CreateNamespace=true
     automated:
       selfHeal: true

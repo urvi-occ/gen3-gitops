@@ -23,6 +23,6 @@ spec:
     namespace: icgc-helm
   syncPolicy:
     syncOptions:
-    - CreateNamespace=false
+    - CreateNamespace=true
     automated:
       selfHeal: true

@@ -25,7 +25,7 @@ spec:
             registry: quay.io/
             typhaDeployment:
               spec:
-                template: 
+                template:
                   spec:
                     nodeSelector:
                       role: default
@@ -37,7 +37,7 @@ spec:
     syncOptions:
     - Force=true
     - ServerSideApply=true
-    - CreateNamespace=false
+    - CreateNamespace=true
     automated:
       selfHeal: true
 {{ end }}

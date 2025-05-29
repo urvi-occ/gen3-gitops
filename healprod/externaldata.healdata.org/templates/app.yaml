@@ -23,6 +23,6 @@ spec:
     namespace: healprod-helm
   syncPolicy:
     syncOptions:
-    - CreateNamespace=false
+    - CreateNamespace=true
     automated:
       selfHeal: true
