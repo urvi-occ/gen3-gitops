@@ -96,6 +96,7 @@ global:
     dbCreate: false
   revproxyArn: arn:aws:acm:us-east-1:813684607867:certificate/d4bdf325-afce-4e1d-b431-0dd062ee12c5
 guppy:
+  esEndpoint: elasticsearch:9200
   autoscaling:
     enabled: true
     maxReplicas: 4
