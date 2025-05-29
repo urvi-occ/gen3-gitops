@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: gen3-midrcstaging
+  name: gen3-midrcvalidate
   namespace: argocd
   finalizers:
   - resources-finalizer.argocd.argoproj.io
@@ -12,15 +12,15 @@ spec:
       repoURL: https://github.com/uc-cdis/gen3-helm
       targetRevision: feat/deployment-canary
       helm:
-        releaseName: gen3-midrcstaging
+        releaseName: gen3-midrcvalidate
         valueFiles:
-          - $values/midrcprod/staging.midrc.org/values/values.yaml
+          - $values/midrcvalidate/validate.midrc.org/values/values.yaml
     - repoURL: 'https://github.com/uc-cdis/gen3-gitops.git'
       targetRevision: master
       ref: values
   destination:
     server: "https://kubernetes.default.svc"
-    namespace: midrcstaging-helm
+    namespace: midrcvalidate-helm
   syncPolicy:
     syncOptions:
     - CreateNamespace=true
