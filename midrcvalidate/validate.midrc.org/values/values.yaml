@@ -18,6 +18,7 @@ audit:
   externalSecrets:
     auditG3auto: midrcvalidate-audit-g3auto
 aws-es-proxy:
+  esEndpoint: vpc-midrcvalidate-gen3-metadata2-a2aewhaq6k3ytdy6sp4dhlmnmm.us-east-1.es.amazonaws.com
   autoscaling:
     enabled: true
     maxReplicas: 4
@@ -87,6 +88,7 @@ global:
     dbCreate: false
   revproxyArn: arn:aws:acm:us-east-1:813684607867:certificate/d4bdf325-afce-4e1d-b431-0dd062ee12c5
 guppy:
+  esEndpoint: elasticsearch:9200
   autoscaling:
     enabled: true
     maxReplicas: 4
