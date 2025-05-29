@@ -16,10 +16,7 @@ audit:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/audit-service
     tag: '2025.04'
 aws-es-proxy:
-  enabled: true
-  image:
-    repository: quay.io/cdis/aws-es-proxy
-    tag: '0.8'
+  enabled: false
 dashboard:
   enabled: true
   image:
@@ -43,6 +40,7 @@ fence:
     fenceGoogleAppCredsSecret: dcf-staging-fence-google-app-creds
     fenceGoogleStorageCredsSecret: dcf-staging-fence-google-storage-creds
     fenceJwtKeys: dcf-staging-fence-jwt
+    dbcreds: dcf-staging-fence-creds
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/fence
     tag: '2025.04'
@@ -81,6 +79,8 @@ indexd:
     minReplicas: 2
     targetCPUUtilizationPercentage: 40
   enabled: true
+  external-secrets:
+    serviceCreds: dcf-staging-indexd-service-creds
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/indexd
     tag: '2025.04'
@@ -90,6 +90,8 @@ metadata:
     maxReplicas: 5
     minReplicas: 2
     targetCPUUtilizationPercentage: 40
+  external-secrets:
+    metadataG3auto: dcf-staging-metadata-g3auto
   enabled: true
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/metadata-service
@@ -295,3 +297,9 @@ ssjdispatcher:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/ssjdispatcher
     tag: '2025.04'
   indexing: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/indexs3client:2025.04
+
+wts:
+  enabled: false
+
+manifestservice:
+  enabled: false
