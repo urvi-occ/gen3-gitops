@@ -49,6 +49,9 @@ global:
     account: '533267425233'
     awsEsProxyRole: bihprod--bihstaging-cloudauto--es-access
     enabled: true
+    secretStoreServiceAccount:
+      enabled: true
+      roleArn: arn:aws:iam::533267425233:role/bihprod-external-secrets-sa
   dev: false
   dictionaryUrl: https://s3.amazonaws.com/dictionary-artifacts/bih_dictionary/0.2.0/schema.json
   dispatcherJobNum: '10'
