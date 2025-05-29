@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: gen3-bdcat-stagingdatastage
+  name: gen3-healpreprod
   namespace: argocd
   finalizers:
   - resources-finalizer.argocd.argoproj.io
@@ -10,19 +10,19 @@ spec:
   sources:
     - path: helm/gen3
       repoURL: https://github.com/uc-cdis/gen3-helm
-      targetRevision: feat/fixing-hpa-type
+      targetRevision: feat/deployment-canary
       helm:
-        releaseName: gen3-bdcat-stagingdatastage
+        releaseName: gen3-healpreprod
         valueFiles:
-          - $values/bdcat-stagingdatastage/staging.gen3.biodatacatalyst.nhlbi.nih.gov/values/values.yaml
+          - $values/healprod/preprod.healdata.org/values/values.yaml
     - repoURL: 'https://github.com/uc-cdis/gen3-gitops.git'
       targetRevision: master
       ref: values
   destination:
     server: "https://kubernetes.default.svc"
-    namespace: bdcat-stagingdatastage-helm
+    namespace: healpreprod-helm
   syncPolicy:
     syncOptions:
-    - CreateNamespace=false
+    - CreateNamespace=true
     automated:
       selfHeal: true
