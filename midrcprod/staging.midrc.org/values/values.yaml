@@ -21,6 +21,7 @@ audit:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/audit-service
     tag: "2025.05"
 aws-es-proxy:
+  esEndpoint: vpc-midrcprod-gen3-metadata-2-g3zccvv7awc5samwqp62bc5g6y.us-east-1.es.amazonaws.com
   autoscaling:
     enabled: true
     maxReplicas: 4
