@@ -104,20 +104,19 @@ guppy:
     minReplicas: 1
     targetCPUUtilizationPercentage: 40
   enabled: true
-  guppy:
-    authFilterField: auth_resource_path
-    configIndex: midrcstaging_array-config
-    indices:
-      - index: midrcstaging_case
-        type: case
-      - index: midrcstaging_measurement
-        type: measurement
-      - index: midrcstaging_annotation
-        type: annotation
-      - index: midrcstaging_data_file
-        type: data_file
-      - index: midrcstaging_imaging_study
-        type: imaging_study
+  authFilterField: auth_resource_path
+  configIndex: midrcstaging_array-config
+  indices:
+    - index: midrcstaging_case
+      type: case
+    - index: midrcstaging_measurement
+      type: measurement
+    - index: midrcstaging_annotation
+      type: annotation
+    - index: midrcstaging_data_file
+      type: data_file
+    - index: midrcstaging_imaging_study
+      type: imaging_study
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/guppy
     tag: "2025.05"
