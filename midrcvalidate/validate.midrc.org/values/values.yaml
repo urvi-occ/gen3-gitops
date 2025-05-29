@@ -58,8 +58,11 @@ fluentd:
 global:
   aws:
     account: "813684607867"
-    awsEsProxyRole: midrcvalidate--default--es-access
+    awsEsProxyRoleArn: midrcvalidate--default--es-access
     enabled: true
+    secretStoreServiceAccount:
+      enabled: true
+      roleArn: arn:aws:iam::813684607867:role/midrcvalidate-external-secrets-sa
   dev: false
   dictionaryUrl: https://s3.amazonaws.com/dictionary-artifacts/midrc_dictionary/1.3.7/schema.json
   dispatcherJobNum: "10"
@@ -118,6 +121,8 @@ indexd:
     minReplicas: 1
     targetCPUUtilizationPercentage: 40
   enabled: true
+  externalSecrets:
+    serviceCreds: midrcvalidate-indexd-service-creds
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/indexd
     tag: "2025.04"
@@ -135,6 +140,8 @@ metadata:
     minReplicas: 1
     targetCPUUtilizationPercentage: 40
   enabled: true
+  externalSecrets:
+    metadataG3auto: midrcvalidate-metadata-g3auto
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/metadata-service
     tag: "2025.04"
@@ -1132,9 +1139,6 @@ portal:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/data-portal
     tag: "2025.04"
 revproxy:
-  ingress:
-    aws:
-      group: midrcvalidate-helm
   autoscaling:
     enabled: true
     maxReplicas: 4
@@ -1144,6 +1148,9 @@ revproxy:
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/nginx
     tag: "2025.04"
+  ingress:
+    aws:
+      group: midrcvalidate-helm
 sheepdog:
   autoscaling:
     enabled: true
@@ -1236,7 +1243,6 @@ wts:
   enabled: true
   externalSecrets:
     wtsG3auto: midrcvalidate-wts-g3auto
-    wtsOidcClient: midrcvalidate-wts-client-secret
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/workspace-token-service
     tag: "2025.04"
