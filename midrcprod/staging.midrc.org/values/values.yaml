@@ -1160,7 +1160,7 @@ portal:
 revproxy:
   ingress:
     aws:
-      group: midrcstaging-helm
+      group: midrcprod-helm
   autoscaling:
     enabled: true
     maxReplicas: 4
