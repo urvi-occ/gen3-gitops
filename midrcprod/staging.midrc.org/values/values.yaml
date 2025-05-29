@@ -1268,6 +1268,7 @@ tube:
 wts:
   enabled: true
   externalSecrets:
+    createWtsOidcClientSecret: true
     wtsG3auto: midrcstaging-wts-g3auto
     wtsOidcClient: midrcstaging-wts-client-secret
   image:
