@@ -68,7 +68,7 @@ fluentd:
 global:
   aws:
     account: "813684607867"
-    awsEsProxyRole: midrcprod--midrcstaging--es-access
+    awsEsProxyRoleArn: arn:aws:iam::813684607867:role/gen3_service/midrcprod--midrcstaging--es-access
     enabled: true
     secretStoreServiceAccount:
       enabled: true
