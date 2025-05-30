@@ -62,7 +62,7 @@ frontend-framework:
 global:
   aws:
     account: "205252583234"
-    awsEsProxyRole: healprod--healpreprod--es-access
+    awsEsProxyRoleArn: arn:aws:iam::205252583234:role/gen3_service/healprod--healpreprod--es-access
     enabled: true
     secretStoreServiceAccount:
       enabled: true
@@ -624,6 +624,7 @@ ssjdispatcher:
 wts:
   enabled: true
   externalSecrets:
+    createWtsOidcClientSecret: false
     wtsG3auto: healpreprod-wts-g3auto
     wtsOidcClient: healpreprod-wts-client-secret
   image:
