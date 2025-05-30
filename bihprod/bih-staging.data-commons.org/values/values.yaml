@@ -11,7 +11,7 @@ arborist:
 audit:
   enabled: true
   externalSecrets:
-    auditG3auto: bihstaging-helm-audit-g3auto
+    auditG3auto: bihstaging-cloudauto-audit-g3auto
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/audit-service
     tag: '2025.05'
@@ -29,8 +29,8 @@ fence:
   enabled: true
   externalSecrets:
     createK8sGoogleAppSecrets: true
-    fenceConfig: bihstaging-helm-fence-config
-    fenceJwtKeys: bihstaging-helm-fence-jwt
+    fenceConfig: bihstaging-cloudauto-fence-config
+    fenceJwtKeys: bihstaging-cloudauto-fence-jwt
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/fence
     tag: '2025.05'
@@ -47,7 +47,7 @@ frontend-framework:
 global:
   aws:
     account: '533267425233'
-    awsEsProxyRole: bihprod--bihstaging-helm--es-access
+    awsEsProxyRole: bihprod--bihstaging-cloudauto--es-access
     enabled: true
     secretStoreServiceAccount:
       enabled: true
@@ -55,7 +55,7 @@ global:
   dev: false
   dictionaryUrl: https://s3.amazonaws.com/dictionary-artifacts/bih_dictionary/0.2.0/schema.json
   dispatcherJobNum: '10'
-  environment: bihstaging-helm
+  environment: bihstaging-cloudauto
   externalSecrets:
     deploy: true
   frontendRoot: gen3ff
@@ -211,7 +211,7 @@ spark:
 ssjdispatcher:
   enabled: true
   externalSecrets:
-    credsFile: bihstaging-helm-ssjdispatcher-creds
+    credsFile: bihstaging-cloudauto-ssjdispatcher-creds
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/ssjdispatcher
     tag: '2025.05'
@@ -225,7 +225,7 @@ wts:
   enabled: true
   externalSecrets:
     createWtsOidcClientSecret: false
-    wtsG3auto: bihstaging-helm-wts-g3auto
+    wtsG3auto: bihstaging-cloudauto-wts-g3auto
     wtsOidcClient: bihstaging-wts-client-secret
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/workspace-token-service
