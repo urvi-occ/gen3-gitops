@@ -125,6 +125,8 @@ indexd:
     serviceCreds: bdcat-internalstaging-indexd-service-creds
 manifestservice:
   enabled: false
+  externalSecrets:
+    manifestserviceG3auto: bdcat-internalstaging-manifestservice-g3auto
 metadata:
   autoscaling:
     enabled: true
