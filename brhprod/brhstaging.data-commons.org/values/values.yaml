@@ -12,7 +12,7 @@ arborist:
   enabled: true
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/arborist
-    tag: '2024.08'
+    tag: '2024.12'
 audit:
   enabled: false
 aws-es-proxy:
@@ -24,7 +24,7 @@ dashboard:
   enabled: true
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/gen3-statics
-    tag: '2024.08'
+    tag: '2024.12'
 fence:
   autoscaling:
     enabled: true
@@ -99,7 +99,7 @@ indexd:
   enabled: true
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/indexd
-    tag: '2024.08'
+    tag: '2024.12'
   externalSecrets:
     serviceCreds: brhstaging-indexd-service-creds
 manifestservice:
@@ -108,7 +108,7 @@ manifestservice:
     manifestserviceG3auto: brhstaging-manifestservice-g3auto
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/manifestservice
-    tag: '2024.08'
+    tag: '2024.12'
 metadata:
   autoscaling:
     enabled: true
@@ -118,14 +118,14 @@ metadata:
   enabled: true
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/metadata-service
-    tag: '2024.08'
+    tag: '2024.12'
   externalSecrets:
     metadataG3auto: brhstaging-metadata-g3auto
 peregrine:
   enabled: true
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/peregrine
-    tag: '2024.08'
+    tag: '2024.12'
 portal:
   enabled: true
   gitops:
@@ -418,7 +418,7 @@ requestor:
   enabled: true
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/requestor
-    tag: '2024.08'
+    tag: '2024.12'
 revproxy:
   ingress:
     aws:
@@ -431,12 +431,12 @@ revproxy:
   enabled: true
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/nginx
-    tag: '2024.08'
+    tag: '2024.12'
 sheepdog:
   enabled: true
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/sheepdog
-    tag: '2024.08'
+    tag: '2024.12'
 wts:
   enabled: true
   externalSecrets:
@@ -445,4 +445,4 @@ wts:
     wtsOidcClient: brhstaging-wts-client-secret
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/workspace-token-service
-    tag: '2024.08'
+    tag: '2024.12'
