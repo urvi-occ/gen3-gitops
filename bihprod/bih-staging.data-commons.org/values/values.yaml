@@ -100,7 +100,7 @@ indexd:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/indexd
     tag: '2025.05'
   externalSecrets:
-    serviceCreds: bihstaging-indexd-service-creds
+    serviceCreds: bihstaging-cloudauto-indexd-service-creds
 manifestservice:
   enabled: false
 metadata:
@@ -114,7 +114,7 @@ metadata:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/metadata-service
     tag: '2025.05'
   externalSecrets:
-    manifestserviceG3auto: bihstaging-manifestservice-g3auto
+    manifestserviceG3auto: bihstaging-cloudauto-manifestservice-g3auto
 peregrine:
   enabled: true
   image:
@@ -226,7 +226,7 @@ wts:
   externalSecrets:
     createWtsOidcClientSecret: false
     wtsG3auto: bihstaging-cloudauto-wts-g3auto
-    wtsOidcClient: bihstaging-wts-client-secret
+    wtsOidcClient: bihstaging-cloudauto-wts-client-secret
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/workspace-token-service
     tag: '2025.05'
