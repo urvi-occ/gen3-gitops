@@ -224,6 +224,7 @@ tube:
 wts:
   enabled: true
   externalSecrets:
+    createWtsOidcClientSecret: false
     wtsG3auto: bihstaging-cloudauto-wts-g3auto
     wtsOidcClient: bihstaging-wts-client-secret
   image:

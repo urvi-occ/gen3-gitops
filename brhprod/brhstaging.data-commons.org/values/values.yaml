@@ -440,6 +440,7 @@ sheepdog:
 wts:
   enabled: true
   externalSecrets:
+    createWtsOidcClientSecret: false
     wtsG3auto: brhstaging-wts-g3auto
     wtsOidcClient: brhstaging-wts-client-secret
   image:
