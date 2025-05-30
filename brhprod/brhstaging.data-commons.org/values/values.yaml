@@ -14,8 +14,7 @@ arborist:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/arborist
     tag: '2024.08'
 audit:
-  externalSecrets:
-    auditG3auto: brhstaging-audit-g3auto
+  enabled: false
 aws-es-proxy:
   enabled: true
   image:
@@ -118,6 +117,8 @@ metadata:
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/metadata-service
     tag: '2024.08'
+  externalSecrets:
+    metadataG3auto: brhstaging-metadata-g3auto
 peregrine:
   enabled: true
   image:

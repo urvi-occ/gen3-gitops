@@ -99,6 +99,8 @@ indexd:
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/indexd
     tag: '2025.04'
+manifestservice:
+  enabled: false
 metadata:
   autoscaling:
     enabled: true
@@ -109,6 +111,8 @@ metadata:
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/metadata-service
     tag: '2025.04'
+  externalSecrets:
+    manifestserviceG3auto: bihstaging-manifestservice-g3auto
 peregrine:
   enabled: true
   image:
