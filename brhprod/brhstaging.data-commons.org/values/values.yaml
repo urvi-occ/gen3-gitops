@@ -12,7 +12,7 @@ arborist:
   enabled: true
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/arborist
-    tag: '2024.12'
+    tag: "2024.12"
 audit:
   enabled: false
 aws-es-proxy:
@@ -24,7 +24,7 @@ dashboard:
   enabled: true
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/gen3-statics
-    tag: '2024.12'
+    tag: "2024.12"
 fence:
   autoscaling:
     enabled: true
@@ -38,7 +38,7 @@ fence:
     fenceJwtKeys: brhstaging-fence-jwt
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/fence
-    tag: 10.2.0
+    tag: 2025.05
 fluentd:
   enabled: true
   image:
@@ -56,7 +56,7 @@ gen3-discovery-ai:
     tag: 1.0.1
 global:
   aws:
-    account: '885078588865'
+    account: "885078588865"
     awsEsProxyRole: brhprod--brhstaging--es-access
     enabled: true
     secretStoreServiceAccount:
@@ -64,7 +64,7 @@ global:
       roleArn: arn:aws:iam::885078588865:role/brhprod-external-secrets-sa
   dev: false
   dictionaryUrl: https://s3.amazonaws.com/dictionary-artifacts/gtexdictionary/4.0.6/schema.json
-  dispatcherJobNum: '10'
+  dispatcherJobNum: "10"
   environment: brhstaging
   externalSecrets:
     deploy: true
@@ -74,9 +74,9 @@ global:
     es7: true
     kube_bucket: kube_bucket.devplanetv1.gen3
     logs_bucket: logs-devplanetv1-gen3
-    netpolicy: 'on'
+    netpolicy: "on"
     public_datasets: true
-    sync_from_dbgap: 'False'
+    sync_from_dbgap: "False"
     tier_access_level: regular
     tier_access_limit: 50
     useryaml_s3path: s3://cdis-gen3-users/brh/user.yaml
@@ -99,7 +99,7 @@ indexd:
   enabled: true
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/indexd
-    tag: '2024.12'
+    tag: "2024.12"
   externalSecrets:
     serviceCreds: brhstaging-indexd-service-creds
 manifestservice:
@@ -108,7 +108,7 @@ manifestservice:
     manifestserviceG3auto: brhstaging-manifestservice-g3auto
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/manifestservice
-    tag: '2024.12'
+    tag: "2024.12"
 metadata:
   autoscaling:
     enabled: true
@@ -118,19 +118,20 @@ metadata:
   enabled: true
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/metadata-service
-    tag: '2024.12'
+    tag: "2024.12"
   externalSecrets:
     metadataG3auto: brhstaging-metadata-g3auto
 peregrine:
   enabled: true
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/peregrine
-    tag: '2024.12'
+    tag: "2024.12"
 portal:
   enabled: true
   gitops:
     gen3Bundle: ecosystem
-    json: "{\n  \"gaTrackingId\": \"G-CRDLB4FGKF\",\n  \"grafanaFaroConfig\": {\n\
+    json:
+      "{\n  \"gaTrackingId\": \"G-CRDLB4FGKF\",\n  \"grafanaFaroConfig\": {\n\
       \    \"grafanaFaroEnable\": true,\n    \"grafanaFaroNamespace\": \"brhstaging\"\
       \n  },\n  \"graphql\": {\n    \"boardCounts\": [],\n    \"chartCounts\": [],\n\
       \    \"projectDetails\": \"boardCounts\"\n  },\n  \"components\": {\n    \"\
@@ -418,7 +419,7 @@ requestor:
   enabled: true
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/requestor
-    tag: '2024.12'
+    tag: "2024.12"
 revproxy:
   ingress:
     aws:
@@ -431,12 +432,12 @@ revproxy:
   enabled: true
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/nginx
-    tag: '2024.12'
+    tag: "2024.12"
 sheepdog:
   enabled: true
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/sheepdog
-    tag: '2024.12'
+    tag: "2024.12"
 wts:
   enabled: true
   externalSecrets:
@@ -445,4 +446,4 @@ wts:
     wtsOidcClient: brhstaging-wts-client-secret
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/workspace-token-service
-    tag: '2024.12'
+    tag: "2024.12"
