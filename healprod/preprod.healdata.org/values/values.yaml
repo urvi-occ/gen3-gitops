@@ -1312,7 +1312,9 @@ metadata:
             }
         }
     }
+  aggMdsDefaultDataDictField: variable_level_metadata
   enabled: true
+  esEndpoint: http://elasticsearch:9200
   externalSecrets:
     metadataG3auto: healpreprod-metadata-g3auto
   image:
