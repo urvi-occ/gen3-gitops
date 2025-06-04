@@ -40,7 +40,7 @@ cohort-middleware:
 dashboard:
   dashboardConfig:
     gitopsRepo: "https://github.com/uc-cdis/gitops-qa"
-    bucket: dashboard-707767160287-devplanetv2-gen3
+    bucket: dashboard-707767160287-devplanetv1-gen3
     prefix: qa-mickey.planx-pla.net
 
   serviceAccount:
