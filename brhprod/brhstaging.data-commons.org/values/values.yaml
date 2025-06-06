@@ -48,7 +48,7 @@ frontend-framework:
   enabled: false
   image:
     repository: quay.io/cdis/brh-data-commons
-    tag: main
+    tag: 1.1.12
 gen3-discovery-ai:
   enabled: true
   image:
