@@ -125,7 +125,7 @@ frontend-framework:
 global:
   aws:
     account: "205252583234"
-    awsEsProxyArn: arn:aws:iam::205252583234:role/gen3_service/healprod--healpreprod--es-access
+    awsEsProxyRoleArn: arn:aws:iam::205252583234:role/gen3_service/healprod--healpreprod--es-access
     enabled: true
     secretStoreServiceAccount:
       enabled: true
