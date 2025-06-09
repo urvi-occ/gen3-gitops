@@ -127,6 +127,7 @@ global:
     account: '205252583234'
     awsEsProxyRole: healprod--healpreprod--es-access
     enabled: true
+    hatchery_role: gen3_service/healprod--healpreprod--hatchery-sa
     secretStoreServiceAccount:
       enabled: true
       roleArn: arn:aws:iam::205252583234:role/healpreprod-external-secrets-sa
