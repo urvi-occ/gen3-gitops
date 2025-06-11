@@ -3,6 +3,7 @@ ambassador:
   image:
     repository: quay.io/datawire/ambassador
     tag: 1.4.2
+  jupyterNamespace: jupyter-pods-healpreprod
 arborist:
   autoscaling:
     enabled: true
@@ -26,7 +27,7 @@ aws-es-proxy:
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/aws-es-proxy
     tag: v1.3.1
-cedar-wrapper:
+cedar:
   enabled: true
   image:
     repository: quay.io/cdis/cedar-wrapper-service
