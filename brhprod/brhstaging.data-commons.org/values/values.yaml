@@ -68,7 +68,7 @@ global:
     hatchery_role: brhprod--brhstaging-helm--hatchery-sa
     secretStoreServiceAccount:
       enabled: true
-      roleArn: arn:aws:iam::885078588865:role/brhstaging-external-secrets-sa
+      roleArn: arn:aws:iam::885078588865:role/brhprod-external-secrets-sa
   dev: false
   dictionaryUrl: https://s3.amazonaws.com/dictionary-artifacts/gtexdictionary/4.0.6/schema.json
   dispatcherJobNum: "10"
