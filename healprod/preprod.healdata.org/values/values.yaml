@@ -32,6 +32,7 @@ cedar:
   image:
     repository: quay.io/cdis/cedar-wrapper-service
     tag: 0.6.0
+  cedar_client_job_enabled: false
 dashboard:
   enabled: true
   image:
