@@ -15,16 +15,114 @@ audit:
   image:
     repository: quay.io/cdis/audit-service
     tag: feat_GPE-1113
+  serviceAccount:
+    annotations:
+      eks.amazonaws.com/role-arn: arn:aws:iam::707767160287:role/emalinowskiv1--emalinowskiv1-helm--audit-sqs-receiver
 aws-es-proxy:
   enabled: true
+  esEndpoint: ''
   image:
     repository: quay.io/cdis/aws-es-proxy
     tag: test_distroless
 dashboard:
+  dashboardConfig:
+    bucket: dashboard-707767160287-devplanetv1-gen3
+    prefix: emalinowskiv1.planx-pla.net
   enabled: true
   image:
     repository: quay.io/cdis/gen3-statics
     tag: master
+  serviceAccount:
+    annotations:
+      eks.amazonaws.com/role-arn: arn:aws:iam::707767160287:role/emalinowskiv1--emalinowskiv1-helm--dashboard-access
+etl:
+  esEndpoint: elasticsearch
+  mappings:
+  - aggregated_props:
+    - fn: count
+      name: _samples_count
+      path: samples
+    - fn: count
+      name: _aliquots_count
+      path: samples.aliquots
+    - fn: count
+      name: _submitted_methylations_count
+      path: samples.aliquots.submitted_methylation_files
+    - fn: count
+      name: _submitted_copy_number_files_on_aliquots_count
+      path: samples.aliquots.submitted_copy_number_files
+    - fn: count
+      name: _read_groups_count
+      path: samples.aliquots.read_groups
+    - fn: count
+      name: _submitted_aligned_reads_count
+      path: samples.aliquots.read_groups.submitted_aligned_reads_files
+    - fn: count
+      name: _submitted_unaligned_reads_count
+      path: samples.aliquots.read_groups.submitted_unaligned_reads_files
+    - fn: count
+      name: _submitted_copy_number_files_on_read_groups_count
+      path: samples.aliquots.read_groups.submitted_copy_number_files
+    - fn: count
+      name: _submitted_somatic_mutations_count
+      path: samples.aliquots.read_groups.submitted_somatic_mutations
+    doc_type: case
+    flatten_props:
+    - path: demographics
+      props:
+      - name: gender
+        value_mappings:
+        - female: F
+        - male: M
+      - name: race
+        value_mappings:
+        - american indian or alaskan native: Indian
+      - name: ethnicity
+      - name: year_of_birth
+    joining_props:
+    - index: file
+      join_on: _case_id
+      props:
+      - fn: set
+        name: data_format
+        src: data_format
+      - fn: set
+        name: data_type
+        src: data_type
+      - fn: set
+        name: _file_id
+        src: _file_id
+    name: dev_case
+    props:
+    - name: submitter_id
+    - name: project_id
+    - name: disease_type
+    - name: primary_site
+    root: case
+    type: aggregator
+  - category: data_file
+    doc_type: file
+    injecting_props:
+      case:
+        props:
+        - fn: set
+          name: _case_id
+          src: id
+        - name: project_id
+    name: dev_file
+    props:
+    - name: object_id
+    - name: md5sum
+    - name: file_name
+    - name: file_size
+    - name: data_format
+    - name: data_type
+    - name: state
+    root: None
+    target_nodes:
+    - name: slide_image
+      path: slides.samples.cases
+    type: collector
 fence:
   enabled: true
   externalSecrets:
@@ -44,6 +142,10 @@ global:
     account: '707767160287'
     awsEsProxyRole: emalinowskiv1--default--es-access
     enabled: true
+    hatchery_role: gen3_service/emalinowskiv1--default--hatchery-sa
+    secretStoreServiceAccount:
+      enabled: true
+      roleArn: arn:aws:iam::707767160287:role/emalinowskiv1-external-secrets-sa
   dev: false
   dictionaryUrl: https://s3.amazonaws.com/dictionary-artifacts/datadictionary/develop/schema.json
   environment: emalinowskiv1
@@ -61,25 +163,203 @@ global:
     dbCreate: false
   revproxyArn: arn:aws:acm:us-east-1:707767160287:certificate/c676c81c-9546-4e9a-9a72-725dd3912bc8
 guppy:
+  authFilterField: auth_resource_path
+  configIndex: dev_case-array-config
   enabled: true
-  guppy:
-    authFilterField: auth_resource_path
-    configIndex: dev_case-array-config
-    indices:
-    - index: dev_case
-      type: case
-    - index: dev_file
-      type: file
+  esEndpoint: http://elasticsearch:9200
   image:
     repository: quay.io/cdis/guppy
     tag: feat_es7
+  indices:
+  - index: dev_case
+    type: case
+  - index: dev_file
+    type: file
 hatchery:
   enabled: true
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/hatchery
     tag: '2023.04'
+  json: |
+    {
+      "user-namespace": "jupyter-pods",
+      "sub-dir": "/lw-workspace",
+      "user-volume-size": "5Gi",
+      "sidecar": {
+        "cpu-limit": "1.0",
+        "memory-limit": "256Mi",
+        "image": "707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/gen3fuse-sidecar:2023.04",
+        "env": {
+          "NAMESPACE": "default",
+          "HOSTNAME": "emalinowskiv1.planx-pla.net"
+        },
+        "args": [],
+        "command": [
+          "/bin/bash",
+          "/sidecarDockerrun.sh"
+        ],
+        "lifecycle-pre-stop": [
+          "su",
+          "-c",
+          "echo test",
+          "-s",
+          "/bin/sh",
+          "root"
+        ]
+      },
+      "containers": [
+        {
+          "target-port": 8787,
+          "cpu-limit": "1.0",
+          "memory-limit": "512Mi",
+          "name": "R Studio",
+          "image": "heliumdatastage/rstudio-server:1",
+          "env": {
+            "DISABLE_AUTH": "true"
+          },
+          "args": [],
+          "path-rewrite": "/",
+          "use-tls": "false",
+          "ready-probe": "/"
+        },
+        {
+          "target-port": 8888,
+          "cpu-limit": "1.0",
+          "memory-limit": "512Mi",
+          "name": "Jupyter Notebook Bio Python",
+          "image": "quay.io/cdis/jupyter-notebook:jupyter-java-1.1",
+          "env": {},
+          "args": [
+            "--NotebookApp.base_url=/lw-workspace/proxy/",
+            "--NotebookApp.password=''",
+            "--NotebookApp.token=''"
+          ],
+          "command": [
+            "start-notebook.sh"
+          ],
+          "path-rewrite": "/lw-workspace/proxy/",
+          "use-tls": "false",
+          "ready-probe": "/lw-workspace/proxy/",
+          "lifecycle-post-start": [
+            "/bin/sh",
+            "-c",
+            "export IAM=`whoami`; rm -rf /home/$IAM/pd/dockerHome; ln -s $(pwd) /home/$IAM/pd/dockerHome; mkdir -p /home/$IAM/.jupyter/custom; echo \"define(['base/js/namespace'], function(Jupyter){Jupyter._target = '_self';})\" >/home/$IAM/.jupyter/custom/custom.js; ln -s /data /home/$IAM/pd/; true"
+          ],
+          "user-uid": 1000,
+          "fs-gid": 100,
+          "user-volume-location": "/home/jovyan/pd"
+        },
+        {
+          "target-port": 8888,
+          "cpu-limit": "4.0",
+          "memory-limit": "15512Mi",
+          "name": "Jupyter Notebook Power Python",
+          "image": "quay.io/cdis/jupyter-notebook:jupyter-java-1.1",
+          "env": {},
+          "args": [
+            "--NotebookApp.base_url=/lw-workspace/proxy/",
+            "--NotebookApp.password=''",
+            "--NotebookApp.token=''"
+          ],
+          "command": [
+            "start-notebook.sh"
+          ],
+          "path-rewrite": "/lw-workspace/proxy/",
+          "use-tls": "false",
+          "ready-probe": "/lw-workspace/proxy/",
+          "lifecycle-post-start": [
+            "/bin/sh",
+            "-c",
+            "export IAM=`whoami`; rm -rf /home/$IAM/pd/dockerHome; ln -s $(pwd) /home/$IAM/pd/dockerHome; mkdir -p /home/$IAM/.jupyter/custom; echo \"define(['base/js/namespace'], function(Jupyter){Jupyter._target = '_self';})\" >/home/$IAM/.jupyter/custom/custom.js; ln -s /data /home/$IAM/pd/; true"
+          ],
+          "user-uid": 1000,
+          "fs-gid": 100,
+          "user-volume-location": "/home/jovyan/pd"
+        },
+        {
+          "target-port": 8888,
+          "cpu-limit": "1.0",
+          "memory-limit": "8096Mi",
+          "name": "Helium Autoencoder Demo",
+          "image": "quay.io/cdis/auntoencoder-copd-demo:latest",
+          "env": {},
+          "args": [
+            "--NotebookApp.base_url=/lw-workspace/proxy/",
+            "--NotebookApp.password=''",
+            "--NotebookApp.token=''"
+          ],
+          "command": [
+            "start-notebook.sh"
+          ],
+          "path-rewrite": "/lw-workspace/proxy/",
+          "use-tls": "false",
+          "ready-probe": "/lw-workspace/proxy/",
+          "lifecycle-post-start": [
+            "/bin/sh",
+            "-c",
+            "export IAM=`whoami`; rm -rf /home/$IAM/pd/dockerHome; ln -s $(pwd) /home/$IAM/pd/dockerHome; mkdir -p /home/$IAM/.jupyter/custom; echo \"define(['base/js/namespace'], function(Jupyter){Jupyter._target = '_self';})\" >/home/$IAM/.jupyter/custom/custom.js; ln -s /data /home/$IAM/pd/; true"
+          ],
+          "user-uid": 1000,
+          "fs-gid": 100
+        },
+        {
+          "target-port": 8888,
+          "cpu-limit": "1.0",
+          "memory-limit": "8096Mi",
+          "name": "Helium Tensorflow-Pytorch",
+          "image": "heliumdatastage/tensorflow-pytorch-ext:1",
+          "env": {},
+          "args": [
+            "--NotebookApp.base_url=/lw-workspace/proxy/",
+            "--NotebookApp.password=''",
+            "--NotebookApp.token=''"
+          ],
+          "command": [
+            "start-notebook.sh"
+          ],
+          "path-rewrite": "/lw-workspace/proxy/",
+          "use-tls": "false",
+          "ready-probe": "/lw-workspace/proxy/",
+          "lifecycle-post-start": [
+            "/bin/sh",
+            "-c",
+            "export IAM=`whoami`; rm -rf /home/$IAM/pd/dockerHome; ln -s $(pwd) /home/$IAM/pd/dockerHome; mkdir -p /home/$IAM/.jupyter/custom; echo \"define(['base/js/namespace'], function(Jupyter){Jupyter._target = '_self';})\" >/home/$IAM/.jupyter/custom/custom.js; ln -s /data /home/$IAM/pd/; true"
+          ],
+          "user-uid": 1000,
+          "fs-gid": 100
+        },
+        {
+          "target-port": 8888,
+          "cpu-limit": "1.0",
+          "memory-limit": "8096Mi",
+          "name": "Helium CIP Demo",
+          "image": "heliumdatastage/jup-cip:v1",
+          "env": {},
+          "args": [
+            "--NotebookApp.base_url=/lw-workspace/proxy/",
+            "--NotebookApp.password=''",
+            "--NotebookApp.token=''"
+          ],
+          "command": [
+            "start-notebook.sh"
+          ],
+          "path-rewrite": "/lw-workspace/proxy/",
+          "use-tls": "false",
+          "ready-probe": "/lw-workspace/proxy/",
+          "lifecycle-post-start": [
+            "/bin/sh",
+            "-c",
+            "export IAM=`whoami`; rm -rf /home/$IAM/pd/dockerHome; ln -s $(pwd) /home/$IAM/pd/dockerHome; mkdir -p /home/$IAM/.jupyter/custom; echo \"define(['base/js/namespace'], function(Jupyter){Jupyter._target = '_self';})\" >/home/$IAM/.jupyter/custom/custom.js; ln -s /data /home/$IAM/pd/; true"
+          ],
+          "user-uid": 1000,
+          "fs-gid": 100
+        }
+      ]
+    }
 indexd:
   enabled: true
+  externalSecrets:
+    serviceCreds: emalinowskiv1-indexd-service-creds
   image:
     repository: quay.io/cdis/indexd
     tag: feat_GPE-788
@@ -95,11 +375,19 @@ manifestservice:
   image:
     repository: quay.io/cdis/manifestservice
     tag: feat_al2-image
+  serviceAccount:
+    annotations:
+      eks.amazonaws.com/role-arn: arn:aws:iam::707767160287:role/emalinowskiv1--emalinowskiv1-helm--manifest-service-sa
 metadata:
   enabled: true
+  esEndpoint: http://elasticsearch:9200
+  externalSecrets:
+    metadataG3auto: emalinowskiv1-metadata-g3auto
   image:
     repository: quay.io/cdis/metadata-service
     tag: feat_GPE-1115
+mutatingWebhook:
+  enabled: true
 peregrine:
   enabled: true
   image:
@@ -240,6 +528,9 @@ revproxy:
   image:
     repository: quay.io/cdis/nginx
     tag: '2024.12'
+  ingress:
+    aws:
+      group: emalinowskiv1-helm
 sheepdog:
   enabled: true
   image:
