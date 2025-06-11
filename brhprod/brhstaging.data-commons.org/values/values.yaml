@@ -342,7 +342,7 @@ manifestservice:
       eks.amazonaws.com/role-arn: arn:aws:iam::885078588865:role/brhprod--brhstaging-helm--manifest-service-sa
 metadata:
   addMdsNamespace: brhstaging
-  aggMdsConfig:
+  aggMdsConfig: |
     "{\n\t\"configuration\": {\n\t\t\"schema\": {\n\t\t\t\"_subjects_count\"\
     : {\n\t\t\t\t\"type\": \"integer\"\n\t\t\t},\n\t\t\t\"__manifest\": {\n\t\t\t\t\
     \"type\": \"array\",\n\t\t\t\t\"properties\": {\n\t\t\t\t\t\"file_name\": {\n\t\
