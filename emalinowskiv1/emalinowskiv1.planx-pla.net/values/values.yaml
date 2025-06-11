@@ -20,7 +20,7 @@ audit:
       eks.amazonaws.com/role-arn: arn:aws:iam::707767160287:role/emalinowskiv1--emalinowskiv1-helm--audit-sqs-receiver
 aws-es-proxy:
   enabled: true
-  esEndpoint: ''
+  esEndpoint: vpc-emalinowskiv1-gen3-metadata-cvhtoib3otdalqlsw2adldg2vy.us-east-1.es.amazonaws.com
   image:
     repository: quay.io/cdis/aws-es-proxy
     tag: test_distroless
