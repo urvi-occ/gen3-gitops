@@ -33,6 +33,11 @@ cedar:
     repository: quay.io/cdis/cedar-wrapper-service
     tag: 0.6.0
   cedar_client_job_enabled: false
+  externalSecrets:
+    createCedarClientSecret: false
+    cedarG3auto: healpreprod-cedar-g3auto
+    cedarAPIKey: healpreprod-cedar-api-key
+    cedarDirectoryId: healpreprod-cedar-directory-id
 dashboard:
   enabled: true
   image:
@@ -132,7 +137,7 @@ global:
     hatchery_role: gen3_service/healprod--healpreprod--hatchery-sa
     secretStoreServiceAccount:
       enabled: true
-      roleArn: arn:aws:iam::205252583234:role/healpreprod-external-secrets-sa
+      roleArn: arn:aws:iam::205252583234:role/healprod-external-secrets-sa
   dev: false
   dictionaryUrl: https://s3.amazonaws.com/dictionary-artifacts/heal_dictionary/1.1.0/schema.json
   dispatcherJobNum: '10'
