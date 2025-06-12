@@ -1219,7 +1219,7 @@ wts:
   enabled: true
   externalSecrets:
     wtsG3auto: brhstaging-wts-g3auto
-    wtsOidcClient: brhstaging-wts-client-secretg
+    wtsOidcClient: brhstaging-wts-client-secret
     createWtsOidcClientSecret: false
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/workspace-token-service
