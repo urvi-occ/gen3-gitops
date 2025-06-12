@@ -28,7 +28,7 @@ aws-es-proxy:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/aws-es-proxy
     tag: v1.3.1
 cedar:
-  enabled: false
+  enabled: true
   image:
     repository: quay.io/cdis/cedar-wrapper-service
     tag: 0.6.0
