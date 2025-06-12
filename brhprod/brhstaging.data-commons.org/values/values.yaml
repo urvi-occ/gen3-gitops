@@ -343,7 +343,7 @@ manifestservice:
     annotations:
       eks.amazonaws.com/role-arn: arn:aws:iam::885078588865:role/brhprod--brhstaging-helm--manifest-service-sa
 metadata:
-  aggMdsNamespace: brhstaging
+  aggMdsNamespace: brhstaging-helm
   aggMdsConfig: |
     {
     "configuration": {
