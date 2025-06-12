@@ -33,6 +33,11 @@ cedar:
     repository: quay.io/cdis/cedar-wrapper-service
     tag: 0.6.0
   cedar_client_job_enabled: false
+  externalSecrets:
+    createCedarClientSecret: false
+    cedarG3auto: healpreprod-cedar-g3auto
+    cedarAPIKey: healpreprod-cedar-api-key
+    cedarDirectoryId: healpreprod-cedar-directory-id
 dashboard:
   enabled: true
   image:
