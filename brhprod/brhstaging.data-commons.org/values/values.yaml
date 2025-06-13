@@ -79,7 +79,6 @@ global:
     deploy: true
   hostname: brhstaging.data-commons.org
   manifestGlobalExtraValues:
-    fence_url: https://brhstaging.data-commons.org/user
     ecr-access-job-role-arn: arn:aws:iam::590183957759:role/EcrRepoPolicyUpdateRole
     es7: true
     kube_bucket: kube_bucket.devplanetv1.gen3
@@ -1215,7 +1214,6 @@ revproxy:
       group: brhstaging-helm
 sheepdog:
   enabled: true
-  fenceUrl: https://brhstaging.data-commons.org/user
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/sheepdog
     tag: "2025.05"
