@@ -15,16 +15,25 @@ audit:
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/audit-service
     tag: '2025.04'
+  serviceAccount:
+    annotations:
+      eks.amazonaws.com/role-arn: arn:aws:iam::584476192960:role/dcfprod--dcfprod-helm--audit-sqs-receiver
 aws-es-proxy:
-  enabled: true
+  enabled: false
   image:
     repository: quay.io/cdis/aws-es-proxy
     tag: '0.8'
 dashboard:
+  dashboardConfig:
+    bucket: dashboard-584476192960-dcfprod-gen3
+    prefix: nci-crdc.datacommons.io
   enabled: true
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/gen3-statics
     tag: '2025.04'
+  serviceAccount:
+    annotations:
+      eks.amazonaws.com/role-arn: arn:aws:iam::584476192960:role/dcfprod--dcfprod-helm--dashboard-access
 datareplicate:
   enabled: true
   image:
@@ -54,8 +63,12 @@ fluentd:
 global:
   aws:
     account: '584476192960'
-    awsEsProxyRole: dcfprod--default--es-access
+    awsEsProxyRole: dcfprod--dcfprod-helm--es-access
     enabled: true
+    hatchery_role: dcfprod--dcfprod-helm--hatchery-sa
+    secretStoreServiceAccount:
+      enabled: true
+      roleArn: arn:aws:iam::584476192960:role/dcfprod-external-secrets-sa
   dev: false
   dictionaryUrl: https://s3.amazonaws.com/dictionary-artifacts/datadictionary/develop/schema.json
   dispatcherJobNum: '10'
@@ -73,7 +86,6 @@ global:
   postgres:
     dbCreate: false
   revproxyArn: arn:aws:acm:us-east-1:584476192960:certificate/4173b316-0510-4216-8043-3f9234570475
-guppy: {}
 indexd:
   autoscaling:
     enabled: true
@@ -81,6 +93,8 @@ indexd:
     minReplicas: 6
     targetCPUUtilizationPercentage: 40
   enabled: true
+  externalSecrets:
+    serviceCreds: dcfprod-indexd-service-creds
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/indexd
     tag: '2025.04'
@@ -91,9 +105,14 @@ metadata:
     minReplicas: 2
     targetCPUUtilizationPercentage: 40
   enabled: true
+  esEndpoint: http://elasticsearch:9200
+  externalSecrets:
+    metadataG3auto: dcfprod-metadata-g3auto
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/metadata-service
     tag: '2025.04'
+mutatingWebhook:
+  enabled: true
 peregrine:
   enabled: true
   image:
@@ -102,121 +121,293 @@ peregrine:
 portal:
   enabled: true
   gitops:
-    css: "/* Hide Data Dictionary information */\n.footer__version-area > div:nth-child(1)\
-      \ {\n  display: none;\n}\n"
-    json: "{\n  \"gaTrackingId\": \"undefined\",\n  \"grafanaFaroConfig\": {\n   \
-      \ \"grafanaFaroEnable\": true,\n    \"grafanaFaroNamespace\": \"dcfprod\"\n\
-      \  },\n  \"graphql\": {\n    \"boardCounts\": [\n      {\n        \"graphql\"\
-      : \"_case_count\",\n        \"name\": \"Case\",\n        \"plural\": \"Cases\"\
-      \n      },\n      {\n        \"graphql\": \"_experiment_count\",\n        \"\
-      name\": \"Experiment\",\n        \"plural\": \"Experiments\"\n      },\n   \
-      \   {\n        \"graphql\": \"_aliquot_count\",\n        \"name\": \"Aliquot\"\
-      ,\n        \"plural\": \"Aliquots\"\n      }\n    ],\n    \"chartCounts\": [\n\
-      \      {\n        \"graphql\": \"_case_count\",\n        \"name\": \"Case\"\n\
-      \      },\n      {\n        \"graphql\": \"_experiment_count\",\n        \"\
-      name\": \"Experiment\"\n      },\n      {\n        \"graphql\": \"_aliquot_count\"\
-      ,\n        \"name\": \"Aliquot\"\n      }\n    ],\n    \"projectDetails\": \"\
-      boardCounts\"\n  },\n  \"components\": {\n    \"appName\": \"NCI Data Commons\
-      \ Framework Services\",\n    \"index\": {\n      \"introduction\": {\n     \
-      \   \"heading\": \"Data Commons\",\n        \"text\": \"The NCI Data Commons\
-      \ Framework Services supports the management, analysis and sharing of data for\
-      \ the research community.\",\n        \"link\": \"/submission\"\n      },\n\
-      \      \"buttons\": [\n        {\n          \"name\": \"Access Data\",\n   \
-      \       \"icon\": \"data-access\",\n          \"body\": \"Use our selected tool\
-      \ to filter out the data you need.\",\n          \"link\": \"/query\",\n   \
-      \       \"label\": \"Query data\"\n        },\n        {\n          \"name\"\
-      : \"Submit Data\",\n          \"icon\": \"data-submit\",\n          \"body\"\
-      : \"Submit Data based on the dictionary.\",\n          \"link\": \"/submission\"\
-      ,\n          \"label\": \"Submit data\"\n        }\n      ]\n    },\n    \"\
-      navigation\": {\n      \"title\": \"NCI Data Commons Framework Services\",\n\
-      \      \"items\": [\n        {\n          \"icon\": \"profile\",\n         \
-      \ \"link\": \"/identity\",\n          \"name\": \"Profile\",\n          \"tooltip\"\
-      : \"\"\n        }\n      ]\n    },\n    \"topBar\": {\n      \"items\": [\n\
-      \        {\n          \"icon\": \"upload\",\n          \"link\": \"/submission\"\
-      ,\n          \"name\": \"Submit Data\"\n        },\n        {\n          \"\
-      link\": \"https://nci-crdc.datacommons.io/dashboard/Public/docs/redir_gen3.html\"\
-      ,\n          \"name\": \"Documentation\"\n        }\n      ]\n    },\n    \"\
-      login\": {\n      \"title\": \"NCI Data Commons Framework Services\",\n    \
-      \  \"subTitle\": \"Explore, Analyze, and Share Data\",\n      \"text\": \"The\
-      \ vision of DCFS is to make it easier to develop, operate, and interoperate\
-      \ data commons, data clouds, knowledge bases, and other resources for managing,\
-      \ analyzing, and sharing research data that can be part of a large data commons\
-      \ ecosystem.\",\n      \"contact\": \"If you have any questions about access\
-      \ or the registration process, please contact \",\n      \"email\": \"dcf-support@gen3.org\"\
-      \n    },\n    \"certs\": {\n      \"security_quiz\": {\n        \"title\": \"\
-      BloodPAC User agreement\",\n        \"description\": \"The agreement on what\
-      \ you can and need to do in a Commons.\",\n        \"questions\": [\n      \
-      \    {\n            \"name\": \"Things you can do after registration\",\n  \
-      \          \"question\": \"As a registered user, I can do the following things\
-      \ without any problem. Is it true or not:\",\n            \"options\": [\n \
-      \             \"Browse public Project\",\n              \"Upload file\",\n \
-      \             \"Download file\",\n              \"Invite people\"\n        \
-      \    ],\n            \"answer\": 0,\n            \"hint\": \"Some information\
-      \ about this question\"\n          },\n          {\n            \"name\": \"\
-      Things you need to do to become the registered user\",\n            \"question\"\
-      : \"In order to be a register user, I must do the following things otherwise:\"\
-      ,\n            \"options\": [\n              \"Agree the user agreement\",\n\
-      \              \"Accept a consent\",\n              \"None of them\",\n    \
-      \          \"Both of them\"\n            ],\n            \"answer\": 2,\n  \
-      \          \"hint\": \"Some information about this question\"\n          },\n\
-      \          {\n            \"name\": \"Things you can do with data\",\n     \
-      \       \"question\": \"How can I share data with other people according to\
-      \ the policy of the commons\",\n            \"options\": [\n              \"\
-      I can not share data\",\n              \"I can only share data with BPA memebers\"\
-      ,\n              \"I can share data with family\",\n              \"I can share\
-      \ data with my wife\"\n            ],\n            \"answer\": 1,\n        \
-      \    \"hint\": \"Some information about this question\"\n          }\n     \
-      \   ]\n      }\n    },\n    \"footerLogos\": [\n      {\n        \"src\": \"\
-      /src/img/gen3.png\",\n        \"href\": \"https://nci-crdc.datacommons.io/dashboard/Public/docs/redir_gen3_ctds.html\"\
-      ,\n        \"alt\": \"Gen3 Data Commons\"\n      },\n      {\n        \"src\"\
-      : \"/src/img/createdby.png\",\n        \"href\": \"https://nci-crdc.datacommons.io/dashboard/Public/docs/redir_ctds.html\"\
-      ,\n        \"alt\": \"Center for Translational Data Science at the University\
-      \ of Chicago\"\n      }\n    ],\n    \"privacyPolicy\": {\n      \"text\": \"\
-      \",\n      \"routeHref\": \"\",\n      \"footerHref\": \"\",\n      \"file\"\
-      : \"\"\n    },\n    \"footer\": {\n      \"links\": [\n        {\n         \
-      \ \"text\": \"HHS Responsible Disclosure Form\",\n          \"href\": \"https://www.hhs.gov/vulnerability-disclosure-policy/index.html\"\
-      \n        }\n      ]\n    }\n  },\n  \"requiredCerts\": [],\n  \"featureFlags\"\
-      : {\n    \"explorer\": true,\n    \"analysis\": false\n  },\n  \"dataExplorerConfig\"\
-      : {\n    \"arrangerConfig\": {\n      \"projectId\": \"search\",\n      \"graphqlField\"\
-      : \"subject\",\n      \"index\": \"\",\n      \"nodeCountField\": \"node_id\"\
-      \n    },\n    \"charts\": {\n      \"project\": {\n        \"chartType\": \"\
-      count\",\n        \"title\": \"Projects\"\n      },\n      \"study\": {\n  \
-      \      \"chartType\": \"count\",\n        \"title\": \"Studies\"\n      },\n\
-      \      \"file_type\": {\n        \"chartType\": \"count\",\n        \"title\"\
-      : \"File Types\"\n      },\n      \"ethnicity\": {\n        \"chartType\": \"\
-      stackedBar\",\n        \"title\": \"Ethnicity\"\n      },\n      \"gender\"\
-      : {\n        \"chartType\": \"pie\",\n        \"title\": \"Gender\"\n      },\n\
-      \      \"race\": {\n        \"chartType\": \"pie\",\n        \"title\": \"Race\"\
-      \n      },\n      \"vital_status\": {\n        \"chartType\": \"bar\",\n   \
-      \     \"title\": \"Vital Status\"\n      }\n    },\n    \"filters\": {\n   \
-      \   \"tabs\": [\n        {\n          \"title\": \"Project\",\n          \"\
-      fields\": [\n            \"project\",\n            \"study\"\n          ]\n\
-      \        },\n        {\n          \"title\": \"Subject\",\n          \"fields\"\
-      : [\n            \"race\",\n            \"ethnicity\",\n            \"gender\"\
-      ,\n            \"vital_status\"\n          ]\n        },\n        {\n      \
-      \    \"title\": \"File\",\n          \"fields\": [\n            \"file_type\"\
-      \n          ]\n        }\n      ]\n    },\n    \"buttons\": [\n      {\n   \
-      \     \"enabled\": true,\n        \"type\": \"data\",\n        \"title\": \"\
-      Download All Data\",\n        \"leftIcon\": \"user\",\n        \"rightIcon\"\
-      : \"download\",\n        \"fileName\": \"data.json\"\n      },\n      {\n  \
-      \      \"enabled\": true,\n        \"type\": \"manifest\",\n        \"title\"\
-      : \"Download Manifest\",\n        \"leftIcon\": \"datafile\",\n        \"rightIcon\"\
-      : \"download\",\n        \"fileName\": \"manifest.json\"\n      }\n    ],\n\
-      \    \"table\": {\n      \"enabled\": true,\n      \"fields\": [\n        \"\
-      project\",\n        \"study\",\n        \"race\",\n        \"ethnicity\",\n\
-      \        \"gender\",\n        \"vital_status\",\n        \"whatever_lab_result_value\"\
-      ,\n        \"file_count\",\n        \"file_type\",\n        \"file_format\"\n\
-      \      ]\n    },\n    \"terraExportURL\": null,\n    \"sevenBridgesExportURL\"\
-      : null\n  },\n  \"useArboristUI\": false,\n  \"showArboristAuthzOnProfile\"\
-      : false,\n  \"showFenceAuthzOnProfile\": true,\n  \"componentToResourceMapping\"\
-      : {},\n  \"ddUrl\": \"ddog-gov.com\"\n}\n"
+    css: |
+      /* Hide Data Dictionary information */
+      .footer__version-area > div:nth-child(1) {
+        display: none;
+      }
+    json: |
+      {
+        "gaTrackingId": "undefined",
+        "grafanaFaroConfig": {
+          "grafanaFaroEnable": true,
+          "grafanaFaroNamespace": "dcfprod"
+        },
+        "graphql": {
+          "boardCounts": [
+            {
+              "graphql": "_case_count",
+              "name": "Case",
+              "plural": "Cases"
+            },
+            {
+              "graphql": "_experiment_count",
+              "name": "Experiment",
+              "plural": "Experiments"
+            },
+            {
+              "graphql": "_aliquot_count",
+              "name": "Aliquot",
+              "plural": "Aliquots"
+            }
+          ],
+          "chartCounts": [
+            {
+              "graphql": "_case_count",
+              "name": "Case"
+            },
+            {
+              "graphql": "_experiment_count",
+              "name": "Experiment"
+            },
+            {
+              "graphql": "_aliquot_count",
+              "name": "Aliquot"
+            }
+          ],
+          "projectDetails": "boardCounts"
+        },
+        "components": {
+          "appName": "NCI Data Commons Framework Services",
+          "index": {
+            "introduction": {
+              "heading": "Data Commons",
+              "text": "The NCI Data Commons Framework Services supports the management, analysis and sharing of data for the research community.",
+              "link": "/submission"
+            },
+            "buttons": [
+              {
+                "name": "Access Data",
+                "icon": "data-access",
+                "body": "Use our selected tool to filter out the data you need.",
+                "link": "/query",
+                "label": "Query data"
+              },
+              {
+                "name": "Submit Data",
+                "icon": "data-submit",
+                "body": "Submit Data based on the dictionary.",
+                "link": "/submission",
+                "label": "Submit data"
+              }
+            ]
+          },
+          "navigation": {
+            "title": "NCI Data Commons Framework Services",
+            "items": [
+              {
+                "icon": "profile",
+                "link": "/identity",
+                "name": "Profile",
+                "tooltip": ""
+              }
+            ]
+          },
+          "topBar": {
+            "items": [
+              {
+                "icon": "upload",
+                "link": "/submission",
+                "name": "Submit Data"
+              },
+              {
+                "link": "https://nci-crdc.datacommons.io/dashboard/Public/docs/redir_gen3.html",
+                "name": "Documentation"
+              }
+            ]
+          },
+          "login": {
+            "title": "NCI Data Commons Framework Services",
+            "subTitle": "Explore, Analyze, and Share Data",
+            "text": "The vision of DCFS is to make it easier to develop, operate, and interoperate data commons, data clouds, knowledge bases, and other resources for managing, analyzing, and sharing research data that can be part of a large data commons ecosystem.",
+            "contact": "If you have any questions about access or the registration process, please contact ",
+            "email": "dcf-support@gen3.org"
+          },
+          "certs": {
+            "security_quiz": {
+              "title": "BloodPAC User agreement",
+              "description": "The agreement on what you can and need to do in a Commons.",
+              "questions": [
+                {
+                  "name": "Things you can do after registration",
+                  "question": "As a registered user, I can do the following things without any problem. Is it true or not:",
+                  "options": [
+                    "Browse public Project",
+                    "Upload file",
+                    "Download file",
+                    "Invite people"
+                  ],
+                  "answer": 0,
+                  "hint": "Some information about this question"
+                },
+                {
+                  "name": "Things you need to do to become the registered user",
+                  "question": "In order to be a register user, I must do the following things otherwise:",
+                  "options": [
+                    "Agree the user agreement",
+                    "Accept a consent",
+                    "None of them",
+                    "Both of them"
+                  ],
+                  "answer": 2,
+                  "hint": "Some information about this question"
+                },
+                {
+                  "name": "Things you can do with data",
+                  "question": "How can I share data with other people according to the policy of the commons",
+                  "options": [
+                    "I can not share data",
+                    "I can only share data with BPA memebers",
+                    "I can share data with family",
+                    "I can share data with my wife"
+                  ],
+                  "answer": 1,
+                  "hint": "Some information about this question"
+                }
+              ]
+            }
+          },
+          "footerLogos": [
+            {
+              "src": "/src/img/gen3.png",
+              "href": "https://nci-crdc.datacommons.io/dashboard/Public/docs/redir_gen3_ctds.html",
+              "alt": "Gen3 Data Commons"
+            },
+            {
+              "src": "/src/img/createdby.png",
+              "href": "https://nci-crdc.datacommons.io/dashboard/Public/docs/redir_ctds.html",
+              "alt": "Center for Translational Data Science at the University of Chicago"
+            }
+          ],
+          "privacyPolicy": {
+            "text": "",
+            "routeHref": "",
+            "footerHref": "",
+            "file": ""
+          },
+          "footer": {
+            "links": [
+              {
+                "text": "HHS Responsible Disclosure Form",
+                "href": "https://www.hhs.gov/vulnerability-disclosure-policy/index.html"
+              }
+            ]
+          }
+        },
+        "requiredCerts": [],
+        "featureFlags": {
+          "explorer": true,
+          "analysis": false
+        },
+        "dataExplorerConfig": {
+          "arrangerConfig": {
+            "projectId": "search",
+            "graphqlField": "subject",
+            "index": "",
+            "nodeCountField": "node_id"
+          },
+          "charts": {
+            "project": {
+              "chartType": "count",
+              "title": "Projects"
+            },
+            "study": {
+              "chartType": "count",
+              "title": "Studies"
+            },
+            "file_type": {
+              "chartType": "count",
+              "title": "File Types"
+            },
+            "ethnicity": {
+              "chartType": "stackedBar",
+              "title": "Ethnicity"
+            },
+            "gender": {
+              "chartType": "pie",
+              "title": "Gender"
+            },
+            "race": {
+              "chartType": "pie",
+              "title": "Race"
+            },
+            "vital_status": {
+              "chartType": "bar",
+              "title": "Vital Status"
+            }
+          },
+          "filters": {
+            "tabs": [
+              {
+                "title": "Project",
+                "fields": [
+                  "project",
+                  "study"
+                ]
+              },
+              {
+                "title": "Subject",
+                "fields": [
+                  "race",
+                  "ethnicity",
+                  "gender",
+                  "vital_status"
+                ]
+              },
+              {
+                "title": "File",
+                "fields": [
+                  "file_type"
+                ]
+              }
+            ]
+          },
+          "buttons": [
+            {
+              "enabled": true,
+              "type": "data",
+              "title": "Download All Data",
+              "leftIcon": "user",
+              "rightIcon": "download",
+              "fileName": "data.json"
+            },
+            {
+              "enabled": true,
+              "type": "manifest",
+              "title": "Download Manifest",
+              "leftIcon": "datafile",
+              "rightIcon": "download",
+              "fileName": "manifest.json"
+            }
+          ],
+          "table": {
+            "enabled": true,
+            "fields": [
+              "project",
+              "study",
+              "race",
+              "ethnicity",
+              "gender",
+              "vital_status",
+              "whatever_lab_result_value",
+              "file_count",
+              "file_type",
+              "file_format"
+            ]
+          },
+          "terraExportURL": null,
+          "sevenBridgesExportURL": null
+        },
+        "useArboristUI": false,
+        "showArboristAuthzOnProfile": false,
+        "showFenceAuthzOnProfile": true,
+        "componentToResourceMapping": {},
+        "ddUrl": "ddog-gov.com"
+      }
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/data-portal
     tag: '2025.04'
 revproxy:
-  ingress:
-    aws:
-      group: dcfprod-helm
   autoscaling:
     enabled: true
     maxReplicas: 12
@@ -226,6 +417,9 @@ revproxy:
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/nginx
     tag: '2025.04'
+  ingress:
+    aws:
+      group: dcfprod-helm
 sheepdog:
   enabled: true
   image:
