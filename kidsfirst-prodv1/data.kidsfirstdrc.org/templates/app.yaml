@@ -14,7 +14,7 @@ spec:
       helm:
         releaseName: gen3-kidsfirst-prodv1
         valueFiles:
-          - $values/kidsfirst-prodv1/staging.gen3.biodatacatalyst.nhlbi.nih.gov/values/values.yaml
+          - $values/kidsfirst-prodv1/data.kidsfirstdrc.org/values/values.yaml
     - repoURL: 'https://github.com/uc-cdis/gen3-gitops.git'
       targetRevision: master
       ref: values
