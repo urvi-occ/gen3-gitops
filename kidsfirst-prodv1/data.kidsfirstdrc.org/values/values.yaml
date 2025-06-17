@@ -78,7 +78,7 @@ global:
   portalApp: gitops
   postgres:
     dbCreate: false
-  revproxyArn: arn:aws:acm:us-east-1:053927701465:certificate/1e450360-d333-412e-8bd6-6c9122065e62
+  revproxyArn: arn:aws:acm:us-east-1:053927701465:certificate/bdc2fc77-e66f-4acb-8674-973c362d1c33
 indexd:
   autoscaling:
     enabled: true
