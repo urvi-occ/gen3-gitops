@@ -1,4 +1,4 @@
-cluster: bdcat-stagingdatastage
+cluster: stagingdatastage
 project: bdcat
 
 accountNumber: "895962626746"
