@@ -16,6 +16,9 @@ calico:
   configuration:
     enabled: false
 
+cert-manager:
+  enabled: true
+
 aws-s3-mountpoint:
   enabled: false
   configuration:
