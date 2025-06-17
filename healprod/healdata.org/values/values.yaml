@@ -26,11 +26,17 @@ aws-es-proxy:
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/aws-es-proxy
     tag: v1.3.1
-cedar-wrapper:
+cedar:
   enabled: true
   image:
     repository: quay.io/cdis/cedar-wrapper-service
     tag: 0.6.0
+  cedar_client_job_enabled: false
+  externalSecrets:
+    createCedarClientSecret: false
+    cedarG3auto: healprod-cedar-g3auto
+    cedarAPIKey: healprod-cedar-api-key
+    cedarDirectoryId: healprod-cedar-directory-id
 dashboard:
   dashboardConfig:
     bucket: dashboard-205252583234-healprod-gen3
