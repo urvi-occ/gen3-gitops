@@ -1,5 +1,5 @@
 ambassador:
-  jupyterNamespace: midrcstaging
+  jupyterNamespace: jupyter-pods-midrcstaging
 arborist:
   autoscaling:
     enabled: true
