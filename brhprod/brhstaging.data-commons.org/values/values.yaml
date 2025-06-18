@@ -1,5 +1,5 @@
 ambassador:
-  jupyterNamespace: brhstaging
+  jupyterNamespace: brhstaging-helm
 access-backend:
   enabled: false
 arborist:
@@ -111,7 +111,7 @@ hatchery:
         "memory-limit": "256Mi",
         "image": "quay.io/cdis/ecs-ws-sidecar:2025.05",
         "env": {
-          "NAMESPACE": "brhstaging",
+          "NAMESPACE": "brhstaging-helm",
           "HOSTNAME": "brhstaging.data-commons.org"
         },
         "args": [],
@@ -453,7 +453,7 @@ metadata:
     \ \"path:study_url\",\n\t\t\t\t\"_subjects_count\" : {\"path\":\"_subjects_count\"\
     , \"default\" : 0 },\n\t\t\t\t\"__manifest\": \"path:__manifest\",\n\t\t\t\t\"\
     commons_url\" : \"gen3.datacommons.io\"\n\t\t\t}\n\t\t}\n\n\t}\n}\n"
-  aggMdsNamespace: brhstaging
+  aggMdsNamespace: brhstaging-helm
   autoscaling:
     enabled: true
     maxReplicas: 1
@@ -483,7 +483,7 @@ portal:
         "gaTrackingId": "G-CRDLB4FGKF",
         "grafanaFaroConfig": {
           "grafanaFaroEnable": true,
-          "grafanaFaroNamespace": "brhstaging"
+          "grafanaFaroNamespace": "brhstaging-helm"
         },
         "graphql": {
           "boardCounts": [],
