@@ -127,7 +127,7 @@ global:
     hatchery_role: bihprod--bihstaging-cloudauto-helm--hatchery-sa
     secretStoreServiceAccount:
       enabled: true
-      roleArn: arn:aws:iam::533267425233:role/bihstaging-cloudauto-external-secrets-sa
+      roleArn: arn:aws:iam::533267425233:role/bihprod--bihstaging-helm--external-secrets-sa
   dev: false
   dictionaryUrl: https://s3.amazonaws.com/dictionary-artifacts/bih_dictionary/0.2.1/schema.json
   dispatcherJobNum: '10'
