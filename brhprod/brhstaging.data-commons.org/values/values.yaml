@@ -1049,6 +1049,7 @@ sheepdog:
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/sheepdog
     tag: '2025.05'
+  fenceUrl: https://brhstaging.data-commons.org/user
 wts:
   enabled: true
   externalSecrets:
