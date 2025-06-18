@@ -87,6 +87,7 @@ global:
     tier_access_level: regular
     tier_access_limit: 50
     useryaml_s3path: s3://cdis-gen3-users/brh/user.yaml
+    fence_url: https://brhstaging.data-commons.org/user
   portalApp: gitops
   postgres:
     dbCreate: false
