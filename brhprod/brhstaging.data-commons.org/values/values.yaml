@@ -98,7 +98,7 @@ hatchery:
     tag: '2025.05'
   json: |-
     {
-      "user-namespace": "jupyter-pods-brhstaging",
+      "user-namespace": "jupyter-pods-brhstaging-helm",
       "sub-dir": "/lw-workspace",
       "user-volume-size": "10Gi",
       "default-pay-model": {
