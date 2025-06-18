@@ -122,7 +122,7 @@ frontend-framework:
 global:
   aws:
     account: '533267425233'
-    awsEsProxyRole: bihprod--bihstaging-cloudauto-helm--es-access
+    awsEsProxyRole: bihprod--bihstaging-helm--es-access
     enabled: true
     hatchery_role: bihprod--bihstaging-cloudauto-helm--hatchery-sa
     secretStoreServiceAccount:
