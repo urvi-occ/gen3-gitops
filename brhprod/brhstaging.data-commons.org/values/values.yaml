@@ -1,5 +1,7 @@
 ambassador:
   jupyterNamespace: brhstaging
+access-backend:
+  enabled: false
 arborist:
   autoscaling:
     enabled: true
