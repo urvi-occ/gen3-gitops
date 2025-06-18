@@ -1,4 +1,4 @@
-cluster: bdcat-stagingdatastage
+cluster: stagingdatastage
 project: bdcat
 
 accountNumber: "895962626746"
@@ -17,6 +17,9 @@ calico:
   enabled: true
   configuration:
     enabled: false
+
+cert-manager:
+  enabled: true
 
 coreDNS:
   enabled: true

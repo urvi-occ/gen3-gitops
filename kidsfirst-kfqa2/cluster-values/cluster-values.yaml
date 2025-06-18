@@ -22,6 +22,9 @@ calico:
   configuration:
     enabled: false
 
+cert-manager:
+  enabled: true
+
 coreDNS:
   enabled: true
   configuration:
@@ -31,6 +34,9 @@ ebs-csi-driver:
   enabled: false
   configuration:
     enabled: false
+
+external-secrets:
+  enabled: true
 
 fluentd:
   enabled: false
