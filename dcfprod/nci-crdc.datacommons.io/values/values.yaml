@@ -12,6 +12,8 @@ ambassador:
   enabled: false
 manifestservice:
   enabled: false
+wts:
+  enabled: false
 audit:
   enabled: true
   externalSecrets:
