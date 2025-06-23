@@ -10,6 +10,8 @@ arborist:
     tag: '2025.04'
 ambassador:
   enabled: false
+manifestservice:
+  enabled: false
 audit:
   enabled: true
   externalSecrets:
