@@ -48,6 +48,8 @@ fluentd:
   image:
     repository: fluent/fluentd-kubernetes-daemonset
     tag: v1.15.3-debian-cloudwatch-1.0
+audit:
+  enabled: false
 global:
   aws:
     account: '885078588865'
