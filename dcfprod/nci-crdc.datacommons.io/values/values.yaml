@@ -47,7 +47,7 @@ datareplicate:
     tag: 2.0.0
 fence:
   usersync:
-    usersync: false
+    usersync: true
     userYamlS3Path: s3://cdis-gen3-users/ncicrdc/user.yaml
   autoscaling:
     enabled: true
