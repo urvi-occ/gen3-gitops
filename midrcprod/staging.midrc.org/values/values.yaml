@@ -481,7 +481,7 @@ global:
     hatchery_role: midrcprod--midrcstaging-helm--hatchery-sa
     secretStoreServiceAccount:
       enabled: true
-      roleArn: arn:aws:iam::813684607867:role/midrcstaging-external-secrets-sa
+      roleArn: arn:aws:iam::813684607867:role/midrcprod--midrcstaging-helm--external-secrets-sa
   dev: false
   dictionaryUrl: https://s3.amazonaws.com/dictionary-artifacts/midrc_dictionary/1.3.9/schema.json
   dispatcherJobNum: '10'
@@ -534,6 +534,9 @@ hatchery:
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/hatchery
     tag: '2025.05'
+  hatchery:
+    json: |
+      
 indexd:
   autoscaling:
     enabled: true
