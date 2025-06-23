@@ -46,6 +46,9 @@ datareplicate:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/dcf-dataservice
     tag: 2.0.0
 fence:
+  usersync:
+    usersync: false
+    userYamlS3Path: s3://cdis-gen3-users/ncicrdc/user.yaml
   autoscaling:
     enabled: true
     maxReplicas: 15
