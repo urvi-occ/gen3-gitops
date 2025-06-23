@@ -52,6 +52,7 @@ global:
   aws:
     account: '885078588865'
     awsEsProxyRole: brhprod--default--es-access
+    enabled: true
     secretStoreServiceAccount:
       enabled: true
       roleArn: arn:aws:iam::885078588865:role/brhprod-external-secrets-sa
