@@ -53,6 +53,8 @@ dicom-server:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/gen3-orthanc
     tag: gen3-0.1.2
   replicas: 1
+  externalSecrets:
+    orthancG3Auto: midrcstaging-orthanc-g3auto
 etl:
   esEndpoint: elasticsearch
   mappings:
@@ -583,6 +585,8 @@ orthanc:
     repository: quay.io/cdis/gen3-orthanc
     tag: orthancteam-master-gen3-24.3.5
   replicas: 1
+  externalSecrets:
+    orthanc-s3-g3auto: midrcstaging-orthanc-s3-g3auto
 peregrine:
   autoscaling:
     enabled: true
