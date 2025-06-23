@@ -586,7 +586,7 @@ orthanc:
     tag: orthancteam-master-gen3-24.3.5
   replicas: 1
   externalSecrets:
-    orthanc-s3-g3auto: midrcstaging-orthanc-s3-g3auto
+    orthancS3G3Auto: midrcstaging-orthanc-s3-g3auto
 peregrine:
   autoscaling:
     enabled: true
