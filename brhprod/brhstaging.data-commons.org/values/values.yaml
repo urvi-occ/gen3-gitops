@@ -13,7 +13,7 @@ arborist:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/arborist
     tag: '2025.05'
 audit:
-  enabled: false
+  enabled: true
   externalSecrets:
     auditG3auto: brhstaging-audit-g3auto
   serviceAccount:
