@@ -2273,10 +2273,7 @@ sower:
             key: hostname
             name: manifest-global
       - name: BUCKET
-        valueFrom:
-          configMapKeyRef:
-            key: bucket_name
-            name: batch-export-g3auto
+        value: preprod-healdata-org-batch-export-bucket
       image: quay.io/cdis/batch-export:5.0.2
       labels:
         internet: 'yes'
