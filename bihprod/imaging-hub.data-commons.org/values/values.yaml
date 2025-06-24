@@ -1,3 +1,5 @@
+ambassador:
+  enabled: false
 arborist:
   autoscaling:
     enabled: true
@@ -149,6 +151,8 @@ global:
   postgres:
     dbCreate: false
   revproxyArn: arn:aws:acm:us-east-1:533267425233:certificate/ee917704-e7c3-4a25-8317-ef1e9e250747
+hatchery:
+  enabled: false
 guppy:
   configIndex: bih_array-config
   enabled: true
@@ -177,6 +181,8 @@ indexd:
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/indexd
     tag: '2025.05'
+manifestservice:
+  enabled: false
 metadata:
   aggMdsNamespace: bihprod
   autoscaling:
