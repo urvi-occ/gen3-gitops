@@ -2261,7 +2261,7 @@ sower:
     # If not set and create is true, a name is generated using the fullname template
     name: "sower-service-account"
     annotations:
-      eks.amazonaws.com/role-arn: arn:aws:iam::205252583234:role/healprod-batch-export-sa-role
+      eks.amazonaws.com/role-arn: "arn:aws:iam::205252583234:role/healprod-batch-export-sa-role"
   enabled: true
   externalSecrets:
     pelicanserviceG3auto: healprod-pelicanservice-g3auto
