@@ -12,7 +12,7 @@ arborist:
   enabled: true
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/arborist
-    tag: '2024.08'
+    tag: '2025.05'
 audit:
   externalSecrets:
     auditG3auto: brhprod-audit-g3auto
@@ -25,7 +25,7 @@ dashboard:
   enabled: true
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/gen3-statics
-    tag: '2024.08'
+    tag: '2025.05'
 fence:
   usersync:
       usersync: true
@@ -323,14 +323,14 @@ indexd:
     serviceCreds: brhprod-indexd-service-creds
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/indexd
-    tag: '2024.08'
+    tag: '2025.05'
 manifestservice:
   enabled: true
   externalSecrets:
     manifestserviceG3auto: brhprod-manifestservice-g3auto
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/manifestservice
-    tag: '2024.08'
+    tag: '2025.05'
   serviceAccount:
     annotations:
       eks.amazonaws.com/role-arn: arn:aws:iam::885078588865:role/brhprod--brhprod-helm--manifest-service-sa
@@ -579,12 +579,12 @@ metadata:
   enabled: true
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/metadata-service
-    tag: '2024.08'
+    tag: '2025.05'
 peregrine:
   enabled: true
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/peregrine
-    tag: '2024.08'
+    tag: '2025.05'
 portal:
   enabled: true
   gitops:
@@ -914,7 +914,7 @@ requestor:
   enabled: true
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/requestor
-    tag: '2024.08'
+    tag: '2025.05'
 revproxy:
   autoscaling:
     enabled: true
@@ -924,7 +924,7 @@ revproxy:
   enabled: true
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/nginx
-    tag: '2024.08'
+    tag: '2025.05'
   ingress:
     aws:
       group: brhprod-helm
@@ -932,7 +932,7 @@ sheepdog:
   enabled: true
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/sheepdog
-    tag: '2024.08'
+    tag: '2025.05'
   fenceUrl: https://brh.data-commons.org/user
 wts:
   enabled: true
@@ -940,7 +940,7 @@ wts:
     wtsG3auto: brhprod-wts-g3auto
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/workspace-token-service
-    tag: '2024.08'
+    tag: '2025.05'
 dashboard:
   dashboardConfig:
     bucket: dashboard-885078588865-brhdemo-gen3
