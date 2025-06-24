@@ -160,7 +160,7 @@ global:
     hatchery_role: jcoinprod--jcoinprod-helm--hatchery-sa
     secretStoreServiceAccount:
       enabled: true
-      roleArn: arn:aws:iam::258867494168:role/jcoinprod-external-secrets-sa
+      roleArn: arn:aws:iam::258867494168:role/jcoinprod--jcoinprod-helm--external-secrets-sa
   dev: false
   dictionaryUrl: https://dictionary-artifacts.s3.amazonaws.com/jcoin_datadictionary/3.1.1/schema.json
   dispatcherJobNum: '10'
