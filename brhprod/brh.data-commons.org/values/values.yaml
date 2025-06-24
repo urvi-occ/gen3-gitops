@@ -53,7 +53,8 @@ audit:
 global:
   aws:
     account: '885078588865'
-    awsEsProxyRole: brhprod--default--es-access
+    awsEsProxyRole: brhprod--brhprod-helm--es-access
+    hatchery_role: brhprod--brhprod-helm--hatchery-sa
     enabled: true
     secretStoreServiceAccount:
       enabled: true
@@ -328,6 +329,9 @@ manifestservice:
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/manifestservice
     tag: '2024.08'
+  serviceAccount:
+    annotations:
+      eks.amazonaws.com/role-arn: arn:aws:iam::885078588865:role/brhprod--brhprod-helm--manifest-service-sa
 metadata:
   aggMdsNamespace: brhprod-helm
   aggMdsConfig: |-
@@ -933,3 +937,14 @@ wts:
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/workspace-token-service
     tag: '2024.08'
+dashboard:
+  dashboardConfig:
+    bucket: dashboard-885078588865-brhdemo-gen3
+    prefix: brh.data-commons.org
+  enabled: true
+  image:
+    repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/gen3-statics
+    tag: '2025.05'
+  serviceAccount:
+    annotations:
+      eks.amazonaws.com/role-arn: arn:aws:iam::885078588865:role/brhprod--brhprod-helm--dashboard-access
