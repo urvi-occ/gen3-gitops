@@ -2254,6 +2254,14 @@ sheepdog:
     tag: '2025.05'
   replicas: 1
 sower:
+  serviceAccount:
+    # -- (bool) Specifies whether a service account should be created.
+    create: true
+    # -- (string) The name of the service account to use.
+    # If not set and create is true, a name is generated using the fullname template
+    name: "sower-service-account"
+    annotations:
+      eks.amazonaws.com/role-arn: arn:aws:iam::205252583234:role/healprod-batch-export-sa-role
   enabled: true
   externalSecrets:
     pelicanserviceG3auto: healprod-pelicanservice-g3auto
@@ -2273,10 +2281,7 @@ sower:
             key: hostname
             name: manifest-global
       - name: BUCKET
-        valueFrom:
-          configMapKeyRef:
-            key: bucket_name
-            name: batch-export-g3auto
+        value: healdata-org-batch-export-bucket
       image: quay.io/cdis/batch-export:5.0.2
       labels:
         internet: 'yes'
@@ -2285,7 +2290,7 @@ sower:
       pull_policy: Always
     name: batch-export
     restart_policy: Never
-    serviceAccountName: batch-export-sa
+    serviceAccountName: sower-service-account
 ssjdispatcher:
   enabled: true
   externalSecrets:
