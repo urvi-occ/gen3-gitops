@@ -147,6 +147,7 @@ global:
     sync_from_dbgap: 'False'
     tier_access_level: libre
     useryaml_s3path: s3://cdis-gen3-users/midrc-bih/user.yaml
+    fence_url: https://imaging-hub.data-commons.org/user
   portalApp: gitops
   postgres:
     dbCreate: false
@@ -359,6 +360,7 @@ sheepdog:
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/sheepdog
     tag: '2025.05'
+  fenceUrl: https://imaging-hub.data-commons.org/user
 spark:
   enabled: true
   image:
