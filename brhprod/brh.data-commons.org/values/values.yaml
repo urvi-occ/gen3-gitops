@@ -1,4 +1,5 @@
 ambassador:
+  jupyterNamespace: "jupyter-pods"
   enabled: true
   image:
     repository: quay.io/datawire/ambassador
@@ -92,7 +93,7 @@ hatchery:
   hatchery:
     json: |-
       {
-        "user-namespace": "jupyter-pods-brhprod-helm",
+        "user-namespace": "jupyter-pods",
         "sub-dir": "/lw-workspace",
         "user-volume-size": "10Gi",
         "default-pay-model": {
@@ -937,7 +938,9 @@ sheepdog:
 wts:
   enabled: true
   externalSecrets:
+    createWtsOidcClientSecret: false
     wtsG3auto: brhprod-wts-g3auto
+    wtsOidcClient: brhprod-wts-client-secret
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/workspace-token-service
     tag: '2025.05'
