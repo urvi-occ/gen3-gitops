@@ -52,6 +52,8 @@ dicom-server:
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/gen3-orthanc
     tag: gen3-0.1.2
+  externalSecrets:
+    orthancG3Auto: midrcprod-orthanc-g3auto
 etl:
   esEndpoint: elasticsearch
   mappings:
