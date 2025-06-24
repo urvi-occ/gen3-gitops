@@ -2285,7 +2285,7 @@ sower:
       pull_policy: Always
     name: batch-export
     restart_policy: Never
-    serviceAccountName: batch-export-sa
+    serviceAccountName: sower-service-account
 ssjdispatcher:
   enabled: true
   externalSecrets:
