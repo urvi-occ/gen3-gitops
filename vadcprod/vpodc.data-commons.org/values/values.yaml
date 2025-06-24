@@ -86,7 +86,7 @@ global:
     hatchery_role: vadcprod--vadcprod-helm--hatchery-sa
     secretStoreServiceAccount:
       enabled: true
-      roleArn: arn:aws:iam::663707118480:role/vadcprod-external-secrets-sa
+      roleArn: arn:aws:iam::663707118480:role/vadcprod--vadc-helm--external-secrets-sa
   dev: false
   dictionaryUrl: https://s3.amazonaws.com/dictionary-artifacts/vadictionary/0.5.4/schema.json
   dispatcherJobNum: '10'
