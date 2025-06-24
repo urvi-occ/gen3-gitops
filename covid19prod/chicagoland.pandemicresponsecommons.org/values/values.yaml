@@ -1,5 +1,5 @@
 ambassador:
-  jupyterNamespace: "covid19prod-helm"
+  jupyterNamespace: "jupyter-pods"
 arborist:
   autoscaling:
     enabled: true
