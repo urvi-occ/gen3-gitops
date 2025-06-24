@@ -455,7 +455,7 @@ global:
     hatchery_role: covid19prod--covid19prod-helm--hatchery-sa
     secretStoreServiceAccount:
       enabled: true
-      roleArn: arn:aws:iam::236714345101:role/covid19prod-external-secrets-sa
+      roleArn: arn:aws:iam::236714345101:role/covid19prod--covid19prod-helm--external-secrets-sa
   dev: false
   dictionaryUrl: https://s3.amazonaws.com/dictionary-artifacts/covid19-datadictionary/3.9.2/schema.json
   dispatcherJobNum: '10'
