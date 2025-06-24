@@ -1,5 +1,5 @@
 ambassador:
-  jupyterNamespace: ""
+  jupyterNamespace: "jupyter-pods"
 arborist:
   autoscaling:
     enabled: true
@@ -531,6 +531,7 @@ guppy:
     type: imaging_study
 hatchery:
   enabled: true
+  jupyterNamespace: jupyter-pods
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/hatchery
     tag: '2025.05'
