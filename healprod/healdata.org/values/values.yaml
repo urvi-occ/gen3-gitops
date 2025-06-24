@@ -1,5 +1,5 @@
 ambassador:
-  jupyterNamespace: jupyter-pods-healprod-helm
+  jupyterNamespace: jupyter-pods
 arborist:
   autoscaling:
     enabled: true
@@ -181,7 +181,7 @@ hatchery:
   hatchery:
     json: |-
       {
-        "user-namespace": "jupyter-pods-healprod-helm",
+        "user-namespace": "jupyter-pods",
         "sub-dir": "/lw-workspace",
         "user-volume-size": "10Gi",
         "pay-models-dynamodb-table": "bmh-admin-portal-backend-bmhworkspacetableD4D73E43-1SZM8FA8IP6F",
