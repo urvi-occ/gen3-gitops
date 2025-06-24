@@ -19,6 +19,7 @@ audit:
     auditG3auto: brhprod-audit-g3auto
 aws-es-proxy:
   enabled: true
+  esEndpoint: vpc-brhprod-gen3-metadata-2-vpold55e7rswbkftejcwsxsrma.us-east-1.es.amazonaws.com
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/aws-es-proxy
     tag: v1.3.1
