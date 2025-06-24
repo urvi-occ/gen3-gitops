@@ -143,6 +143,7 @@ global:
     awsEsProxyRole: healprod--healprod-helm--es-access
     enabled: true
     hatchery_role: healprod--healprod-helm--hatchery-sa
+    sower_role: healprod-batch-export-sa-role
     secretStoreServiceAccount:
       enabled: true
       roleArn: arn:aws:iam::205252583234:role/healprod-external-secrets-sa
@@ -2260,8 +2261,6 @@ sower:
     # -- (string) The name of the service account to use.
     # If not set and create is true, a name is generated using the fullname template
     name: "sower-service-account"
-    annotations:
-      eks.amazonaws.com/role-arn: "arn:aws:iam::205252583234:role/healprod-batch-export-sa-role"
   enabled: true
   externalSecrets:
     pelicanserviceG3auto: healprod-pelicanservice-g3auto
