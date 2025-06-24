@@ -339,6 +339,7 @@ metadata:
   externalSecrets:
     metadataG3auto: brhprod-metadata-g3auto
   aggMdsNamespace: brhprod-helm
+  useAggMds: true
   aggMdsConfig: |-
     {
       "configuration": {
