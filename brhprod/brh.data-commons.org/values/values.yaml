@@ -335,6 +335,8 @@ manifestservice:
     annotations:
       eks.amazonaws.com/role-arn: arn:aws:iam::885078588865:role/brhprod--brhprod-helm--manifest-service-sa
 metadata:
+  externalSecrets:
+    metadataG3auto: brhprod-metadata-g3auto
   aggMdsNamespace: brhprod-helm
   aggMdsConfig: |-
     {
