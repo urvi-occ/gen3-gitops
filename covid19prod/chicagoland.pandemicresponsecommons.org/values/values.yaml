@@ -599,6 +599,7 @@ hatchery:
       ]
     }
 indexd:
+  defaultPrefix: dg.63D5/
   autoscaling:
     enabled: true
     maxReplicas: 8

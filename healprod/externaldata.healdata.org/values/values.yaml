@@ -74,6 +74,7 @@ global:
 hatchery:
   enabled: false
 indexd:
+  defaultPrefix: dg.H35L/
   autoscaling:
     enabled: true
     maxReplicas: 1
