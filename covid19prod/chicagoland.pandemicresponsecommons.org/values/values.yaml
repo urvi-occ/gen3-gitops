@@ -1514,8 +1514,8 @@ sheepdog:
 sower:
   enabled: true
   externalSecrets:
-    createK8sPelicanServiceSecret: false
-    pelicanserviceG3auto: covid19prod-pelicanservice-g3auto
+    createK8sPelicanServiceSecret: true
+    # pelicanserviceG3auto: covid19prod-pelicanservice-g3auto
     createK8sSowerJobsSecret: true
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/sower
