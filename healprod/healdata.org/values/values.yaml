@@ -365,6 +365,7 @@ hatchery:
       ]
     }
 indexd:
+  defaultPrefix: dg.H34L/
   autoscaling:
     enabled: true
     maxReplicas: 3

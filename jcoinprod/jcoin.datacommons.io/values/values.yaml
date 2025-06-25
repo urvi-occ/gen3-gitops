@@ -300,6 +300,7 @@ hatchery:
       ]
     }
 indexd:
+  defaultPrefix: dg.6VTS/
   autoscaling:
     enabled: true
     maxReplicas: 8

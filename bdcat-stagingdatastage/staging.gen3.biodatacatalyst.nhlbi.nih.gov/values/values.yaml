@@ -463,6 +463,7 @@ hatchery:
       ]
     }
 indexd:
+  defaultPrefix: dg.4503/
   autoscaling:
     enabled: true
     maxReplicas: 8
