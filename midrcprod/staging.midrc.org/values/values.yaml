@@ -502,6 +502,7 @@ global:
     tier_access_level: private
     tier_access_limit: '50'
     useryaml_s3path: s3://cdis-gen3-users/midrcstaging/user.yaml
+    fence_url: https://staging.midrc.org/user
   portalApp: gitops
   postgres:
     dbCreate: false
@@ -1736,6 +1737,7 @@ sheepdog:
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/sheepdog
     tag: '2025.05'
+  fenceUrl: https://staging.midrc.org/user
 sower:
   enabled: true
   externalSecrets:
