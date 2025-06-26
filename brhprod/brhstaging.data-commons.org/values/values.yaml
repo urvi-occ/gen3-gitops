@@ -37,6 +37,9 @@ dashboard:
     annotations:
       eks.amazonaws.com/role-arn: arn:aws:iam::885078588865:role/brhprod--brhstaging-helm--dashboard-access
 fence:
+  serviceAccount:
+    annotations:
+      eks.amazonaws.com/role-arn: arn:aws:iam::885078588865:role/brhprod--brhstaging-helm--audit-sqs-sender
   usersync:
     usersync: true
     userYamlS3Path: s3://cdis-gen3-users/brh/user.yaml
@@ -91,6 +94,8 @@ global:
     tier_access_limit: 50
     useryaml_s3path: s3://cdis-gen3-users/brh/user.yaml
     fence_url: https://brhstaging.data-commons.org/user
+  tierAccessLevel: regular
+  tierAccessLimit: 50
   portalApp: gitops
   postgres:
     dbCreate: false
