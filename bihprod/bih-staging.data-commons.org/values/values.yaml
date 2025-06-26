@@ -98,6 +98,9 @@ etl:
     root: imaging_series
     type: aggregator
 fence:
+  serviceAccount:
+    annotations:
+      eks.amazonaws.com/role-arn: arn:aws:iam::533267425233:role/bihprod--bihstaging-cloudauto-helm--audit-sqs-sender
   autoscaling:
     enabled: true
     maxReplicas: 1
