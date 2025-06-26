@@ -111,6 +111,9 @@ etl:
     root: open_access_doc
     type: aggregator
 fence:
+  serviceAccount:
+    annotations:
+      eks.amazonaws.com/role-arn: arn:aws:iam::205252583234:role/healprod--healpreprod-helm--audit-sqs-sender
   autoscaling:
     enabled: true
     maxReplicas: 1
@@ -161,6 +164,7 @@ global:
     sync_from_dbgap: 'False'
     tier_access_level: libre
     useryaml_s3path: s3://cdis-gen3-users/heal/user.yaml
+  tierAccessLevel: libre
   portalApp: gitops
   postgres:
     dbCreate: false
