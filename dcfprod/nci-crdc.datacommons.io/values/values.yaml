@@ -48,6 +48,9 @@ datareplicate:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/dcf-dataservice
     tag: 2.0.0
 fence:
+  serviceAccount:
+    annotations:
+      eks.amazonaws.com/role-arn: arn:aws:iam::584476192960:role/dcfprod--dcfprod-helm--audit-sqs-sender
   usersync:
     usersync: true
     userYamlS3Path: s3://cdis-gen3-users/ncicrdc/user.yaml
@@ -441,8 +444,9 @@ sheepdog:
 sower:
   enabled: true
   externalSecrets:
-    pelicanserviceG3auto: dcfprod-pelicanservice-g3auto
+    createK8sPelicanServiceSecret: true
     sowerjobsG3auto: dcfprod-sower-jobs-g3auto
+    createK8sSowerJobsSecret: false
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/sower
     tag: '2025.04'

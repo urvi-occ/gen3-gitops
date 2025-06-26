@@ -445,6 +445,9 @@ etl:
     root: None
     type: collector
 fence:
+  serviceAccount:
+    annotations:
+      eks.amazonaws.com/role-arn: arn:aws:iam::813684607867:role/midrcvalidate--midrcvalidate-helm--audit-sqs-sender
   autoscaling:
     enabled: true
     maxReplicas: 4
@@ -490,6 +493,8 @@ global:
     tier_access_level: private
     tier_access_limit: '50'
     useryaml_s3path: s3://cdis-gen3-users/midrcvalidate/user.yaml
+  tierAccessLevel: private
+  tierAccessLimit: 50
   portalApp: gitops
   postgres:
     dbCreate: false
@@ -1706,8 +1711,9 @@ sheepdog:
 sower:
   enabled: true
   externalSecrets:
-    pelicanserviceG3auto: midrcvalidate-pelicanservice-g3auto
+    createK8sPelicanServiceSecret: true
     sowerjobsG3auto: midrcvalidate-sower-jobs-g3auto
+    createK8sSowerJobsSecret: false
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/sower
     tag: '2025.05'
