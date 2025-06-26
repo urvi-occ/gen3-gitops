@@ -457,6 +457,9 @@ etl:
     root: None
     type: collector
 fence:
+  serviceAccount:
+    annotations:
+      eks.amazonaws.com/role-arn: arn:aws:iam::813684607867:role/midrcprod--midrcstaging-helm--audit-sqs-sender
   autoscaling:
     enabled: true
     maxReplicas: 4
@@ -506,6 +509,8 @@ global:
     tier_access_limit: '50'
     useryaml_s3path: s3://cdis-gen3-users/midrcstaging/user.yaml
     fence_url: https://staging.midrc.org/user
+  tierAccessLevel: private
+  tierAccessLimit: 50
   portalApp: gitops
   postgres:
     dbCreate: false
@@ -542,7 +547,7 @@ hatchery:
     tag: '2025.05'
   hatchery:
     json: |
-      
+
 indexd:
   autoscaling:
     enabled: true
