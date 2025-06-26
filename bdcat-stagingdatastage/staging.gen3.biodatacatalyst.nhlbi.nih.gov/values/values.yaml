@@ -201,6 +201,9 @@ etl:
       root: None
       type: collector
 fence:
+  serviceAccount:
+    annotations:
+      eks.amazonaws.com/role-arn: arn:aws:iam::895962626746:role/stagingdatastage--stagingdatastage-helm--audit-sqs-sender
   autoscaling:
     enabled: true
     maxReplicas: 15
@@ -263,6 +266,8 @@ global:
     tier_access_level: regular
     tier_access_limit: 50
     useryaml_s3path: s3://cdis-gen3-users/stagingdatastage/user.yaml
+  tierAccessLevel: regular
+  tierAccessLimit: 50
   portalApp: gitops
   postgres:
     dbCreate: false
