@@ -134,6 +134,9 @@ etl:
     root: serious_adverse_event
     type: aggregator
 fence:
+  serviceAccount:
+    annotations:
+      eks.amazonaws.com/role-arn: arn:aws:iam::258867494168:role/jcoinprod--jcoinprod-helm--audit-sqs-sender
   autoscaling:
     enabled: true
     maxReplicas: 10
