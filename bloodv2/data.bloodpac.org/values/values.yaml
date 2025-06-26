@@ -388,6 +388,9 @@ etl:
     root: None
     type: collector
 fence:
+  serviceAccount:
+    annotations:
+      eks.amazonaws.com/role-arn: arn:aws:iam::562749638216:role/bloodv2--bloodv2-helm--audit-sqs-sender
   autoscaling:
     enabled: true
     maxReplicas: 2
