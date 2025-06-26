@@ -141,6 +141,7 @@ global:
     deploy: true
   frontendRoot: gen3ff
   hostname: bihstaging.data-commons.org
+  tierAccessLevel: libre
   manifestGlobalExtraValues:
     esDomain: bihstaging-gen3-metadata
     kube_bucket: kube_bucket.devplanetv1.gen3
