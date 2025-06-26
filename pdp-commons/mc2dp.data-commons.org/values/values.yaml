@@ -29,6 +29,9 @@ dashboard:
     annotations:
       eks.amazonaws.com/role-arn: arn:aws:iam::851725307933:role/pdp-commons--pdp-commons-helm--dashboard-access
 fence:
+  serviceAccount:
+    annotations:
+      eks.amazonaws.com/role-arn: arn:aws:iam::851725307933:role/pdp-commons--pdp-commons-helm--audit-sqs-sender
   enabled: true
   externalSecrets:
     createK8sGoogleAppSecrets: true
@@ -79,6 +82,8 @@ global:
     tier_access_level: regular
     tier_access_limit: 50
     useryaml_s3path: s3://cdis-gen3-users/pdp/user.yaml
+  tierAccessLevel: regular
+  tierAccessLimit: 50
   portalApp: gitops
   postgres:
     dbCreate: false
