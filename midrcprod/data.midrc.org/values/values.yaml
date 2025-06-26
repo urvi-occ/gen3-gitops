@@ -458,7 +458,7 @@ etl:
 fence:
   serviceAccount:
     annotations:
-      eks.amazonaws.com/role-arn: arn:aws:iam::813684607867:role/midrcprod--midrcprod-helm--audit-sqs-receiver
+      eks.amazonaws.com/role-arn: arn:aws:iam::813684607867:role/midrcprod--midrcprod-helm--audit-sqs-sender
   autoscaling:
     enabled: true
     maxReplicas: 4
