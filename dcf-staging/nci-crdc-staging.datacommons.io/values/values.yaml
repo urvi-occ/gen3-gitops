@@ -8,6 +8,10 @@ arborist:
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/arborist
     tag: '2025.06'
+manifestservice:
+  enabled: false
+wts:
+  enabled: false
 audit:
   enabled: true
   externalSecrets:
