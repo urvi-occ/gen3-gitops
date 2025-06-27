@@ -16,6 +16,7 @@ audit:
   enabled: true
   externalSecrets:
     auditG3auto: brhstaging-audit-g3auto
+    dbcreds: brhstaging-audit-creds
   serviceAccount:
     annotations:
       eks.amazonaws.com/role-arn: arn:aws:iam::885078588865:role/brhprod--brhstaging-helm--audit-sqs-receiver
