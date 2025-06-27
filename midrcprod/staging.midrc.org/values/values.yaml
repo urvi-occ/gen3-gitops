@@ -478,8 +478,8 @@ fence:
   serviceAccount:
     annotations:
       eks.amazonaws.com/role-arn: arn:aws:iam::813684607867:role/midrcprod--midrcstaging-helm--audit-sqs-sender
-  userSync:
-    enabled: true
+  usersync:
+    usersync: true
     userYamlS3Path: s3://cdis-gen3-users/midrcstaging/user.yaml
 fluentd:
   enabled: true
