@@ -445,6 +445,9 @@ fence:
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/fence
     tag: '2025.05'
+  usersync:
+    usersync: true
+    userYamlS3Path: s3://cdis-gen3-users/covid19/user.yaml
 fluentd:
   enabled: true
   image:
@@ -465,6 +468,8 @@ global:
   environment: covid19prod
   externalSecrets:
     deploy: true
+    createSlackWebhookSecret: true
+    slackWebhookSecretName: "covid19prod-slack-webhook"
   hostname: chicagoland.pandemicresponsecommons.org
   manifestGlobalExtraValues:
     covid19_data_bucket: s3://opencdn-databucket-gen3
