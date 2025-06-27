@@ -404,6 +404,9 @@ fence:
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/fence
     tag: 10.2.0
+  usersync:
+    usersync: true
+    userYamlS3Path: s3://cdis-gen3-users/bpa/user.yaml
 fluentd:
   enabled: true
   image:
@@ -424,6 +427,8 @@ global:
   environment: bloodv2
   externalSecrets:
     deploy: true
+    createSlackWebhookSecret: true
+    slackWebhookSecretName: "bloodv2-slack-webhook" #pragma: allowlist secret
   hostname: data.bloodpac.org
   manifestGlobalExtraValues:
     es7: true
