@@ -114,6 +114,9 @@ fence:
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/fence
     tag: '2025.05'
+  usersync:
+    usersync: true
+    userYamlS3Path: s3://cdis-gen3-users/midrc-bih-staging/user.yaml
 fluentd:
   enabled: true
   image:
@@ -139,6 +142,8 @@ global:
   environment: bihstaging-cloudauto
   externalSecrets:
     deploy: true
+    createSlackWebhookSecret: true
+    slackWebhookSecretName: "bihstaging-slack-webhook" #pragma: allowlist secret
   frontendRoot: gen3ff
   hostname: bihstaging.data-commons.org
   tierAccessLevel: libre
