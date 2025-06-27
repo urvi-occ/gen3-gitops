@@ -472,6 +472,9 @@ fence:
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/fence
     tag: 11.2.2
+  usersync:
+    usersync: true
+    userYamlS3Path: s3://cdis-gen3-users/midrc/user.yaml
 fluentd:
   enabled: true
   image:
@@ -492,6 +495,8 @@ global:
   environment: midrcprod
   externalSecrets:
     deploy: true
+    createSlackWebhookSecret: true
+    slackWebhookSecretName: "midrcprod-slack-webhook"
   hostname: data.midrc.org
   manifestGlobalExtraValues:
     es7: true
