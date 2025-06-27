@@ -39,7 +39,7 @@ cedar:
     cedarDirectoryId: healpreprod-cedar-directory-id
 dashboard:
   dashboardConfig:
-    bucket: dashboard-205252583234-healpreprod-gen3
+    bucket: dashboard-205252583234-healprod-gen3
     prefix: preprod.healdata.org
   enabled: true
   image:
