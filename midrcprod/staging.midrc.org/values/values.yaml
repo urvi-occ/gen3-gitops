@@ -478,6 +478,9 @@ fence:
   serviceAccount:
     annotations:
       eks.amazonaws.com/role-arn: arn:aws:iam::813684607867:role/midrcprod--midrcstaging-helm--audit-sqs-sender
+  userSync:
+    enabled: true
+    userYamlS3Path: s3://cdis-gen3-users/midrcstaging/user.yaml
 fluentd:
   enabled: true
   image:
@@ -498,6 +501,8 @@ global:
   environment: midrcstaging
   externalSecrets:
     deploy: true
+    createSlackWebhookSecret: true
+    slackWebhookSecretName: "midrcstaging-slack-webhook"
   hostname: staging.midrc.org
   manifestGlobalExtraValues:
     es7: true
