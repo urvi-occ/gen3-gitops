@@ -263,6 +263,9 @@ fence:
     tag: "2025.04"
   FENCE_CONFIG:
     ENABLE_VISA_UPDATE_CRON: true
+  usersync:
+    usersync: true
+    userYamlS3Path: s3://cdis-gen3-users/datastageinternalstaging/user.yaml
 fluentd:
   enabled: true
   image:
@@ -296,6 +299,8 @@ global:
   environment: bdcat-internalstaging
   externalSecrets:
     deploy: true
+    createSlackWebhookSecret: true
+    slackWebhookSecretName: "bdcat-internalstaging-slack-webhook"
   frontendRoot: portal
   hostname: preprod.gen3.biodatacatalyst.nhlbi.nih.gov
   manifestGlobalExtraValues:
