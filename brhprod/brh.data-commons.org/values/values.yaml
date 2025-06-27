@@ -40,6 +40,9 @@ fence:
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/fence
     tag: 10.2.0
+  usersync:
+    usersync: true
+    userYamlS3Path: s3://cdis-gen3-users/brh/user.yaml
 fluentd:
   enabled: true
   image:
@@ -56,6 +59,8 @@ global:
   environment: brhprod
   externalSecrets:
     deploy: true
+    createSlackWebhookSecret: true
+    slackWebhookSecretName: "bihprod-slack-webhook" #pragma: allowlist secret
   hostname: brh.data-commons.org
   manifestGlobalExtraValues:
     ecr-access-job-role-arn: arn:aws:iam::654654631253:role/EcrRepoPolicyUpdateRole
