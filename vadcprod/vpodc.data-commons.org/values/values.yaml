@@ -76,6 +76,9 @@ fence:
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/fence
     tag: '2025.04'
+  usersync:
+    usersync: true
+    userYamlS3Path: s3://cdis-gen3-users/vadcprod/user.yaml
 fluentd:
   enabled: true
   image:
@@ -96,6 +99,8 @@ global:
   environment: vadcprod
   externalSecrets:
     deploy: true
+    createSlackWebhookSecret: true
+    slackWebhookSecretName: "vadcprod-slack-webhook"
   hostname: vpodc.data-commons.org
   manifestGlobalExtraValues:
     es7: true
