@@ -1608,6 +1608,7 @@ peregrine:
     tag: '2025.05'
 portal:
   enabled: true
+  dataUploadBucket: healprod-healpreprod-205252583234-upload
   gitops:
     css: |
       :root {
