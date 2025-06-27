@@ -125,7 +125,7 @@ global:
     hatchery_role: icgc--icgc-helm--hatchery-sa
     secretStoreServiceAccount:
       enabled: true
-      roleArn: arn:aws:iam::446046036926:role/icgc-external-secrets-sa
+      roleArn: arn:aws:iam::446046036926:role/icgc--icgc-helm--external-secrets-sa
   dev: false
   dictionaryUrl: https://s3.amazonaws.com/dictionary-artifacts/tcga_dictionary/1.0.3/schema.json
   dispatcherJobNum: 10
