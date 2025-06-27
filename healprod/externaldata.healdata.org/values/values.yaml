@@ -17,7 +17,7 @@ audit:
     tag: '2025.05'
   serviceAccount:
     annotations:
-      eks.amazonaws.com/role-arn: arn:aws:iam::205252583234:role/healprod--externaldata-helm--audit-sqs-receiver
+      eks.amazonaws.com/role-arn: arn:aws:iam::205252583234:role/healprod--healexternaldata-helm--audit-sqs-receiver
 aws-es-proxy:
   enabled: true
   esEndpoint: vpc-healprod-gen3-metadata-2-l6eifqrue4gqcmvc4u2dny3cdi.us-east-1.es.amazonaws.com
@@ -30,11 +30,11 @@ dashboard:
     prefix: externaldata.org
   serviceAccount:
     annotations:
-      eks.amazonaws.com/role-arn: arn:aws:iam::205252583234:role/healprod--externaldata-helm--dashboard-access
+      eks.amazonaws.com/role-arn: arn:aws:iam::205252583234:role/healprod--healexternaldata-helm--dashboard-access
 fence:
   serviceAccount:
     annotations:
-      eks.amazonaws.com/role-arn: arn:aws:iam::205252583234:role/healprod--externaldata-helm--audit-sqs-sender
+      eks.amazonaws.com/role-arn: arn:aws:iam::205252583234:role/healprod--healexternaldata-helm--audit-sqs-sender
   autoscaling:
     enabled: true
     maxReplicas: 1
@@ -54,9 +54,9 @@ fence:
 global:
   aws:
     account: '205252583234'
-    awsEsProxyRole: healprod--externaldata-helm--es-access
+    awsEsProxyRole: healprod--healexternaldata-helm--es-access
     enabled: true
-    hatchery_role: healprod--externaldata-helm--hatchery-sa
+    hatchery_role: healprod--healexternaldata-helm--hatchery-sa
     secretStoreServiceAccount:
       enabled: true
       roleArn: arn:aws:iam::205252583234:role/healprod--healexternaldata-helm--external-secrets-sa
@@ -103,7 +103,7 @@ manifestservice:
     tag: '2025.05'
   serviceAccount:
     annotations:
-      eks.amazonaws.com/role-arn: arn:aws:iam::205252583234:role/healprod--externaldata-helm--manifest-service-sa
+      eks.amazonaws.com/role-arn: arn:aws:iam::205252583234:role/healprod--healexternaldata-helm--manifest-service-sa
 metadata:
   enabled: true
   esEndpoint: http://elasticsearch:9200
