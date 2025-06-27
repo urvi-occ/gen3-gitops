@@ -150,6 +150,9 @@ fence:
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/fence
     tag: '2025.05'
+  usersync:
+    usersync: true
+    userYamlS3Path: s3://cdis-gen3-users/jcoin/user.yaml
 fluentd:
   enabled: true
   image:
@@ -170,6 +173,8 @@ global:
   environment: jcoinprod
   externalSecrets:
     deploy: true
+    createSlackWebhookSecret: true
+    slackWebhookSecretName: "jcoinprod-slack-webhook"
   hostname: jcoin.datacommons.io
   manifestGlobalExtraValues:
     es7: true
