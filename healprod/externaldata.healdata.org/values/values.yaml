@@ -48,6 +48,9 @@ fence:
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/fence
     tag: '2025.05'
+  usersync:
+    usersync: true
+    userYamlS3Path: s3://cdis-gen3-users/heal/user.yaml
 global:
   aws:
     account: '205252583234'
@@ -63,6 +66,8 @@ global:
   environment: externaldata
   externalSecrets:
     deploy: true
+    createSlackWebhookSecret: true
+    slackWebhookSecretName: "externaldata-slack-webhook"
   hostname: externaldata.healdata.org
   manifestGlobalExtraValues:
     kube_bucket: kube-healprod-gen3
