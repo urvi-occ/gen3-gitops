@@ -35,68 +35,69 @@ dashboard:
       eks.amazonaws.com/role-arn: arn:aws:iam::533267425233:role/bihprod--bihstaging-helm--dashboard-access
 etl:
   esEndpoint: elasticsearch
-  mappings:
-  - doc_type: dataset
-    name: bih_dataset
-    props:
-    - name: project_id
-    - name: submitter_id
-    - name: collection_id
-    - name: commons_long_name
-    - name: commons_name
-    - name: data_url_doi
-    - name: disease_type
-    - name: full_name
-    - name: license
-    - name: metadata_source_date
-    - name: metadata_source_version
-    - name: primary_site
-    - name: publication_citation
-    root: dataset
-    type: aggregator
-  - doc_type: subject
-    name: bih_subject
-    parent_props:
-    - path: datasets[collection_id,commons_long_name,commons_name,data_contributor,data_host,data_url_doi,disease_type,license,metadata_source_api,metadata_source_date,metadata_source_version,primary_site]
-    props:
-    - name: project_id
-    - name: submitter_id
-    - name: race
-    root: subject
-    type: aggregator
-  - doc_type: imaging_study
-    name: bih_imaging_study
-    parent_props:
-    - path: subjects[race,subject_id:submitter_id].datasets[collection_id,commons_long_name,commons_name,data_contributor,data_host,data_url_doi,disease_type,license,metadata_source_api,metadata_source_date,metadata_source_version,primary_site]
-    props:
-    - name: project_id
-    - name: submitter_id
-    - name: StudyDescription
-    - name: StudyInstanceUID
-    - name: study_viewer_url
-    - name: PatientAge
-    - name: PatientSex
-    - name: PatientID
-    - name: EthnicGroup
-    root: imaging_study
-    type: aggregator
-  - doc_type: imaging_series
-    name: bih_imaging_series
-    parent_props:
-    - path: imaging_studies[StudyDescription,StudyInstanceUID,PatientAge,PatientSex,PatientID,EthnicGroup].subjects[race,subject_id:submitter_id].datasets[collection_id,commons_long_name,commons_name,data_contributor,data_host,data_url_doi,disease_type,license,metadata_source_api,metadata_source_date,metadata_source_version,primary_site]
-    props:
-    - name: project_id
-    - name: submitter_id
-    - name: object_ids
-    - name: BodyPartExamined
-    - name: Manufacturer
-    - name: Modality
-    - name: SeriesDescription
-    - name: SeriesInstanceUID
-    - name: series_viewer_url
-    - name: dicom_viewer_url
-    root: imaging_series
-    type: aggregator
+  etlMapping:
+    mappings:
+    - doc_type: dataset
+      name: bih_dataset
+      props:
+      - name: project_id
+      - name: submitter_id
+      - name: collection_id
+      - name: commons_long_name
+      - name: commons_name
+      - name: data_url_doi
+      - name: disease_type
+      - name: full_name
+      - name: license
+      - name: metadata_source_date
+      - name: metadata_source_version
+      - name: primary_site
+      - name: publication_citation
+      root: dataset
+      type: aggregator
+    - doc_type: subject
+      name: bih_subject
+      parent_props:
+      - path: datasets[collection_id,commons_long_name,commons_name,data_contributor,data_host,data_url_doi,disease_type,license,metadata_source_api,metadata_source_date,metadata_source_version,primary_site]
+      props:
+      - name: project_id
+      - name: submitter_id
+      - name: race
+      root: subject
+      type: aggregator
+    - doc_type: imaging_study
+      name: bih_imaging_study
+      parent_props:
+      - path: subjects[race,subject_id:submitter_id].datasets[collection_id,commons_long_name,commons_name,data_contributor,data_host,data_url_doi,disease_type,license,metadata_source_api,metadata_source_date,metadata_source_version,primary_site]
+      props:
+      - name: project_id
+      - name: submitter_id
+      - name: StudyDescription
+      - name: StudyInstanceUID
+      - name: study_viewer_url
+      - name: PatientAge
+      - name: PatientSex
+      - name: PatientID
+      - name: EthnicGroup
+      root: imaging_study
+      type: aggregator
+    - doc_type: imaging_series
+      name: bih_imaging_series
+      parent_props:
+      - path: imaging_studies[StudyDescription,StudyInstanceUID,PatientAge,PatientSex,PatientID,EthnicGroup].subjects[race,subject_id:submitter_id].datasets[collection_id,commons_long_name,commons_name,data_contributor,data_host,data_url_doi,disease_type,license,metadata_source_api,metadata_source_date,metadata_source_version,primary_site]
+      props:
+      - name: project_id
+      - name: submitter_id
+      - name: object_ids
+      - name: BodyPartExamined
+      - name: Manufacturer
+      - name: Modality
+      - name: SeriesDescription
+      - name: SeriesInstanceUID
+      - name: series_viewer_url
+      - name: dicom_viewer_url
+      root: imaging_series
+      type: aggregator
 fence:
   serviceAccount:
     annotations:
