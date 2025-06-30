@@ -97,15 +97,23 @@ hatchery:
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/hatchery
     tag: "2025.05"
-  hatchery:
-    json: |-
-      {
-        "user-namespace": "jupyter-pods",
-        "sub-dir": "/lw-workspace",
-        "user-volume-size": "10Gi",
-        "default-pay-model": {
-          "workspace_type": "Trial Workspace",
-          "local": true
+  json: |-
+    {
+      "user-namespace": "jupyter-pods",
+      "sub-dir": "/lw-workspace",
+      "user-volume-size": "10Gi",
+      "default-pay-model": {
+        "workspace_type": "Trial Workspace",
+        "local": true
+      },
+      "pay-models-dynamodb-table": "bmh-admin-portal-backend-bmhworkspacetableD4D73E43-34AAJOR7A5AG",
+      "sidecar": {
+        "cpu-limit": "1.0",
+        "memory-limit": "256Mi",
+        "image": "quay.io/cdis/ecs-ws-sidecar:2025.05",
+        "env": {
+          "NAMESPACE": "default",
+          "HOSTNAME": "brh.data-commons.org"
         },
         "pay-models-dynamodb-table": "bmh-admin-portal-backend-bmhworkspacetableD4D73E43-34AAJOR7A5AG",
         "sidecar": {
