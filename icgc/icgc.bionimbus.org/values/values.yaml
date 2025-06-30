@@ -109,6 +109,9 @@ fence:
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/fence
     tag: '2025.06'
+  usersync:
+    usersync: true
+    userYamlS3Path: s3://cdis-gen3-users/icgc/user.yaml
 fluentd:
   enabled: true
   image:
@@ -122,13 +125,15 @@ global:
     hatchery_role: icgc--icgc-helm--hatchery-sa
     secretStoreServiceAccount:
       enabled: true
-      roleArn: arn:aws:iam::446046036926:role/icgc-external-secrets-sa
+      roleArn: arn:aws:iam::446046036926:role/icgc--icgc-helm--external-secrets-sa
   dev: false
   dictionaryUrl: https://s3.amazonaws.com/dictionary-artifacts/tcga_dictionary/1.0.3/schema.json
   dispatcherJobNum: 10
   environment: icgc
   externalSecrets:
     deploy: true
+    createSlackWebhookSecret: true
+    slackWebhookSecretName: "icgc-slack-webhook" #pragma: allowlist secret
   hostname: icgc.bionimbus.org
   manifestGlobalExtraValues:
     es7: true

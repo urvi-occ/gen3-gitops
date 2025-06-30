@@ -73,6 +73,8 @@ global:
   environment: brhprod
   externalSecrets:
     deploy: true
+    createSlackWebhookSecret: true
+    slackWebhookSecretName: "brhprod-slack-webhook" #pragma: allowlist secret
   hostname: brh.data-commons.org
   manifestGlobalExtraValues:
     ecr-access-job-role-arn: arn:aws:iam::654654631253:role/EcrRepoPolicyUpdateRole
