@@ -836,7 +836,7 @@ sheepdog:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/sheepdog
     tag: "2025.05"
 wts:
-  replicas: 3
+  replicaCount: 3
   enabled: true
   externalSecrets:
     createWtsOidcClientSecret: false
