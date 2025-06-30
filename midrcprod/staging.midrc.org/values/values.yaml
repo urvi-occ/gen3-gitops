@@ -1742,7 +1742,7 @@ revproxy:
     tag: '2025.06'
   ingress:
     aws:
-      group: midrcstaging-helm
+      group: midrcprod
 sheepdog:
   autoscaling:
     enabled: true
