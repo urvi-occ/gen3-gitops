@@ -1,5 +1,5 @@
 ambassador:
-  jupyterNamespace: jupyter-pods-brhstaging-helm
+  jupyterNamespace: jupyter-pods-brhstaging
 access-backend:
   enabled: false
 arborist:
