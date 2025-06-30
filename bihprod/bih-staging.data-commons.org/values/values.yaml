@@ -1,3 +1,5 @@
+ambassador:
+  enabled: false
 arborist:
   autoscaling:
     enabled: true
@@ -161,6 +163,8 @@ global:
   postgres:
     dbCreate: false
   revproxyArn: arn:aws:acm:us-east-1:533267425233:certificate/dcb6f91b-6e4c-4458-a9d7-3750ba92b754
+hatchery:
+  enabled: false
 guppy:
   configIndex: bih_array-config
   enabled: true
@@ -358,7 +362,7 @@ revproxy:
     tag: '2025.06'
   ingress:
     aws:
-      group: bihstaging-cloudauto-helm
+      group: bihprod
 sheepdog:
   enabled: true
   image:
