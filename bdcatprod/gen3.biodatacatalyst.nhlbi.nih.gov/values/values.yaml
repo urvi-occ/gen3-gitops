@@ -1794,6 +1794,87 @@ fence:
       nih-nhlbi-bdc-recover-adult-phs003463-v4-r1-c1:
         cred: fence-bot
         region: us-east-1
+      nih-nhlbi-bdc-biolincc-aric-phs003738-v1-r1-c1:
+        cred: fence-bot
+        region: us-east-1
+      nih-nhlbi-bdc-biolincc-best-copd-phs004022-v1-r1-c1:
+        cred: fence-bot
+        region: us-east-1
+      nih-nhlbi-bdc-biolincc-lrc-ps-phs003995-v1-r1-c1:
+        cred: fence-bot
+        region: us-east-1
+      nih-nhlbi-bdc-biolincc-roc-primed-phs003825-v2-r1-c1:
+        cred: fence-bot
+        region: us-east-1
+      nih-nhlbi-bdc-connects-activ4a-phs002694-v4-r2-c1:
+        cred: fence-bot
+        region: us-east-1
+      nih-nhlbi-bdc-hfn-pgrn-afib-phs000439-v1-r1-c1:
+        cred: fence-bot
+        region: us-east-1
+      nih-nhlbi-bdc-imaging-aric-phs003946-v1-r1-c1:
+        cred: fence-bot
+        region: us-east-1
+      nih-nhlbi-bdc-path-hht-phs003948-v1-r1-c1:
+        cred: fence-bot
+        region: us-east-1
+      nih-nhlbi-bdc-recover-autopsy-phs003768-v2-r1-c1:
+        cred: fence-bot
+        region: us-east-1
+      nih-nhlbi-bdc-shhs-phs003637-v1-r2-c1:
+        cred: fence-bot
+        region: us-east-1
+      nih-nhlbi-bdc-biolincc-allhat-phs004021-v1-r1-c1:
+        cred: fence-bot
+        region: us-east-1
+      nih-nhlbi-bdc-biolincc-concert-hf-phs004055-v1-r1-c1:
+        cred: fence-bot
+        region: us-east-1
+      nih-nhlbi-bdc-biolincc-ippb-phs004010-v1-r1-c1:
+        cred: fence-bot
+        region: us-east-1
+      nih-nhlbi-bdc-biolincc-lhs-phs004013-v1-r1-c1:
+        cred: fence-bot
+        region: us-east-1
+      nih-nhlbi-bdc-biolincc-pioped-phs004020-v1-r1-c1:
+        cred: fence-bot
+        region: us-east-1
+      nih-nhlbi-bdc-biolincc-prhhp-phs003930-v1-r1-c1:
+        cred: fence-bot
+        region: us-east-1
+      nih-nhlbi-bdc-dir-stressors-health-phs004019-v1-r1-c1:
+        cred: fence-bot
+        region: us-east-1
+      nih-nhlbi-bdc-hfn-migen-phs000294-v1-r1-c1:
+        cred: fence-bot
+        region: us-east-1
+      nih-nhlbi-bdc-imaging-hchssol-phs003963-v1-r1-c1:
+        cred: fence-bot
+        region: us-east-1
+      nih-nhlbi-bdc-imaging-hchssol-phs003963-v1-r1-c2:
+        cred: fence-bot
+        region: us-east-1
+      nih-nhlbi-bdc-invested-phs004011-v1-r1-c1:
+        cred: fence-bot
+        region: us-east-1
+      nih-nhlbi-bdc-pcgc-phs001194-v4-r1-c1:
+        cred: fence-bot
+        region: us-east-1
+      nih-nhlbi-bdc-pcgc-phs001194-v4-r1-c2:
+        cred: fence-bot
+        region: us-east-1
+      nih-nhlbi-bdc-roc-cpr-phs003818-v1-r1-c1:
+        cred: fence-bot
+        region: us-east-1
+      nih-nhlbi-topmed-freeze10-push-scd-phs001682-v3-r1-c1:
+        cred: fence-bot
+        region: us-east-1
+      nih-nhlbi-topmed-parent-fhs-phs000007-v34-r1-c1:
+        cred: fence-bot
+        region: us-east-1
+      nih-nhlbi-topmed-parent-fhs-phs000007-v34-r1-c2:
+        cred: fence-bot
+        region: us-east-1
     ENABLE_VISA_UPDATE_CRON: true
 
 fluentd:
@@ -2079,8 +2160,6 @@ metadata-delete-expired-objects:
   image:
     repository: quay.io/cdis/metadata-delete-expired-objects
     tag: "2025.04"
-mutatingWebhook:
-  enabled: true
 peregrine:
   autoscaling:
     enabled: true
@@ -2792,7 +2871,8 @@ revproxy:
     tag: "2025.04"
   ingress:
     aws:
-      group: bdcatprod-helm
+      group: bdcatprod
+      sslPolicy: "ELBSecurityPolicy-TLS13-1-2-FIPS-2023-04"
 sheepdog:
   autoscaling:
     enabled: true
@@ -2822,6 +2902,26 @@ sower:
               configMapKeyRef:
                 key: dictionary_url
                 name: manifest-global
+          - name: DB_HOST
+            valueFrom:
+              secretKeyRef:
+                name: sheepdog-dbcreds
+                key: host
+          - name: DB_DATABASE
+            valueFrom:
+              secretKeyRef:
+                name: sheepdog-dbcreds
+                key: database
+          - name: DB_USER
+            valueFrom:
+              secretKeyRef:
+                name: sheepdog-dbcreds
+                key: username
+          - name: DB_PASS
+            valueFrom:
+              secretKeyRef:
+                name: sheepdog-dbcreds
+                key: password
           - name: GEN3_HOSTNAME
             valueFrom:
               configMapKeyRef:
@@ -2838,19 +2938,12 @@ sower:
             name: pelican-creds-volume
             readOnly: true
             subPath: config.json
-          - mountPath: /peregrine-creds.json
-            name: peregrine-creds-volume
-            readOnly: true
-            subPath: creds.json
       name: pelican-export
       restart_policy: Never
       volumes:
         - name: pelican-creds-volume
           secret:
             secretName: pelicanservice-g3auto
-        - name: peregrine-creds-volume
-          secret:
-            secretName: peregrine-creds
     - action: export-files
       container:
         cpu-limit: "1"
@@ -2903,19 +2996,12 @@ sower:
             name: pelican-creds-volume
             readOnly: true
             subPath: config.json
-          - mountPath: /peregrine-creds.json
-            name: peregrine-creds-volume
-            readOnly: true
-            subPath: creds.json
       name: pelican-export-files
       restart_policy: Never
       volumes:
         - name: pelican-creds-volume
           secret:
             secretName: pelicanservice-g3auto
-        - name: peregrine-creds-volume
-          secret:
-            secretName: peregrine-creds
 spark:
   enabled: true
   image:
