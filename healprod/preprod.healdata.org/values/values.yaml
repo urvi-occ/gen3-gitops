@@ -2258,7 +2258,7 @@ revproxy:
     tag: '2025.05'
   ingress:
     aws:
-      group: healpreprod-helm
+      group: healpreprod
 sheepdog:
   enabled: true
   image:
