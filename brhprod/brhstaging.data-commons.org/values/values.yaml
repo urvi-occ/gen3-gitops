@@ -117,7 +117,7 @@ hatchery:
   hatchery:
     json: |-
       {
-        "user-namespace": "jupyter-pods-brhstaging-helm",
+        "user-namespace": "jupyter-pods-brhstaging",
         "sub-dir": "/lw-workspace",
         "user-volume-size": "10Gi",
         "default-pay-model": {
