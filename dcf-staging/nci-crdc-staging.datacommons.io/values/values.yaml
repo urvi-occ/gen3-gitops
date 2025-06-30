@@ -457,7 +457,7 @@ revproxy:
     tag: '2025.06'
   ingress:
     aws:
-      group: dcf-staging-helm
+      group: dcf-staging
 sheepdog:
   enabled: true
   image:
