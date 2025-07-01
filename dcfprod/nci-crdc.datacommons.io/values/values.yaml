@@ -924,6 +924,7 @@ fence:
     fenceGoogleAppCredsSecret: dcfprod-fence-google-app-creds
     fenceGoogleStorageCredsSecret: dcfprod-fence-google-storage-creds
     fenceJwtKeys: dcfprod-fence-jwt
+    fenceSshKeys: dcfprod-fence-ssh-keys
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/fence
     tag: '2025.04'
