@@ -1062,7 +1062,7 @@ revproxy:
     tag: '2025.05'
   ingress:
     aws:
-      group: brhstaging
+      group: brhprod
 sheepdog:
   enabled: true
   image:
