@@ -91,6 +91,7 @@ fence:
     tag: '2025.06'
   usersync:
     usersync: true
+    syncFromDbgap: true
     userYamlS3Path: s3://cdis-gen3-users/dcfstaging-users/user.yaml
 fluentd:
   enabled: true
