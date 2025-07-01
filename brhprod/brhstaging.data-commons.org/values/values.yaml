@@ -1063,6 +1063,8 @@ revproxy:
   ingress:
     aws:
       group: brhprod
+      # match old setting to make sure alb syncs properly
+      sslPolicy: "ELBSecurityPolicy-TLS13-1-2-FIPS-2023-04"
 sheepdog:
   enabled: true
   image:
