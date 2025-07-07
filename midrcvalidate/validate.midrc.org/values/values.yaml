@@ -1703,7 +1703,7 @@ revproxy:
     tag: '2025.05'
   ingress:
     aws:
-      group: midrcvalidate-helm
+      group: midrcvalidate
 sheepdog:
   autoscaling:
     enabled: true
