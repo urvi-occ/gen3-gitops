@@ -1593,7 +1593,7 @@ revproxy:
     tag: '2025.05'
   ingress:
     aws:
-      group: validatestaging
+      group: validatestaging-helm
 sheepdog:
   autoscaling:
     enabled: true
