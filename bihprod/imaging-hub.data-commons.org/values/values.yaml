@@ -365,7 +365,7 @@ revproxy:
     tag: '2025.05'
   ingress:
     aws:
-      group: bihprod-helm
+      group: bihprod
 sheepdog:
   enabled: true
   image:
