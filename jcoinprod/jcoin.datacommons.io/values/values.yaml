@@ -134,6 +134,9 @@ etl:
     root: serious_adverse_event
     type: aggregator
 fence:
+  usersync:
+    usersync: true
+    userYamlS3Path: s3://cdis-gen3-users/jcoin/user.yaml
   autoscaling:
     enabled: true
     maxReplicas: 10
@@ -168,14 +171,13 @@ global:
   externalSecrets:
     deploy: true
   hostname: jcoin.datacommons.io
+  fenceURL: https://jcoin.datacommons.io/user
+  netPolicy:
+    enabled: true
   manifestGlobalExtraValues:
-    es7: true
     kube_bucket: kube-jcoin-prod-gen3
     logs_bucket: s3logs-logs-jcoin-prod-gen3
-    maintenance_mode: 'off'
-    netpolicy: 'on'
-    sync_from_dbgap: 'False'
-    useryaml_s3path: s3://cdis-gen3-users/jcoin/user.yaml
+  maintenanceMode: 'off'
   portalApp: gitops
   postgres:
     dbCreate: false
