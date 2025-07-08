@@ -515,7 +515,7 @@ global:
   #     - 172.25.35.0/24
   publicDataSets: true
   tierAccessLevel: private
-  tierAccessLimit: 50
+  tierAccessLimit: '50'
   portalApp: gitops
   postgres:
     dbCreate: false
