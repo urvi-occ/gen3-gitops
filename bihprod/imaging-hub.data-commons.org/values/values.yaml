@@ -147,8 +147,6 @@ global:
     slackWebhookSecretName: "bihprod-slack-webhook" #pragma: allowlist secret
   frontendRoot: gen3ff
   hostname: imaging-hub.data-commons.org
-  netPolicy:
-    enabled: true
   publicDataSets: true
   manifestGlobalExtraValues:
     kube_bucket: kube_bucket.devplanetv1.gen3
