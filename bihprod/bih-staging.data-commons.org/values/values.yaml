@@ -96,6 +96,9 @@ etl:
     root: imaging_series
     type: aggregator
 fence:
+  usersync:
+    usersync: true
+    userYamlS3Path: s3://cdis-gen3-users/midrc-bih-staging/user.yaml
   autoscaling:
     enabled: true
     maxReplicas: 1
@@ -136,15 +139,14 @@ global:
     deploy: true
   frontendRoot: gen3ff
   hostname: bihstaging.data-commons.org
+  fenceURL: https://bihstaging.data-commons.org/user
+  netPolicy:
+    enabled: true
+  publicDataSets: true
   manifestGlobalExtraValues:
-    esDomain: bihstaging-gen3-metadata
     kube_bucket: kube_bucket.devplanetv1.gen3
     logs_bucket: logs-devplanetv1-gen3
-    netpolicy: 'on'
-    public_datasets: true
-    sync_from_dbgap: 'False'
-    tier_access_level: libre
-    useryaml_s3path: s3://cdis-gen3-users/midrc-bih-staging/user.yaml
+  tierAccessLevel: libre
   portalApp: gitops
   postgres:
     dbCreate: false
