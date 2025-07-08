@@ -77,16 +77,14 @@ global:
     slackWebhookSecretName: "pdp-commons-slack-webhook"
   frontendRoot: gen3ff
   hostname: mc2dp.data-commons.org
+  fenceURL: https://mc2dp.data-commons.org/user
   manifestGlobalExtraValues:
     ecr-access-job-role-arn: arn:aws:iam::654654631253:role/EcrRepoPolicyUpdateRole
     kube_bucket: kube_bucket.devplanetv1.gen3
     logs_bucket: logs-devplanetv1-gen3
-    netpolicy: 'on'
-    public_datasets: true
-    sync_from_dbgap: 'False'
-    tier_access_level: regular
-    tier_access_limit: 50
-    useryaml_s3path: s3://cdis-gen3-users/pdp/user.yaml
+  netPolicy:
+    enabled: true
+  publicDataSets: true
   tierAccessLevel: regular
   tierAccessLimit: 50
   portalApp: gitops
