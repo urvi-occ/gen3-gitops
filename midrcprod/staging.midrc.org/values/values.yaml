@@ -2753,6 +2753,7 @@ ssjdispatcher:
   enabled: true
   externalSecrets:
     credsFile: midrcstaging-ssjdispatcher-creds
+  gen3Namespace: midrcstaging-helm
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/ssjdispatcher
     tag: '2025.06'
