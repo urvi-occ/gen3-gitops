@@ -134,15 +134,12 @@ etl:
     root: serious_adverse_event
     type: aggregator
 fence:
-<<<<<<< HEAD
   usersync:
     usersync: true
     userYamlS3Path: s3://cdis-gen3-users/jcoin/user.yaml
-=======
   serviceAccount:
     annotations:
       eks.amazonaws.com/role-arn: arn:aws:iam::258867494168:role/jcoinprod--jcoinprod-helm--audit-sqs-sender
->>>>>>> be7d0a82cde5168667b6e6a815804e88c766b66d
   autoscaling:
     enabled: true
     maxReplicas: 10

@@ -1837,15 +1837,12 @@ global:
   manifestGlobalExtraValues:
     kube_bucket: kube-stageprod-gen3
     logs_bucket: logs-stageprod-gen3
-<<<<<<< HEAD
-=======
     netpolicy: "on"
     public_datasets: true
     sync_from_dbgap: "True"
     tier_access_level: regular
     tier_access_limit: 50
     useryaml_s3path: s3://cdis-gen3-users/stageprod/user.yaml
->>>>>>> be7d0a82cde5168667b6e6a815804e88c766b66d
   tierAccessLevel: regular
   tierAccessLimit: 50
   portalApp: gitops
