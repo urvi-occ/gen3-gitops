@@ -40,6 +40,9 @@ fence:
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/fence
     tag: '2025.04'
+  usersync:
+    usersync: true
+    userYamlS3Path: s3://cdis-gen3-users/pdp/user.yaml
 fluentd:
   enabled: true
   image:
@@ -70,6 +73,8 @@ global:
   environment: pdp-commons
   externalSecrets:
     deploy: true
+    createSlackWebhookSecret: true
+    slackWebhookSecretName: "pdp-commons-slack-webhook"
   frontendRoot: gen3ff
   hostname: mc2dp.data-commons.org
   manifestGlobalExtraValues:
