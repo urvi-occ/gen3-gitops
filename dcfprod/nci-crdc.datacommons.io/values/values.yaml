@@ -89,6 +89,8 @@ global:
   environment: dcfprod
   externalSecrets:
     deploy: true
+    createSlackWebhookSecret: true
+    slackWebhookSecretName: "dcfprod-slack-webhook"
   hostname: nci-crdc.datacommons.io
   manifestGlobalExtraValues:
     indexd_single_table: 'true'
