@@ -2599,6 +2599,12 @@ sower:
     restart_policy: Never
     serviceAccountName: sower-service-account
 ssjdispatcher:
+  serviceAccount:
+    annotations:
+      eks.amazonaws.com/role-arn: arn:aws:iam::205252583234:role/gen3_service/healprod--healpreprod--ssj
+  jobServiceAccount:
+    annotations:
+      eks.amazonaws.com/role-arn: arn:aws:iam::205252583234:role/gen3_service/healprod--healpreprod--ssj-job
   enabled: true
   externalSecrets:
     credsFile: healpreprod-ssjdispatcher-creds
