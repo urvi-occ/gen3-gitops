@@ -133,7 +133,7 @@ revproxy:
     tag: '2025.05'
   ingress:
     aws:
-      group: externaldata-helm
+      group: healprod
 sheepdog:
   enabled: true
   image:
