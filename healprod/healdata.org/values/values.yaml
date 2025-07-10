@@ -2250,7 +2250,7 @@ revproxy:
     tag: '2025.05'
   ingress:
     aws:
-      group: healprod-helm
+      group: healprod
   replicas: 3
 sheepdog:
   fenceUrl: https://healdata.org/user
