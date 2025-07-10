@@ -1589,7 +1589,7 @@ metadata:
     tag: '2025.05'
   useAggMds: true
 mutatingWebhook:
-  enabled: true
+  enabled: false
 peregrine:
   enabled: true
   image:
