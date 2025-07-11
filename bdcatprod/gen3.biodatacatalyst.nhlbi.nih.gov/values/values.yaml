@@ -2899,6 +2899,26 @@ sower:
               configMapKeyRef:
                 key: dictionary_url
                 name: manifest-global
+          - name: DB_HOST
+            valueFrom:
+              secretKeyRef:
+                name: sheepdog-dbcreds
+                key: host
+          - name: DB_DATABASE
+            valueFrom:
+              secretKeyRef:
+                name: sheepdog-dbcreds
+                key: database
+          - name: DB_USER
+            valueFrom:
+              secretKeyRef:
+                name: sheepdog-dbcreds
+                key: username
+          - name: DB_PASS
+            valueFrom:
+              secretKeyRef:
+                name: sheepdog-dbcreds
+                key: password
           - name: GEN3_HOSTNAME
             valueFrom:
               configMapKeyRef:
@@ -2915,19 +2935,12 @@ sower:
             name: pelican-creds-volume
             readOnly: true
             subPath: config.json
-          - mountPath: /peregrine-creds.json
-            name: peregrine-creds-volume
-            readOnly: true
-            subPath: creds.json
       name: pelican-export
       restart_policy: Never
       volumes:
         - name: pelican-creds-volume
           secret:
             secretName: pelicanservice-g3auto
-        - name: peregrine-creds-volume
-          secret:
-            secretName: peregrine-dbcreds
     - action: export-files
       container:
         cpu-limit: "1"
@@ -2980,19 +2993,12 @@ sower:
             name: pelican-creds-volume
             readOnly: true
             subPath: config.json
-          - mountPath: /peregrine-creds.json
-            name: peregrine-creds-volume
-            readOnly: true
-            subPath: creds.json
       name: pelican-export-files
       restart_policy: Never
       volumes:
         - name: pelican-creds-volume
           secret:
             secretName: pelicanservice-g3auto
-        - name: peregrine-creds-volume
-          secret:
-            secretName: peregrine-dbcreds
 spark:
   enabled: true
   image:
