@@ -476,6 +476,7 @@ fence:
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/fence
     tag: 11.2.2
+  metricsEnabled: true
   usersync:
     usersync: true
     userYamlS3Path: s3://cdis-gen3-users/midrc/user.yaml
@@ -507,7 +508,7 @@ global:
     kube_bucket: kube-midrcprod-gen3
     logs_bucket: logs-midrcprod-gen3
     maintenance_mode: 'off'
-    netpolicy: 'on'
+    netpolicy: 'off'
     public_datasets: true
     sync_from_dbgap: 'False'
     tier_access_level: private
@@ -516,7 +517,7 @@ global:
     useryaml_s3path: s3://cdis-gen3-users/midrc/user.yaml
   maintenanceMode: 'off'
   netPolicy:
-    enabled: true
+    enabled: false
   publicDataSets: true
   tierAccessLevel: private
   tierAccessLimit: 50
