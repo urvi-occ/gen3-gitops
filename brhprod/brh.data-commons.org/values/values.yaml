@@ -818,7 +818,7 @@ revproxy:
     tag: "2025.05"
   ingress:
     aws:
-      group: brhprod-helm
+      group: brhprod
 sheepdog:
   enabled: true
   image:
