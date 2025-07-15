@@ -14,8 +14,6 @@ audit:
   enabled: true
   externalSecrets:
     auditG3auto: healprod-audit-g3auto
-    createSlackWebhookSecret: true
-    slackWebhookSecretName: healprod-slack-webhook
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/audit-service
     tag: '2025.05'
@@ -158,6 +156,8 @@ global:
   environment: healprod
   externalSecrets:
     deploy: true
+    createSlackWebhookSecret: true
+    slackWebhookSecretName: healprod-slack-webhook
   frontendRoot: gen3ff
   hostname: healdata.org
   manifestGlobalExtraValues:
