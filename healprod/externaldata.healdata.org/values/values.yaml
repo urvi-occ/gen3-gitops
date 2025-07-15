@@ -73,8 +73,11 @@ global:
     slackWebhookSecretName: "externaldata-slack-webhook"
   hostname: externaldata.healdata.org
   fenceURL: https://externaldata.healdata.org/user
-  netPolicy:
-    enabled: true
+  # netPolicy:
+  #   enabled: true
+  #   dbSubnet:
+  #     - 172.25.130.0/24
+  #     - 172.25.131.0/24
   manifestGlobalExtraValues:
     kube_bucket: kube-healprod-gen3
     logs_bucket: logs-healprod-gen3

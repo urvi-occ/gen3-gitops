@@ -92,6 +92,11 @@ global:
     createSlackWebhookSecret: true
     slackWebhookSecretName: "dcfprod-slack-webhook"
   hostname: nci-crdc.datacommons.io
+  # netPolicy:
+  #   enabled: true
+  #   dbSubnet:
+  #     - 172.24.242.0/24
+  #     - 172.24.243.0/24
   manifestGlobalExtraValues:
     indexd_single_table: 'true'
     kube_bucket: kube-dcfprod-gen3
@@ -440,7 +445,6 @@ sheepdog:
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/sheepdog
     tag: '2025.04'
-  fenceUrl: https://nci-crdc.datacommons.io/user
 sower:
   enabled: true
   externalSecrets:
