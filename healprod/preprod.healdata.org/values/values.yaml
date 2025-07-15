@@ -49,6 +49,7 @@ dashboard:
     annotations:
       eks.amazonaws.com/role-arn: arn:aws:iam::205252583234:role/healprod--healpreprod-helm--dashboard-access
 etl:
+  enabled: false
   esEndpoint: elasticsearch
   mappings:
   - doc_type: clinical_trials
