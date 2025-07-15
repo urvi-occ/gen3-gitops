@@ -76,8 +76,11 @@ global:
     createSlackWebhookSecret: true
     slackWebhookSecretName: "brhprod-slack-webhook" #pragma: allowlist secret
   hostname: brh.data-commons.org
-  netPolicy:
-    enabled: true
+  # netPolicy:
+  #   enabled: true
+  #   dbSubnet:
+  #     - 172.27.99.0/24
+  #     - 172.27.98.0/24
   publicDataSets: true
   manifestGlobalExtraValues:
     ecr-access-job-role-arn: arn:aws:iam::654654631253:role/EcrRepoPolicyUpdateRole
@@ -942,7 +945,6 @@ sheepdog:
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/sheepdog
     tag: '2025.05'
-  fenceUrl: https://brh.data-commons.org/user
 wts:
   enabled: true
   externalSecrets:

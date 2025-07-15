@@ -2104,8 +2104,11 @@ global:
   frontendRoot: portal
   hostname: preprod.gen3.biodatacatalyst.nhlbi.nih.gov
   fenceURL: https://preprod.gen3.biodatacatalyst.nhlbi.nih.gov/user
-  netPolicy:
-    enabled: true
+  # netPolicy:
+  #   enabled: true
+  #   dbSubnet:
+  #     - 172.24.112.0/25
+  #     - 172.24.112.128/25
   publicDataSets: true
   manifestGlobalExtraValues:
     kube_bucket: kube-stageprod-gen3

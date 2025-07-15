@@ -267,8 +267,11 @@ global:
     slackWebhookSecretName: "stagingdatastage-slack-webhook"
   frontendRoot: portal
   hostname: staging.gen3.biodatacatalyst.nhlbi.nih.gov
-  netPolicy:
-    enabled: true
+  # netPolicy:
+  #   enabled: true
+  #   dbSubnet:
+  #     - 172.25.195.0/24
+  #     - 172.25.194.0/24
   publicDataSets: true
   manifestGlobalExtraValues:
     kube_bucket: kube-stageprod-gen3

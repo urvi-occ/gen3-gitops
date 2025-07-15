@@ -153,8 +153,11 @@ global:
   frontendRoot: gen3ff
   hostname: bihstaging.data-commons.org
   fenceURL: https://bihstaging.data-commons.org/user
-  netPolicy:
-    enabled: true
+  # netPolicy:
+  #   enabled: true
+  #   dbSubnet:
+  #     - 172.27.64.0/25
+  #     - 172.27.64.128/25
   publicDataSets: true
   manifestGlobalExtraValues:
     kube_bucket: kube_bucket.devplanetv1.gen3
