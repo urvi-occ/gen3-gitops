@@ -76,8 +76,11 @@ global:
   hostname: data.kidsfirstdrc.org
   fenceURL: https://data.kidsfirstdrc.org/user
   maintenanceMode: 'off'
-  netPolicy:
-    enabled: true
+  # netPolicy:
+  #   enabled: true
+  #   dbSubnet:
+  #     - 172.24.179.0/24
+  #     - 172.24.178.0/24
   portalApp: gitops
   postgres:
     dbCreate: false

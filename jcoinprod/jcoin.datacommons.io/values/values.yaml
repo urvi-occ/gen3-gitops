@@ -180,8 +180,11 @@ global:
     slackWebhookSecretName: "jcoinprod-slack-webhook"
   hostname: jcoin.datacommons.io
   fenceURL: https://jcoin.datacommons.io/user
-  netPolicy:
-    enabled: true
+  # netPolicy:
+  #   enabled: true
+  #   dbSubnet:
+  #     - 172.26.163.0/24
+  #     - 172.26.162.0/24
   manifestGlobalExtraValues:
     kube_bucket: kube-jcoin-prod-gen3
     logs_bucket: s3logs-logs-jcoin-prod-gen3

@@ -141,6 +141,11 @@ global:
   manifestGlobalExtraValues:
     kube_bucket: kube-icgc-gen3
     logs_bucket: logs-icgc-gen3
+  # netPolicy:
+  #   enabled: true
+  #   dbSubnet:
+  #     - 172.26.146.0/24
+  #     - 172.26.147.0/24
   maintenanceMode: 'off'
   tierAccessLevel: libre
   tierAccessLimit: 50
