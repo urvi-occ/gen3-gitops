@@ -919,6 +919,7 @@ fence:
     minReplicas: 5
     targetCPUUtilizationPercentage: 40
   enabled: true
+  metricsEnabled: true
   externalSecrets:
     createK8sGoogleAppSecrets: false
     fenceConfig: dcfprod-fence-config
