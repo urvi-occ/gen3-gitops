@@ -1309,7 +1309,6 @@ sheepdog:
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/sheepdog
     tag: '2025.06'
-  fenceUrl: https://nci-crdc.datacommons.io/user
 sower:
   enabled: true
   externalSecrets:
