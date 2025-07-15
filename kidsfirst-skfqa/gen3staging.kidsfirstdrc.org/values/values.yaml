@@ -80,8 +80,11 @@ global:
     kube_bucket: kube-skfqa-gen3
     logs_bucket: logs-skfqa-gen3
   maintenanceMode: 'off'
-  netPolicy:
-    enabled: true
+  # netPolicy:
+  #   enabled: true
+  #   dbSubnet:
+  #     - 172.25.146.0/24
+  #     - 172.25.147.0/24
   portalApp: gitops
   postgres:
     dbCreate: false
