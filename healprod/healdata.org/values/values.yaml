@@ -141,7 +141,7 @@ frontend-framework:
   enabled: true
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/heal-data-commons
-    tag: 1.2.1
+    tag: 1.2.2
 global:
   aws:
     account: '205252583234'
@@ -1970,7 +1970,7 @@ portal:
       \          \"name\": \"Profile\",\n          \"tooltip\": \"Create API keys\
       \ for programmatic data access, and review your authorization privileges to\
       \ datasets and services.\"\n        }\n      ]\n    },\n    \"topBar\": {\n\
-      \      \"items\": [\n        {\n          \"link\": \"https://healdata.org/documentation\"\
+      \      \"items\": [\n        {\n          \"link\": \"https://heal.github.io/platform-documentation/\"\
       ,\n          \"name\": \"Help and Guidance\"\n        }\n      ]\n    },\n \
       \   \"login\": {\n      \"title\": \"HEAL Data Platform\",\n      \"subTitle\"\
       : \"Explore, Analyze, and Share Data\",\n      \"text\": \"This website supports\
