@@ -1983,7 +1983,7 @@ portal:
           "topBar": {
             "items": [
               {
-                "link": "https://healdata.org/documentation",
+                "link": "https://heal.github.io/platform-documentation/",
                 "name": "Help and Guidance"
               }
             ]
