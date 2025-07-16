@@ -1,3 +1,5 @@
+ambassador:
+  enabled: false
 audit:
   enabled: true
   externalSecrets:
@@ -530,7 +532,8 @@ guppy:
     type: data_file
   - index: midrcstaging_imaging_study
     type: imaging_study
-
+hatchery:
+  enabled: false
 indexd:
   defaultPrefix: dg.MD1R/
   autoscaling:
@@ -544,6 +547,8 @@ indexd:
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/indexd
     tag: '2025.06'
+manifestservice:
+  enabled: false
 metadata:
   autoscaling:
     enabled: true
@@ -2668,3 +2673,5 @@ tube:
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/tube
     tag: '2025.06'
+wts:
+  enabled: false
