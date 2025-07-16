@@ -140,7 +140,7 @@ frontend-framework:
   enabled: true
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/heal-data-commons
-    tag: 1.2.1
+    tag: 1.2.2
 global:
   aws:
     account: '205252583234'
@@ -1986,7 +1986,7 @@ portal:
           "topBar": {
             "items": [
               {
-                "link": "https://preprod.healdata.org/documentation",
+                "link": "https://heal.github.io/platform-documentation/",
                 "name": "Help and Guidance"
               }
             ]
