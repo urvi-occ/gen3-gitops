@@ -61,7 +61,7 @@ frontend-framework:
   replicaCount: 2
   enabled: true
   image:
-    repository: quay.io/cdis/prometheus-data-platform
+    repository: quay.io/cdis/mc2dp-data-platform
     tag: main
 gen3-user-data-library:
   enabled: true
