@@ -1,5 +1,15 @@
 ambassador:
   enabled: false
+arborist:
+  autoscaling:
+    enabled: true
+    maxReplicas: 4
+    minReplicas: 1
+    targetCPUUtilizationPercentage: 40
+  enabled: true
+  image:
+    repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/arborist
+    tag: '2025.06'
 audit:
   enabled: true
   externalSecrets:
