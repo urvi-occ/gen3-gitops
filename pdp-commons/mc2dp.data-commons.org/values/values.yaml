@@ -1356,7 +1356,7 @@ metadata:
             "subject_primary_disease": "path:primary_disease",
             "subject_type_of_exposures" : "path:type_of_exposures",
             "data_source": "path:data_source",
-            "commons_url": "externalgen3.prometheus.data-commons.org",
+            "commons_url": "",
             "mc2dp_global_id": "path:mc2dp_global_id",
             "entity_type" : "subject",
             "is_synthetic": "No",
