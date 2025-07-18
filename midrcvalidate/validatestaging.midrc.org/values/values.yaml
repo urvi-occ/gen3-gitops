@@ -1,5 +1,5 @@
 ambassador:
-  jupyterNamespace: jupyter-pods-validatestaging
+  enabled: false
 arborist:
   autoscaling:
     enabled: true
@@ -431,7 +431,6 @@ global:
     account: '813684607867'
     awsEsProxyRole: midrcvalidate--validatestaging-helm--es-access
     enabled: true
-    hatchery_role: midrcvalidate--validatestaging-helm--hatchery-sa
     secretStoreServiceAccount:
       enabled: true
       roleArn: arn:aws:iam::813684607867:role/midrcvalidate--validatestaging-helm--external-secrets-sa
@@ -484,11 +483,7 @@ guppy:
   - index: validatestaging_imaging_study
     type: imaging_study
 hatchery:
-  enabled: true
-  jupyterNamespace: jupyter-pods-validatestaging
-  image:
-    repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/hatchery
-    tag: '2025.07'
+  enabled: false
 indexd:
   defaultPrefix: dg.MD1R/
   autoscaling:
@@ -503,15 +498,7 @@ indexd:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/indexd
     tag: '2025.07'
 manifestservice:
-  enabled: true
-  externalSecrets:
-    manifestserviceG3auto: validatestaging-manifestservice-g3auto
-  image:
-    repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/manifestservice
-    tag: '2025.07'
-  serviceAccount:
-    annotations:
-      eks.amazonaws.com/role-arn: arn:aws:iam::813684607867:role/midrcvalidate--validatestaging-helm--manifest-service-sa
+  enabled: false
 metadata:
   autoscaling:
     enabled: true
@@ -828,11 +815,6 @@ portal:
         "showFenceAuthzOnProfile": true,
         "hideSubmissionIfIneligible": true,
         "componentToResourceMapping": {
-          "Workspace": {
-            "resource": "/workspace",
-            "method": "access",
-            "service": "jupyterhub"
-          },
           "Analyze Data": {
             "resource": "/workspace",
             "method": "access",
@@ -878,13 +860,6 @@ portal:
                 "body": "Search and download subsets of data from the MIDRC Data Commons using GraphQL queries.",
                 "link": "/query",
                 "label": "Query Data"
-              },
-              {
-                "name": "Analyze Data",
-                "icon": "data-analyze",
-                "body": "Perform analysis on the MIDRC Data Commons data using Jupyter Notebooks.",
-                "link": "/workspace",
-                "label": "Run Analysis"
               }
             ],
             "homepageChartNodes": [
@@ -987,12 +962,6 @@ portal:
                 "icon": "bar-chart",
                 "tooltip": "Learn how to use Jupyter Notebooks to explore and visualize data discovered in the MIDRC Data Commons by running a static tutorial notebook, or use one of these examples as a launching point for your own custom analysis.",
                 "color": "#a2a2a2"
-              },
-              {
-                "name": "Workspace",
-                "link": "/workspace",
-                "icon": "workspace",
-                "tooltip": "The Workspace provides a secure cloud environment featuring Jupyter Notebooks and RStudio."
               }
             ]
           },
@@ -2488,67 +2457,6 @@ sheepdog:
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/sheepdog
     tag: '2025.07'
-sower:
-  enabled: true
-  externalSecrets:
-    createK8sPelicanServiceSecret: true
-    sowerjobsG3auto: validatestaging-sower-jobs-g3auto
-    createK8sSowerJobsSecret: false
-  image:
-    repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/sower
-    tag: '2025.07'
-  sowerConfig:
-  - action: index-object-manifest
-    activeDeadlineSeconds: 86400
-    container:
-      cpu-limit: '1'
-      env:
-      - name: GEN3_HOSTNAME
-        valueFrom:
-          configMapKeyRef:
-            key: hostname
-            name: manifest-global
-      image: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/manifest-indexing:2025.07
-      memory-limit: 1Gi
-      name: manifest-indexing-job
-      pull_policy: Always
-      volumeMounts:
-      - mountPath: /creds.json
-        name: sower-jobs-creds-volume
-        readOnly: true
-        subPath: creds.json
-    name: manifest-indexing
-    restart_policy: Never
-    serviceAccountName: jobs-validatestaging-midrc-org
-    volumes:
-    - name: sower-jobs-creds-volume
-      secret:
-        secretName: sower-jobs-g3auto
-  - action: download-indexd-manifest
-    container:
-      cpu-limit: '1'
-      env:
-      - name: GEN3_HOSTNAME
-        valueFrom:
-          configMapKeyRef:
-            key: hostname
-            name: manifest-global
-      image: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/download-indexd-manifest:2025.07
-      memory-limit: 1Gi
-      name: indexd-manifest-job
-      pull_policy: Always
-      volumeMounts:
-      - mountPath: /creds.json
-        name: sower-jobs-creds-volume
-        readOnly: true
-        subPath: creds.json
-    name: indexd-manifest
-    restart_policy: Never
-    serviceAccountName: jobs-validatestaging-midrc-org
-    volumes:
-    - name: sower-jobs-creds-volume
-      secret:
-        secretName: sower-jobs-g3auto
 spark:
   enabled: true
   image:
@@ -2568,11 +2476,4 @@ tube:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/tube
     tag: '2025.07'
 wts:
-  enabled: true
-  externalSecrets:
-    createWtsOidcClientSecret: false
-    wtsG3auto: validatestaging-wts-g3auto
-    wtsOidcClient: validatestaging-wts-client-secret
-  image:
-    repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/workspace-token-service
-    tag: '2025.07'
+  enabled: false
