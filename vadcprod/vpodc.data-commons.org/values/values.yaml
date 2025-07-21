@@ -423,8 +423,6 @@ metadata:
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/metadata-service
     tag: "2025.04"
-mutatingWebhook:
-  enabled: true
 ohdsi-atlas:
   enabled: true
   image:
@@ -808,7 +806,8 @@ revproxy:
     tag: "2025.04"
   ingress:
     aws:
-      group: vadcprod-helm
+      group: vadcprod
+      sslPolicy: "ELBSecurityPolicy-TLS13-1-2-Res-FIPS-2023-04"
 sheepdog:
   autoscaling:
     enabled: true
