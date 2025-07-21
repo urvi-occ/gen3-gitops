@@ -159,8 +159,8 @@ hatchery:
             "containers": [
                 {
                     "target-port": 8888,
-                    "cpu-limit": "2.0",
-                    "memory-limit": "8Gi",
+                    "cpu-limit": "1.0",
+                    "memory-limit": "4Gi",
                     "name": "(Generic) Jupyter Lab Notebook with R Kernel",
                     "image": "707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/jupyter-prometheus:prometheus-master",
                     "env": {
