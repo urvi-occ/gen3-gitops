@@ -563,12 +563,12 @@ portal:
         },
         "explorerConfig": [
           {
-            "tabTitle": "Cases",
+            "tabTitle": "Datasets",
             "charts": {},
             "filters": {
               "tabs": [
                 {
-                  "title": "Cases",
+                  "title": "Datasets",
                   "searchFields": [
                     "data_description"
                   ],
@@ -622,8 +622,8 @@ portal:
             ],
             "loginForDownload": true,
             "guppyConfig": {
-              "dataType": "case",
-              "nodeCountTitle": "Cases",
+              "dataType": "dataset",
+              "nodeCountTitle": "Datasets",
               "fieldMapping": [
                 {
                   "field": "project_id",
