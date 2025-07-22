@@ -43,6 +43,9 @@ datareplicate:
 fence:
   FENCE_CONFIG_PUBLIC:
     S3_BUCKETS:
+      multi-consent-test-bucket-kf:
+        cred: 'fence_bot'
+        region: 'us-east-1'
       nci-cbiit-caninedatacommons-file:
         cred: 'fence_bot'
         region: 'us-east-1'
