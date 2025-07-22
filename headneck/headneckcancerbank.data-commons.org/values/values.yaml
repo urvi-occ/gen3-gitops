@@ -27,7 +27,7 @@ global:
   netPolicy:
     enabled: false
   dispatcherJobNum: "10"
-  frontendRoot: "gen3ff"
+  frontendRoot: "portal"
   ddEnabled: false
 
 ambassador:
@@ -294,7 +294,7 @@ frontend-framework:
     requests:
       memory: "105Mi"
       cpu: "15m"
-  enabled: true
+  enabled: false
   image:
     repository: quay.io/cdis/commons-frontend-app
     tag: main
