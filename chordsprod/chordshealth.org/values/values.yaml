@@ -5,6 +5,7 @@ global:
   hostname: "chordshealth.org"
   aws:
     enabled: true
+    awsEsProxyRoleArn: arn:aws:iam::048463324059:role/gen3-service/chords-esproxy-sa
     useLocalSecret:
         enabled: true
         localSecretName: external-secrets-chords-secret
@@ -17,6 +18,12 @@ global:
     # -- (bool) Will use ExternalSecret resources to pull secrets from Secrets Manager instead of creating them locally. Be cautious as this will override secrets you have deployed.
     deploy: true
   pdb: true
+  fenceURL: https://chordshealth.org/user
+  # netPolicy:
+  #   enabled: true
+  #   dbSubnet:
+  #     - 172.27.192.128/25
+  #     - 172.27.192.0/25
 
 arborist:
   enabled: true
@@ -74,7 +81,6 @@ sheepdog:
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/sheepdog
     tag: 5.2.2
-  fenceUrl: https://chordshealth.org/user
 
 manifestservice:
   enabled: true
