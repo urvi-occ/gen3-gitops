@@ -1108,11 +1108,6 @@ portal:
             "method": "access",
             "service": "jupyterhub"
           },
-          "Analyze Data": {
-            "resource": "/workspace",
-            "method": "access",
-            "service": "jupyterhub"
-          },
           "Query": {
             "resource": "/query_page",
             "method": "access",
