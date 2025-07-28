@@ -5,7 +5,7 @@ arborist:
     enabled: true
     maxReplicas: 4
     minReplicas: 2
-    targetCPUUtilizationPercentage: 40
+    targetCPUUtilizationPercentage: 90
   enabled: true
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/arborist
@@ -25,7 +25,7 @@ aws-es-proxy:
     enabled: true
     maxReplicas: 4
     minReplicas: 1
-    targetCPUUtilizationPercentage: 40
+    targetCPUUtilizationPercentage: 90
   enabled: true
   esEndpoint: vpc-midrcprod-gen3-metadata-2-g3zccvv7awc5samwqp62bc5g6y.us-east-1.es.amazonaws.com
   image:
@@ -461,7 +461,7 @@ fence:
     enabled: true
     maxReplicas: 4
     minReplicas: 2
-    targetCPUUtilizationPercentage: 40
+    targetCPUUtilizationPercentage: 90
   enabled: true
   externalSecrets:
     createK8sGoogleAppSecrets: true
@@ -470,6 +470,7 @@ fence:
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/fence
     tag: 11.2.2
+  metricsEnabled: true
   serviceAccount:
     annotations:
       eks.amazonaws.com/role-arn: arn:aws:iam::813684607867:role/midrcprod--midrcstaging-helm--audit-sqs-sender
@@ -498,20 +499,19 @@ global:
     createSlackWebhookSecret: true
     slackWebhookSecretName: "midrcprod-slack-webhook"
   hostname: data.midrc.org
+  fenceURL: https://data.midrc.org/user
   manifestGlobalExtraValues:
-    es7: true
     kube_bucket: kube-midrcprod-gen3
     logs_bucket: logs-midrcprod-gen3
-    maintenance_mode: 'off'
-    netpolicy: 'on'
-    public_datasets: true
-    sync_from_dbgap: 'False'
-    tier_access_level: private
-    tier_access_limit: '50'
-    fence_url: https://data.midrc.org/user
-    useryaml_s3path: s3://cdis-gen3-users/midrc/user.yaml
+  maintenanceMode: 'off'
+  # netPolicy:
+  #   enabled: true
+  #   dbSubnet:
+  #     - 172.25.34.0/24
+  #     - 172.25.35.0/24
+  publicDataSets: true
   tierAccessLevel: private
-  tierAccessLimit: 50
+  tierAccessLimit: '50'
   portalApp: gitops
   postgres:
     dbCreate: false
@@ -522,7 +522,7 @@ guppy:
     enabled: true
     maxReplicas: 4
     minReplicas: 2
-    targetCPUUtilizationPercentage: 40
+    targetCPUUtilizationPercentage: 90
   configIndex: midrc_array-config
   enabled: true
   esEndpoint: http://elasticsearch:9200
@@ -548,7 +548,7 @@ indexd:
     enabled: true
     maxReplicas: 10
     minReplicas: 2
-    targetCPUUtilizationPercentage: 40
+    targetCPUUtilizationPercentage: 90
   enabled: true
   externalSecrets:
     serviceCreds: midrcprod-indexd-service-creds
@@ -562,7 +562,7 @@ metadata:
     enabled: true
     maxReplicas: 10
     minReplicas: 2
-    targetCPUUtilizationPercentage: 40
+    targetCPUUtilizationPercentage: 90
   enabled: true
   esEndpoint: http://elasticsearch:9200
   externalSecrets:
@@ -792,7 +792,7 @@ peregrine:
     enabled: true
     maxReplicas: 10
     minReplicas: 2
-    targetCPUUtilizationPercentage: 40
+    targetCPUUtilizationPercentage: 90
   enabled: true
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/peregrine
@@ -802,7 +802,7 @@ portal:
     enabled: true
     maxReplicas: 4
     minReplicas: 2
-    targetCPUUtilizationPercentage: 40
+    targetCPUUtilizationPercentage: 90
   enabled: true
   gitops:
     css: |
@@ -2825,7 +2825,7 @@ revproxy:
     enabled: true
     maxReplicas: 4
     minReplicas: 2
-    targetCPUUtilizationPercentage: 40
+    targetCPUUtilizationPercentage: 90
   enabled: true
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/nginx
@@ -2838,9 +2838,8 @@ sheepdog:
     enabled: true
     maxReplicas: 10
     minReplicas: 2
-    targetCPUUtilizationPercentage: 40
+    targetCPUUtilizationPercentage: 90
   enabled: true
-  fenceUrl: https://data.midrc.org/user
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/sheepdog
     tag: '2025.07'
@@ -2850,6 +2849,12 @@ spark:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/gen3-spark
     tag: '2025.07'
 ssjdispatcher:
+  serviceAccount:
+    annotations:
+      eks.amazonaws.com/role-arn: arn:aws:iam::813684607867:role/gen3_service/midrcprod--default--ssj
+  jobServiceAccount:
+    annotations:
+      eks.amazonaws.com/role-arn: arn:aws:iam::813684607867:role/gen3_service/midrcprod--default--ssj-job
   enabled: true
   externalSecrets:
     credsFile: midrcprod-ssjdispatcher-creds
