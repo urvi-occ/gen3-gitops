@@ -2,10 +2,11 @@ ambassador:
   enabled: false
 arborist:
   autoscaling:
-    enabled: true
+    enabled: false
     maxReplicas: 4
     minReplicas: 2
     targetCPUUtilizationPercentage: 40
+  replicaCount: 2
   enabled: true
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/arborist
@@ -22,10 +23,11 @@ audit:
       eks.amazonaws.com/role-arn: arn:aws:iam::813684607867:role/midrcprod--midrcprod-helm--audit-sqs-receiver
 aws-es-proxy:
   autoscaling:
-    enabled: true
+    enabled: false
     maxReplicas: 4
     minReplicas: 1
     targetCPUUtilizationPercentage: 40
+  replicaCount: 2
   enabled: true
   esEndpoint: vpc-midrcprod-gen3-metadata-2-g3zccvv7awc5samwqp62bc5g6y.us-east-1.es.amazonaws.com
   image:
@@ -458,10 +460,11 @@ etl:
         type: collector
 fence:
   autoscaling:
-    enabled: true
+    enabled: false
     maxReplicas: 4
     minReplicas: 2
     targetCPUUtilizationPercentage: 40
+  replicaCount: 2
   enabled: true
   externalSecrets:
     createK8sGoogleAppSecrets: true
@@ -519,10 +522,11 @@ global:
 guppy:
   authFilterField: auth_resource_path
   autoscaling:
-    enabled: true
+    enabled: false
     maxReplicas: 4
     minReplicas: 2
     targetCPUUtilizationPercentage: 40
+  replicaCount: 2
   configIndex: midrc_array-config
   enabled: true
   esEndpoint: http://elasticsearch:9200
@@ -545,10 +549,11 @@ hatchery:
 indexd:
   defaultPrefix: dg.MD1R/
   autoscaling:
-    enabled: true
+    enabled: false
     maxReplicas: 10
     minReplicas: 2
     targetCPUUtilizationPercentage: 40
+  replicaCount: 2
   enabled: true
   externalSecrets:
     serviceCreds: midrcprod-indexd-service-creds
@@ -559,10 +564,11 @@ manifestservice:
   enabled: false
 metadata:
   autoscaling:
-    enabled: true
+    enabled: false
     maxReplicas: 10
     minReplicas: 2
     targetCPUUtilizationPercentage: 40
+  replicaCount: 2
   enabled: true
   esEndpoint: http://elasticsearch:9200
   externalSecrets:
@@ -789,20 +795,22 @@ ohif-viewer:
     };
 peregrine:
   autoscaling:
-    enabled: true
+    enabled: false
     maxReplicas: 10
     minReplicas: 2
     targetCPUUtilizationPercentage: 40
+  replicaCount: 2
   enabled: true
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/peregrine
     tag: '2025.06'
 portal:
   autoscaling:
-    enabled: true
+    enabled: false
     maxReplicas: 4
     minReplicas: 2
     targetCPUUtilizationPercentage: 40
+  replicaCount: 2
   enabled: true
   gitops:
     css: |
@@ -2822,10 +2830,11 @@ portal:
     tag: '2025.06'
 revproxy:
   autoscaling:
-    enabled: true
+    enabled: false
     maxReplicas: 4
     minReplicas: 2
     targetCPUUtilizationPercentage: 40
+  replicaCount: 2
   enabled: true
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/nginx
@@ -2835,10 +2844,11 @@ revproxy:
       group: midrcprod
 sheepdog:
   autoscaling:
-    enabled: true
+    enabled: false
     maxReplicas: 10
     minReplicas: 2
     targetCPUUtilizationPercentage: 40
+  replicaCount: 2
   enabled: true
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/sheepdog
