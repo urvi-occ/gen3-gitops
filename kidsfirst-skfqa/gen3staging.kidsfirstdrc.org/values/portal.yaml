@@ -1,5 +1,5 @@
 portal:
-  replicaCount: 2
+  replicaCount: 4
   autoscaling:
     enabled: false
     maxReplicas: 1

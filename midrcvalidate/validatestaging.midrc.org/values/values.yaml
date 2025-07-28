@@ -1,7 +1,7 @@
 ambassador:
   enabled: false
 arborist:
-  replicaCount: 2
+  replicaCount: 4
   autoscaling:
     enabled: false
     maxReplicas: 4
@@ -18,7 +18,7 @@ audit:
     annotations:
       eks.amazonaws.com/role-arn: arn:aws:iam::813684607867:role/midrcvalidate--validatestaging-helm--audit-sqs-receiver
 aws-es-proxy:
-  replicaCount: 2
+  replicaCount: 4
   autoscaling:
     enabled: false
     maxReplicas: 4
@@ -407,7 +407,7 @@ fence:
   serviceAccount:
     annotations:
       eks.amazonaws.com/role-arn: arn:aws:iam::813684607867:role/midrcvalidate--validatestaging-helm--audit-sqs-sender
-  replicaCount: 2
+  replicaCount: 4
   autoscaling:
     enabled: false
     maxReplicas: 4
@@ -465,7 +465,7 @@ global:
   revproxyArn: arn:aws:acm:us-east-1:813684607867:certificate/d4bdf325-afce-4e1d-b431-0dd062ee12c5
 guppy:
   authFilterField: auth_resource_path
-  replicaCount: 2
+  replicaCount: 4
   autoscaling:
     enabled: false
     maxReplicas: 4
@@ -492,7 +492,7 @@ hatchery:
   enabled: false
 indexd:
   defaultPrefix: dg.MD1R/
-  replicaCount: 2
+  replicaCount: 4
   autoscaling:
     enabled: false
     maxReplicas: 10
@@ -507,7 +507,7 @@ indexd:
 manifestservice:
   enabled: false
 metadata:
-  replicaCount: 2
+  replicaCount: 4
   autoscaling:
     enabled: false
     maxReplicas: 10
@@ -523,7 +523,7 @@ metadata:
 mutatingWebhook:
   enabled: false
 peregrine:
-  replicaCount: 2
+  replicaCount: 4
   autoscaling:
     enabled: false
     maxReplicas: 10
@@ -534,7 +534,7 @@ peregrine:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/peregrine
     tag: '2025.07'
 portal:
-  replicaCount: 2
+  replicaCount: 4
   autoscaling:
     enabled: false
     maxReplicas: 4
@@ -2445,7 +2445,7 @@ portal:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/data-portal
     tag: '2025.07'
 revproxy:
-  replicaCount: 2
+  replicaCount: 4
   autoscaling:
     enabled: false
     maxReplicas: 4
@@ -2459,7 +2459,7 @@ revproxy:
     aws:
       group: midrcvalidate
 sheepdog:
-  replicaCount: 2
+  replicaCount: 4
   autoscaling:
     enabled: false
     maxReplicas: 10

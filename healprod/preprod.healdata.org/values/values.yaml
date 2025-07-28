@@ -1,7 +1,7 @@
 ambassador:
   jupyterNamespace: jupyter-pods-healpreprod
 arborist:
-  replicaCount: 2
+  replicaCount: 4
   autoscaling:
     enabled: false
     maxReplicas: 1
@@ -119,7 +119,7 @@ fence:
   serviceAccount:
     annotations:
       eks.amazonaws.com/role-arn: arn:aws:iam::205252583234:role/healprod--healpreprod-helm--audit-sqs-sender
-  replicaCount: 2
+  replicaCount: 4
   autoscaling:
     enabled: false
     maxReplicas: 1
@@ -374,7 +374,7 @@ hatchery:
       }
 indexd:
   defaultPrefix: dg.H34L/
-  replicaCount: 2
+  replicaCount: 4
   autoscaling:
     enabled: false
     maxReplicas: 1
@@ -2549,7 +2549,7 @@ requestor:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/requestor
     tag: '2025.07'
 revproxy:
-  replicaCount: 2
+  replicaCount: 4
   autoscaling:
     enabled: false
     maxReplicas: 1

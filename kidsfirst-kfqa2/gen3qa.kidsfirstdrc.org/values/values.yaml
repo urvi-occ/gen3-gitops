@@ -1,5 +1,5 @@
 arborist:
-  replicaCount: 2
+  replicaCount: 4
   autoscaling:
     enabled: false
     maxReplicas: 1
@@ -43,7 +43,7 @@ fence:
   usersync:
     usersync: true
     userYamlS3Path: s3://cdis-gen3-users/kfqa2/user.yaml
-  replicaCount: 2
+  replicaCount: 4
   autoscaling:
     enabled: false
     maxReplicas: 1
@@ -92,7 +92,7 @@ global:
     dbCreate: false
   revproxyArn: arn:aws:acm:us-east-1:222487244010:certificate/028cb52b-be80-41d2-a273-043a61a30353
 indexd:
-  replicaCount: 2
+  replicaCount: 4
   autoscaling:
     enabled: false
     maxReplicas: 1
@@ -115,7 +115,7 @@ metadata:
 mutatingWebhook:
   enabled: true
 peregrine:
-  replicaCount: 2
+  replicaCount: 4
   autoscaling:
     enabled: false
     maxReplicas: 1
@@ -126,7 +126,7 @@ peregrine:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/peregrine
     tag: '2025.06'
 portal:
-  replicaCount: 2
+  replicaCount: 4
   autoscaling:
     enabled: false
     maxReplicas: 1
@@ -238,7 +238,7 @@ portal:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/data-portal
     tag: '2025.06'
 revproxy:
-  replicaCount: 2
+  replicaCount: 4
   autoscaling:
     enabled: false
     maxReplicas: 1
@@ -252,7 +252,7 @@ revproxy:
     aws:
       group: kfqa2-helm
 sheepdog:
-  replicaCount: 2
+  replicaCount: 4
   autoscaling:
     enabled: false
     maxReplicas: 1

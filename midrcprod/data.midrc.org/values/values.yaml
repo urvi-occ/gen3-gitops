@@ -6,7 +6,7 @@ arborist:
     maxReplicas: 4
     minReplicas: 2
     targetCPUUtilizationPercentage: 40
-  replicaCount: 2
+  replicaCount: 4
   enabled: true
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/arborist
@@ -27,7 +27,7 @@ aws-es-proxy:
     maxReplicas: 4
     minReplicas: 1
     targetCPUUtilizationPercentage: 40
-  replicaCount: 2
+  replicaCount: 4
   enabled: true
   esEndpoint: vpc-midrcprod-gen3-metadata-2-g3zccvv7awc5samwqp62bc5g6y.us-east-1.es.amazonaws.com
   image:
@@ -464,7 +464,7 @@ fence:
     maxReplicas: 4
     minReplicas: 2
     targetCPUUtilizationPercentage: 40
-  replicaCount: 2
+  replicaCount: 4
   enabled: true
   externalSecrets:
     createK8sGoogleAppSecrets: true
@@ -526,7 +526,7 @@ guppy:
     maxReplicas: 4
     minReplicas: 2
     targetCPUUtilizationPercentage: 40
-  replicaCount: 2
+  replicaCount: 4
   configIndex: midrc_array-config
   enabled: true
   esEndpoint: http://elasticsearch:9200
@@ -553,7 +553,7 @@ indexd:
     maxReplicas: 10
     minReplicas: 2
     targetCPUUtilizationPercentage: 40
-  replicaCount: 2
+  replicaCount: 4
   enabled: true
   externalSecrets:
     serviceCreds: midrcprod-indexd-service-creds
@@ -568,7 +568,7 @@ metadata:
     maxReplicas: 10
     minReplicas: 2
     targetCPUUtilizationPercentage: 40
-  replicaCount: 2
+  replicaCount: 4
   enabled: true
   esEndpoint: http://elasticsearch:9200
   externalSecrets:
@@ -799,7 +799,7 @@ peregrine:
     maxReplicas: 10
     minReplicas: 2
     targetCPUUtilizationPercentage: 40
-  replicaCount: 2
+  replicaCount: 4
   enabled: true
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/peregrine
@@ -810,7 +810,7 @@ portal:
     maxReplicas: 4
     minReplicas: 2
     targetCPUUtilizationPercentage: 40
-  replicaCount: 2
+  replicaCount: 4
   enabled: true
   gitops:
     css: |
@@ -2834,7 +2834,7 @@ revproxy:
     maxReplicas: 4
     minReplicas: 2
     targetCPUUtilizationPercentage: 40
-  replicaCount: 2
+  replicaCount: 4
   enabled: true
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/nginx
@@ -2848,7 +2848,7 @@ sheepdog:
     maxReplicas: 10
     minReplicas: 2
     targetCPUUtilizationPercentage: 40
-  replicaCount: 2
+  replicaCount: 4
   enabled: true
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/sheepdog

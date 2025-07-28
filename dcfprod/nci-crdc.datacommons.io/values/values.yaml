@@ -1,5 +1,5 @@
 arborist:
-  replicaCount: 2
+  replicaCount: 4
   autoscaling:
     enabled: false
     maxReplicas: 4
@@ -914,7 +914,7 @@ fence:
     usersync: true
     syncFromDbgap: true
     userYamlS3Path: s3://cdis-gen3-users/ncicrdc/user.yaml
-  replicaCount: 2
+  replicaCount: 4
   autoscaling:
     enabled: false
     maxReplicas: 15
@@ -972,7 +972,7 @@ global:
 indexd:
   defaultPrefix: "dg.4DFC/"
   useSingleTable: "true"
-  replicaCount: 2
+  replicaCount: 4
   autoscaling:
     enabled: false
     maxReplicas: 18
@@ -985,7 +985,7 @@ indexd:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/indexd
     tag: '2025.06'
 metadata:
-  replicaCount: 2
+  replicaCount: 4
   autoscaling:
     enabled: false
     maxReplicas: 5
@@ -1295,7 +1295,7 @@ portal:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/data-portal
     tag: '2025.06'
 revproxy:
-  replicaCount: 2
+  replicaCount: 4
   autoscaling:
     enabled: false
     maxReplicas: 12

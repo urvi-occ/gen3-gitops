@@ -10,7 +10,7 @@ access-backend:
     annotations:
       eks.amazonaws.com/role-arn: arn:aws:iam::895962626746:role/bdcatprod--bdcat-stagingdatastage--access-backend-sa
 arborist:
-  replicaCount: 2
+  replicaCount: 4
   autoscaling:
     enabled: false
     maxReplicas: 4
@@ -209,7 +209,7 @@ fence:
   serviceAccount:
     annotations:
       eks.amazonaws.com/role-arn: arn:aws:iam::895962626746:role/stagingdatastage--stagingdatastage-helm--audit-sqs-sender
-  replicaCount: 2
+  replicaCount: 4
   autoscaling:
     enabled: false
     maxReplicas: 15
@@ -287,7 +287,7 @@ global:
   revproxyArn: arn:aws:acm:us-east-1:895962626746:certificate/1876fa51-031e-4aa9-ab95-7da182a52c7f
 guppy:
   authFilterField: auth_resource_path
-  replicaCount: 2
+  replicaCount: 4
   autoscaling:
     enabled: false
     maxReplicas: 4
@@ -483,7 +483,7 @@ hatchery:
     }
 indexd:
   defaultPrefix: dg.4503/
-  replicaCount: 2
+  replicaCount: 4
   autoscaling:
     enabled: false
     maxReplicas: 8
@@ -503,7 +503,7 @@ manifestservice:
     annotations:
       eks.amazonaws.com/role-arn: arn:aws:iam::562749638216:role/stagingdatastage--stagingdatastage-helm--manifest-service-sa
 metadata:
-  replicaCount: 2
+  replicaCount: 4
   autoscaling:
     enabled: false
     maxReplicas: 5
@@ -522,7 +522,7 @@ metadata-delete-expired-objects:
     repository: quay.io/cdis/metadata-delete-expired-objects
     tag: "2025.06"
 peregrine:
-  replicaCount: 2
+  replicaCount: 4
   autoscaling:
     enabled: false
     maxReplicas: 4
@@ -533,7 +533,7 @@ peregrine:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/peregrine
     tag: "2025.06"
 portal:
-  replicaCount: 2
+  replicaCount: 4
   autoscaling:
     enabled: false
     maxReplicas: 4
@@ -1234,7 +1234,7 @@ portal:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/data-portal
     tag: feature_data_library
 revproxy:
-  replicaCount: 2
+  replicaCount: 4
   autoscaling:
     enabled: false
     maxReplicas: 10
@@ -1248,7 +1248,7 @@ revproxy:
     aws:
       group: stagingdatastage
 sheepdog:
-  replicaCount: 2
+  replicaCount: 4
   autoscaling:
     enabled: false
     maxReplicas: 4
