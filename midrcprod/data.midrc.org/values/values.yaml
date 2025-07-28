@@ -1148,13 +1148,6 @@ portal:
                 "body": "Search and download subsets of data from the MIDRC Data Commons using GraphQL queries.",
                 "link": "/query",
                 "label": "Query Data"
-              },
-              {
-                "name": "Analyze Data",
-                "icon": "data-analyze",
-                "body": "Perform analysis on the MIDRC Data Commons data using Jupyter Notebooks.",
-                "link": "/workspace",
-                "label": "Run Analysis"
               }
             ],
             "homepageChartNodes": [
