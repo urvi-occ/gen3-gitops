@@ -15,7 +15,7 @@ arborist:
     maxReplicas: 4
     minReplicas: 2
     targetCPUUtilizationPercentage: 90
-  replicaCount: 2
+  replicaCount: 4
   enabled: true
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/arborist
@@ -254,7 +254,7 @@ fence:
     maxReplicas: 15
     minReplicas: 5
     targetCPUUtilizationPercentage: 90
-  replicaCount: 2
+  replicaCount: 4
   enabled: true
   externalSecrets:
     createK8sGoogleAppSecrets: false
@@ -2172,7 +2172,7 @@ guppy:
     maxReplicas: 4
     minReplicas: 2
     targetCPUUtilizationPercentage: 90
-  replicaCount: 2
+  replicaCount: 4
   configIndex: internalstaging_array-config
   enabled: true
   esEndpoint: http://elasticsearch:9200
@@ -2195,7 +2195,7 @@ indexd:
     maxReplicas: 4
     minReplicas: 2
     targetCPUUtilizationPercentage: 90
-  replicaCount: 2
+  replicaCount: 4
   enabled: true
   externalSecrets:
     serviceCreds: bdcat-internalstaging-indexd-service-creds
@@ -2210,7 +2210,7 @@ metadata:
     maxReplicas: 5
     minReplicas: 2
     targetCPUUtilizationPercentage: 90
-  replicaCount: 2
+  replicaCount: 4
   enabled: true
   esEndpoint: http://elasticsearch:9200
   externalSecrets:
@@ -2229,7 +2229,7 @@ peregrine:
     maxReplicas: 4
     minReplicas: 2
     targetCPUUtilizationPercentage: 90
-  replicaCount: 2
+  replicaCount: 4
   enabled: true
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/peregrine
@@ -2240,7 +2240,7 @@ portal:
     maxReplicas: 4
     minReplicas: 2
     targetCPUUtilizationPercentage: 90
-  replicaCount: 2
+  replicaCount: 4
   enabled: true
   gitops:
     css: |
@@ -2927,7 +2927,7 @@ revproxy:
     maxReplicas: 4
     minReplicas: 2
     targetCPUUtilizationPercentage: 90
-  replicaCount: 2
+  replicaCount: 4
   enabled: true
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/nginx
@@ -2942,7 +2942,7 @@ sheepdog:
     maxReplicas: 4
     minReplicas: 2
     targetCPUUtilizationPercentage: 90
-  replicaCount: 2
+  replicaCount: 4
   enabled: true
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/sheepdog
