@@ -970,7 +970,7 @@ global:
     dbCreate: false
   revproxyArn: arn:aws:acm:us-east-1:584476192960:certificate/4173b316-0510-4216-8043-3f9234570475
 indexd:
-  metricsEnabled: "false"
+  metricsEnabled: false
   defaultPrefix: "dg.4DFC/"
   useSingleTable: "true"
   replicaCount: 20
