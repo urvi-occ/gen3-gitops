@@ -973,7 +973,7 @@ indexd:
   metricsEnabled: "false"
   defaultPrefix: "dg.4DFC/"
   useSingleTable: "true"
-  replicaCount: 10
+  replicaCount: 20
   autoscaling:
     enabled: false
     maxReplicas: 18
