@@ -29,6 +29,9 @@ coreDNS:
   configuration:
     enabled: false
 
+crossplane:
+  enabled: true
+
 ebs-csi-driver:
   enabled: true
   configuration:
