@@ -50,7 +50,7 @@ datareplicate:
     tag: 2.0.0
 fence:
   FENCE_CONFIG_PUBLIC:
-    dbgap:
+    dbGaP:
       parse_consent_code: true
     S3_BUCKETS:
       cds-54-phs000178:
