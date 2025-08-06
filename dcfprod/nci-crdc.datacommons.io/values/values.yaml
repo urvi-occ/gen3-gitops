@@ -50,6 +50,8 @@ datareplicate:
     tag: 2.0.0
 fence:
   FENCE_CONFIG_PUBLIC:
+    dbGaP:
+      parse_consent_code: true
     S3_BUCKETS:
       cds-54-phs000178:
         cred: "fence_bot"
@@ -985,7 +987,14 @@ indexd:
     serviceCreds: dcfprod-indexd-service-creds
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/indexd
-    tag: '2025.06'
+    # tag: '2025.06'
+    # temporarily test more gunicorn workers
+    tag: 'feat_add-gunicorn-workers'
+  resources:
+    requests:
+      memory: 256Mi
+    limits:
+      memory: 1024Mi
 metadata:
   replicaCount: 4
   autoscaling:
