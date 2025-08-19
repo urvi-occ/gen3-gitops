@@ -154,8 +154,8 @@ hatchery:
         "containers": [
           {
             "target-port": 8888,
-            "cpu-limit": "2.0",
-            "memory-limit": "8Gi",
+            "cpu-limit": "1.0",
+            "memory-limit": "2Gi",
             "name": "(Generic) Jupyter Lab Notebook with R Kernel",
             "image": "quay.io/cdis/brh-notebooks:generic_rkernel__778d8a22ce33935263d7eb85ef2a7a89c164a2a2",
             "env": {
@@ -189,8 +189,8 @@ hatchery:
           },
           {
             "target-port": 8888,
-            "cpu-limit": "2.0",
-            "memory-limit": "8Gi",
+            "cpu-limit": "1.0",
+            "memory-limit": "2Gi",
             "name": "(Tutorials) Example Analysis Jupyter Notebooks",
             "image": "quay.io/cdis/brh-notebooks:combined_demos__8c8c45ded1964148365bf209cbbfb26f72448d3d",
             "env": {
