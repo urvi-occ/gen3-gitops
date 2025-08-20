@@ -1,8 +1,9 @@
 ambassador:
   jupyterNamespace: "jupyter-pods"
 arborist:
+  replicaCount: 4
   autoscaling:
-    enabled: true
+    enabled: false
     maxReplicas: 1
     minReplicas: 1
     targetCPUUtilizationPercentage: 40
@@ -23,8 +24,9 @@ aws-es-proxy:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/aws-es-proxy
     tag: v1.3.1
 dashboard:
+  replicaCount: 4
   autoscaling:
-    enabled: true
+    enabled: false
     maxReplicas: 1
     minReplicas: 1
     targetCPUUtilizationPercentage: 40
@@ -60,11 +62,15 @@ etl:
       root: None
       type: collector
 fence:
+  usersync:
+    usersync: true
+    userYamlS3Path: s3://cdis-gen3-users/vadcprod/user.yaml
   serviceAccount:
     annotations:
       eks.amazonaws.com/role-arn: arn:aws:iam::663707118480:role/vadcprod--vadcprod-helm--audit-sqs-sender
+  replicaCount: 4
   autoscaling:
-    enabled: true
+    enabled: false
     maxReplicas: 1
     minReplicas: 1
     targetCPUUtilizationPercentage: 40
@@ -75,16 +81,16 @@ fence:
     fenceJwtKeys: vadcprod-fence-jwt
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/fence
-    tag: "2025.04"
-  usersync:
-    usersync: true
-    userYamlS3Path: s3://cdis-gen3-users/vadcprod/user.yaml
-fluentd:
+    tag: "2025.06"
+
+frontend-framework:
   enabled: true
   image:
-    repository: fluent/fluentd-kubernetes-daemonset
-    tag: v1.15.3-debian-cloudwatch-1.0
+    repository: quay.io/cdis/vpodc-data-commons
+    tag: main
+
 global:
+  pdb: true
   aws:
     account: "663707118480"
     awsEsProxyRole: vadcprod--vadcprod-helm--es-access
@@ -97,28 +103,32 @@ global:
   dictionaryUrl: https://s3.amazonaws.com/dictionary-artifacts/vadictionary/0.5.4/schema.json
   dispatcherJobNum: "10"
   environment: vadcprod
+  # change to gen3ff / portal when we want to switch between portal or fefw
+  frontendRoot: "gen3ff"
   externalSecrets:
     deploy: true
     createSlackWebhookSecret: true
     slackWebhookSecretName: "vadcprod-slack-webhook"
   hostname: vpodc.data-commons.org
+  fenceURL: https://vpodc.data-commons.org/user
   manifestGlobalExtraValues:
-    es7: true
     kube_bucket: kube-vadcprod-gen3
     logs_bucket: logs-vadcprod-gen3
-    maintenance_mode: "off"
-    netpolicy: "on"
-    sync_from_dbgap: "False"
-    fence_url: https://vpodc.data-commons.org/user
-    useryaml_s3path: s3://cdis-gen3-users/vadcprod/user.yaml
+  maintenanceMode: 'off'
+  # netPolicy:
+  #   enabled: true
+  #   dbSubnet:
+  #     - 172.25.51.0/24
+  #     - 172.25.50.0/24
   portalApp: gitops
   postgres:
     dbCreate: false
   revproxyArn: arn:aws:acm:us-east-1:663707118480:certificate/69ecb9e8-bcc8-4e91-9248-5eb3fcab5940
 guppy:
   authFilterField: auth_resource_path
+  replicaCount: 4
   autoscaling:
-    enabled: true
+    enabled: false
     maxReplicas: 1
     minReplicas: 1
     targetCPUUtilizationPercentage: 40
@@ -147,7 +157,7 @@ hatchery:
           "sidecar": {
               "cpu-limit": "1.0",
               "memory-limit": "256Mi",
-              "image": "707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/gen3fuse-sidecar:2024.09",
+              "image": "707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/gen3fuse-sidecar:master",
               "env": {
                   "NAMESPACE": "default",
                   "HOSTNAME": "vpodc.data-commons.org"
@@ -389,8 +399,9 @@ hatchery:
       }
 indexd:
   defaultPrefix: dg.F738/
+  replicaCount: 4
   autoscaling:
-    enabled: true
+    enabled: false
     maxReplicas: 1
     minReplicas: 1
     targetCPUUtilizationPercentage: 40
@@ -411,8 +422,9 @@ manifestservice:
     annotations:
       eks.amazonaws.com/role-arn: arn:aws:iam::663707118480:role/vadcprod--vadcprod-helm--manifest-service-sa
 metadata:
+  replicaCount: 4
   autoscaling:
-    enabled: true
+    enabled: false
     maxReplicas: 1
     minReplicas: 1
     targetCPUUtilizationPercentage: 40
@@ -434,8 +446,9 @@ ohdsi-webapi:
     repository: docker.io/ohdsi/webapi
     tag: 2.14.0
 peregrine:
+  replicaCount: 4
   autoscaling:
-    enabled: true
+    enabled: false
     maxReplicas: 1
     minReplicas: 1
     targetCPUUtilizationPercentage: 40
@@ -444,8 +457,9 @@ peregrine:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/peregrine
     tag: "2025.04"
 portal:
+  replicaCount: 4
   autoscaling:
-    enabled: true
+    enabled: false
     maxReplicas: 1
     minReplicas: 1
     targetCPUUtilizationPercentage: 40
@@ -795,8 +809,9 @@ portal:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/data-portal
     tag: "2025.04"
 revproxy:
+  replicaCount: 4
   autoscaling:
-    enabled: true
+    enabled: false
     maxReplicas: 1
     minReplicas: 1
     targetCPUUtilizationPercentage: 40
@@ -809,8 +824,9 @@ revproxy:
       group: vadcprod
       sslPolicy: "ELBSecurityPolicy-TLS13-1-2-Res-FIPS-2023-04"
 sheepdog:
+  replicaCount: 4
   autoscaling:
-    enabled: true
+    enabled: false
     maxReplicas: 1
     minReplicas: 1
     targetCPUUtilizationPercentage: 40
@@ -818,7 +834,6 @@ sheepdog:
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/sheepdog
     tag: "2025.04"
-  fenceUrl: https://vpodc.data-commons.org/user
 sower:
   enabled: true
   externalSecrets:
@@ -838,8 +853,9 @@ ssjdispatcher:
     tag: "2025.04"
   indexing: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/indexs3client:2025.04
 wts:
+  replicaCount: 4
   autoscaling:
-    enabled: true
+    enabled: false
     maxReplicas: 1
     minReplicas: 1
     targetCPUUtilizationPercentage: 40

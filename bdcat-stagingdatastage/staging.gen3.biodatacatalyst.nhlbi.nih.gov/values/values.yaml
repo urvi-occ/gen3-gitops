@@ -10,8 +10,9 @@ access-backend:
     annotations:
       eks.amazonaws.com/role-arn: arn:aws:iam::895962626746:role/bdcatprod--bdcat-stagingdatastage--access-backend-sa
 arborist:
+  replicaCount: 4
   autoscaling:
-    enabled: true
+    enabled: false
     maxReplicas: 4
     minReplicas: 2
     targetCPUUtilizationPercentage: 40
@@ -208,8 +209,9 @@ fence:
   serviceAccount:
     annotations:
       eks.amazonaws.com/role-arn: arn:aws:iam::895962626746:role/stagingdatastage--stagingdatastage-helm--audit-sqs-sender
+  replicaCount: 4
   autoscaling:
-    enabled: true
+    enabled: false
     maxReplicas: 15
     minReplicas: 5
     targetCPUUtilizationPercentage: 40
@@ -249,6 +251,7 @@ gen3-user-data-library:
     dbcreds: stagingdatastage-gen3userdatalibrary-creds
     gen3UserDataLibraryG3auto: stagingdatastage-gen3userdatalibrary-g3auto
 global:
+  pdb: true
   aws:
     account: "895962626746"
     awsEsProxyRole: stagingdatastage--stagingdatastage-helm--es-access
@@ -258,7 +261,7 @@ global:
       enabled: true
       roleArn: arn:aws:iam::895962626746:role/stagingdatastage-external-secrets-sa
   dev: false
-  dictionaryUrl: https://s3.amazonaws.com/dictionary-artifacts/gtexdictionary/master/schema.json
+  dictionaryUrl: https://s3.amazonaws.com/dictionary-artifacts/gtexdictionary/4.6.5/schema.json
   dispatcherJobNum: "10"
   environment: stagingdatastage
   externalSecrets:
@@ -267,26 +270,27 @@ global:
     slackWebhookSecretName: "stagingdatastage-slack-webhook"
   frontendRoot: portal
   hostname: staging.gen3.biodatacatalyst.nhlbi.nih.gov
+  # netPolicy:
+  #   enabled: true
+  #   dbSubnet:
+  #     - 172.25.195.0/24
+  #     - 172.25.194.0/24
+  publicDataSets: true
   manifestGlobalExtraValues:
-    es7: true
     kube_bucket: kube-stageprod-gen3
     logs_bucket: logs-stageprod-gen3
-    netpolicy: "on"
-    public_datasets: true
-    sync_from_dbgap: "True"
-    tier_access_level: regular
-    tier_access_limit: 50
-    useryaml_s3path: s3://cdis-gen3-users/stagingdatastage/user.yaml
   tierAccessLevel: regular
   tierAccessLimit: 50
+  fenceURL: https://staging.gen3.biodatacatalyst.nhlbi.nih.gov/user
   portalApp: gitops
   postgres:
     dbCreate: false
   revproxyArn: arn:aws:acm:us-east-1:895962626746:certificate/1876fa51-031e-4aa9-ab95-7da182a52c7f
 guppy:
   authFilterField: auth_resource_path
+  replicaCount: 4
   autoscaling:
-    enabled: true
+    enabled: false
     maxReplicas: 4
     minReplicas: 2
     targetCPUUtilizationPercentage: 40
@@ -480,8 +484,9 @@ hatchery:
     }
 indexd:
   defaultPrefix: dg.4503/
+  replicaCount: 4
   autoscaling:
-    enabled: true
+    enabled: false
     maxReplicas: 8
     minReplicas: 4
     targetCPUUtilizationPercentage: 40
@@ -499,8 +504,9 @@ manifestservice:
     annotations:
       eks.amazonaws.com/role-arn: arn:aws:iam::562749638216:role/stagingdatastage--stagingdatastage-helm--manifest-service-sa
 metadata:
+  replicaCount: 4
   autoscaling:
-    enabled: true
+    enabled: false
     maxReplicas: 5
     minReplicas: 2
     targetCPUUtilizationPercentage: 40
@@ -517,8 +523,9 @@ metadata-delete-expired-objects:
     repository: quay.io/cdis/metadata-delete-expired-objects
     tag: "2025.06"
 peregrine:
+  replicaCount: 4
   autoscaling:
-    enabled: true
+    enabled: false
     maxReplicas: 4
     minReplicas: 2
     targetCPUUtilizationPercentage: 40
@@ -527,8 +534,9 @@ peregrine:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/peregrine
     tag: "2025.06"
 portal:
+  replicaCount: 4
   autoscaling:
-    enabled: true
+    enabled: false
     maxReplicas: 4
     minReplicas: 2
     targetCPUUtilizationPercentage: 40
@@ -1227,8 +1235,9 @@ portal:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/data-portal
     tag: feature_data_library
 revproxy:
+  replicaCount: 4
   autoscaling:
-    enabled: true
+    enabled: false
     maxReplicas: 10
     minReplicas: 4
     targetCPUUtilizationPercentage: 40
@@ -1240,8 +1249,9 @@ revproxy:
     aws:
       group: stagingdatastage
 sheepdog:
+  replicaCount: 4
   autoscaling:
-    enabled: true
+    enabled: false
     maxReplicas: 4
     minReplicas: 2
     targetCPUUtilizationPercentage: 40

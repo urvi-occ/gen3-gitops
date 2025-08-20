@@ -1,6 +1,6 @@
 apiVersion: v2
-name: ci
-description: ci default setup
+name: perf
+description: ci perf setup
 
 # A chart can be either an 'application' or a 'library' chart.
 #

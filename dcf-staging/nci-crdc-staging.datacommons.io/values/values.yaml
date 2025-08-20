@@ -1,13 +1,14 @@
 arborist:
+  replicaCount: 4
   autoscaling:
-    enabled: true
+    enabled: false
     maxReplicas: 4
     minReplicas: 2
     targetCPUUtilizationPercentage: 40
   enabled: true
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/arborist
-    tag: '2025.06'
+    tag: '2025.07'
 manifestservice:
   enabled: false
 wts:
@@ -18,7 +19,7 @@ audit:
     auditG3auto: dcf-staging-audit-g3auto
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/audit-service
-    tag: '2025.06'
+    tag: '2025.07'
   serviceAccount:
     annotations:
       eks.amazonaws.com/role-arn: arn:aws:iam::584476192960:role/dcf-staging--dcf-staging-helm--audit-sqs-receiver
@@ -31,7 +32,7 @@ dashboard:
   enabled: true
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/gen3-statics
-    tag: '2025.06'
+    tag: '2025.07'
   serviceAccount:
     annotations:
       eks.amazonaws.com/role-arn: arn:aws:iam::584476192960:role/dcf-staging--dcf-staging-helm--dashboard-access
@@ -41,11 +42,48 @@ datareplicate:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/dcf-dataservice
     tag: 2.0.0
 fence:
+  FENCE_CONFIG_PUBLIC:
+    S3_BUCKETS:
+      multi-consent-test-bucket-kf:
+        cred: 'fence_bot'
+        region: 'us-east-1'
+      nci-cbiit-caninedatacommons-file:
+        cred: 'fence_bot'
+        region: 'us-east-1'
+      nci-cbiit-clinical-cmb-stage:
+        cred: 'fence_bot'
+        region: 'us-east-1'
+      popsci-prod-files-dedicated-bucket:
+        cred: 'fence_bot'
+        region: 'us-east-1'
+      tcga-protected-dcf-databucket-gen3:
+        cred: 'fence_bot'
+      tcga-public-dcf-databucket-gen3:
+        cred: 'fence_bot'
+      pdcdatastore-controlled:
+        cred: 'fence_bot'
+        region: 'us-east-1'
+      dev-testing-bucketfor-matchdata:
+        cred: 'fence_bot'
+        region: 'us-east-1'
+      dcf-staging-data-bucket:
+        cred: 'fence_bot'
+        region: 'us-east-1'
+      crdc-ita:
+        cred: 'fence_bot'
+        region: 'us-east-1'
+      crdc-itb:
+        cred: 'fence_bot'
+        region: 'us-east-1'
+      123795211922-4920969-h59mrmjbpxe14b9gzq9tw5hkdwobruse1b-s3alias:
+        cred: 'fence_bot'
+
   serviceAccount:
     annotations:
       eks.amazonaws.com/role-arn: arn:aws:iam::584476192960:role/dcf-staging--dcf-staging-helm--audit-sqs-sender
+  replicaCount: 4
   autoscaling:
-    enabled: true
+    enabled: false
     maxReplicas: 4
     minReplicas: 2
     targetCPUUtilizationPercentage: 40
@@ -56,11 +94,13 @@ fence:
     fenceGoogleAppCredsSecret: dcf-staging-fence-google-app-creds
     fenceGoogleStorageCredsSecret: dcf-staging-fence-google-storage-creds
     fenceJwtKeys: dcf-staging-fence-jwt
+    fenceSshKeys: dcf-staging-fence-ssh-keys
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/fence
-    tag: '2025.06'
+    tag: '2025.07'
   usersync:
     usersync: true
+    syncFromDbgap: true
     userYamlS3Path: s3://cdis-gen3-users/dcfstaging-users/user.yaml
 fluentd:
   enabled: true
@@ -85,19 +125,26 @@ global:
     createSlackWebhookSecret: true
     slackWebhookSecretName: "dcf-staging-slack-webhook"
   hostname: nci-crdc-staging.datacommons.io
+  fenceURL: https://nci-crdc-staging.datacommons.io/user
+  # netPolicy:
+  #   enabled: true
+  #   dbSubnet:
+  #     - 172.24.147.0/24
+  #     - 172.24.146.0/24
   manifestGlobalExtraValues:
     indexd_single_table: 'true'
     kube_bucket: kube-dcf-staging-gen3
     logs_bucket: logs-dcf-staging-gen3
-    sync_from_dbgap: 'True'
-    useryaml_s3path: s3://cdis-gen3-users/dcfstaging-users/user.yaml
   portalApp: gitops
   postgres:
     dbCreate: false
   revproxyArn: arn:aws:acm:us-east-1:584476192960:certificate/b1f41138-54c0-4d5f-b2f3-7c5ebb20b555
 indexd:
+  defaultPrefix: "dg.4DFC/"
+  useSingleTable: "true"
+  replicaCount: 4
   autoscaling:
-    enabled: true
+    enabled: false
     maxReplicas: 4
     minReplicas: 2
     targetCPUUtilizationPercentage: 40
@@ -106,10 +153,11 @@ indexd:
     serviceCreds: dcf-staging-indexd-service-creds
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/indexd
-    tag: '2025.06'
+    tag: '2025.07'
 metadata:
+  replicaCount: 4
   autoscaling:
-    enabled: true
+    enabled: false
     maxReplicas: 5
     minReplicas: 2
     targetCPUUtilizationPercentage: 40
@@ -119,14 +167,14 @@ metadata:
     metadataG3auto: dcf-staging-metadata-g3auto
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/metadata-service
-    tag: '2025.06'
+    tag: '2025.07'
 mutatingWebhook:
   enabled: true
 peregrine:
   enabled: true
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/peregrine
-    tag: '2025.06'
+    tag: '2025.07'
 portal:
   enabled: true
   gitops:
@@ -412,25 +460,26 @@ portal:
       }
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/data-portal
-    tag: '2025.06'
+    tag: '2025.07'
 revproxy:
+  replicaCount: 4
   autoscaling:
-    enabled: true
+    enabled: false
     maxReplicas: 6
     minReplicas: 2
     targetCPUUtilizationPercentage: 40
   enabled: true
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/nginx
-    tag: '2025.06'
+    tag: '2025.07'
   ingress:
     aws:
-      group: dcf-staging-helm
+      group: dcf-staging
 sheepdog:
   enabled: true
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/sheepdog
-    tag: '2025.06'
+    tag: '2025.07'
 sower:
   enabled: true
   externalSecrets:
@@ -439,7 +488,7 @@ sower:
     createK8sSowerJobsSecret: false
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/sower
-    tag: '2025.06'
+    tag: '2025.07'
   sowerConfig:
   - action: index-object-manifest
     activeDeadlineSeconds: 86400
@@ -451,7 +500,7 @@ sower:
           configMapKeyRef:
             key: hostname
             name: manifest-global
-      image: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/manifest-indexing:2025.06
+      image: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/manifest-indexing:2025.07
       memory-limit: 1Gi
       name: job-task
       pull_policy: Always
@@ -477,7 +526,7 @@ sower:
           configMapKeyRef:
             key: hostname
             name: manifest-global
-      image: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/download-indexd-manifest:2025.06
+      image: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/download-indexd-manifest:2025.07
       memory-limit: 1Gi
       name: job-task
       pull_policy: Always
@@ -499,5 +548,5 @@ ssjdispatcher:
     credsFile: dcf-staging-ssjdispatcher-creds
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/ssjdispatcher
-    tag: '2025.06'
-  indexing: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/indexs3client:2025.06
+    tag: '2025.07'
+  indexing: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/indexs3client:2025.07
