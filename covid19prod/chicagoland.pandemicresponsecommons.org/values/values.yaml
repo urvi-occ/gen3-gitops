@@ -576,6 +576,13 @@ hatchery:
               "HOSTNAME": "chicagoland.pandemicresponsecommons.org",
               "FRAME_ANCESTORS": "https://chicagoland.pandemicresponsecommons.org"
             },
+            "command": [
+              "--NotebookApp.base_url=/lw-workspace/proxy",
+              "--LabApp.default_url=/lab/tree/welcome.html",
+              "--NotebookApp.shutdown_no_activity_timeout=240",
+              "--NotebookApp.password=''",
+              "--NotebookApp.token=''"
+            ]
             "args": [],
             "path-rewrite": "/",
             "use-tls": "false",
