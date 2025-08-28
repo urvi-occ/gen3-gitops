@@ -581,7 +581,8 @@ hatchery:
               "--LabApp.default_url=/lab/tree/welcome.html",
               "--NotebookApp.shutdown_no_activity_timeout=240",
               "--NotebookApp.password=''",
-              "--NotebookApp.token=''"
+              "--NotebookApp.token=''",
+              "--NotebookApp.ip='*'"
             ],
             "command": [
               "start-notebook.sh"
