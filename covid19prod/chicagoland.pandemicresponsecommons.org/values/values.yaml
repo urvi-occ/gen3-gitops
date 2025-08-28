@@ -576,17 +576,21 @@ hatchery:
               "HOSTNAME": "chicagoland.pandemicresponsecommons.org",
               "FRAME_ANCESTORS": "https://chicagoland.pandemicresponsecommons.org"
             },
-            "command": [
+            "args": [
               "--NotebookApp.base_url=/lw-workspace/proxy",
               "--LabApp.default_url=/lab/tree/welcome.html",
               "--NotebookApp.shutdown_no_activity_timeout=240",
               "--NotebookApp.password=''",
-              "--NotebookApp.token=''"
-            ]
-            "args": [],
-            "path-rewrite": "/",
+              "--NotebookApp.token=''",
+              "--NotebookApp.ip='*'",
+              "--ServerApp.allow_remote_access=True"
+            ],
+            "command": [
+              "start-notebook.sh"
+            ],
+            "path-rewrite": "/lw-workspace/proxy/",
             "use-tls": "false",
-            "ready-probe": "/",
+            "ready-probe": "/lw-workspace/proxy/",
             "user-volume-location": "/home/jovyan/pd",
             "fs-gid": 100
           },
