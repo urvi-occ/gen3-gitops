@@ -586,9 +586,9 @@ hatchery:
             "command": [
               "start-notebook.sh"
             ],
-            "path-rewrite": "/",
+            "path-rewrite": "/lw-workspace/proxy/",
             "use-tls": "false",
-            "ready-probe": "/",
+            "ready-probe": "/lw-workspace/proxy/",
             "user-volume-location": "/home/jovyan/pd",
             "fs-gid": 100
           },
