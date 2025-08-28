@@ -574,7 +574,7 @@ hatchery:
               "DISABLE_AUTH": "true",
               "NAMESPACE": "default",
               "HOSTNAME": "chicagoland.pandemicresponsecommons.org",
-              "FRAME_ANCESTORS": "https://chicagoland.pandemicresponsecommons.org",
+              "FRAME_ANCESTORS": "https://chicagoland.pandemicresponsecommons.org"
             },
             "args": [],
             "path-rewrite": "/",
