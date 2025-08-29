@@ -211,6 +211,19 @@ guppy:
     - index: jcoin_etl_time_points
       type: time_point
 hatchery:
+  hotNode:
+    enabled: true
+
+    availabilityZones:
+      - us-east-1a
+      - us-east-1b
+      - us-east-1c
+      - us-east-1d
+
+    # This should be AT LEAST the total amount of CPU and memory to reserve, per availability zone
+    workspaceCapacityReservation:
+      cpu: 6
+      memory: 9Gi
   enabled: true
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/hatchery
