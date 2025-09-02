@@ -14,7 +14,7 @@ etl:
 
   etlMapping:
     mappings:
-      - name: chordstaging_geospatial_data_resource
+      - name: chordprod_geospatial_data_resource
         doc_type: geospatial_data_resource
         type: aggregator
         root: geospatial_data_resource
@@ -38,7 +38,7 @@ etl:
           - name: exposure_media
         parent_props:
           - path: resources[resource_short_name:short_name, resource_url, resource_description:description, domain, keywords, access_type].projects[project_sponsor, project_sponsor_type]
-      - name: chordstaging_population_data_resource
+      - name: chordprod_population_data_resource
         doc_type: population_data_resource
         type: aggregator
         root: population_data_resource
@@ -65,7 +65,7 @@ etl:
           - name: population_studied
         parent_props:
           - path: resources[resource_short_name:short_name, resource_url, resource_description:description, domain, keywords, access_type].projects[project_sponsor, project_sponsor_type]
-      - name: chordstaging_key_dataset_resource
+      - name: chordprod_key_dataset_resource
         doc_type: key_data_resource
         type: aggregator
         root: key_data_resource
