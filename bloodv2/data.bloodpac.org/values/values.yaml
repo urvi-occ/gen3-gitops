@@ -369,26 +369,26 @@ etl:
         root: publication
         type: aggregator
       - category: data_file
-      doc_type: file
-      injecting_props:
-        case:
-          props:
-            - name: _case_id
-              src: id
-            - name: project_id
-      name: bloodpac_file
-      props:
-        - name: submitter_id
-        - name: object_id
-        - name: md5sum
-        - name: file_name
-        - name: file_size
-        - name: data_format
-        - name: data_type
-        - name: data_category
-        - name: state
-      root: None
-      type: collector
+        doc_type: file
+        injecting_props:
+          case:
+            props:
+              - name: _case_id
+                src: id
+              - name: project_id
+        name: bloodpac_file
+        props:
+          - name: submitter_id
+          - name: object_id
+          - name: md5sum
+          - name: file_name
+          - name: file_size
+          - name: data_format
+          - name: data_type
+          - name: data_category
+          - name: state
+        root: None
+        type: collector
 fence:
   usersync:
     usersync: true
