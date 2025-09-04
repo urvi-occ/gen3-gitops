@@ -120,21 +120,21 @@ etl:
         root: None
         type: collector
       - doc_type: serious_adverse_event
-      name: jcoin_saes
-      parent_props:
-        - path: projects[protocol,project_name:name]
-      props:
-        - name: project_id
-        - name: submitter_id
-        - name: quarter_of_sae
-        - name: is_related_to_study
-        - name: was_expected
-        - name: on_opioid_medication
-        - name: gender
-        - name: race
-        - name: hispanic
-      root: serious_adverse_event
-      type: aggregator
+        name: jcoin_saes
+        parent_props:
+          - path: projects[protocol,project_name:name]
+        props:
+          - name: project_id
+          - name: submitter_id
+          - name: quarter_of_sae
+          - name: is_related_to_study
+          - name: was_expected
+          - name: on_opioid_medication
+          - name: gender
+          - name: race
+          - name: hispanic
+        root: serious_adverse_event
+        type: aggregator
   image:
     tube:
       tag: '2025.09'
