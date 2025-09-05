@@ -591,6 +591,7 @@ indexd:
     maxReplicas: 2
     minReplicas: 1
     targetCPUUtilizationPercentage: 40
+  defaultPrefix: "dg.5B0D/"
   enabled: true
   externalSecrets:
     serviceCreds: bloodv2-indexd-service-creds
