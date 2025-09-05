@@ -21,6 +21,7 @@ data:
     argocd
     argo
     argo-events
+    allure
     satosa
     monitoring
     cert-manager
