@@ -23,6 +23,7 @@ data:
     argo-events
     allure
     satosa
+    kubecost
     monitoring
     cert-manager
     qa-prometheus
