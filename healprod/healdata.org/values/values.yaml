@@ -1929,6 +1929,9 @@ portal:
                 "notAvailable": {
                   "enabled": true,
                   "menuText": "Not Available"
+                },
+                "mixed": {
+                  "enabled": true
                 }
               }
             }
