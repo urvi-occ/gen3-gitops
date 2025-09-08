@@ -236,6 +236,7 @@ fence:
     PRIVACY_POLICY_URL: https://biodatacatalyst.nhlbi.nih.gov/privacy/
   usersync:
     usersync: true
+    syncFromDbgap: true
     userYamlS3Path: s3://cdis-gen3-users/stagingdatastage/user.yaml
     sshKnownHosts: |
       # sftp-private.ncbi.nlm.nih.gov:22 SSH-2.0-FTP Server ready.
