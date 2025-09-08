@@ -2481,7 +2481,7 @@ ssjdispatcher:
       eks.amazonaws.com/role-arn: arn:aws:iam::813684607867:role/gen3_service/midrcvalidate--validatestaging--ssj
   jobServiceAccount:
     annotations:
-      eks.amazonaws.com/role-arn: aarn:aws:iam::813684607867:role/gen3_service/midrcvalidate--validatestaging--ssj-job
+      eks.amazonaws.com/role-arn: arn:aws:iam::813684607867:role/gen3_service/midrcvalidate--validatestaging--ssj-job
   enabled: true
   externalSecrets:
     credsFile: validatestaging-ssjdispatcher-creds
