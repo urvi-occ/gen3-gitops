@@ -122,7 +122,7 @@ hatchery:
         "sidecar": {
           "cpu-limit": "1.0",
           "memory-limit": "256Mi",
-          "image": "quay.io/cdis/ecs-ws-sidecar:2025.08",
+          "image": "quay.io/cdis/ecs-ws-sidecar:feat_fast-terminate",
           "env": {
             "NAMESPACE": "brhstaging-helm",
             "HOSTNAME": "brhstaging.data-commons.org"
