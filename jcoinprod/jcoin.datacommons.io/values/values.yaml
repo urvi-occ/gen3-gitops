@@ -212,6 +212,8 @@ guppy:
     - index: jcoin_etl_time_points
       type: time_point
 hatchery:
+  externalSecrets:
+    stataG3auto: jcoinprod-stata-workspace-gen3-license
   hotNode:
     enabled: true
 
