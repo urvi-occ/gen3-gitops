@@ -122,7 +122,7 @@ hatchery:
         "sidecar": {
           "cpu-limit": "1.0",
           "memory-limit": "256Mi",
-          "image": "quay.io/cdis/ecs-ws-sidecar:2025.08",
+          "image": "quay.io/cdis/ecs-ws-sidecar:feat_fast-terminate",
           "env": {
             "NAMESPACE": "brhstaging-helm",
             "HOSTNAME": "brhstaging.data-commons.org"
@@ -152,7 +152,7 @@ hatchery:
             "cpu-limit": "1.0",
             "memory-limit": "2Gi",
             "name": "(Generic) Jupyter SuperSlim",
-            "image": "quay.io/cdis/jupyter-superslim:master",
+            "image": "quay.io/cdis/jupyter-superslim:feat_diet",
             "env": {
               "FRAME_ANCESTORS": "https://brhstaging.data-commons.org"
             },
