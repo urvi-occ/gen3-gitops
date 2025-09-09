@@ -342,7 +342,7 @@ hatchery:
               "enabled": true,
               "license-type": "STATA-JCOIN",
               "max-license-ids": 4,
-              "g3auto-name": "jcoinprod-stata-workspace-gen3-license",
+              "g3auto-name": "stata-workspace-gen3-license",
               "g3auto-key": "stata_license.txt",
               "file-path": "stata.lic",
               "workspace-flavor": "gen3-licensed"
