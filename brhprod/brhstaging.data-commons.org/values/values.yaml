@@ -152,7 +152,7 @@ hatchery:
             "cpu-limit": "1.0",
             "memory-limit": "2Gi",
             "name": "(Generic) Jupyter SuperSlim",
-            "image": "quay.io/cdis/jupyter-superslim:latest",
+            "image": "quay.io/cdis/jupyter-superslim:master",
             "env": {
               "FRAME_ANCESTORS": "https://brhstaging.data-commons.org"
             },
