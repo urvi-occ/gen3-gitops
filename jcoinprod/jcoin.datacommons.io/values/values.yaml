@@ -244,7 +244,7 @@ hatchery:
           "memory-limit": "256Mi",
           "image": "707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/gen3fuse-sidecar:2025.07",
           "env": {
-            "NAMESPACE": "default",
+            "NAMESPACE": "jcoinprod-helm",
             "HOSTNAME": "jcoin.datacommons.io"
           },
           "args": [],
