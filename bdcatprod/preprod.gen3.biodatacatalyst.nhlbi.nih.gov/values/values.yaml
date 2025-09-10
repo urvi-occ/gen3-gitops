@@ -2047,6 +2047,9 @@ fence:
       nih-nhlbi-topmed-sumstats-phs001974-r1-v8-c1:
         cred: fence-bot
         region: us-east-1
+      nih-nhlbi-bdc-accord-ecg-phs003562-v1-r2-c1:
+        cred: fence-bot
+        region: us-east-1
       nih-nhlbi-bdc-biolincc-ardsnet-eden-phs004168-v1-r1-c1:
         cred: fence-bot
         region: us-east-1
@@ -2110,13 +2113,40 @@ fence:
       nih-nhlbi-bdc-imaging-dmri-vgc-phs004002-v1-r1-c1:
         cred: fence-bot
         region: us-east-1
+      nih-nhlbi-bdc-mesa-ecg-phs003703-v1-r2-c1:
+        cred: fence-bot
+        region: us-east-1
+      nih-nhlbi-bdc-mesa-ecg-phs003703-v1-r2-c2:
+        cred: fence-bot
+        region: us-east-1
       nih-nhlbi-bdc-prime-air-phs003926-v1-r1-c1:
+        cred: fence-bot
+        region: us-east-1
+      nih-nhlbi-bdc-shhs-phs003637-v2-r1-c1:
+        cred: fence-bot
+        region: us-east-1
+      nih-nhlbi-bdc-sprint-ecg-phs003566-v1-r2-c1:
         cred: fence-bot
         region: us-east-1
       nih-nhlbi-bdc-star-phs004052-v1-r1-c1:
         cred: fence-bot
         region: us-east-1
       nih-nhlbi-bdc-vdka-phs004051-v1-r1-c1:
+        cred: fence-bot
+        region: us-east-1
+      nih-nhlbi-topmed-freeze10-cardia-phs001612-v3-r1-c1:
+        cred: fence-bot
+        region: us-east-1
+      nih-nhlbi-topmed-freeze10-cardia-phs001612-v3-r1-c2:
+        cred: fence-bot
+        region: us-east-1
+      nih-nhlbi-topmed-freeze10-phs001662-v3-c2:
+        cred: fence-bot
+        region: us-east-1
+      nih-nhlbi-topmed-parent-hchs-sol-phs000810-v2-r1-c1:
+        cred: fence-bot
+        region: us-east-1
+      nih-nhlbi-topmed-parent-hchs-sol-phs000810-v2-r1-c2:
         cred: fence-bot
         region: us-east-1
     ENABLE_VISA_UPDATE_CRON: true
