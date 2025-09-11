@@ -176,6 +176,11 @@ global:
     secretStoreServiceAccount:
       enabled: true
       roleArn: arn:aws:iam::258867494168:role/jcoinprod--jcoinprod-helm--external-secrets-sa
+    wafv2:
+      # -- (bool) Set to true if using AWS WAFv2
+      enabled: true
+      # -- (string) ARN for the WAFv2 ACL.
+      wafAclArn: arn:aws:wafv2:us-east-1:258867494168:regional/webacl/jcoinprod-waf/f1a3178c-d9fa-4720-a473-2f7315938854
   dev: false
   dictionaryUrl: https://dictionary-artifacts.s3.amazonaws.com/jcoin_datadictionary/3.1.1/schema.json
   dispatcherJobNum: "10"
