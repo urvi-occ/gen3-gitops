@@ -81,6 +81,11 @@ global:
     secretStoreServiceAccount:
       enabled: true
       roleArn: arn:aws:iam::885078588865:role/brhprod-external-secrets-sa
+    wafv2:
+      # -- (bool) Set to true if using AWS WAFv2
+      enabled: true
+      # -- (string) ARN for the WAFv2 ACL.
+      wafAclArn: arn:aws:wafv2:us-east-1:885078588865:regional/webacl/brhprod-waf/fe2c23f7-2826-45ca-8da8-1e42547ba66d
   dev: false
   dictionaryUrl: https://s3.amazonaws.com/dictionary-artifacts/gtexdictionary/4.0.6/schema.json
   dispatcherJobNum: '10'
@@ -122,7 +127,7 @@ hatchery:
         "sidecar": {
           "cpu-limit": "1.0",
           "memory-limit": "256Mi",
-          "image": "quay.io/cdis/ecs-ws-sidecar:2025.08",
+          "image": "quay.io/cdis/ecs-ws-sidecar:feat_fast-terminate",
           "env": {
             "NAMESPACE": "brhstaging-helm",
             "HOSTNAME": "brhstaging.data-commons.org"
@@ -147,6 +152,41 @@ hatchery:
           "imagebuilder-reader-role-arn": "arn:aws:iam::143731057154:role/nextflow-imagebuilder-reader"
         },
         "containers": [
+          {
+            "target-port": 8888,
+            "cpu-limit": "1.0",
+            "memory-limit": "2Gi",
+            "name": "(Generic) Jupyter SuperSlim",
+            "image": "quay.io/cdis/jupyter-superslim:feat_diet",
+            "env": {
+              "FRAME_ANCESTORS": "https://brhstaging.data-commons.org"
+            },
+            "args": [
+              "--JupyterNotebookApp.base_url=/lw-workspace/proxy/",
+              "--JupyterNotebookApp.default_url=/lab",
+              "--JupyterNotebookApp.password=''",
+              "--JupyterNotebookApp.token=''",
+              "--JupyterNotebookApp.ip='*'",
+              "--JupyterNotebookApp.notebook_dir='/home/jovyan'",
+              "--JupyterNotebookApp.shutdown_no_activity_timeout=5400",
+              "--JupyterNotebookApp.quit_button=False"
+            ],
+            "command": [
+              "start-notebook.sh"
+            ],
+            "path-rewrite": "/lw-workspace/proxy/",
+            "use-tls": "false",
+            "ready-probe": "/lw-workspace/proxy/",
+            "lifecycle-post-start": [
+              "/bin/sh",
+              "-c",
+              "export IAM=`whoami`; rm -rf /home/$IAM/pd/dockerHome; rm -rf /home/$IAM/pd/lost+found; ln -s /data /home/$IAM/pd/; true"
+            ],
+            "user-uid": 1010,
+            "fs-gid": 100,
+            "user-volume-location": "/home/jovyan/pd",
+            "gen3-volume-location": "/home/jovyan/.gen3"
+          },
           {
             "target-port": 8888,
             "cpu-limit": "1.0",
@@ -920,12 +960,6 @@ portal:
           "description": "The Jupyter notebooks contained in this notebook viewer pull data from various sources to generate and output useful tables, charts, graphs, and models. Each notebook is static, meaning the data being used by the notebooks is not updated in real time. Executable versions of these notebooks are also available in the 'Tutorials' Gen3 Workspace Image.",
           "resources": [
             {
-              "title": "How to access data in Biomedical Research Hub",
-              "description": "In this Jupyter notebook, we will demonstrate to a new user the different ways of accessing data in the Biomedical Research Hub workspace using the Gen3 SDK and GraphQL",
-              "imageUrl": "/dashboard/Public/notebooks/How_to_access_data.png",
-              "link": "/dashboard/Public/notebooks/How_to_access_data.html"
-            },
-            {
               "title": "Multi-Container Nextflow Tutorial",
               "description": "In this notebook, we will set up and explain each file in a Nextflow workflow which uses Python scripts. Our workflow consists of two Python scripts that are each executed in a different Conda environment.",
               "imageUrl": "/dashboard/Public/notebooks/nextflow_logo.png",
@@ -948,12 +982,6 @@ portal:
               "description": "In this notebook we use data from NIDA-PDAPS, hosted on the JCOIN Data Commons, to visualize three pandemic-era changes in opioid treatment policy at state levels across the US.",
               "imageUrl": "/dashboard/Public/notebooks/JCOIN_PDAPS_Public_Policy_Changes.png",
               "link": "/dashboard/Public/notebooks/JCOIN_PDAPS_Public_Policy_Changes_v2.html"
-            },
-            {
-              "title": "Gene Expression Analysis of Project TCGA-CHOL",
-              "description": "In this notebook, we demonstrated how to retrieve RNA expression data of project TCGA-CHOL from Genomic Data Commons (GDC) data portal, and perform data analysis and visualization using a pipeline provided by an R package GDCRNATools.",
-              "imageUrl": "/dashboard/Public/notebooks/GDC_TCGA-CHOL_RNA_analysis_BRH_040722.png",
-              "link": "/dashboard/Public/notebooks/GDC_TCGA-CHOL_RNA_analysis_BRH_040722.html"
             },
             {
               "title": "Proteome Data Commons (PDC) Clustergram",
@@ -990,12 +1018,6 @@ portal:
               "description": "In this notebook we will visualize the distribution of subjects accross a variety demographics and their COVID-19 status in the Open-R1 dataset from The Medical Imaging and Data Resource Center.",
               "imageUrl": "/dashboard/Public/notebooks/MIDRC_Clinical_Data_Demo.png",
               "link": "/dashboard/Public/notebooks/MIDRC_Clinical_Data_Demo.html"
-            },
-            {
-              "title": "OADC Unsupervised Data Exploration on Cancer Cell Line Encyclopedia (CCLE)",
-              "description": "Principal component analysis (PCA) and t-distributed stochastic neighbor embedding (t-SNE) has become valuable tools for unsupervised data exploration. This notebook explores the application of unsupervised learning on Cancer Cell Line Encyclopedia (CCLE) gene expression profile. All results shown in this notebook are for demonstration purposes and should not be considered scientifically rigorous.",
-              "link": "/dashboard/Public/notebooks/OADC_CCLE_gene_expression_data_analysis.html",
-              "imageUrl": "/dashboard/Public/notebooks/OADC_CCLE_gene_expression_data_analysis.png"
             },
             {
               "title": "Identification of Potential Drug Targets of Inflammatory Bowel Disease",
