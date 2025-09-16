@@ -1,5 +1,5 @@
 ambassador:
-  jupyterNamespace: jupyter-pods
+  jupyterNamespace: jupyter-pods-jcoinprod-helm
 arborist:
   replicaCount: 4
   autoscaling:
@@ -221,17 +221,14 @@ hatchery:
     stataG3auto: jcoinprod-stata-workspace-gen3-license
   hotNode:
     enabled: true
-
     availabilityZones:
       - us-east-1a
       - us-east-1c
       - us-east-1d
-
     # This should be AT LEAST the total amount of CPU and memory to reserve, per availability zone
     workspaceCapacityReservation:
       cpu: 2
       memory: 4Gi
-
   enabled: true
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/hatchery
@@ -239,7 +236,7 @@ hatchery:
   hatchery:
     json: |-
       {
-        "user-namespace": "jupyter-pods",
+        "user-namespace": "jupyter-pods-jcoinprod-helm",
         "sub-dir": "/lw-workspace",
         "user-volume-size": "10Gi",
         "license-user-maps-dynamodb-table": "gen3-license-user-maps-prod-jcoin",
