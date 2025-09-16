@@ -114,6 +114,7 @@ fence:
   usersync:
     usersync: true
     userYamlS3Path: s3://cdis-gen3-users/icgc/user.yaml
+    syncFromDbgap: true
 fluentd:
   enabled: true
   image:
@@ -128,6 +129,11 @@ global:
     secretStoreServiceAccount:
       enabled: true
       roleArn: arn:aws:iam::446046036926:role/icgc--icgc-helm--external-secrets-sa
+    wafv2:
+      # -- (bool) Set to true if using AWS WAFv2
+      enabled: true
+      # -- (string) ARN for the WAFv2 ACL.
+      wafAclArn: "arn:aws:wafv2:us-east-1:446046036926:regional/webacl/icgc-waf/81bd68e0-c424-4fc5-903e-828d1fa8e398"
   dev: false
   dictionaryUrl: https://s3.amazonaws.com/dictionary-artifacts/tcga_dictionary/1.0.3/schema.json
   dispatcherJobNum: 10
@@ -137,16 +143,17 @@ global:
     createSlackWebhookSecret: true
     slackWebhookSecretName: "icgc-slack-webhook" #pragma: allowlist secret
   hostname: icgc.bionimbus.org
+  fenceURL: https://icgc.bionimbus.org/user
+  publicDataSets: true
   manifestGlobalExtraValues:
-    es7: true
     kube_bucket: kube-icgc-gen3
     logs_bucket: logs-icgc-gen3
-    maintenance_mode: 'off'
-    public_datasets: true
-    sync_from_dbgap: 'True'
-    tier_access_level: libre
-    tier_access_limit: 50
-    useryaml_s3path: s3://cdis-gen3-users/icgc/user.yaml
+  # netPolicy:
+  #   enabled: true
+  #   dbSubnet:
+  #     - 172.26.146.0/24
+  #     - 172.26.147.0/24
+  maintenanceMode: 'off'
   tierAccessLevel: libre
   tierAccessLimit: 50
   portalApp: gitops

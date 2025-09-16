@@ -12,6 +12,7 @@ alb-controller:
 
 aws-s3-mountpoint:
   enabled: true
+  targetRevision: "2.0.0"
   configuration:
     enabled: false
 
@@ -20,10 +21,19 @@ calico:
   configuration:
     enabled: false
 
+cert-manager:
+  enabled: true
+
 coreDNS:
   enabled: true
   configuration:
     enabled: false
+
+crossplane:
+  enabled: true
+
+custom-objects:
+  enabled: true
 
 ebs-csi-driver:
   enabled: true
@@ -59,19 +69,19 @@ karpenter-crds:
     consolidateAfter: "5m"
     volumeSize: 80Gi
     requirements:
-    - key: karpenter.sh/capacity-type
-      operator: In
-      values:
-      - on-demand
-      - spot
-    - key: kubernetes.io/arch
-      operator: In
-      values:
-      - amd64
-    - key: karpenter.k8s.aws/instance-category
-      operator: In
-      values:
-      - r
+      - key: karpenter.sh/capacity-type
+        operator: In
+        values:
+          - on-demand
+          - spot
+      - key: kubernetes.io/arch
+        operator: In
+        values:
+          - amd64
+      - key: karpenter.k8s.aws/instance-category
+        operator: In
+        values:
+          - r
   workflow:
     volumeSize: 80Gi
   jupyter:
@@ -81,3 +91,8 @@ vpc-cni:
   enabled: true
   configuration:
     enabled: false
+
+crossplane-crds:
+  enable: true
+  useIRSA: true
+  iamRoleName: "crossplane-test-qaplanetv1"
