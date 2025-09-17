@@ -313,7 +313,7 @@ hatchery:
               "version": 0.1,
               "or": [
                 {
-                  "pay_models": []
+                  "pay_models": ["Do Not Show"]
                 },
                 {
                   "resource_paths": [
