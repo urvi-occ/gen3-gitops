@@ -116,10 +116,10 @@
             "method": "access",
             "service": "query_page"
         },
-        "Query Data": {
-            "resource": "/query_page",
+        "Workspace": {
+            "resource": "/workspace",
             "method": "access",
-            "service": "query_page"
+            "service": "jupyterhub"
         }
     },
     "components": {
@@ -151,6 +151,13 @@
                     "body": "Search and download subsets of data from the MIDRC Data Commons using GraphQL queries.",
                     "link": "/query",
                     "label": "Query Data"
+                },
+                {
+                "name": "Workspace",
+                "icon": "data-analyze",
+                "body": "Perform analysis on the MIDRC Data Commons data using Jupyter Notebooks.",
+                "link": "/workspace",
+                "label": "Run Analysis"
                 }
             ],
             "homepageChartNodes": [
@@ -253,7 +260,14 @@
                     "icon": "bar-chart",
                     "tooltip": "Learn how to use Jupyter Notebooks to explore and visualize data discovered in the MIDRC Data Commons by running a static tutorial notebook, or use one of these examples as a launching point for your own custom analysis.",
                     "color": "#a2a2a2"
+                },
+                {
+                "name": "Workspace",
+                "link": "/workspace",
+                "icon": "workspace",
+                "tooltip": "The Workspace provides a secure cloud environment featuring Jupyter Notebooks and RStudio."
                 }
+
             ]
         },
         "topBar": {
@@ -337,7 +351,8 @@
         "discovery": true,
         "explorer": true,
         "analysis": true,
-        "explorerPublic": true
+        "explorerPublic": true,
+        "workspaceRegistration": true
     },
     "analysisTools": [],
     "explorerConfig": [
@@ -1825,5 +1840,20 @@
                 "display": true
             }
         ]
+    },
+    "registrationConfigs": {
+        "features": {
+            "workspaceRegistrationConfig": {
+                "workspacePolicyId": "workspace",
+                "workspaceInfoMessage": "The MIDRC workspace provides a standardized computational environment for accessing and analyzing data from MIDRC studies. Please fill out this form to request access to the workspace and start computing!",
+                "successRedirect": {
+                    "link": "/",
+                    "text": "Go to MIDRC Home Page"
+                }
+            }
+        },
+        "zendeskConfig": {
+            "zendeskSubdomainName": "midrc-support"
+        }
     }
 }
