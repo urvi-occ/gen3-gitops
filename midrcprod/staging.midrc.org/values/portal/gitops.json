@@ -115,11 +115,6 @@
             "resource": "/query_page",
             "method": "access",
             "service": "query_page"
-        },
-        "Workspace": {
-            "resource": "/workspace",
-            "method": "access",
-            "service": "jupyterhub"
         }
     },
     "components": {
