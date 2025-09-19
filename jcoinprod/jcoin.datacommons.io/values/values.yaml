@@ -1122,7 +1122,7 @@ revproxy:
     tag: '2025.09'
   ingress:
     aws:
-      group: jcoinprod-helm
+      group: jcoinprod
 sheepdog:
   replicaCount: 4
   autoscaling:
