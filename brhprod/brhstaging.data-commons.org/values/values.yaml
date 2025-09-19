@@ -192,13 +192,13 @@ hatchery:
             "cpu-limit": "1.0",
             "memory-limit": "2Gi",
             "name": "(Generic) Jupyter Lab Notebook with R Kernel",
-            "image": "quay.io/cdis/brh-notebooks:generic_rkernel__071a98e75849c876c3652c8ec198653d88503568",
+            "image": "quay.io/cdis/brh-notebooks:generic_rkernel__aeb1b0f9da21f728842cb12c8fb631a807c8f414",
             "env": {
               "FRAME_ANCESTORS": "https://brhstaging.data-commons.org"
             },
             "args": [
               "--JupyterNotebookApp.base_url=/lw-workspace/proxy/",
-              "--JupyterNotebookApp.default_url=/lab",
+              "--LabApp.default_url=/lab/tree/brh-welcome.html",
               "--JupyterNotebookApp.password=''",
               "--JupyterNotebookApp.token=''",
               "--JupyterNotebookApp.ip='*'",
@@ -227,13 +227,13 @@ hatchery:
             "cpu-limit": "1.0",
             "memory-limit": "2Gi",
             "name": "(Tutorials) Example Analysis Jupyter Notebooks",
-            "image": "quay.io/cdis/brh-notebooks:combined_demos__b0a59aa051cbd993bbda25a7bb42f99bd4d91322",
+            "image": "quay.io/cdis/brh-notebooks:combined_demos__ad30ec9e062a3763236931663be16370cf1f29c5",
             "env": {
               "FRAME_ANCESTORS": "https://brhstaging.data-commons.org"
             },
             "args": [
               "--JupyterNotebookApp.base_url=/lw-workspace/proxy/",
-              "--JupyterNotebookApp.default_url=/lab",
+              "--LabApp.default_url=/lab/tree/brh-welcome.html",
               "--JupyterNotebookApp.password=''",
               "--JupyterNotebookApp.token=''",
               "--JupyterNotebookApp.ip='*'",
