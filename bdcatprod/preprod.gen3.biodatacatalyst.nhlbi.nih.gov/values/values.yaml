@@ -4,7 +4,8 @@ access-backend:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/access-backend
     tag: '2025.09'
   externalSecrets:
-    accessBackendG3auto: bdcat-internalstaging-access-backend-g3auto
+    accessBackendG3auto: bdcat-internalstaging-access-backend-g3auto-3
+    accessBackendKv: bdcat-internalstaging-access-backend-kv
     dbcreds: bdcat-internalstaging-access-backend-dbcreds
   serviceAccount:
     annotations:
@@ -2047,6 +2048,108 @@ fence:
       nih-nhlbi-topmed-sumstats-phs001974-r1-v8-c1:
         cred: fence-bot
         region: us-east-1
+      nih-nhlbi-bdc-accord-ecg-phs003562-v1-r2-c1:
+        cred: fence-bot
+        region: us-east-1
+      nih-nhlbi-bdc-biolincc-ardsnet-eden-phs004168-v1-r1-c1:
+        cred: fence-bot
+        region: us-east-1
+      nih-nhlbi-bdc-biolincc-ardsnet-factt-phs004165-v1-r1-c1:
+        cred: fence-bot
+        region: us-east-1
+      nih-nhlbi-bdc-biolincc-bhs-phs004173-v1-r1-c1:
+        cred: fence-bot
+        region: us-east-1
+      nih-nhlbi-bdc-biolincc-epic-phs004067-v1-r1-c1:
+        cred: fence-bot
+        region: us-east-1
+      nih-nhlbi-bdc-biolincc-fire-coral-phs004130-v1-r1-c1:
+        cred: fence-bot
+        region: us-east-1
+      nih-nhlbi-bdc-biolincc-hfn-life-phs004171-v1-r1-c1:
+        cred: fence-bot
+        region: us-east-1
+      nih-nhlbi-bdc-biolincc-hifi-phs004032-v1-r1-c1:
+        cred: fence-bot
+        region: us-east-1
+      nih-nhlbi-bdc-biolincc-ipfnet-ace-ipf-phs004070-v1-r1-c1:
+        cred: fence-bot
+        region: us-east-1
+      nih-nhlbi-bdc-biolincc-ipfnet-panther-ipf-phs004071-v1-r1-c1:
+        cred: fence-bot
+        region: us-east-1
+      nih-nhlbi-bdc-biolincc-lott-phs003933-v1-r1-c1:
+        cred: fence-bot
+        region: us-east-1
+      nih-nhlbi-bdc-biolincc-prop-phs004117-v1-r1-c1:
+        cred: fence-bot
+        region: us-east-1
+      nih-nhlbi-bdc-biolincc-whi-lilac-phs004174-v1-r1-c1:
+        cred: fence-bot
+        region: us-east-1
+      nih-nhlbi-bdc-biolincc-wrap-ipf-phs003968-v1-r1-c1:
+        cred: fence-bot
+        region: us-east-1
+      nih-nhlbi-bdc-hf-hypox-ethiopia-phs000647-v1-r1-c1:
+        cred: fence-bot
+        region: us-east-1
+      nih-nhlbi-bdc-hfn-broadeomi-phs000279-v2-r1-c1:
+        cred: fence-bot
+        region: us-east-1
+      nih-nhlbi-bdc-hfn-lhs-copd-phs000291-v2-r1-c1:
+        cred: fence-bot
+        region: us-east-1
+      nih-nhlbi-bdc-hfn-lungexome-pah-phs000290-v1-r1-c1:
+        cred: fence-bot
+        region: us-east-1
+      nih-nhlbi-bdc-hhp-phs003907-v1-c1:
+        cred: fence-bot
+        region: us-east-1
+      nih-nhlbi-bdc-image-copdgene-phs004023-v1-r1-c1:
+        cred: fence-bot
+        region: us-east-1
+      nih-nhlbi-bdc-image-copdgene-phs004023-v1-r1-c2:
+        cred: fence-bot
+        region: us-east-1
+      nih-nhlbi-bdc-imaging-dmri-vgc-phs004002-v1-r1-c1:
+        cred: fence-bot
+        region: us-east-1
+      nih-nhlbi-bdc-mesa-ecg-phs003703-v1-r2-c1:
+        cred: fence-bot
+        region: us-east-1
+      nih-nhlbi-bdc-mesa-ecg-phs003703-v1-r2-c2:
+        cred: fence-bot
+        region: us-east-1
+      nih-nhlbi-bdc-prime-air-phs003926-v1-r1-c1:
+        cred: fence-bot
+        region: us-east-1
+      nih-nhlbi-bdc-shhs-phs003637-v2-r1-c1:
+        cred: fence-bot
+        region: us-east-1
+      nih-nhlbi-bdc-sprint-ecg-phs003566-v1-r2-c1:
+        cred: fence-bot
+        region: us-east-1
+      nih-nhlbi-bdc-star-phs004052-v1-r1-c1:
+        cred: fence-bot
+        region: us-east-1
+      nih-nhlbi-bdc-vdka-phs004051-v1-r1-c1:
+        cred: fence-bot
+        region: us-east-1
+      nih-nhlbi-topmed-freeze10-cardia-phs001612-v3-r1-c1:
+        cred: fence-bot
+        region: us-east-1
+      nih-nhlbi-topmed-freeze10-cardia-phs001612-v3-r1-c2:
+        cred: fence-bot
+        region: us-east-1
+      nih-nhlbi-topmed-freeze10-phs001662-v3-c2:
+        cred: fence-bot
+        region: us-east-1
+      nih-nhlbi-topmed-parent-hchs-sol-phs000810-v2-r1-c1:
+        cred: fence-bot
+        region: us-east-1
+      nih-nhlbi-topmed-parent-hchs-sol-phs000810-v2-r1-c2:
+        cred: fence-bot
+        region: us-east-1
     ENABLE_VISA_UPDATE_CRON: true
   usersync:
     usersync: true
@@ -2080,6 +2183,11 @@ global:
     secretStoreServiceAccount:
       enabled: true
       roleArn: arn:aws:iam::895962626746:role/bdcatprod--bdcat-internalstaging-helm--external-secrets-sa
+    wafv2:
+      # -- (bool) Set to true if using AWS WAFv2
+      enabled: true
+      # -- (string) ARN for the WAFv2 ACL.
+      wafAclArn: "arn:aws:wafv2:us-east-1:895962626746:regional/webacl/bdcatprod-waf/41bc2f16-1aa1-41b3-bc63-a82875f5f57d"
   dev: false
   dictionaryUrl: https://s3.amazonaws.com/dictionary-artifacts/gtexdictionary/4.6.6/schema.json
   dispatcherJobNum: '10'

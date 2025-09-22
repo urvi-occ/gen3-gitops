@@ -176,6 +176,11 @@ global:
     secretStoreServiceAccount:
       enabled: true
       roleArn: arn:aws:iam::258867494168:role/jcoinprod--jcoinprod-helm--external-secrets-sa
+    wafv2:
+      # -- (bool) Set to true if using AWS WAFv2
+      enabled: true
+      # -- (string) ARN for the WAFv2 ACL.
+      wafAclArn: arn:aws:wafv2:us-east-1:258867494168:regional/webacl/jcoinprod-waf/f1a3178c-d9fa-4720-a473-2f7315938854
   dev: false
   dictionaryUrl: https://dictionary-artifacts.s3.amazonaws.com/jcoin_datadictionary/3.1.1/schema.json
   dispatcherJobNum: "10"
@@ -216,17 +221,14 @@ hatchery:
     stataG3auto: jcoinprod-stata-workspace-gen3-license
   hotNode:
     enabled: true
-
     availabilityZones:
       - us-east-1a
       - us-east-1c
       - us-east-1d
-
     # This should be AT LEAST the total amount of CPU and memory to reserve, per availability zone
     workspaceCapacityReservation:
       cpu: 2
       memory: 4Gi
-
   enabled: true
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/hatchery
@@ -242,15 +244,15 @@ hatchery:
         "sidecar": {
           "cpu-limit": "1.0",
           "memory-limit": "256Mi",
-          "image": "707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/gen3fuse-sidecar:2025.07",
+          "image": "707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/ecs-ws-sidecar:2025.09",
           "env": {
-            "NAMESPACE": "default",
+            "NAMESPACE": "jcoinprod-helm",
             "HOSTNAME": "jcoin.datacommons.io"
           },
           "args": [],
           "command": [
             "/bin/bash",
-            "/sidecarDockerrun.sh"
+            "./sidecar.sh"
           ],
           "lifecycle-pre-stop": [
             "su",
@@ -301,17 +303,20 @@ hatchery:
             "target-port": 8888,
             "cpu-limit": "1.0",
             "memory-limit": "2Gi",
-            "name": "User-licensed Stata Notebook",
-            "image": "quay.io/cdis/stata-heal:master",
+            "name": "(Generic, User-licensed) Stata Notebook",
+            "image": "quay.io/cdis/jupyter-pystata-user-licensed:2.0.0",
             "env": {
               "FRAME_ANCESTORS": "https://jcoin.datacommons.io"
             },
             "args": [
-              "--NotebookApp.base_url=/lw-workspace/proxy/",
-              "--NotebookApp.password=''",
-              "--NotebookApp.token=''",
-              "--NotebookApp.shutdown_no_activity_timeout=5400",
-              "--NotebookApp.quit_button=False"
+              "--JupyterNotebookApp.base_url=/lw-workspace/proxy/",
+              "--JupyterNotebookApp.default_url=/lab",
+              "--JupyterNotebookApp.password=''",
+              "--JupyterNotebookApp.token=''",
+              "--JupyterNotebookApp.ip='*'",
+              "--JupyterNotebookApp.notebook_dir='/home/jovyan'",
+              "--JupyterNotebookApp.shutdown_no_activity_timeout=3600",
+              "--JupyterNotebookApp.quit_button=False"
             ],
             "command": [
               "start-notebook.sh"
@@ -322,7 +327,7 @@ hatchery:
             "lifecycle-post-start": [
               "/bin/sh",
               "-c",
-              "(while true; do [ -d ~/pd ] && [ -f ~/pd/stata.lic ] && cp ~/pd/stata.lic /usr/local/stata17/; sleep 1; done) & export IAM=`whoami`; rm -rf /home/$IAM/pd/dockerHome; rm -rf /home/$IAM/pd/lost+found; ln -s /data /home/$IAM/pd/; true"
+              "export IAM=`whoami`; rm -rf /home/$IAM/pd/dockerHome; rm -rf /home/$IAM/pd/lost+found; ln -s /data /home/$IAM/pd/; true"
             ],
             "user-uid": 1000,
             "fs-gid": 100,
@@ -333,7 +338,7 @@ hatchery:
             "target-port": 8888,
             "cpu-limit": "1.0",
             "memory-limit": "2Gi",
-            "name": "Limited Gen3-licensed Stata Notebook",
+            "name": "(Generic, Limited Gen3-licensed) Stata Notebook",
             "image": "quay.io/cdis/jupyter-pystata-gen3-licensed:2.0.0",
             "env": {
               "FRAME_ANCESTORS": "https://jcoin.datacommons.io"
@@ -343,7 +348,7 @@ hatchery:
               "license-type": "STATA-JCOIN",
               "max-license-ids": 4,
               "g3auto-name": "stata-workspace-gen3-license",
-              "g3auto-key": "stata_license.txt",
+              "g3auto-key": "stata-license.txt",
               "file-path": "stata.lic",
               "workspace-flavor": "gen3-licensed"
             },
@@ -409,7 +414,7 @@ metadata:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/metadata-service
     tag: '2025.09'
 mutatingWebhook:
-  enabled: true
+  enabled: false
 peregrine:
   replicaCount: 4
   autoscaling:
@@ -606,7 +611,7 @@ portal:
               "alt": "Center for Translational Data Science at the University of Chicago"
             },
             {
-              "src": "/custom/sponsors/gitops-sponsors/JCOIN-funded.png",
+              "src": "/src/img/sponsors/gitops-sponsors/0",
               "href": "https://heal.nih.gov/research/research-to-practice/jcoin",
               "alt": "JCOIN is funded by NIDA as part of the NIH HEAL Initiative(SM)"
             }
@@ -1117,7 +1122,7 @@ revproxy:
     tag: '2025.09'
   ingress:
     aws:
-      group: jcoinprod-helm
+      group: jcoinprod
 sheepdog:
   replicaCount: 4
   autoscaling:
