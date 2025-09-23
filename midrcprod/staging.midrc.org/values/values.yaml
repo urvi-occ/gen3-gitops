@@ -560,7 +560,7 @@ hatchery:
   hatchery:
     json: |-
       {
-        "user-namespace": "jupyter-pods",
+        "user-namespace": "jupyter-pods-midrcstaging-helm",
         "sub-dir": "/workspace",
         "user-volume-size": "10Gi",
         "sidecar": {
