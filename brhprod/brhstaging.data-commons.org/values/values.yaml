@@ -250,7 +250,7 @@ hatchery:
             "lifecycle-post-start": [
               "/bin/sh",
               "-c",
-              "export IAM=`whoami`; rm -rf /home/$IAM/pd/dockerHome; rm -rf /home/$IAM/pd/lost+found; ln -s /data /home/$IAM/pd/; wget -O /brh-welcome.html https://raw.githubusercontent.com/uc-cdis/containers/refs/heads/master/BRH-notebooks/combined_demos/brh-welcome.html; true"
+              "export IAM=`whoami`; rm -rf /home/$IAM/pd/dockerHome; rm -rf /home/$IAM/pd/lost+found; ln -s /data /home/$IAM/pd/; wget -O /home/$IAM/brh-welcome.html https://raw.githubusercontent.com/uc-cdis/containers/refs/heads/master/BRH-notebooks/combined_demos/brh-welcome.html; true"
             ],
             "user-uid": 1010,
             "fs-gid": 100,
