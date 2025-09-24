@@ -1,5 +1,6 @@
 ambassador:
   enabled: true
+  jupyterNamespace: "jupyter-pods-midrcstaging-helm"  
 arborist:
   autoscaling:
     enabled: false
@@ -552,14 +553,14 @@ guppy:
       type: imaging_study
 hatchery:
   enabled: true
-  jupyterNamespace: jupyter-pods
+  jupyterNamespace: jupyter-pods-midrcstaging-helm
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/hatchery
     tag: '2025.09'
   hatchery:
     json: |-
       {
-        "user-namespace": "jupyter-pods",
+        "user-namespace": "jupyter-pods-midrcstaging-helm",
         "sub-dir": "/workspace",
         "user-volume-size": "10Gi",
         "sidecar": {
