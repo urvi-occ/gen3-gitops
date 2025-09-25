@@ -1,6 +1,6 @@
 ambassador:
   enabled: true
-  jupyterNamespace: "jupyter-pods-midrcstaging-helm"
+  jupyterNamespace: "jupyter-pods-midrcstaging-helm"  
 arborist:
   autoscaling:
     enabled: false
