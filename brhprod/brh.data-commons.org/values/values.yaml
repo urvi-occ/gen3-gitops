@@ -102,7 +102,7 @@ hatchery:
   enabled: true
   hotNode:
     enabled: true
-
+    
     # We need hot node(s) in all these zones since EBS volumes exists in these.
     availabilityZones:
       - us-east-1a
