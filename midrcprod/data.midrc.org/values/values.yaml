@@ -915,6 +915,11 @@ revproxy:
   ingress:
     aws:
       group: midrcprod
+requestor:
+  enabled: true
+  image:
+    repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/requestor
+    tag: '2025.09'
 sheepdog:
   autoscaling:
     enabled: false
