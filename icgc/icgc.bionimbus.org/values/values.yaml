@@ -476,7 +476,7 @@ revproxy:
     tag: '2025.06'
   ingress:
     aws:
-      group: icgc-helm
+      group: icgc
 sheepdog:
   enabled: true
   image:
