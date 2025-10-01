@@ -9,13 +9,13 @@ alb-controller:
   enabled: true
   targetRevision: "1.13.4"
   configuration:
-    enabled: true
+    enabled: false
 
 aws-s3-mountpoint:
   enabled: true
   targetRevision: "2.0.0"
   configuration:
-    enabled: false
+    enabled: true
 
 calico:
   enabled: true
@@ -23,6 +23,15 @@ calico:
   configuration:
     enabled: false
 
+crossplane:
+  enabled: true
+  targetRevision: "1.19.2"    
+
+crossplane-crds:
+  enable: true
+  useIRSA: true
+  iamRoleName: "crossplane-test-devplanetv2"
+  
 cert-manager:
   enabled: true
   targetRevision: "1.18.2"
@@ -65,6 +74,8 @@ grafana-alloy:
 karpenter:
   enabled: true
   targetRevision: "1.6.1"
+  configuration:
+    enabled: false  
 
 karpenter-crds:
   amiSelectorName: "EKS-1-33-al23*"
@@ -80,7 +91,7 @@ karpenter-crds:
     consolidationPolicy: "WhenEmptyOrUnderutilized"
     consolidateAfter: "5m"
     expireAfter: "72h"
-    volumeSize: 80Gi
+    volumeSize: 100Gi
     requirements:
       - key: karpenter.sh/capacity-type
         operator: In
