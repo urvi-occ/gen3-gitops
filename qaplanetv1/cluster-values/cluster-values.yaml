@@ -67,18 +67,19 @@ karpenter:
   targetRevision: "1.6.1"
 
 karpenter-crds:
-  amiSelectorName: "eks-1-33-al23*"
+  amiSelectorName: "EKS-1-33-al23*"
   enabled: true
   selectorTag: qaplanetv1
   migration: true
   default:
     nodeClassRef:
-      group: karpenter.k8s.aws
+      apiVersion: karpenter.k8s.aws/v1
       kind: EC2NodeClass
-      name: default  
+      name: default
+    amiFamily: AL2023
     consolidationPolicy: "WhenEmptyOrUnderutilized"
     consolidateAfter: "5m"
-    expireAfter: "72h"    
+    expireAfter: "72h"
     volumeSize: 80Gi
     requirements:
       - key: karpenter.sh/capacity-type
@@ -101,15 +102,17 @@ karpenter-crds:
           - "7000"
   workflow:
     nodeClassRef:
-      group: karpenter.k8s.aws
+      apiVersion: karpenter.k8s.aws/v1
       kind: EC2NodeClass
-      name: workflow  
+      name: workflow
+    amiFamily: AL2023
     volumeSize: 80Gi
   jupyter:
     nodeClassRef:
-      group: karpenter.k8s.aws
+      apiVersion: karpenter.k8s.aws/v1
       kind: EC2NodeClass
-      name: jupyter  
+      name: jupyter
+    amiFamily: AL2023
     volumeSize: 80Gi
 
 vpc-cni:
