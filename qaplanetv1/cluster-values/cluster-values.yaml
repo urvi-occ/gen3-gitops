@@ -7,7 +7,7 @@ accountNumber: "707767160287"
 
 alb-controller:
   enabled: true
-  targetRevision: "2.13.4"
+  targetRevision: "1.13.4"
   configuration:
     enabled: true
 
