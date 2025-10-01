@@ -127,7 +127,7 @@ hatchery:
   enabled: true
   # Enable hot nodes for workspaces
   hotNode:
-    enabled: true
+    enabled: false
 
   replicaCount: 2
   image:
