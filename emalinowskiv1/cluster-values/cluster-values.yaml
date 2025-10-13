@@ -54,6 +54,9 @@ karpenter:
 
 karpenter-crds:
   amiSelectorName: "EKS-1-33-al23*"
+  consolidationPolicy: "WhenEmptyOrUnderutilized"
+  consolidateAfter: "5m"
+  expireAfter: "72h"
   enabled: true
   selectorTag: emalinowskiv1
   migration: true
