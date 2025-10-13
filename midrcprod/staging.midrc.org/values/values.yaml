@@ -85,6 +85,9 @@ etl:
           - fn: count
             name: _mr_series_file_count
             path: imaging_studies.mr_series_files
+          - fn: count
+            name: _midrcstaging_radiology_report
+            path: imaging_studies.radiology_report
         doc_type: case
         joining_props:
           - index: data_file
@@ -467,6 +470,28 @@ etl:
           - name: view_position
         root: None
         type: collector
+        - name: midrcstaging_radiology_report
+          doc_type: radiology_report
+	        type: aggregator
+	        root: radiology_report
+	        props:
+           - name: project_id
+		       - name: submitter_id
+           - name: file_size
+		       - name: file_name
+           - name: data_type
+           - name: data_format
+           - name: data_category
+           - name: body_part_examined
+           - name: cases
+           - name: core_metadata_collections
+           - name: datasets
+           - name: imaging_studies
+           - name: modality
+           - name: object_id
+           - name: report_generation_method
+           - name: report_modification_method
+           - name: study_description
   image:
     tube:
       tag: '2025.09'
@@ -558,6 +583,8 @@ guppy:
       type: data_file
     - index: midrcstaging_imaging_study
       type: imaging_study
+    - index: midrcstaging_radiology_report
+      type: radiology_report
 hatchery:
   enabled: true
   jupyterNamespace: jupyter-pods-midrcstaging-helm
