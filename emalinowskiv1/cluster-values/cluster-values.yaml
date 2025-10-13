@@ -53,7 +53,7 @@ karpenter:
     enabled: true
 
 karpenter-crds:
-  amiSelectorName: "1-31-EKS-FIPS*"
+  amiSelectorName: "EKS-1-33-al23*"
   enabled: true
   selectorTag: emalinowskiv1
   migration: true
