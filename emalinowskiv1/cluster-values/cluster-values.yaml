@@ -4,7 +4,7 @@ project: dev
 accountNumber: "707767160287"
 
 configuration:
-  configurationRevision: feat/no-cluster-endpoint-needed
+  configurationRevision: master
 
 alb-controller:
   enabled: true
@@ -48,7 +48,7 @@ grafana-alloy:
 
 karpenter:
   enabled: true
-  targetRevision: "1.0.8"
+  targetRevision: "1.6.3"
   configuration:
     enabled: true
 
