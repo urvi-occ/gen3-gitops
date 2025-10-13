@@ -19,3 +19,5 @@ controller:
       cpu: 1
 webhook:
   enabled: false
+
+dnsPolicy: Default
