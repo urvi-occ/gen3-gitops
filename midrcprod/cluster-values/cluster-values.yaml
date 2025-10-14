@@ -65,19 +65,19 @@ karpenter-crds:
     - key: karpenter.k8s.aws/instance-cpu
       operator: Lt
       values:
-      - "9"
+        - "9"
     - key: karpenter.k8s.aws/instance-category
       operator: In
       values:
-      - c
+        - c
     - key: kubernetes.io/arch
       operator: In
       values:
-      - amd64
+        - amd64
     - key: karpenter.sh/capacity-type
       operator: In
       values:
-      - on-demand
+        - on-demand
 
 vpc-cni:
   enabled: true
