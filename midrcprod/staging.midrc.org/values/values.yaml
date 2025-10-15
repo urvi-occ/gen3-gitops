@@ -470,21 +470,21 @@ etl:
           - name: view_position
         root: None
         type: collector
-        - name: midrcstaging_radiology_report
-          doc_type: radiology_report
-	      type: aggregator
-	      root: radiology_report
-	      props:
-           - name: project_id
-		   - name: submitter_id
-           - name: file_size
-		   - name: file_name
-           - name: data_type
-           - name: modality
-           - name: object_id
-           - name: report_generation_method
-           - name: report_modification_method
-           - name: study_description
+        name: midrcstaging_radiology_report
+        doc_type: radiology_report
+	    type: aggregator
+	    root: radiology_report
+	    props:
+          - name: project_id
+		  - name: submitter_id
+          - name: file_size
+		  - name: file_name
+          - name: data_type
+          - name: modality
+          - name: object_id
+          - name: report_generation_method
+          - name: report_modification_method
+          - name: study_description
   image:
     tube:
       tag: '2025.09'
