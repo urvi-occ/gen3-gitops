@@ -470,15 +470,15 @@ etl:
           - name: view_position
         root: None
         type: collector
-        name: midrcstaging_radiology_report
+      - name: midrcstaging_radiology_report
         doc_type: radiology_report
 	    type: aggregator
 	    root: radiology_report
 	    props:
           - name: project_id
-		  - name: submitter_id
+          - name: submitter_id
           - name: file_size
-		  - name: file_name
+          - name: file_name
           - name: data_type
           - name: modality
           - name: object_id
