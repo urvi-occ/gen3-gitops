@@ -9,67 +9,6 @@ fence:
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/fence
     tag: master
-  env:
-    - name: GEN3_UWSGI_TIMEOUT
-      valueFrom:
-        configMapKeyRef:
-          name: manifest-global
-          key: uwsgi-timeout
-          optional: true
-    - name: DD_AGENT_HOST
-      valueFrom:
-        fieldRef:
-          fieldPath: status.hostIP
-    - name: AWS_STS_REGIONAL_ENDPOINTS
-      value: regional
-    - name: PYTHONPATH
-      value: /var/www/fence
-    - name: GEN3_DEBUG
-      value: "False"
-    - name: PGHOST
-      valueFrom:
-        secretKeyRef:
-          name: fence-dbcreds
-          key: host
-          optional: false
-    - name: PGUSER
-      valueFrom:
-        secretKeyRef:
-          name: fence-dbcreds
-          key: username
-          optional: false
-    - name: PGPASSWORD
-      valueFrom:
-        secretKeyRef:
-          name: fence-dbcreds
-          key: password
-          optional: false
-    - name: PGDB
-      valueFrom:
-        secretKeyRef:
-          name: fence-dbcreds
-          key: database
-          optional: false
-    - name: DBREADY
-      valueFrom:
-        secretKeyRef:
-          name: fence-dbcreds
-          key: dbcreated
-          optional: false
-    - name: DB
-      value: postgresql://$(PGUSER):$(PGPASSWORD)@$(PGHOST):5432/$(PGDB)
-    - name: INDEXD_PASSWORD
-      valueFrom:
-        secretKeyRef:
-          name: indexd-service-creds
-          key: fence
-    - name: INDEXD_USERNAME
-      value: "fence_oadc"
-    - name: gen3Env
-      valueFrom:
-        configMapKeyRef:
-          name: manifest-global
-          key: hostname
 
   # -- (map) Annotations to add to the pod
   podAnnotations:

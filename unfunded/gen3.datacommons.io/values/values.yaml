@@ -141,7 +141,11 @@ ssjdispatcher:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/ssjdispatcher
     tag: master
   externalSecrets:
-    createK8sSsjdispatcherSecret: true
+    credsFile: oadc-ssjdispatcher-creds
+  indexing: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/indexs3client:2025.10
+  jobServiceAccount:
+    annotations:
+      eks.amazonaws.com/role-arn: arn:aws:iam::662843554732:role/gen3_service/unfunded--oadc--ssj-job
 
 metadata:
   # Lower cost
