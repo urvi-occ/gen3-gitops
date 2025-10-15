@@ -181,7 +181,8 @@ hatchery:
           "env": {
             "NAMESPACE": "default",
             "GEN3_ENDPOINT": "healdata.org",
-            "HOSTNAME": "healdata.org"
+            "HOSTNAME": "healdata.org",
+            "USER_UID": "1010"
           },
           "args": [],
           "command": [
