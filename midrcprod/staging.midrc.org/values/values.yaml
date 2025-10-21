@@ -562,6 +562,8 @@ guppy:
       type: data_file
     - index: midrcstaging_imaging_study
       type: imaging_study
+    - index: midrcstaging_radiology_report
+      type: radiology_report
 hatchery:
   enabled: true
   jupyterNamespace: jupyter-pods-midrcstaging-helm
