@@ -455,7 +455,8 @@ pidgin:
 portal:
   enabled: true
   image:
-    tag: fix_gqlhelper
+    # tag: fix_gqlhelper
+    tag: 2025.09
   customConfig:
     enabled: true
     dir: "headneck/headneckcancerbank.data-commons.org/values/portal/"
