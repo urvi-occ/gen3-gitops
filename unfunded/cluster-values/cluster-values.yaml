@@ -38,12 +38,6 @@ fluentd:
   configuration:
     enabled: false
 
-kube-state-metrics:
-  enabled: true
-  targetRevision: "2.16.0"
-  configuration:
-    enabled: false
-
 grafana-alloy:
   enabled: true
   configuration:
