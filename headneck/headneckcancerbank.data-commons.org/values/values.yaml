@@ -747,20 +747,10 @@ portal:
                     "visit.CRDW_START_DATE",
                     "visit.CRDW_END_DATE",
                     "visit.DISC_DATE",
-                    "visit.department",
-                    "visit.disch_disp",
-                    "visit.disch_disp_c",
                     "visit.dx_name",
                     "visit.dx_rank",
-                    "visit.ed_arrival_dttm",
-                    "visit.enc_date",
-                    "visit.enc_type_c",
-                    "visit.encounter_type",
-                    "visit.hosp_adm_dttm",
-                    "visit.hosp_dc_dttm",
                     "visit.icd10_code",
                     "visit.icd9_code",
-                    "visit.poa"
                   ]
                 }
               ]
@@ -830,20 +820,10 @@ portal:
                 "visit.CRDW_START_DATE",
                 "visit.CRDW_END_DATE",
                 "visit.DISC_DATE",
-                "visit.department",
-                "visit.disch_disp",
-                "visit.disch_disp_c",
                 "visit.dx_name",
                 "visit.dx_rank",
-                "visit.ed_arrival_dttm",
-                "visit.enc_date",
-                "visit.enc_type_c",
-                "visit.encounter_type",
-                "visit.hosp_adm_dttm",
-                "visit.hosp_dc_dttm",
                 "visit.icd10_code",
-                "visit.icd9_code",
-                "visit.poa"
+                "visit.icd9_code"
               ],
               "linkFields": []
             },
