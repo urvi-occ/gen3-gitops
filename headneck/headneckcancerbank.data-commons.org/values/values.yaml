@@ -98,8 +98,8 @@ etl:
   image:
     tube:
       # -- (string) Overrides the image tag whose default is the chart appVersion.
-      # tag: "jawad-debug"
-      tag: "2025.09"
+      tag: "jawad-debug"
+      # tag: "2025.09"
       pullPolicy: Always
   esEndpoint: elasticsearch
   etlMapping:
