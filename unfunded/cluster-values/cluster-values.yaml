@@ -21,10 +21,6 @@ calico:
   configuration:
     enabled: false
 
-cert-manager:
-  enabled: true
-  targetRevision: "1.18.2"
-
 coreDNS:
   enabled: true
   targetRevision: "1.43.1"
