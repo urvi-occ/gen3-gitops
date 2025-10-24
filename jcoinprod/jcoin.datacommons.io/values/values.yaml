@@ -39,7 +39,7 @@ dashboard:
   enabled: true
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/gen3-statics
-    tag: '2025.07'
+    tag: '2025.10'
   serviceAccount:
     annotations:
       eks.amazonaws.com/role-arn: arn:aws:iam::258867494168:role/jcoinprod--jcoinprod-helm--dashboard-access
@@ -1269,11 +1269,6 @@ sower:
         - name: sower-jobs-creds-volume
           secret:
             secretName: sower-jobs-g3auto
-spark:
-  enabled: true
-  image:
-    repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/gen3-spark
-    tag: '2025.07'
 ssjdispatcher:
   serviceAccount:
     annotations:
@@ -1288,11 +1283,6 @@ ssjdispatcher:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/ssjdispatcher
     tag: '2025.10'
   indexing: quay.io/cdis/indexs3client:2025.10
-tube:
-  enabled: true
-  image:
-    repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/tube
-    tag: '2025.07'
 wts:
   enabled: true
   externalSecrets:
