@@ -32,75 +32,76 @@ dashboard:
       eks.amazonaws.com/role-arn: arn:aws:iam::446046036926:role/icgc--icgc-helm--dashboard-access
 etl:
   esEndpoint: elasticsearch
-  mappings:
-  - aggregated_props:
-    - fn: count
-      name: _aligned_reads_files_count
-      path: aligned_reads_files
-    - fn: count
-      name: _variant_call_files_count
-      path: variant_call_files
-    doc_type: subject
-    joining_props:
-    - index: file
-      join_on: _subject_id
-      props:
-      - fn: set
-        name: data_format
-        src: data_format
-      - fn: set
-        name: data_type
-        src: data_type
-      - fn: set
-        name: data_category
-        src: data_type
-    name: icgc_etl
-    props:
-    - name: submitter_id
-    - name: project_id
-    - name: age_at_diagnosis
-    - name: age_at_diagnosis_group
-    - name: age_at_last_followup
-    - name: cancer_first_relative
-    - name: diagnosis_icd10
-    - name: disease_status_last_followup
-    - name: prior_malignancy
-    - name: tumor_type
-    - name: tumor_subtype
-    - name: gender
-    - name: primary_site
-    - name: vital_status
-    root: subject
-    type: aggregator
-  - category: data_file
-    doc_type: file
-    injecting_props:
-      subject:
+  etlMapping:
+    mappings:
+      - aggregated_props:
+          - fn: count
+            name: _aligned_reads_files_count
+            path: aligned_reads_files
+          - fn: count
+            name: _variant_call_files_count
+            path: variant_call_files
+        doc_type: subject
+        joining_props:
+          - index: file
+            join_on: _subject_id
+            props:
+              - fn: set
+                name: data_format
+                src: data_format
+              - fn: set
+                name: data_type
+                src: data_type
+              - fn: set
+                name: data_category
+                src: data_type
+        name: icgc_etl
         props:
-        - name: _subject_id
-          src: id
-        - name: project_id
-    name: icgc_file
-    props:
-    - name: submitter_id
-    - name: object_id
-    - name: md5sum
-    - name: file_name
-    - name: file_size
-    - name: data_format
-    - name: data_type
-    - name: data_category
-    - name: analysis_type
-    - name: experimental_strategy
-    - name: donor_barcode
-    - name: specimen_barcode
-    - name: sample_barcode
-    - name: aliquot_barcode
-    - name: primary_site
-    - name: specimen_type
-    - name: dcc_file_id
-    root: None
-    type: collector
+          - name: submitter_id
+          - name: project_id
+          - name: age_at_diagnosis
+          - name: age_at_diagnosis_group
+          - name: age_at_last_followup
+          - name: cancer_first_relative
+          - name: diagnosis_icd10
+          - name: disease_status_last_followup
+          - name: prior_malignancy
+          - name: tumor_type
+          - name: tumor_subtype
+          - name: gender
+          - name: primary_site
+          - name: vital_status
+        root: subject
+        type: aggregator
+      - category: data_file
+        doc_type: file
+        injecting_props:
+          subject:
+            props:
+              - name: _subject_id
+                src: id
+              - name: project_id
+        name: icgc_file
+        props:
+          - name: submitter_id
+          - name: object_id
+          - name: md5sum
+          - name: file_name
+          - name: file_size
+          - name: data_format
+          - name: data_type
+          - name: data_category
+          - name: analysis_type
+          - name: experimental_strategy
+          - name: donor_barcode
+          - name: specimen_barcode
+          - name: sample_barcode
+          - name: aliquot_barcode
+          - name: primary_site
+          - name: specimen_type
+          - name: dcc_file_id
+        root: None
+        type: collector
   image:
     tube:
       tag: '2025.10'
