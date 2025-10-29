@@ -30,7 +30,7 @@ global:
   netPolicy:
     enabled: false
   dispatcherJobNum: "10"
-  frontendRoot: "portal"
+  frontendRoot: "gen3ff"
   ddEnabled: false
 
 ambassador:
@@ -94,9 +94,9 @@ fence:
     slack_send_dbgap: false
 
 frontend-framework:
-  enabled: false
+  enabled: true
   image:
-    repository: "quay.io/cdis/frontend-framework"
+    repository: "quay.io/cdis/cac-data-commons"
     tag: "main"
 
 grafana:
@@ -190,7 +190,7 @@ pidgin:
   enabled: false
 
 portal:
-  enabled: true
+  enabled: false
 
 requestor:
   enabled: false
