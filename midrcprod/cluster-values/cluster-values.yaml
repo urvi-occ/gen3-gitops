@@ -109,22 +109,22 @@ karpenter-crds:
     amiFamily: AL2023
     volumeSize: 80Gi
     requirements:
-      - key: karpenter.k8s.aws/instance-cpu
-        operator: Lt
-        values:
-          - "9"
-      - key: karpenter.k8s.aws/instance-category
-        operator: In
-        values:
-          - c
-      - key: kubernetes.io/arch
-        operator: In
-        values:
-          - amd64
-      - key: karpenter.sh/capacity-type
-        operator: In
-        values:
-          - on-demand
+    - key: karpenter.k8s.aws/instance-cpu
+      operator: Lt
+      values:
+        - "9"
+    - key: karpenter.k8s.aws/instance-category
+      operator: In
+      values:
+        - c
+    - key: kubernetes.io/arch
+      operator: In
+      values:
+        - amd64
+    - key: karpenter.sh/capacity-type
+      operator: In
+      values:
+        - on-demand
 
 vpc-cni:
   enabled: true
