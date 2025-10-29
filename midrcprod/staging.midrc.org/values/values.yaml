@@ -240,6 +240,10 @@ etl:
           - name: data_type
           - name: modality
           - name: object_id
+          - name: body_part_examined
+          - name: report_generation_method
+          - name: report_modification_method
+          - name: study_description
       - name: midrcstaging_imaging_study
         doc_type: imaging_study
         type: aggregator
