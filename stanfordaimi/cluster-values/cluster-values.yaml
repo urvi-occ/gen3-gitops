@@ -13,7 +13,7 @@ alb-controller:
 
 calico:
   enabled: true
-  targetRevision: v3.33.0
+  targetRevision: "3.30.3"
   configuration:
     enabled: false
 
