@@ -50,27 +50,6 @@ karpenter-crds:
     consolidateAfter: "5m"
     expireAfter: "72h"
     volumeSize: 80Gi
-  jupyter:
-    enabled: false
-    nodeClassRef:
-      apiVersion: karpenter.k8s.aws/v1
-      kind: EC2NodeClass
-      name: jupyter
-    amiFamily: AL2023
-    consolidationPolicy: "WhenUnderutilized"
-    consolidateAfter: "5m"
-    expireAfter: "72h"
-    volumeSize: 80Gi
-  workflow:
-    enabled: false
-    nodeClassRef:
-      apiVersion: karpenter.k8s.aws/v1
-      kind: EC2NodeClass
-      name: workflow
-    amiFamily: AL2023
-    consolidateAfter: "5m"
-    expireAfter: "72h"
-    volumeSize: 80Gi
 
 vpc-cni:
   enabled: true
