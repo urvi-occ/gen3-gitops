@@ -3,10 +3,22 @@
 cluster: csoc
 project: gen3-csoc
 
+calico:
+  enabled: true
+  targetRevision: v3.28.0
+  configuration:
+    enabled: false
+
+ebs-csi-driver:
+  enabled: true
+  targetRevision: "1.21.0"
+  configuration:
+    enabled: false  
+
 grafana-alloy:
   enabled: true
   configuration:
-    enabled: false
+    enabled: false  
 
 karpenter:
   enabled: true
@@ -27,6 +39,25 @@ karpenter-crds:
     consolidateAfter: "5m"
     expireAfter: "72h"
     volumeSize: 80Gi
+    requirements:
+      - key: karpenter.sh/capacity-type
+        operator: In
+        values:
+          - on-demand
+          - spot
+      - key: kubernetes.io/arch
+        operator: In
+        values:
+          - amd64
+      - key: karpenter.k8s.aws/instance-family
+        operator: In
+        values:
+          - r8i-flex
+          - m8i-flex
+      - key: karpenter.k8s.aws/instance-memory
+        operator: Gt
+        values:
+          - "7000"
   jupyter:
     enabled: false
     nodeClassRef:
