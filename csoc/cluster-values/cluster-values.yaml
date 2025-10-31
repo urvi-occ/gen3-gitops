@@ -1,28 +1,32 @@
-# The name of the cluster this configuration is going to. This should match the name of the directory configuration
-# is stored in
 cluster: csoc
 project: gen3-csoc
 
 calico:
   enabled: true
-  targetRevision: v3.28.0
+  targetRevision: v3.30.3
+  configuration:
+    enabled: false
+
+coreDNS:
+  enabled: true
+  targetRevision: v1.43.1
   configuration:
     enabled: false
 
 ebs-csi-driver:
   enabled: true
-  targetRevision: "1.21.0"
+  targetRevision: "1.48.0"
   configuration:
-    enabled: false  
+    enabled: false
 
 grafana-alloy:
   enabled: true
   configuration:
-    enabled: false  
+    enabled: false
 
 karpenter:
   enabled: true
-  targetRevision: "1.0.8"
+  targetRevision: "1.6.3"
 
 karpenter-crds:
   amiSelectorName: "EKS-1-33-al23*"
@@ -35,7 +39,7 @@ karpenter-crds:
       kind: EC2NodeClass
       name: default
     amiFamily: AL2023
-    consolidationPolicy: "WhenUnderutilized"
+    consolidationPolicy: "WhenEmptyOrUnderutilized"
     consolidateAfter: "5m"
     expireAfter: "72h"
     volumeSize: 80Gi
@@ -58,24 +62,17 @@ karpenter-crds:
         operator: Gt
         values:
           - "7000"
-  jupyter:
-    enabled: false
-    nodeClassRef:
-      apiVersion: karpenter.k8s.aws/v1
-      kind: EC2NodeClass
-      name: jupyter
-    amiFamily: AL2023
-    consolidationPolicy: "WhenUnderutilized"
-    consolidateAfter: "5m"
-    expireAfter: "72h"
-    volumeSize: 80Gi
   workflow:
-    enabled: false
     nodeClassRef:
       apiVersion: karpenter.k8s.aws/v1
       kind: EC2NodeClass
       name: workflow
     amiFamily: AL2023
-    consolidateAfter: "5m"
-    expireAfter: "72h"
+    volumeSize: 80Gi
+  jupyter:
+    nodeClassRef:
+      apiVersion: karpenter.k8s.aws/v1
+      kind: EC2NodeClass
+      name: jupyter
+    amiFamily: AL2023
     volumeSize: 80Gi
