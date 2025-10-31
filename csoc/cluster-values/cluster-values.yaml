@@ -1,6 +1,8 @@
 cluster: csoc
 project: gen3-csoc
 
+accountNumber: "433568766270"
+
 calico:
   enabled: true
   targetRevision: v3.30.3
