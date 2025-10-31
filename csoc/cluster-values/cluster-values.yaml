@@ -1,4 +1,4 @@
-cluster: csoc
+cluster: csoc_main_vpc
 project: gen3-csoc
 
 accountNumber: "433568766270"
