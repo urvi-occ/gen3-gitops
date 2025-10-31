@@ -90,18 +90,25 @@ karpenter-crds:
         operator: Gt
         values:
           - "7000"
-  workflow:
-    nodeClassRef:
-      apiVersion: karpenter.k8s.aws/v1
-      kind: EC2NodeClass
-      name: workflow
-    amiFamily: AL2023
-    volumeSize: 80Gi
   jupyter:
+    enabled: false
     nodeClassRef:
       apiVersion: karpenter.k8s.aws/v1
       kind: EC2NodeClass
       name: jupyter
+    amiFamily: AL2023
+    consolidationPolicy: "WhenUnderutilized"
+    volumeSize: 80Gi
+    additionalTags:
+      "vadc:cost-type": "usage-based-variable"
+      "vadc:environment-type": "production"
+      "vadc:usage-type": "user-infrastructure"
+  workflow:
+    enabled: false
+    nodeClassRef:
+      apiVersion: karpenter.k8s.aws/v1
+      kind: EC2NodeClass
+      name: workflow
     amiFamily: AL2023
     volumeSize: 80Gi
 
