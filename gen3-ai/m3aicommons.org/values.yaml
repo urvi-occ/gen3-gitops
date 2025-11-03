@@ -218,3 +218,4 @@ wts:
   externalSecrets:
     dbcreds: "gen3-ai-default-wts-creds"
     createK8sWtsSecret: true
+    createWtsOidcClientSecret: false
