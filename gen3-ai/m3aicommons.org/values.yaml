@@ -37,6 +37,8 @@ global:
 
 ambassador:
   enabled: true
+  jupyterNamespace: jupyter-pods-default
+
 
 arborist:
   enabled: true
