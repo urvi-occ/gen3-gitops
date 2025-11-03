@@ -8,6 +8,7 @@ configuration:
 
 alb-controller:
   enabled: true
+  targetRevision: "2.13.4"
   configuration:
     enabled: false
 
@@ -17,17 +18,20 @@ aws-s3-mountpoint:
     enabled: false
 
 calico:
-  enabled: false
+  enabled: true
+  targetRevision: "3.30.3"
   configuration:
     enabled: false
 
 coreDNS:
   enabled: true
+  targetRevision: "1.12.2"
   configuration:
     enabled: false
 
 ebs-csi-driver:
   enabled: true
+  targetRevision: "1.48.0"
   configuration:
     enabled: false
 
@@ -63,5 +67,6 @@ karpenter-crds:
 
 vpc-cni:
   enabled: true
+  targetRevision: "1.20.1"
   configuration:
     enabled: false
