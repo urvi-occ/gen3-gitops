@@ -151,39 +151,21 @@ jobs:
           #!/usr/bin/env bash
           set -euo pipefail
 
-          # Resolve a good base for diffing (PRs or pushes, main/master, or origin/HEAD)
+          # Resolve a sane base ref (works on PRs and pushes)
           resolve_base() {
-            # Prefer GH-provided base (PRs)
-            if [[ -n "${GITHUB_BASE_REF:-}" ]]; then
-              echo "origin/${GITHUB_BASE_REF}"
-              return
-            fi
-
-            # Try common names
+            if [[ -n "${GITHUB_BASE_REF:-}" ]]; then echo "origin/${GITHUB_BASE_REF}"; return; fi
             for b in origin/main origin/master main master; do
-              if git rev-parse --verify --quiet "$b" >/dev/null; then
-                echo "$b"
-                return
-              fi
+              git rev-parse --verify --quiet "$b" >/dev/null && { echo "$b"; return; }
             done
-
-            # Fallback to remote default branch (origin/HEAD -> origin/main)
-            if git rev-parse --verify --quiet origin/HEAD >/dev/null; then
-              git symbolic-ref --quiet --short refs/remotes/origin/HEAD | cut -d/ -f2- | sed 's#^#origin/#'
-              return
-            fi
-
-            # Last resort: initial commit
+            git rev-parse --verify --quiet origin/HEAD >/dev/null \
+              && git symbolic-ref --quiet --short refs/remotes/origin/HEAD \
+              | awk -F/ '{print "origin/"$2}' && return
             git rev-list --max-parents=0 HEAD | head -n1
           }
           BASE_REF="$(resolve_base)"
           MERGE_BASE="$(git merge-base HEAD "$BASE_REF" 2>/dev/null || echo "$BASE_REF")"
 
-          # Get Argo Application CRD for schema
-          curl -sSL https://raw.githubusercontent.com/argoproj/argo-cd/master/manifests/crds/application-crd.yaml \
-            -o /tmp/argocd-application-crd.yaml
-
-          # Find changed YAMLs that are Argo Applications
+          # Find changed YAML files that look like Argo Applications
           mapfile -t APP_FILES < <(
             git diff --name-only --diff-filter=ACMRT "$MERGE_BASE"...HEAD \
             | grep -E '\.ya?ml$' \
@@ -191,18 +173,19 @@ jobs:
             || true
           )
 
-          if [[ ${#APP_FILES[@]} -eq 0 ]]; then
-            echo "No changed Argo Application YAMLs."
-            exit 0
-          fi
+          [[ ${#APP_FILES[@]} -eq 0 ]] && { echo "No changed Argo Application YAMLs."; exit 0; }
 
-          # Validate YAML syntax + CRD schema
+          # Use a public CRD schema catalog so kubeconform knows about argoproj Application
+          CRD_CATALOG="https://raw.githubusercontent.com/datreeio/CRDs-catalog/main"
+
           for f in "${APP_FILES[@]}"; do
             echo "=== Validating Application: $f ==="
+            # YAML syntax
             yq -e '.' "$f" >/dev/null
+            # Schema validation (no -schemas-from-file)
             kubeconform --summary -ignore-missing-schemas \
               -schema-location default \
-              -schemas-from-file /tmp/argocd-application-crd.yaml \
+              -schema-location "$CRD_CATALOG" \
               "$f"
             echo
           done
