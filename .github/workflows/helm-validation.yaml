@@ -186,3 +186,91 @@ jobs:
               "$f"
             echo
           done
+
+      - name: Validate Values Files Against Actual Chart
+        run: |
+          #!/usr/bin/env bash
+          set -euo pipefail
+          shopt -s nullglob
+
+          # --- CONFIG (override via env if you want) ---
+          GEN3_HELM_REPO_URL="${GEN3_HELM_REPO_URL:-https://helm.gen3.org}"
+          GEN3_APP_CHART_NAME="${GEN3_APP_CHART_NAME:-gen3}"
+          GEN3_CLUSTER_CHART_NAME="${GEN3_CLUSTER_CHART_NAME:-cluster-level-resources}"
+          # --------------------------------------------
+
+          resolve_base() {
+            if [[ -n "${GITHUB_BASE_REF:-}" ]]; then echo "origin/${GITHUB_BASE_REF}"; return; fi
+            for b in origin/main origin/master main master; do
+              git rev-parse --verify --quiet "$b" >/dev/null && { echo "$b"; return; }
+            done
+            if git rev-parse --verify --quiet origin/HEAD >/dev/null; then
+              git symbolic-ref --quiet --short refs/remotes/origin/HEAD | awk -F/ '{print "origin/"$2}'
+              return
+            fi
+            git rev-list --max-parents=0 HEAD | head -n1
+          }
+          BASE_REF="$(resolve_base)"
+          MERGE_BASE="$(git merge-base HEAD "$BASE_REF" 2>/dev/null || echo "$BASE_REF")"
+
+          # Only files in values/ or cluster-values/
+          mapfile -t CHANGED_VALUES < <(
+            git diff --name-only --diff-filter=ACMRT "$MERGE_BASE"...HEAD \
+            | grep -E '\.(ya?ml)$' \
+            | grep -E '/(values|cluster-values)/' || true
+          )
+
+          if [[ ${#CHANGED_VALUES[@]} -eq 0 ]]; then
+            echo "No changed values files; skipping downstream validation."
+            exit 0
+          fi
+
+          # For each chart dir, pick mode by your rule:
+          # - if changed file is .../cluster-values/cluster-values.yaml => use cluster-level-resources
+          # - else use gen3
+          declare -A CHART_MODE=()  # chart_dir -> cluster|gen3
+
+          for vf in "${CHANGED_VALUES[@]}"; do
+            d="$(dirname "$vf")"
+            chart_dir=""
+            while [[ "$d" != "." && "$d" != "/" ]]; do
+              if [[ -f "$d/Chart.yaml" ]]; then chart_dir="$d"; break; fi
+              d="$(dirname "$d")"
+            done
+            [[ -n "$chart_dir" ]] || continue
+
+            if [[ "$vf" =~ (^|/)cluster-values/cluster-values\.ya?ml$ ]]; then
+              CHART_MODE["$chart_dir"]="cluster"
+            else
+              [[ "${CHART_MODE[$chart_dir]:-}" != "cluster" ]] && CHART_MODE["$chart_dir"]="gen3"
+            fi
+          done
+
+          # Helm repo
+          repo_name="r$(echo -n "$GEN3_HELM_REPO_URL" | md5sum | awk '{print $1}')"
+          helm repo add "$repo_name" "$GEN3_HELM_REPO_URL" >/dev/null 2>&1 || true
+          helm repo update >/dev/null 2>&1 || true
+
+          for chart_dir in $(printf '%s\n' "${!CHART_MODE[@]}" | sort); do
+            mode="${CHART_MODE[$chart_dir]}"
+            if [[ "$mode" == "cluster" ]]; then
+              downstream_chart="$GEN3_CLUSTER_CHART_NAME"
+              values_files=( "$chart_dir/cluster-values/cluster-values.yaml" "$chart_dir/cluster-values/cluster-values.yml" )
+            else
+              downstream_chart="$GEN3_APP_CHART_NAME"
+              values_files=( "$chart_dir/values/"*.yaml "$chart_dir/values/"*.yml )
+            fi
+
+            vals=()
+            for vf in "${values_files[@]}"; do
+              [[ -f "$vf" ]] || continue
+              echo "YAML parse check: $vf"
+              yq -e '.' "$vf" >/dev/null
+              vals+=( --values "$vf" )
+            done
+
+            echo "=== Lint: $chart_dir -> $repo_name/$downstream_chart ==="
+            helm lint "$repo_name/$downstream_chart" "${vals[@]}"
+
+            echo
+          done

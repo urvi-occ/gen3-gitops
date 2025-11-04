@@ -10,7 +10,7 @@ access-backend:
     annotations:
       eks.amazonaws.com/role-arn: arn:aws:iam::895962626746:role/bdcatprod--bdcat-stagingdatastage--access-backend-sa
 arborist:
-  replicaCount: 4
+  replicaCount: 3
   autoscaling:
     enabled: false
     maxReplicas: 4
