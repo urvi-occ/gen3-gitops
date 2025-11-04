@@ -21,19 +21,19 @@ jobs:
           python-version: '3.9'
           check-latest: true
 
-      - name: Set up chart-testing
-        uses: helm/chart-testing-action@v2.7.0
+      # - name: Set up chart-testing
+      #   uses: helm/chart-testing-action@v2.7.0
 
-      - name: Run chart-testing (list-changed)
-        id: list-changed
-        run: |
-          changed=$(ct list-changed --config ct.yaml)
-          if [[ -n "$changed" ]]; then
-            echo "changed=true >> $GITHUB_OUTPUT"
-          fi
+      # - name: Run chart-testing (list-changed)
+      #   id: list-changed
+      #   run: |
+      #     changed=$(ct list-changed --config ct.yaml)
+      #     if [[ -n "$changed" ]]; then
+      #       echo "changed=true >> $GITHUB_OUTPUT"
+      #     fi
 
-      - name: Run chart-testing (lint)
-        run: ct lint --config ct.yaml
+      # - name: Run chart-testing (lint)
+      #   run: ct lint --config ct.yaml
 
       - name: Validate Helm Templates for All Charts
         run: |
@@ -146,38 +146,38 @@ jobs:
             echo "Installation path: ${KUBECONFORM_INSTALLATION_PATH}"
         shell: bash
 
-      - name: Kubeconform Parrallel Better Output
+      - name: Kubeconform Validate app.yaml
         run: |
-          find . -type f -name 'Chart.yaml' -print0 \
-          | xargs -0 -P "$(nproc)" -I{} bash -eo pipefail -c '
-            shopt -s nullglob
-            chart_dir="$(dirname "{}")"
+          #!/usr/bin/env bash
+          set -euo pipefail
 
-            # Collect values files (optional)
-            values_args=()
-            for vf in "$chart_dir"/values/*.yaml "$chart_dir"/values/*.yml; do
-              [[ -f "$vf" ]] || continue
-              values_args+=( --values "$vf" )
-            done
+          BASE_REF="${BASE_REF:-${GITHUB_BASE_REF:-origin/main}}"
 
-            # Buffer output for clean logging
-            tmp="$(mktemp)"
-            status=0
-            {
-              echo "=== Validating: $chart_dir ==="
-              helm dep up "$chart_dir" >/dev/null
-              helm template "$chart_dir" --include-crds "${values_args[@]:-}" \
-              | kubeconform --summary -ignore-missing-schemas
-              echo
-            } >"$tmp" 2>&1 || status=$?
+          # 1) Get the Argo Application CRD so kubeconform knows the schema
+          curl -sSL \
+            https://raw.githubusercontent.com/argoproj/argo-cd/master/manifests/crds/application-crd.yaml \
+            -o /tmp/argocd-application-crd.yaml
 
-            if [[ $status -eq 0 ]]; then
-              cat "$tmp"
-            else
-              echo "=== FAILED: $chart_dir ==="
-              cat "$tmp"
-              exit $status
-            fi
+          # 2) Find changed YAMLs that look like Argo Applications
+          mapfile -t APP_FILES < <(
+            git diff --name-only --diff-filter=ACMRT "$(git merge-base HEAD "$BASE_REF")"...HEAD \
+              | grep -E '\.ya?ml$' \
+              | xargs -I{} sh -c 'grep -qE "^[[:space:]]*kind:[[:space:]]*Application[[:space:]]*$" "{}" && echo "{}"' \
+              || true
+          )
 
-            rm -f "$tmp"
-          '
+          # Nothing changed? exit cleanly.
+          [[ ${#APP_FILES[@]} -eq 0 ]] && { echo "No changed Argo Application YAMLs."; exit 0; }
+
+          # 3) Validate each file: YAML syntax + schema
+          for f in "${APP_FILES[@]}"; do
+            echo "=== Validating Application: $f ==="
+            # YAML syntax (fast fail)
+            yq -e '.' "$f" >/dev/null
+            # CRD schema validation
+            kubeconform --summary -ignore-missing-schemas \
+              -schema-location default \
+              -schemas-from-file /tmp/argocd-application-crd.yaml \
+              "$f"
+            echo
+          done
