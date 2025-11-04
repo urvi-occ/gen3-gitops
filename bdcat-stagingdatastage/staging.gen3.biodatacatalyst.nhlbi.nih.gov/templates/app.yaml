@@ -24,7 +24,7 @@ spec:
   syncPolicy:
     managedNamespaceMetadata:
       labels:
-        role: gen3
+        role: gen31
     syncOptions:
     - CreateNamespace=true
     automated:
