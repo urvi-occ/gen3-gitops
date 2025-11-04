@@ -261,6 +261,7 @@ jobs:
               values_files=( "$chart_dir/values/"*.yaml "$chart_dir/values/"*.yml )
             fi
 
+            # Build --values args, checking YAML parses
             vals=()
             for vf in "${values_files[@]}"; do
               [[ -f "$vf" ]] || continue
@@ -269,8 +270,17 @@ jobs:
               vals+=( --values "$vf" )
             done
 
-            echo "=== Lint: $chart_dir -> $repo_name/$downstream_chart ==="
-            helm lint "$repo_name/$downstream_chart" "${vals[@]}"
+            # 1) Pull the downstream chart to a temp dir and lint THAT directory
+            tmpdir="$(mktemp -d)"
+            if [[ -n "${CHART_VERSION:-}" ]]; then
+              helm pull "$repo_name/$downstream_chart" --version "$CHART_VERSION" --untar --untardir "$tmpdir"
+            else
+              helm pull "$repo_name/$downstream_chart" --untar --untardir "$tmpdir"
+            fi
+            chart_path="$tmpdir/$downstream_chart"
+
+            echo "=== Lint: $chart_dir -> $downstream_chart ${CHART_VERSION:+(version $CHART_VERSION)} ==="
+            helm lint "$chart_path" "${vals[@]}"
 
             echo
           done
