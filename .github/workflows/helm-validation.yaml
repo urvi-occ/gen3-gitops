@@ -175,9 +175,6 @@ jobs:
 
           [[ ${#APP_FILES[@]} -eq 0 ]] && { echo "No changed Argo Application YAMLs."; exit 0; }
 
-          # Use a public CRD schema catalog so kubeconform knows about argoproj Application
-          CRD_CATALOG="https://raw.githubusercontent.com/datreeio/CRDs-catalog/main"
-
           for f in "${APP_FILES[@]}"; do
             echo "=== Validating Application: $f ==="
             # YAML syntax
@@ -185,7 +182,7 @@ jobs:
             # Schema validation (no -schemas-from-file)
             kubeconform --summary -ignore-missing-schemas \
               -schema-location default \
-              -schema-location "$CRD_CATALOG" \
+              -schema-location 'https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/{{.Group}}/{{.ResourceKind}}_{{.ResourceAPIVersion}}.json' \
               "$f"
             echo
           done
