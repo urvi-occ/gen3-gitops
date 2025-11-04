@@ -131,3 +131,53 @@ jobs:
               echo "No app.yaml found in $chart_dir/templates/; skipping..."
             fi
           done
+
+      - name: Set up Kubeconform
+        id: setup-kubeconform
+        uses: bmuschko/setup-kubeconform@v1
+        with:
+          kubeconform-version: '0.6.1'
+
+      - name: Print Kubeconform installation path
+        env:
+          KUBECONFORM_INSTALLATION_PATH: ${{ steps.setup-kubeconform.outputs.installation-path }}
+        run: |
+            echo "Kubeconform installed..."
+            echo "Installation path: ${KUBECONFORM_INSTALLATION_PATH}"
+        shell: bash
+
+      - name: Kubeconform Parrallel Better Output
+        run: |
+          find . -type f -name 'Chart.yaml' -print0 \
+          | xargs -0 -P "$(nproc)" -I{} bash -eo pipefail -c '
+            shopt -s nullglob
+            chart_dir="$(dirname "{}")"
+
+            # Collect values files (optional)
+            values_args=()
+            for vf in "$chart_dir"/values/*.yaml "$chart_dir"/values/*.yml; do
+              [[ -f "$vf" ]] || continue
+              values_args+=( --values "$vf" )
+            done
+
+            # Buffer output for clean logging
+            tmp="$(mktemp)"
+            status=0
+            {
+              echo "=== Validating: $chart_dir ==="
+              helm dep up "$chart_dir" >/dev/null
+              helm template "$chart_dir" --include-crds "${values_args[@]:-}" \
+              | kubeconform --summary -ignore-missing-schemas
+              echo
+            } >"$tmp" 2>&1 || status=$?
+
+            if [[ $status -eq 0 ]]; then
+              cat "$tmp"
+            else
+              echo "=== FAILED: $chart_dir ==="
+              cat "$tmp"
+              exit $status
+            fi
+
+            rm -f "$tmp"
+          '
