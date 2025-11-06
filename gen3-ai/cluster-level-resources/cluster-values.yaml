@@ -7,6 +7,11 @@ alb-controller:
   configuration:
     enabled: false
 
+grafana-alloy:
+  enabled: true
+  configuration:
+    enabled: false
+
 aws-s3-mountpoint:
   enabled: true
   configuration:
