@@ -138,7 +138,6 @@ hatchery:
         "use-internal-services-url": false,
         "sub-dir": "/lw-workspace",
         "user-volume-size": "10Gi",
-        "gpu": true,
         "sidecar": {
           "args": [],
           "command": [
@@ -174,6 +173,7 @@ hatchery:
             "command": [
               "start-notebook.sh"
             ],
+            "gpu": true,
             "cpu-limit": "1.0",
             "env": {
               "FRAME_ANCESTORS": "https://m3aicommons.org"
@@ -187,7 +187,7 @@ hatchery:
               "export IAM=`whoami`; rm -rf /home/$IAM/pd/dockerHome; rm -rf /home/$IAM/pd/lost+found; ln -s /data /home/$IAM/pd/; true"
             ],
             "memory-limit": "2Gi",
-            "name": "(Tutorials) Example Analysis Jupyter Lab Notebooks",
+            "name": "(GPU) Example Analysis Jupyter Lab Notebooks",
             "path-rewrite": "/lw-workspace/proxy/",
             "ready-probe": "/lw-workspace/proxy/",
             "target-port": 8888,
