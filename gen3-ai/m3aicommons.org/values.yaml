@@ -134,6 +134,8 @@ hatchery:
   
   hotNode:
     enabled: true
+    gpu: true
+    jupyter: false
 
     availabilityZones:
       - us-east-1c
