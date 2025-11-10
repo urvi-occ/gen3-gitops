@@ -164,7 +164,7 @@ hatchery:
             "HOSTNAME": "m3aicommons.org",
             "NAMESPACE": "default"
           },
-          "image": "quay.io/cdis/ecs-ws-sidecar:master",
+          "image": "quay.io/cdis/ecs-ws-sidecar:feat_fast-terminate",
           "lifecycle-pre-stop": [
             "su",
             "-c",
