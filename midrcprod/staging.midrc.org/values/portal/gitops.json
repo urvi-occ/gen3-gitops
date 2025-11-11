@@ -437,6 +437,13 @@
                         ]
                     },
                     {
+                        "title": "Reports",
+                        "fields": [
+                            "_imaging_study_reports_count",
+                            "radiology_reports_count"
+                        ]
+                    },
+                    {
                         "title": "Annotations",
                         "fields": [
                             "imaging_study_annotations.annotation_name",
@@ -1045,6 +1052,12 @@
                             "ethnicity",
                             "zip",
                             "index_event"
+                        ]
+                    },
+                    {
+                        "title": "Reports",
+                        "fields": [
+                            "_radiology_reports_count"
                         ]
                     },
                     {
