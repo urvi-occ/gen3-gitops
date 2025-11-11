@@ -440,7 +440,7 @@
                         "title": "Reports",
                         "fields": [
                             "_imaging_study_reports_count",
-                            "radiology_reports_count"
+                            "_radiology_report_count"
                         ]
                     },
                     {
@@ -1057,7 +1057,7 @@
                     {
                         "title": "Reports",
                         "fields": [
-                            "_radiology_reports_count"
+                            "_radiology_report_count"
                         ]
                     },
                     {
