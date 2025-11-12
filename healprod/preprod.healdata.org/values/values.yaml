@@ -175,7 +175,7 @@ hatchery:
           "account_id": "252835817747",
           "workspace_type": "healworkspaces",
           "hard-limit": 5,
-          "soft-limit": 4,
+          "soft-limit": 4
         },
         "license-user-maps-dynamodb-table": "gen3-license-user-maps-preprod-heal",
         "license-user-maps-global-secondary-index": "activeUsersIndex",
