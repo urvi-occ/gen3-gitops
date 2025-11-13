@@ -72,7 +72,7 @@ fence:
     fenceJwtKeys: healprod-fence-jwt
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/fence
-    tag: '2025.10'
+    tag: '12.4.0'
   FENCE_CONFIG_PUBLIC:
     S3_BUCKETS:
       healprod-default-205252583234-upload:
@@ -103,6 +103,7 @@ fence:
         cred: fence_bot
         requester_pays: true
         region: us-east-1
+    HIDE_IDPS: ["https://shib2.swmed.edu/idp/shibboleth"]
 fluentd:
   enabled: true
   image:
