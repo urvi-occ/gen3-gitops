@@ -71,6 +71,8 @@ karpenter-crds:
       apiVersion: karpenter.k8s.aws/v1
       kind: EC2NodeClass
       name: default
+    limits:
+      memory: 1100Gi
     amiFamily: AL2023
     consolidationPolicy: "WhenEmptyOrUnderutilized"
     consolidateAfter: "5m"
