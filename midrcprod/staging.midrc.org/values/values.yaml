@@ -494,11 +494,6 @@ etl:
       tag: '2025.11'
     spark:
       tag: '2025.11'
-image:
-  tube:
-    tag: '2025.10'
-  spark:
-    tag: '2025.10'
 fence:
   autoscaling:
     enabled: false
@@ -600,7 +595,7 @@ hatchery:
         "sidecar": {
           "cpu-limit": "1.0",
           "memory-limit": "256Mi",
-          "image": "quay.io/cdis/ecs-ws-sidecar:2025.10",
+          "image": "quay.io/cdis/ecs-ws-sidecar:2025.11",
           "env": {
             "NAMESPACE": "default",
             "GEN3_ENDPOINT": "data.midrc.org",
