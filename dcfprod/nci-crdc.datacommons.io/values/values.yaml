@@ -62,6 +62,7 @@ datareplicate:
       memory: 2Gi
   googleBucketReplicateJob:
     enabled: false
+    suspendCronjob: true
     schedule: "*/30 * * * *"
     MAX_WORKERS: 80
     PROJECT: dcf-prod
@@ -71,6 +72,7 @@ datareplicate:
     IGNORED_FILE: gs://replication-input/ignored_files_manifest.csv
   awsBucketReplicateJob:
     enabled: false
+    suspendCronjob: true
     schedule: "*/30 * * * *"
     THREAD_NUM: 20
     CHUNK_SIZE: 1
@@ -81,31 +83,34 @@ datareplicate:
     MANIFEST_FILE: s3://data-refresh-manifest/
   awsBatchReplicateJob:
     enabled: false
+    suspendCronjob: true
     schedule: "*/30 * * * *"
     REGION: us-east-1
     THREAD_COUNT: 100
     MAX_RETRIES: 10
-    MANIFEST_PATH: 
-    JOB_QUEUE: 
-    JOB_DEFINITION: 
-    OUTPUT_MANIFEST_BUCKET: 
+    MANIFEST_PATH:
+    JOB_QUEUE:
+    JOB_DEFINITION:
+    OUTPUT_MANIFEST_BUCKET:
   removeObjectsFromCloudsJob:
     enabled: false
+    suspendCronjob: true
     schedule: "*/30 * * * *"
-    DRY_RUN: true
+    DRY_RUN: "False"
     LOG_BUCKET: data-refresh-output
     RELEASE: DR44
-    MANIFEST_FILE: s3://data-refresh-manifest/
+    MANIFEST_FILE: s3://data-refresh-manifest/GDC_full_sync_legacy_manifest_20230410_post_DR37.0.tsv
     IGNORED_FILE: s3://data-refresh-manifest/ignored_files_manifest.csv
     ONLY_REDACT: gs
   replicateValidationJob:
     enabled: false
+    suspendCronjob: true
     schedule: "*/30 * * * *"
     LOG_BUCKET: data-refresh-output
     RELEASE: DR44
     MANIFEST_FILE: 's3://data-refresh-manifest/GDC_full_sync_legacy_manifest_20230410_post_DR37.0.tsv,s3://data-refresh-manifest/GDC_full_sync_active_manifest_'
     IGNORED_FILE: s3://data-refresh-manifest/ignored_files_manifest.csv
-    OUT_FILES: 'GDC_full_sync_legacy_manifest_20230410_post_DR37_DCF.tsv,GDC_full_sync_active_manifest_' 
+    OUT_FILES: 'GDC_full_sync_legacy_manifest_20230410_post_DR37_DCF.tsv,GDC_full_sync_active_manifest_'
     FORCE_CREATE_MANIFEST: false
 fence:
   FENCE_CONFIG_PUBLIC:
