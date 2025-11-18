@@ -53,7 +53,7 @@ datareplicate:
     dcfDataserviceSettingsSecret: dcfprod-dcf-dataservice-settings-secrets
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/dcf-dataservice
-    tag: 2.0.0
+    tag: 3.0.0
   resources:
     requests:
       cpu: "8"
