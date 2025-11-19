@@ -93,7 +93,7 @@ datareplicate:
     JOB_DEFINITION:
     OUTPUT_MANIFEST_BUCKET:
   removeObjectsFromCloudsJob:
-    enabled: false
+    enabled: true
     suspendCronjob: true
     schedule: "*/30 * * * *"
     DRY_RUN: "False"
