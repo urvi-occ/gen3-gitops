@@ -574,7 +574,7 @@ hatchery:
         "sidecar": {
           "cpu-limit": "1.0",
           "memory-limit": "256Mi",
-          "image": "quay.io/cdis/ecs-ws-sidecar:2025.10",
+          "image": "quay.io/cdis/ecs-ws-sidecar:2025.11",
           "env": {
             "NAMESPACE": "default",
             "GEN3_ENDPOINT": "data.midrc.org",
@@ -974,11 +974,6 @@ sheepdog:
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/sheepdog
     tag: '2025.11'
-spark:
-  enabled: true
-  image:
-    repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/gen3-spark
-    tag: '2025.10'
 ssjdispatcher:
   serviceAccount:
     annotations:
@@ -993,11 +988,6 @@ ssjdispatcher:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/ssjdispatcher
     tag: '2025.11'
   indexing: quay.io/cdis/indexs3client:2025.11
-tube:
-  enabled: true
-  image:
-    repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/tube
-    tag: '2025.10'
 wts:
   enabled: true
   externalSecrets:
