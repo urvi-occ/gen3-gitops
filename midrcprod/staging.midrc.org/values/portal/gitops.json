@@ -512,7 +512,8 @@
                     "_dx_series_file_count",
                     "_cr_series_file_count",
                     "_mr_series_file_count",
-                    "project_id"
+                    "project_id",
+                    "_radiology_report_count"
                 ],
                 "linkFields": [
                     "license",
@@ -1119,7 +1120,8 @@
                     "study_uid",
                     "case_ids",
                     "object_id",
-                    "project_id"
+                    "project_id",
+                    "_radiology_report_count"
                 ],
                 "dicomViewerId": "submitter_id",
                 "dicomViewerUrl": "ohif-viewer",
