@@ -28,6 +28,10 @@ aws-es-proxy:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/aws-es-proxy
     tag: v1.3.1
 etl:
+  resources:
+    tube:
+      requests:
+        memory: 2Gi
   esEndpoint: elasticsearch
   etlMapping:
     mappings:
