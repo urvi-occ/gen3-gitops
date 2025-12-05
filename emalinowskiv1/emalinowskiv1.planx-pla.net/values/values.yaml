@@ -145,7 +145,7 @@ global:
     hatchery_role: emalinowskiv1--emalinowskiv1-helm--hatchery-sa
     secretStoreServiceAccount:
       enabled: true
-      roleArn: arn:aws:iam::707767160287:role/emalinowskiv1-external-secrets-sa
+      roleArn: arn:aws:iam::707767160287:role/gen3-service/emalinowskiv1-test-external-secrets-sa
   dev: false
   dictionaryUrl: https://s3.amazonaws.com/dictionary-artifacts/datadictionary/develop/schema.json
   environment: emalinowskiv1
