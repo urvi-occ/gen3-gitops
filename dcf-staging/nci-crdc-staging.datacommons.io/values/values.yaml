@@ -57,6 +57,17 @@ datareplicate:
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/dcf-dataservice
     tag: 2.0.0
+  awsBatchReplicateJob:
+    enabled: true
+    namespace: nci-crdc-staging
+    schedule: "*/30 * * * *"
+    REGION: us-east-1
+    THREAD_COUNT: 100
+    MAX_RETRIES: 10
+    MANIFEST_PATH: s3://test-data-replication-manifest/test_manifest_20251025.tsv
+    JOB_QUEUE: nci-crdc-datacommons-io-bucket-replicate-19lv_queue_job
+    JOB_DEFINITION: nci-crdc-datacommons-io-bucket-replicate-19lv-batch_job_definition
+    OUTPUT_MANIFEST_BUCKET: test-data-replication-manifest
   batchServiceAccount:
     annotations:
       eks.amazonaws.com/role-arn: arn:aws:iam::584476192960:role/dcf-staging--dcf-staging-helm--aws-batch-replicate-job
