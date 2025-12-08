@@ -38,9 +38,28 @@ dashboard:
       eks.amazonaws.com/role-arn: arn:aws:iam::584476192960:role/dcf-staging--dcf-staging-helm--dashboard-access
 datareplicate:
   enabled: true
+  suspendCronjob: true
+  externalSecrets:
+    deploy: true
+    googleCredsSecret: dcf-staging-gcloud-creds-secret
+    dcfDataserviceSettingsSecret: dcf-staging-dcf-dataservice-settings-secrets
+  resources:
+    # -- (map) The amount of resources that the container requests
+    requests:
+      # -- (string) The amount of CPU requested
+      cpu: "8"
+      # -- (string) The amount of memory requested
+      memory: 512Mi
+    # -- (map) The maximum amount of resources that the container is allowed to use
+    limits:
+      # -- (string) The maximum amount of memory the container can use
+      memory: 2Gi
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/dcf-dataservice
     tag: 2.0.0
+  batchServiceAccount:
+    annotations:
+      eks.amazonaws.com/role-arn: arn:aws:iam::584476192960:role/dcf-staging--dcf-staging-helm--aws-batch-replicate-job
 fence:
   FENCE_CONFIG_PUBLIC:
     S3_BUCKETS:
