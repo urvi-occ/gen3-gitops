@@ -59,7 +59,6 @@ datareplicate:
     tag: 2.0.0
   awsBatchReplicateJob:
     enabled: true
-    namespace: dcf-staging-helm
     schedule: "*/30 * * * *"
     REGION: us-east-1
     THREAD_COUNT: 100
