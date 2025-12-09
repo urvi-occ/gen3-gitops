@@ -405,7 +405,8 @@ indexd:
   defaultPrefix: dg.HN3CK/
   externalSecrets:
     dbcreds: "headneck_default-indexd-creds"
-    createK8sServiceCredsSecret: true
+    serviceCreds: "headneck-indexd-service-creds"
+    createK8sServiceCredsSecret: false
 
 manifestservice:
   # Lower cost
