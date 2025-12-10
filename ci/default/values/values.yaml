@@ -51,7 +51,5 @@ elasticsearch:
     create: true
     minAvailable: "1"
     maxUnavailable: "0"
-  image:
-    registry: quay.io
-    repository: cdis/elasticsearch
-    tag: 7.10.2
+  image: "quay.io/cdis/elasticsearch"
+  imageTag: "7.10.2"
