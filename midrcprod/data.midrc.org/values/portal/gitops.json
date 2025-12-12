@@ -37,11 +37,6 @@
                 "plural": "Magnetic Resonance (MR) Series"
             },
             {
-                "graphql": "_radiology_report_count",
-                "name": "Radiology Report",
-                "plural": "Radiology Reports"
-            },
-            {
                 "graphql": "_dicom_annotation_file_count",
                 "name": "DICOM Annotation File",
                 "plural": "DICOM Annotation Files"
@@ -1306,12 +1301,12 @@
                             "submitter_id"
                         ],
                         "fields": [
+                            "report_generation_method",
+                            "report_modification_method",
                             "modality",
                             "body_part_examined",
-                            "report_generation_method",
                             "study_description",
-                            "project_id",
-                            "report_modification_method"
+                            "project_id"
                         ]
                     }
                 ]
@@ -1320,12 +1315,12 @@
                 "enabled": true,
                 "fields": [
                     "submitter_id",
+                    "report_generation_method",
+                    "report_modification_method",
                     "modality",
                     "body_part_examined",
-                    "report_generation_method",
                     "study_description",
-                    "project_id",
-                    "report_modification_method"
+                    "project_id"
                 ]
             },
              "dropdowns": {
@@ -1373,7 +1368,7 @@
                     },
                     {
                         "field": "submitter_id",
-                        "name": "Annotation ID"
+                        "name": "Report ID"
                     },
                     {
                         "field": "case_ids",
