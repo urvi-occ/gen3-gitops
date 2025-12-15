@@ -57,9 +57,9 @@ datareplicate:
   resources:
     requests:
       cpu: "14"
-      memory: 24Gi
+      memory: 8Gi
     limits:
-      memory: 32Gi
+      memory: 12Gi
   googleBucketReplicateJob:
     enabled: true
     suspendCronjob: true
