@@ -490,6 +490,9 @@ ssjdispatcher:
     annotations:
       eks.amazonaws.com/role-arn: arn:aws:iam::419939494982:role/headneck--headneck-helm--ssjdispatcher
     name: "ssjdispatcher-sa"
+  jobServiceAccount:
+    annotations:
+      eks.amazonaws.com/role-arn: arn:aws:iam::419939494982:role/headneck--headneck-helm--ssjdispatcher-job-role
   enabled: true
   externalSecrets:
     credsFile: headneck_default-ssjdispatcher-creds
