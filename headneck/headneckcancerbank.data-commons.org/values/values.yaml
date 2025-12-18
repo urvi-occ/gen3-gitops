@@ -279,6 +279,27 @@ etl:
               - name: is_ffpe	
               - name: portion_number	
               - name: weight
+          - name: pathology_report
+            path: pathology_report
+            props:
+              - name: accession_num
+              - name: adm_date
+              - name: disc_date
+              - name: enc_date
+              - name: HPV
+              - name: lab_code
+              - name: lab_desc
+              - name: P16
+              - name: path_note
+              - name: path_value
+              - name: proc_code
+              - name: proc_desc
+              - name: order_dttm
+              - name: Order_proc_id
+              - name: reference_unit
+              - name: result_dttm
+              - name: result_flag
+              - name: result_in_range_yn
         joining_props:
           - index: data_file
             join_on: _sample_id
@@ -511,6 +532,68 @@ etl:
                 fn: set
               - name: study_year
                 src: study_year
+                fn: set
+          pathology_report:
+            props:
+              - name: _pathology_report_id
+                src: id
+                fn: set
+              - name: pathology_report_submitter_id
+                src: submitter_id
+                fn: set
+              - name: accession_num
+                src: accession_num
+                fn: set
+              - name: adm_date
+                src: adm_date
+                fn: set
+              - name: disc_date
+                src: disc_date
+                fn: set
+              - name: enc_date
+                src: enc_date
+                fn: set
+              - name: HPV
+                src: HPV
+                fn: set
+              - name: lab_code
+                src: lab_code
+                fn: set
+              - name: lab_desc
+                src: lab_desc
+                fn: set
+              - name: P16
+                src: P16
+                fn: set
+              - name: path_note
+                src: path_note
+                fn: set
+              - name: path_value
+                src: path_value
+                fn: set
+              - name: proc_code
+                src: proc_code
+                fn: set
+              - name: proc_desc
+                src: proc_desc
+                fn: set
+              - name: order_dttm
+                src: order_dttm
+                fn: set
+              - name: Order_proc_id
+                src: Order_proc_id
+                fn: set
+              - name: reference_unit
+                src: reference_unit
+                fn: set
+              - name: result_dttm
+                src: result_dttm
+                fn: set
+              - name: result_flag
+                src: result_flag
+                fn: set
+              - name: result_in_range_yn
+                src: result_in_range_yn
                 fn: set
 fence:
   # Lower cost
