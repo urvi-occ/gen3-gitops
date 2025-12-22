@@ -481,7 +481,6 @@
               "portion_submitter_id"
             ],
             "fields": [
-              "project_id",
               "creation_datetime",
               "is_ffpe",
               "portion_number",
@@ -494,7 +493,6 @@
               "pathology_report_submitter_id"
             ],
             "fields": [
-              "project_id",
               "accession_num",
               "adm_date",
               "disc_date",
@@ -533,7 +531,6 @@
           "dna_260_280",
           "dna_od_260",
           "portion_submitter_id",
-          "project_id",
           "creation_datetime",
           "is_ffpe",
           "portion_number",
