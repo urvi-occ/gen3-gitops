@@ -287,8 +287,6 @@ etl:
             path: portion
             props:
               - name: portion_submitter_id
-                src: submitter_id
-                fn: set
               - name: creation_datetime
               - name: is_ffpe
               - name: portion_number
@@ -297,8 +295,6 @@ etl:
             path: pathology_report
             props:
               - name: pathology_report_submitter_id
-                src: submitter_id
-                fn: set
               - name: accession_num
               - name: adm_date
               - name: disc_date
