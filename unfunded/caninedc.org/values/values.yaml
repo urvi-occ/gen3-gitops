@@ -185,7 +185,7 @@ metadata:
 
 # disabling workspace services
 ambassador:
-  jupyterNamespace: jupyter-pods
+  jupyterNamespace: jupyter-pods-canine
 wts:
   enabled: true
   externalSecrets:
