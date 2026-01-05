@@ -116,6 +116,7 @@ global:
 
 embedding-management-service:
   enabled: true
+  dbCreate: true
   externalSecrets:
     pushSecret: true
   embeddingsConfig: |
