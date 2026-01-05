@@ -116,6 +116,8 @@ global:
 
 embedding-management-service:
   enabled: true
+  externalSecrets:
+    pushSecret: true
   embeddingsConfig: |
     {
       "expr": 256,
