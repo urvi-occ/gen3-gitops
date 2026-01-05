@@ -203,7 +203,7 @@ hatchery:
   hatchery:
     json: |-
       {
-        "user-namespace": "jupyter-pods",
+        "user-namespace": "jupyter-pods-canine",
         "sub-dir": "/lw-workspace",
         "user-volume-size": "10Gi",
         "sidecar": {
