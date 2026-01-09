@@ -39,10 +39,10 @@ etl:
   resources:
     tube:
       requests:
-        memory: 2Gi
+        memory: 4Gi
     spark:
       requests:
-        memory: 1Gi
+        memory: 2Gi
   esEndpoint: elasticsearch
   etlMapping:
     mappings:
