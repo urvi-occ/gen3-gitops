@@ -527,7 +527,7 @@ hatchery:
             "cpu-limit": "4.0",
             "memory-limit": "16Gi",
             "name": "Jupyter Notebook Bio Python",
-            "image": "https://quay.io/cdis/jupyter-superslim:master",
+            "image": "quay.io/cdis/jupyter-superslim:master",
             "env": {
               "DISABLE_AUTH": "true",
               "NAMESPACE": "bloodv2-helm",
