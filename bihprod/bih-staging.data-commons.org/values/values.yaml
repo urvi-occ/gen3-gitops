@@ -311,7 +311,6 @@ indexd:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/indexd
     tag: '2026.01'
 metadata:
-  aggMdsNamespace: bihstaging
   autoscaling:
     enabled: true
     maxReplicas: 1
