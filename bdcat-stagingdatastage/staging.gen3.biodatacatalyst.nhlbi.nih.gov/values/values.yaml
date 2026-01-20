@@ -229,7 +229,7 @@ fence:
     fenceJwtKeys: stagingdatastage-fence-jwt
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/fence
-    tag: '2025.11'
+    tag: fix_more-audit-logs
   FENCE_CONFIG_PUBLIC:
     PRIVACY_POLICY_URL: https://biodatacatalyst.nhlbi.nih.gov/privacy/
     LOGIN_OPTIONS:
@@ -317,7 +317,7 @@ guppy:
   esEndpoint: http://elasticsearch:9200
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/guppy
-    tag: '2025.11'
+    tag: 'fix_introspection'
   indices:
     - index: staging.gen3.biodatacatalyst.nhlbi.nih.gov_subject
       type: subject
