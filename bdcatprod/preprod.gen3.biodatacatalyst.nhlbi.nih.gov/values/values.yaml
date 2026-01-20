@@ -2613,7 +2613,7 @@ indexd:
     serviceCreds: bdcat-internalstaging-indexd-service-creds
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/indexd
-    tag: 'feature_data_library'
+    tag: '2025.12'
 manifestservice:
   enabled: false
 metadata:
@@ -2661,7 +2661,7 @@ portal:
     branch: master
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/data-portal
-    tag: '2025.12'
+    tag: 'feature_data_library'
     pullPolicy: Always
 revproxy:
   autoscaling:
