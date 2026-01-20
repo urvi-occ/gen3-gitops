@@ -143,8 +143,8 @@ hatchery:
 
     # This should be AT LEAST the total amount of CPU and memory to reserve, per availability zone
     workspaceCapacityReservation:
-      cpu: 3
-      memory: 8Gi
+      cpu: 4
+      memory: 9Gi
   replicaCount: 2
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/hatchery
