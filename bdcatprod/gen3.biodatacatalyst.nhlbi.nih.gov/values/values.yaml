@@ -299,65 +299,36 @@ fence:
       bdcatprod-data-bucket:
         cred: bdcatprod_fence-bot
         region: us-east-1
+      biolincc-training-datasets-open-access:
+        cred: fence-bot
+        role-arn: arn:aws:iam::600168050588:role/developer_bucket_access_imaging_copdgene
+        region: us-east-1
       cgp-commons-public:
         cred: '*'
         region: us-east-1
-      topmed_workflow_testing:
-        cred: '*'
-        region: us-east-1
-      gen3-copdgene-imaging:
+      dcp-ds-bagit-databucket-gen3:
         cred: fence-bot
         region: us-east-1
-      dcp-ds-bagit-databucket-gen3:
+      gen3-copdgene-imaging:
         cred: fence-bot
         region: us-east-1
       nih-nhgri-datacommons:
         cred: fence-bot
         role-arn: arn:aws:iam::600168050588:role/developer_access_gtex
         region: us-east-1
-      nih-nhlbi-datacommons:
-        cred: fence-bot
-        role-arn: arn:aws:iam::600168050588:role/developer_bucket_access_topmed
-        region: us-east-1
       nih-nhlbi-biodata-catalyst-1000-genomes-high-coverage:
         cred: fence-bot
         role-arn: arn:aws:iam::600168050588:role/developer_bucket_access_imaging_copdgene
         region: us-east-1
-      nih-nhlbi-topmed-released-phs001600-c1:
-        cred: fence-bot
-        region: us-east-1
-        role-arn: arn:aws:iam::600168050588:role/developer_bucket_access_imaging_copdgene
-      nih-nhlbi-covid19-phs002299-c1:
-        cred: fence-bot
-        role-arn: arn:aws:iam::600168050588:role/developer_bucket_access_imaging_copdgene
-        region: us-east-1
-      nih-nhlbi-.*:
-        cred: fence-bot
-        region: us-east-1
-      nih-nhlbi-topmed-combined-exchange-area:
-        cred: fence-bot
-        region: us-east-1
-        role-arn: arn:aws:iam::600168050588:role/developer_bucket_access_imaging_copdgene
       nih-nhlbi-biodata-catalyst-tutorial-genome-data:
         cred: fence-bot
         region: us-east-1
         role-arn: arn:aws:iam::600168050588:role/developer_bucket_access_imaging_copdgene
-      nih-nhlbi-topmed-released-phs001624-c1:
-        cred: fence-bot
-        region: us-east-1
-        role-arn: arn:aws:iam::600168050588:role/developer_bucket_access_imaging_copdgene
-      topmed-workflow-testing:
-        cred: fence-bot
-        region: us-east-1
       nih-nhlbi-biodata-catalyst-biolincc-phs002385-c1:
         cred: fence-bot
         role-arn: arn:aws:iam::600168050588:role/developer_bucket_access_imaging_copdgene
         region: us-east-1
       nih-nhlbi-biodata-catalyst-biolincc-phs002386-c1:
-        cred: fence-bot
-        role-arn: arn:aws:iam::600168050588:role/developer_bucket_access_imaging_copdgene
-        region: us-east-1
-      biolincc-training-datasets-open-access:
         cred: fence-bot
         role-arn: arn:aws:iam::600168050588:role/developer_bucket_access_imaging_copdgene
         region: us-east-1
@@ -369,6 +340,38 @@ fence:
         cred: fence-bot
         role-arn: arn:aws:iam::600168050588:role/developer_bucket_access_imaging_copdgene
         region: us-east-1
+      nih-nhlbi-biodata-catalyst-biolincc-phs002383-c1:
+        cred: fence-bot
+        role-arn: arn:aws:iam::600168050588:role/developer_bucket_access_imaging_copdgene
+        region: us-east-1
+      nih-nhlbi-biodata-catalyst-biolincc-phs2415-c1:
+        cred: fence-bot
+        role-arn: arn:aws:iam::600168050588:role/developer_bucket_access_imaging_copdgene
+        region: us-east-1
+      nih-nhlbi-covid19-phs002363-c1:
+        cred: fence-bot
+        role-arn: arn:aws:iam::600168050588:role/developer_bucket_access_imaging_copdgene
+        region: us-east-1
+      nih-nhlbi-covid19-phs002299-c1:
+        cred: fence-bot
+        role-arn: arn:aws:iam::600168050588:role/developer_bucket_access_imaging_copdgene
+        region: us-east-1
+      nih-nhlbi-datacommons:
+        cred: fence-bot
+        role-arn: arn:aws:iam::600168050588:role/developer_bucket_access_topmed
+        region: us-east-1
+      nih-nhlbi-topmed-released-phs001600-c1:
+        cred: fence-bot
+        region: us-east-1
+        role-arn: arn:aws:iam::600168050588:role/developer_bucket_access_imaging_copdgene
+      nih-nhlbi-topmed-combined-exchange-area:
+        cred: fence-bot
+        region: us-east-1
+        role-arn: arn:aws:iam::600168050588:role/developer_bucket_access_imaging_copdgene
+      nih-nhlbi-topmed-released-phs001624-c1:
+        cred: fence-bot
+        region: us-east-1
+        role-arn: arn:aws:iam::600168050588:role/developer_bucket_access_imaging_copdgene
       nih-nhlbi-topmed-released-phs001542-c2:
         cred: fence-bot
         role-arn: arn:aws:iam::600168050588:role/developer_bucket_access_imaging_copdgene
@@ -378,10 +381,6 @@ fence:
         role-arn: arn:aws:iam::600168050588:role/developer_bucket_access_imaging_copdgene
         region: us-east-1
       nih-nhlbi-topmed-released-phs001661-c1:
-        cred: fence-bot
-        role-arn: arn:aws:iam::600168050588:role/developer_bucket_access_imaging_copdgene
-        region: us-east-1
-      nih-nhlbi-biodata-catalyst-biolincc-phs002383-c1:
         cred: fence-bot
         role-arn: arn:aws:iam::600168050588:role/developer_bucket_access_imaging_copdgene
         region: us-east-1
@@ -397,13 +396,14 @@ fence:
         cred: fence-bot
         role-arn: arn:aws:iam::600168050588:role/developer_bucket_access_imaging_copdgene
         region: us-east-1
-      nih-nhlbi-biodata-catalyst-biolincc-phs2415-c1:
+      nih-nhlbi-.*:
         cred: fence-bot
-        role-arn: arn:aws:iam::600168050588:role/developer_bucket_access_imaging_copdgene
         region: us-east-1
-      nih-nhlbi-covid19-phs002363-c1:
+      topmed_workflow_testing:
+        cred: '*'
+        region: us-east-1
+      topmed-workflow-testing:
         cred: fence-bot
-        role-arn: arn:aws:iam::600168050588:role/developer_bucket_access_imaging_copdgene
         region: us-east-1
     ENABLE_VISA_UPDATE_CRON: true
 fluentd:
