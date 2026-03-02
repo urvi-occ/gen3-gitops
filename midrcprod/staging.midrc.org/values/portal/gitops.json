@@ -235,10 +235,10 @@
         "navigation": {
             "items": [
                 {
-                    "name": "Discovery",
+                    "name": "Datasets",
                     "link": "/discovery",
                     "icon": "query",
-                    "tooltip": "Dataset discovery"
+                    "tooltip": "The Datasets page provides free-text and tag-based search over published datasets in MIDRC along with links to publications and data download buttons."
                 },
                 {
                     "name": "Exploration",
@@ -1851,9 +1851,26 @@
             },
             {
                 "name": "Publication URL",
-                "field": "data_url",
+                "field": "doi_publication",
                 "contentType": "link",
-                "width": 300,
+                "length": 25,
+                "width": 100,
+                "errorIfNotAvailable": false,
+                "valueIfNotAvailable": "n/a"
+            },
+            {
+                "name": "Cases",
+                "field": "cases_count",
+                "contentType": "string",
+                "width": 100,
+                "errorIfNotAvailable": false,
+                "valueIfNotAvailable": "n/a"
+            },
+            {
+                "name": "Publication Year",
+                "field": "doi_publication_year",
+                "contentType": "string",
+                "width": 100,
                 "errorIfNotAvailable": false,
                 "valueIfNotAvailable": "n/a"
             }
@@ -1993,6 +2010,12 @@
                             "includeIfNotAvailable": false
                         },
                         {
+                            "name": "Publication DOI",
+                            "field": "doi_publication",
+                            "contentType": "link",
+                            "includeIfNotAvailable": false
+                        },
+                        {
                             "name": "Primary Site",
                             "field": "primary_site",
                             "contentType": "string",
@@ -2048,6 +2071,12 @@
                 "name": "primary_site",
                 "displayName": "Primary Site",
                 "color": "#981f32",
+                "display": true
+            },
+            {
+                "name": "study_modality",
+                "displayName": "Study Modality",
+                "color": "#c4521d",
                 "display": true
             }
         ]
