@@ -1853,7 +1853,7 @@
                 "name": "Publication URL",
                 "field": "doi_publication",
                 "contentType": "link",
-                "linkLabel": "View Publication",
+                "length": 25,
                 "width": 100,
                 "errorIfNotAvailable": false,
                 "valueIfNotAvailable": "n/a"
