@@ -95,7 +95,7 @@ karpenter-crds:
       kind: EC2NodeClass
       name: jupyter
     amiFamily: AL2023
-    volumeSize: 80Gi
+    volumeSize: 200Gi
 vpc-cni:
   enabled: true
   configuration:
