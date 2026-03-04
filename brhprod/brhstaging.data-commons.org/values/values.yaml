@@ -87,6 +87,7 @@ gen3-workflow:
       - "654654631253.dkr.ecr.us-east-1.amazonaws.com/nextflow-approved/{username}:*"
       - "quay.io/nextflow/bash:*"
 funnel:
+  replicaCount: 3
   postgres:
     dbCreate: true
   externalSecrets:
