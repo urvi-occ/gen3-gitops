@@ -94,8 +94,8 @@ funnel:
     dbcreds: "brhstaging-helm-funnel-creds"
     funnelOidcClient: "brhstaging-helm-funnel-oidc-client"
   funnel:
-    # image:
-    #    tag: 2026-03-05.2
+    image:
+       tag: 2026-03-05.4
     Kubernetes:
       JobsNamespace: "workflow-pods-brhstaging-helm"
       # ReconcileRate: 120s
