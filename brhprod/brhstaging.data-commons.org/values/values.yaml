@@ -98,7 +98,7 @@ funnel:
     #    tag: 2026-03-05.2
     Kubernetes:
       JobsNamespace: "workflow-pods-brhstaging-helm"
-      ReconcileRate: 120s
+      # ReconcileRate: 120s
       ReplicaCount: 3
       NodeSelector: {"role": "workflow"}
       Tolerations:
