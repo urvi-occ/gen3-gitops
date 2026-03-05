@@ -94,3 +94,9 @@ vpc-cni:
   enabled: true
   configuration:
     enabled: false
+
+external-secrets:
+  enabled: true
+  targetRevision: "0.16.2"
+  configuration:
+    enabled: false

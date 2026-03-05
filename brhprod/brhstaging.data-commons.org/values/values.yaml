@@ -87,6 +87,7 @@ gen3-workflow:
       - "654654631253.dkr.ecr.us-east-1.amazonaws.com/nextflow-approved/{username}:*"
       - "quay.io/nextflow/bash:*"
 funnel:
+  replicaCount: 3
   postgres:
     dbCreate: true
   externalSecrets:
@@ -406,7 +407,7 @@ hatchery:
             "cpu-limit": "1.0",
             "memory-limit": "2Gi",
             "name": "(Generic) Jupyter with pre-installed Nextflow",
-            "image": "quay.io/cdis/jupyter-notebook:nextflow-nextflow-24.04.3",
+            "image": "quay.io/cdis/jupyter-notebook:nextflow-master",
             "env": {
               "FRAME_ANCESTORS": "https://brhstaging.data-commons.org"
             },
