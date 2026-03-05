@@ -96,6 +96,7 @@ funnel:
   funnel:
     Kubernetes:
       JobsNamespace: "workflow-pods-brhstaging-helm"
+      NodeSelector: {"role": "workflow"}
 global:
   pdb: true
   aws:
