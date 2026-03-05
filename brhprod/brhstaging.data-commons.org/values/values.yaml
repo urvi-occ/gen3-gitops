@@ -99,10 +99,10 @@ funnel:
       ReplicaCount: 3
       NodeSelector: {"role": "workflow"}
       Tolerations:
-      - key: "role"
-        operator: "Equal"
-        value: "workflow"
-        effect: "NoSchedule"
+      - Key: "role"
+        Operator: "Equal"
+        Value: "workflow"
+        Effect: "NoSchedule"
 global:
   pdb: true
   aws:
