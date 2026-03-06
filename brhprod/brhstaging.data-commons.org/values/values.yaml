@@ -106,8 +106,8 @@ funnel:
         Operator: "Equal"
         Value: "workflow"
         Effect: "NoSchedule"
-      ExecutorTemplate:
-        # copied from https://github.com/ohsu-comp-bio/helm-charts/blob/27c596d/charts/funnel/files/executor-job.yaml
+      # ExecutorTemplate copied from https://github.com/ohsu-comp-bio/helm-charts/blob/27c596d/charts/funnel/files/executor-job.yaml
+      ExecutorTemplate: |
         apiVersion: batch/v1
         kind: Job
         metadata:
