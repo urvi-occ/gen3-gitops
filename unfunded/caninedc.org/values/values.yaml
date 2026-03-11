@@ -109,6 +109,7 @@ ssjdispatcher:
     credsFile: canineprod-ssjdispatcher-creds
   serviceAccountName: ssjdispatcher-service-account
   serviceAccount:
+    create: true
     annotations:
       eks.amazonaws.com/role-arn: arn:aws:iam::662843554732:role/gen3_service/canineprod--default--ssj
   jobServiceAccount:
