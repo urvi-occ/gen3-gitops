@@ -111,6 +111,8 @@ funnel:
       Executor:
         Annotations:
           karpenter.sh/do-not-disrupt: "true"
+      Worker:
+        PriorityClassName: "system-cluster-critical"
       # # ExecutorTemplate copied from https://github.com/ohsu-comp-bio/helm-charts/blob/27c596d/charts/funnel/files/executor-job.yaml
       # ExecutorTemplate: |
       #   apiVersion: batch/v1
