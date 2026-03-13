@@ -131,7 +131,7 @@ fence:
     fenceJwtKeys: emalinowskiv1-fence-jwt
   image:
     repository: quay.io/cdis/fence
-    tag: '2024.12'
+    tag: '2026.01'
 fluentd:
   enabled: true
   image:
