@@ -63,7 +63,7 @@ aws-es-proxy:
   esEndpoint: ""
   externalSecrets:
     awsCreds: "gen3-ai-default-aws-es-proxy-creds"
-  esEndpoint: arn:aws:es:us-east-1:837801696852:domain/gen3-ai-gen3-metadata
+  esEndpoint: vpc-gen3-ai-gen3-metadata-wcqwdpwxzoz3fpseni55ugqq6u.us-east-1.es.amazonaws.com
 
 dicom-server:
   enabled: false
