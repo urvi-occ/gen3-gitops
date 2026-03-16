@@ -107,6 +107,14 @@ ssjdispatcher:
   indexing: quay.io/cdis/indexs3client:2026.03
   externalSecrets:
     credsFile: canineprod-ssjdispatcher-creds
+  serviceAccountName: ssjdispatcher-service-account
+  serviceAccount:
+    create: true
+    annotations:
+      eks.amazonaws.com/role-arn: arn:aws:iam::662843554732:role/gen3_service/canineprod--default--ssj
+  jobServiceAccount:
+      annotations:
+        eks.amazonaws.com/role-arn: arn:aws:iam::662843554732:role/gen3_service/canineprod--default--ssj-job
 metadata:
   externalSecrets:
     dbcreds: canineprod-metadata

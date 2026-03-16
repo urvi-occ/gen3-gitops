@@ -96,6 +96,8 @@ funnel:
   funnel:
     # image:
     #    tag: 2026-03-05.4
+    Logger:
+      Level: debug
     Kubernetes:
       JobsNamespace: "workflow-pods-brhstaging-helm"
       # ReconcileRate: 120s
@@ -109,6 +111,8 @@ funnel:
       Executor:
         Annotations:
           karpenter.sh/do-not-disrupt: "true"
+      Worker:
+        PriorityClassName: "system-cluster-critical"
       # # ExecutorTemplate copied from https://github.com/ohsu-comp-bio/helm-charts/blob/27c596d/charts/funnel/files/executor-job.yaml
       # ExecutorTemplate: |
       #   apiVersion: batch/v1

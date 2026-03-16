@@ -53,7 +53,7 @@ datareplicate:
     dcfDataserviceSettingsSecret: dcfprod-dcf-dataservice-settings-secrets
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/dcf-dataservice
-    tag: 3.0.0
+    tag: 3.1.0
   resources:
     requests:
       cpu: '2'
@@ -111,10 +111,11 @@ datareplicate:
     schedule: '*/30 * * * *'
     LOG_BUCKET: data-refresh-output
     RELEASE: DR44
-    MANIFEST_FILE: s3://log-bucket-june2/GDC_full_sync_active_manifest_20251029_post_DR44.0.tsv
+    MANIFEST_FILE: s3://log-bucket-june2/GDC_active_manifest_only_DR45_consented.tsv
     IGNORED_FILE: s3://data-refresh-manifest/ignored_files_manifest.csv
     OUT_FILES: GDC_full_sync_active_manifest_20251029_post_DR44.0_DCF.tsv
     FORCE_CREATE_MANIFEST: true
+    VALIDATE_PLATFORM: "AWS"
 fence:
   FENCE_CONFIG_PUBLIC:
     dbGaP:
@@ -669,7 +670,7 @@ fence:
       iodc-cimac-etctn10104-phs003414:
         cred: fence_bot
         region: us-east-1
-      iodc-cimac-gu16-257-phs003371.v1.p1:
+      iodc-cimac-gu16-257-phs003371:
         cred: fence_bot
         region: us-east-1
       iodc-cimac-hcrngu16257-phs003372:
@@ -1031,7 +1032,7 @@ peregrine:
     tag: '2026.02'
 portal:
   enabled: true
-  replicaCount: 2  
+  replicaCount: 2
   gitops:
     css: |
       /* Hide Data Dictionary information */
@@ -1336,7 +1337,7 @@ revproxy:
       sslPolicy: ELBSecurityPolicy-TLS13-1-2-FIPS-2023-04
 sheepdog:
   enabled: true
-  replicaCount: 2  
+  replicaCount: 2
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/sheepdog
     tag: '2026.02'
