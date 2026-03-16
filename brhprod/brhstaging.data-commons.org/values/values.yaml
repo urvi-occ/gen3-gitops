@@ -12,7 +12,7 @@ arborist:
   enabled: true
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/arborist
-    tag: '2026.02'
+    tag: 'authz_provider-err'
 audit:
   enabled: true
   externalSecrets:
