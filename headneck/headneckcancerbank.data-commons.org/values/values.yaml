@@ -672,7 +672,7 @@ frontend-framework:
       cpu: "15m"
   enabled: true
   image:
-    repository: quay.io/cdis/commons-frontend-app
+    repository: quay.io/cdis/head-neck-data-commons
     tag: main
 
 grafana:
