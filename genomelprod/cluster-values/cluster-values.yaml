@@ -53,4 +53,3 @@ vpc-cni:
     enabled: false
 kube-proxy:
   enabled: true
-
