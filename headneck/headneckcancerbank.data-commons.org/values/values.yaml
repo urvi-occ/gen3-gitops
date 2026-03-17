@@ -670,7 +670,7 @@ frontend-framework:
     requests:
       memory: "105Mi"
       cpu: "15m"
-  enabled: false
+  enabled: true
   image:
     repository: quay.io/cdis/commons-frontend-app
     tag: main
