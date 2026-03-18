@@ -603,7 +603,7 @@ hatchery:
         "sidecar": {
           "cpu-limit": "1.0",
           "memory-limit": "256Mi",
-          "image": "quay.io/cdis/ecs-ws-sidecar:2026.01",
+          "image": "quay.io/cdis/ecs-ws-sidecar:2026.03",
           "env": {
             "NAMESPACE": "default",
             "GEN3_ENDPOINT": "data.midrc.org",
@@ -970,7 +970,7 @@ portal:
     branch: master
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/data-portal
-    tag: '2026.03'
+    tag: '5.40.1'
 revproxy:
   autoscaling:
     enabled: false
