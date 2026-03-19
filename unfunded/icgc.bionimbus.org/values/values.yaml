@@ -2,34 +2,39 @@ ambassador:
   enabled: false
 arborist:
   enabled: true
+  externalSecrets:
+    dbcreds: icgc-arborist-creds
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/arborist
     tag: '2026.03'
 audit:
   externalSecrets:
+    auditCreds: icgc-audit-creds
     auditG3auto: icgc-audit-g3auto
   serviceAccount:
     annotations:
-      eks.amazonaws.com/role-arn: arn:aws:iam::446046036926:role/icgc--icgc-helm--audit-sqs-receiver
+      eks.amazonaws.com/role-arn: arn:aws:iam::662843554732:role/unfunded--icgc--audit-sqs-receiver
   image:
     tag: '2026.03'
 aws-es-proxy:
   enabled: true
-  esEndpoint: vpc-icgc-gen3-metadata-2-4rulaakxraineyuedir726zhxy.us-east-1.es.amazonaws.com
+  esEndpoint: vpc-unfunded-gen3-metadata-2-tf3gyjftzrgm5asaxuvqxxwv2m.us-east-1.es.amazonaws.com
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/aws-es-proxy
     tag: v1.3.1
 dashboard:
   dashboardConfig:
-    bucket: dashboard-446046036926-icgc-gen3
+    bucket: dashboard-662843554732-icgc-gen3
     prefix: icgc.bionimbus.org
   enabled: true
+  externalSecrets:
+    dashboardG3auto: icgc-dashboard-g3auto
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/gen3-statics
     tag: '2026.03'
   serviceAccount:
     annotations:
-      eks.amazonaws.com/role-arn: arn:aws:iam::446046036926:role/icgc--icgc-helm--dashboard-access
+      eks.amazonaws.com/role-arn: arn:aws:iam::662843554732:role/unfunded--icgc--dashboard-access
 etl:
   esEndpoint: elasticsearch
   etlMapping:
@@ -110,10 +115,11 @@ etl:
 fence:
   serviceAccount:
     annotations:
-      eks.amazonaws.com/role-arn: arn:aws:iam::446046036926:role/icgc--icgc-helm--audit-sqs-sender
+      eks.amazonaws.com/role-arn: arn:aws:iam::662843554732:role/unfunded--icgc--audit-sqs-sender
   enabled: true
   externalSecrets:
     createK8sGoogleAppSecrets: true
+    dbcreds: icgc-fence-creds
     fenceConfig: icgc-fence-config
     fenceJwtKeys: icgc-fence-jwt
   image:
@@ -127,22 +133,19 @@ fence:
       sftp-private.ncbi.nlm.nih.gov ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCjEuJc/1pAQxGxwuk8s/1u7tDq2PiOqutAXNjPOl0BkOiJJnUa6gdRx5WcVd6HApPrw7RUvUXraOmc82Zlzeno6DkzTjLk3ztuRs1hNF3KKx044AxDC1Jew6pK96At3kAvStfamNbY8URB9tj0SF3rFQxLrWo8WfhFr9AU4SuY5S0A2a/njucmTim3vDRPbBFO7Dlz2dxzeKPBdUDB/NvmdPWHxkviXkqUby/QzjglAQTts5lNEMH8qaRcU/dnWYRKvY17RHGu9/gNf8Z9DvBg8TbU7Ek3MT5A9F3nw1ZcZe7M8L7JwIKgQUl1gzOBHFfC248YES9REQffLYPWOCy9
       sftp-private.ncbi.nlm.nih.gov ecdsa-sha2-nistp521 AAAAE2VjZHNhLXNoYTItbmlzdHA1MjEAAAAIbmlzdHA1MjEAAACFBAFM24A4pG3U+8HzCvEkm9SiEWHOAtQr/DFZd3bf7VYDCcg2FPpUvGRsiDSuzhzBo+eG00d6/6y8NCypWwjiMi1rYgBOh9YA0w/ruutXYMUUVzw361lTgjOBOZ/dt3gKkNgShwDd0e1hnjYk/E7jYc2YJv67ZFy9GzXCWR55LhS/7fGQ5w==
 fluentd:
-  enabled: true
-  image:
-    repository: fluent/fluentd-kubernetes-daemonset
-    tag: v1.15.3-debian-cloudwatch-1.0
+  enabled: false
 global:
   aws:
-    account: '446046036926'
+    account: '662843554732'
     awsEsProxyRole: icgc--icgc-helm--es-access
     enabled: true
     hatchery_role: icgc--icgc-helm--hatchery-sa
     secretStoreServiceAccount:
       enabled: true
-      roleArn: arn:aws:iam::446046036926:role/icgc--icgc-helm--external-secrets-sa
+      roleArn: arn:aws:iam::662843554732:role/unfunded--icgc--external-secrets-sa
     wafv2:
       enabled: true
-      wafAclArn: arn:aws:wafv2:us-east-1:446046036926:regional/webacl/icgc-waf/81bd68e0-c424-4fc5-903e-828d1fa8e398
+      wafAclArn: arn:aws:wafv2:us-east-1:662843554732:regional/webacl/unfunded-waf/e10ae423-8e4e-48ba-9a0e-52b43f28f6d4
   dev: false
   dictionaryUrl: https://s3.amazonaws.com/dictionary-artifacts/tcga_dictionary/1.0.3/schema.json
   dispatcherJobNum: 10
@@ -163,7 +166,7 @@ global:
   portalApp: gitops
   postgres:
     dbCreate: false
-  revproxyArn: arn:aws:acm:us-east-1:446046036926:certificate/cf0052c5-18cc-43f3-9ae7-920568c73247
+  revproxyArn: arn:aws:acm:us-east-1:662843554732:certificate/PLACEHOLDER-REQUEST-NEW-CERT
 guppy:
   authFilterField: auth_resource_path
   configIndex: icgc_array-config
@@ -182,6 +185,7 @@ hatchery:
 indexd:
   enabled: true
   externalSecrets:
+    dbcreds: icgc-indexd-creds
     serviceCreds: icgc-indexd-service-creds
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/indexd
@@ -191,6 +195,7 @@ manifestservice:
 metadata:
   esEndpoint: http://elasticsearch:9200
   externalSecrets:
+    dbcreds: icgc-metadata-creds
     metadataG3auto: icgc-metadata-g3auto
   image:
     tag: '2026.03'
@@ -198,6 +203,8 @@ mutatingWebhook:
   enabled: false
 peregrine:
   enabled: true
+  externalSecrets:
+    dbcreds: icgc-peregrine-creds
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/peregrine
     tag: '2026.03'
@@ -486,6 +493,8 @@ revproxy:
       group: icgc
 sheepdog:
   enabled: true
+  externalSecrets:
+    dbcreds: icgc-sheepdog-creds
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/sheepdog
     tag: '2026.03'
