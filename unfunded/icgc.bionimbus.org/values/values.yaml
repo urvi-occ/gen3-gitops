@@ -137,7 +137,7 @@ fluentd:
 global:
   aws:
     account: '662843554732'
-    awsEsProxyRole: icgc--icgc-helm--es-access
+    awsEsProxyRoleArn: arn:aws:iam::662843554732:role/gen3-service/unfunded-esproxy-sa
     enabled: true
     hatchery_role: icgc--icgc-helm--hatchery-sa
     secretStoreServiceAccount:
@@ -166,7 +166,7 @@ global:
   portalApp: gitops
   postgres:
     dbCreate: false
-  revproxyArn: arn:aws:acm:us-east-1:662843554732:certificate/PLACEHOLDER-REQUEST-NEW-CERT
+  revproxyArn: arn:aws:acm:us-east-1:662843554732:certificate/placeholder-new-arn
 guppy:
   authFilterField: auth_resource_path
   configIndex: icgc_array-config
