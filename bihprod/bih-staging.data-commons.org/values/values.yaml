@@ -138,7 +138,7 @@ fluentd:
     tag: v1.15.3-debian-cloudwatch-1.0
 frontend-framework:
   customConfig:
-    branch: spike/bihtest
+    branch: master
     enabled: true
     repo: https://github.com/uc-cdis/bih-data-commons.git
   enabled: true
