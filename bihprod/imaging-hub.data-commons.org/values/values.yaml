@@ -190,7 +190,7 @@ hatchery:
         "sidecar": {
           "cpu-limit": "1.0",
           "memory-limit": "256Mi",
-          "image": "quay.io/cdis/ecs-ws-sidecar:2026.01",
+          "image": "quay.io/cdis/ecs-ws-sidecar:2026.03",
           "env": {
             "NAMESPACE": "default",
             "GEN3_ENDPOINT": "imaging-hub.data-commons.org",
