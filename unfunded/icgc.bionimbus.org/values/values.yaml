@@ -142,7 +142,7 @@ global:
     hatchery_role: icgc--icgc-helm--hatchery-sa
     secretStoreServiceAccount:
       enabled: true
-      roleArn: arn:aws:iam::662843554732:role/unfunded--icgc--external-secrets-sa
+      roleArn: arn:aws:iam::662843554732:role/unfunded--oadchelm--external-secrets-sa
     wafv2:
       enabled: true
       wafAclArn: arn:aws:wafv2:us-east-1:662843554732:regional/webacl/unfunded-waf/e10ae423-8e4e-48ba-9a0e-52b43f28f6d4
