@@ -10,7 +10,7 @@ arborist:
   enabled: true
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/arborist
-    tag: '2026.03'
+    tag: 'delete-user-slash'
 audit:
   enabled: true
   externalSecrets:
