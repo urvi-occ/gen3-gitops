@@ -575,6 +575,7 @@ sheepdog:
     tag: "2026.02"
 sower:
   enabled: true
+  replicaCount: 2
   externalSecrets:
     createK8sPelicanServiceSecret: false
     pelicanserviceG3auto: bdcatprod-pelicanservice-g3auto
