@@ -149,7 +149,7 @@ global:
   dev: false
   dictionaryUrl: https://s3.amazonaws.com/dictionary-artifacts/tcga_dictionary/1.0.3/schema.json
   dispatcherJobNum: 10
-  environment: icgc
+  #environment: icgc
   externalSecrets:
     deploy: true
     createSlackWebhookSecret: true
@@ -490,7 +490,7 @@ revproxy:
     tag: '2026.03'
   ingress:
     aws:
-      group: icgc
+      group: default
 sheepdog:
   enabled: true
   externalSecrets:
