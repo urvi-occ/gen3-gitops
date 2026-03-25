@@ -166,7 +166,7 @@ global:
   portalApp: gitops
   postgres:
     dbCreate: false
-  revproxyArn: arn:aws:acm:us-east-1:662843554732:certificate/placeholder-new-arn
+  revproxyArn: arn:aws:acm:us-east-1:662843554732:certificate/93fe9615-a767-477e-8aff-25e4d47b6f2d
 guppy:
   authFilterField: auth_resource_path
   configIndex: icgc_array-config
