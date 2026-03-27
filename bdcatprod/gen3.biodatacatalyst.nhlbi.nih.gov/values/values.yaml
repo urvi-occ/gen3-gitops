@@ -490,6 +490,8 @@ indexd:
   replicaCount: 10
   # -- (map) Resource requests and limits for the containers in the pod
   resources:
+    limits:
+      memory: 2Gi
     # -- (map) The amount of resources that the container requests
     requests:
       # -- (string) The amount of memory requested
