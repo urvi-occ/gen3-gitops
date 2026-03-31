@@ -140,6 +140,10 @@ fluentd:
     tag: v1.15.3-debian-cloudwatch-1.0
 frontend-framework:
   enabled: true
+  env:
+    DATACOMMONS: "bih_frontend_app"
+    DATADOG_APPLICATION_ID: "407210b5-f9e9-4acb-a268-3e6ad027e794"
+    DATADOG_CLIENT_TOKEN: "pub3a09afedb7c71b6f3f62e36616199cf5"
   customConfig:
     branch: main
     enabled: true
