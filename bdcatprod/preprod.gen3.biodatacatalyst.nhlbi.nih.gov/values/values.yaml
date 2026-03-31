@@ -306,6 +306,10 @@ fence:
       topmed_workflow_testing:
         cred: '*'
         region: us-east-1
+      nih-nhlbi-datacommons:
+        cred: fence-bot
+        role-arn: arn:aws:iam::600168050588:role/developer_bucket_access_topmed
+        region: us-east-1
       nih-nhgri-datacommons:
         cred: fence-bot
         role-arn: arn:aws:iam::600168050588:role/developer_access_gtex
