@@ -104,12 +104,12 @@ funnel:
       JobsNamespace: "workflow-pods-brhstaging-helm"
       ReconcileRate: 120s
       ReplicaCount: 2
-      # NodeSelector: {"role": "workflow"}
-      # Tolerations:
-      # - Key: "role"
-      #   Operator: "Equal"
-      #   Value: "workflow"
-      #   Effect: "NoSchedule"
+      NodeSelector: {"role": "workflow"}
+      Tolerations:
+      - Key: "role"
+        Operator: "Equal"
+        Value: "workflow"
+        Effect: "NoSchedule"
       Executor:
           restartPolicy: OnFailure
           backoffLimit: 0
