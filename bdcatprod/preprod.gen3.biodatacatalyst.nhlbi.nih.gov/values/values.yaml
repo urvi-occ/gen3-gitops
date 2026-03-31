@@ -306,10 +306,6 @@ fence:
       topmed_workflow_testing:
         cred: '*'
         region: us-east-1
-      nih-nhlbi-datacommons:
-        cred: fence-bot
-        role-arn: arn:aws:iam::600168050588:role/developer_bucket_access_topmed
-        region: us-east-1
       nih-nhgri-datacommons:
         cred: fence-bot
         role-arn: arn:aws:iam::600168050588:role/developer_access_gtex
@@ -824,6 +820,10 @@ fence:
         region: us-east-1
       nih-nhlbi-.*:
         cred: fence-bot
+        region: us-east-1
+      nih-nhlbi-datacommons:
+        cred: fence-bot
+        role-arn: arn:aws:iam::600168050588:role/developer_bucket_access_topmed
         region: us-east-1
     ENABLE_VISA_UPDATE_CRON: true
   usersync:
