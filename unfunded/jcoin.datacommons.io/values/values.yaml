@@ -212,12 +212,6 @@ guppy:
 hatchery:
   externalSecrets:
     stataG3auto: jcoinprod-stata-workspace-gen3-license
-  hotNode:
-    enabled: true
-    availabilityZones:
-      - us-east-1a
-      - us-east-1c
-      - us-east-1d
     workspaceCapacityReservation:
       cpu: 2
       memory: 4Gi
