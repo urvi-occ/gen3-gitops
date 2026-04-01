@@ -215,7 +215,7 @@ hatchery:
     workspaceCapacityReservation:
       cpu: 2
       memory: 4Gi
-  enabled: true
+  enabled: false
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/hatchery
     tag: '2026.02'
@@ -382,7 +382,7 @@ indexd:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/indexd
     tag: '2026.02'
 manifestservice:
-  enabled: true
+  enabled: false
   externalSecrets:
     manifestserviceG3auto: jcoinprod-manifestservice-g3auto
   image:
