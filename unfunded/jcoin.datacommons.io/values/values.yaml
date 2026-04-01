@@ -1,4 +1,5 @@
 ambassador:
+  enable: false
   jupyterNamespace: jupyter-pods
 arborist:
   replicaCount: 2
@@ -1273,7 +1274,7 @@ ssjdispatcher:
     tag: '2026.02'
   indexing: quay.io/cdis/indexs3client:2026.02
 wts:
-  enabled: true
+  enabled: false
   externalSecrets:
     createWtsOidcClientSecret: false
     wtsG3auto: jcoinprod-wts-g3auto
