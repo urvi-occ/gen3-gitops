@@ -30,7 +30,7 @@ awshelper:
     tag: '2026.02'
 dashboard:
   dashboardConfig:
-    bucket: dashboard-258867494168-jcoin-prod-gen3
+    bucket: dashboard-662843554732-jcoin-gen3
     prefix: jcoin.datacommons.io
   enabled: true
   image:
