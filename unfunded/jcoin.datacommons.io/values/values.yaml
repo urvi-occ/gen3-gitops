@@ -165,8 +165,7 @@ fluentd:
 global:
   pdb: true
   aws:
-    account: '258867494168'
-    awsEsProxyRole: jcoinprod--jcoinprod-helm--es-access
+    awsEsProxyRoleArn: arn:aws:iam::662843554732:role/gen3-service/unfunded-esproxy-sa
     enabled: true
     hatchery_role: jcoinprod--jcoinprod-helm--hatchery-sa
     secretStoreServiceAccount:
