@@ -88,6 +88,7 @@ gen3-workflow:
       - "654654631253.dkr.ecr.us-east-1.amazonaws.com/nextflow-approved/{username}:*"
       - "quay.io/nextflow/bash:*"
       - "quay.io/curl/curl:latest"
+      - "quay.io/cdis/nginx:*"
       - "quay.io/cdis/amazonlinux-base:3.13-pythonnginx"
       - "python:3.9*"
 funnel:
@@ -126,9 +127,9 @@ global:
   pdb: true
   netPolicy:
     # -- (bool) Whether network policies are enabled
-    enabled: false
+    enabled: true
     # -- (array) A CIDR range representing a database subnet, that services with a database need access to
-    dbSubnets: 
+    dbSubnets:
       - 172.27.98.0/24
       - 172.27.99.0/24
   aws:
