@@ -19,12 +19,9 @@ audit:
   serviceAccount:
     annotations:
       eks.amazonaws.com/role-arn: arn:aws:iam::205252583234:role/healprod--healexternaldata-helm--audit-sqs-receiver
-aws-es-proxy:
+aws-sigv4-proxy:
   enabled: true
   esEndpoint: vpc-healprod-gen3-metadata-2-l6eifqrue4gqcmvc4u2dny3cdi.us-east-1.es.amazonaws.com
-  image:
-    repository: quay.io/cdis/aws-es-proxy
-    tag: '0.8'
 dashboard:
   dashboardConfig:
     bucket: dashboard-205252583234-healprod-gen3
