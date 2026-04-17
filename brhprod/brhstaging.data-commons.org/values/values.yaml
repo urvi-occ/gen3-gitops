@@ -96,9 +96,6 @@ funnel:
     dbcreds: "brhstaging-helm-funnel-creds"
     funnelOidcClient: "brhstaging-helm-funnel-oidc-client"
   funnel:
-    image:
-      repository: quay.io/cdis/funnel
-      tag: allow-retry-2026-03-19
     Logger:
       Level: debug
     Kubernetes:
