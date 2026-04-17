@@ -118,7 +118,7 @@ funnel:
         #     karpenter.sh/do-not-disrupt: "true"
       Worker:
         restartPolicy: OnFailure
-        backoffLimit: 1
+        backoffLimit: 0
         # PriorityClassName: "system-cluster-critical"
 
 global:
