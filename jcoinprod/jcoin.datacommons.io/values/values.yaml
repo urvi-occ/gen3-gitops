@@ -21,12 +21,9 @@ audit:
   serviceAccount:
     annotations:
       eks.amazonaws.com/role-arn: arn:aws:iam::258867494168:role/jcoinprod--jcoinprod-helm--audit-sqs-receiver
-aws-es-proxy:
+aws-sigv4-proxy:
   enabled: true
   esEndpoint: vpc-jcoinprod-gen3-metadata-2-a27lty4mzmhkyzwkgtg7r5teee.us-east-1.es.amazonaws.com
-  image:
-    repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/aws-es-proxy
-    tag: v1.3.1
 awshelper:
   enabled: true
   image:
