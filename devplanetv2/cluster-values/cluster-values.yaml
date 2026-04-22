@@ -460,13 +460,6 @@ alloy-configmap-data: |
       source_labels = ["__meta_kubernetes_pod_label_app"]
       target_label = "app"
     }
-
-    // map all labels
-    rule {
-      action = "labelmap"
-      regex  = "__meta_kubernetes_pod_label_(.+)"
-    }
-
   }
 
   loki.source.kubernetes "pods" {
@@ -572,6 +565,5 @@ alloy-configmap-data: |
     }
     endpoint {
       url       = "https://loki3.planx-pla.net/loki/api/v1/push"
-      tenant_id = "{{ .Values.cluster }}"
     }
   }  
