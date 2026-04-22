@@ -72,7 +72,7 @@ gen3-workflow:
   enabled: true
   replicaCount: 3
   image:
-    tag: feat_s3-endpoint2
+    tag: nss10-patch-3
   resources:
     limits:
       cpu: 2
