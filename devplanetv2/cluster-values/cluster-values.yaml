@@ -565,5 +565,6 @@ alloy-configmap-data: |
     }
     endpoint {
       url       = "https://loki3.planx-pla.net/loki/api/v1/push"
+      tenant_id = "{{ .Values.cluster }}"
     }
   }  
