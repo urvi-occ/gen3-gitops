@@ -72,7 +72,7 @@ gen3-workflow:
   enabled: true
   replicaCount: 3
   image:
-    tag: nss10-patch-3
+    tag: ui
   resources:
     limits:
       cpu: 2
