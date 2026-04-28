@@ -39,10 +39,10 @@
     "banner": [
       {
         "type": "info",
-        "message": "Possible Service Interruption on BDC: The NIH Research Auth Service (RAS) and NIH Login teams have a scheduled service period on Friday, December 19, from 8:00 PM to 10:00 PM ET. Note that you may experience service interruptions during this time on some platforms of the BDC ecosystem, including possible interruption to any running jobs on BDC analysis platforms. Please plan the deployment of your tasks accordingly.",
+        "message": "Data transfers from BDC-Gen3 to BDC-Seven Bridges may be slower than expected. Teams are actively working to improve this experience.  Check the Activity Center in BDC-Seven Bridges to track imports. If you experience issues, please report it to the BDC Help Desk: https://biodatacatalyst.nhlbi.nih.gov/help-and-support/contact-us/",
         "resetMsgDays": 1
       }
-    ],
+    ], 
     "index": {
       "introduction": {
         "heading": "",
@@ -645,9 +645,9 @@
       },
       "exportToDataLibrary": {
         "enabled": true,
-        "dataObjectFieldName" : "objects",
-        "datesetIdFieldName" : "study_id",
-        "dataObjectIdField" : "guid"
+        "dataObjectFieldName": "objects",
+        "datesetIdFieldName": "study_id",
+        "dataObjectIdField": "guid"
       },
       "search": {
         "searchBar": {
