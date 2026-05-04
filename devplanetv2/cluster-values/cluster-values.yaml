@@ -66,13 +66,13 @@ karpenter:
   targetRevision: "1.8.6"
 
 karpenter-crds:
-  amiSelectorName: "EKS-1-33-al23*"
+  amiSelectorName: "EKS-1-35-al23*"
   enabled: true
   selectorTag: devplanetv2
   migration: true
   default:
     weight: 90
-    disruptionBudget: "80%"   
+    disruptionBudget: "80%"
     nodeClassRef:
       apiVersion: karpenter.k8s.aws/v1
       kind: EC2NodeClass
@@ -91,7 +91,7 @@ karpenter-crds:
           - spot
       - key: capacity-spread
         operator: In
-        values: ["2", "3", "4", "5", "6", "7", "8", "9"]  # 9 values = 90%          
+        values: ["2", "3", "4", "5", "6", "7", "8", "9"]  # 9 values = 90%
       - key: kubernetes.io/arch
         operator: In
         values: [amd64]
@@ -131,7 +131,7 @@ karpenter-crds:
         values:
           - amd64
   secondary:
-    weight: 10  
+    weight: 10
     enabled: false
     disruptionBudget: "80%"
     nodeClassRef:
@@ -152,7 +152,7 @@ karpenter-crds:
           - on-demand
       - key: capacity-spread
         operator: In
-        values: ["1"]  # 1 value = 10%          
+        values: ["1"]  # 1 value = 10%
       - key: kubernetes.io/arch
         operator: In
         values: [amd64]
@@ -161,8 +161,8 @@ karpenter-crds:
         values: ["3"]
       - key: "karpenter.k8s.aws/instance-cpu"
         operator: Lt
-        values: ["9"]  
-    
+        values: ["9"]
+
 
 metrics-server:
   enabled: true
@@ -567,4 +567,4 @@ alloy-configmap-data: |
       url       = "https://loki3.planx-pla.net/loki/api/v1/push"
       tenant_id = "{{ .Values.cluster }}"
     }
-  }  
+  }
