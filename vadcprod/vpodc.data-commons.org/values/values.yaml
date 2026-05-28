@@ -19,12 +19,9 @@ audit:
       eks.amazonaws.com/role-arn: arn:aws:iam::663707118480:role/vadcprod--vadcprod-helm--audit-sqs-receiver
   image:
     tag: "2025.12"
-aws-es-proxy:
+aws-sigv4-proxy:
   enabled: true
   esEndpoint: vpc-vadcprod-gen3-metadata-2-vqrbyt4omluv7b2uqw5idjdwua.us-east-1.es.amazonaws.com
-  image:
-    repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/aws-es-proxy
-    tag: v1.3.1
 argo-wrapper:
   replicaCount: 2
   enabled: true
@@ -72,7 +69,7 @@ etl:
             props:
               - name: submitter_id
               - name: project_id
-        name: file_tube_etl_mickey
+        name: etl_mickey_file
         props:
           - name: object_id
           - name: md5sum
@@ -167,7 +164,7 @@ guppy:
   indices:
     - index: etl_mickey
       type: patients
-    - index: file_etl_mickey
+    - index: etl_mickey_file
       type: file
     - index: omop_etl_index_cohortb_20251119
       type: cohort_b_patients

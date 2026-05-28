@@ -73,7 +73,10 @@ gen3-discovery-ai:
     tag: 1.1.0
 gen3-workflow:
   enabled: true
-  replicaCount: 3
+  autoscaling:
+    enabled: true
+    minReplicas: 2
+    maxReplicas: 4
   image:
     tag: misc-improvements
   resources:
@@ -116,13 +119,13 @@ funnel:
   funnel:
     image:
       repository: quay.io/cdis/funnel
-      tag: test-exec_error_fails_worker
+      tag: test-rename_temp_volume
     Logger:
       Level: debug
     Kubernetes:
       JobsNamespace: "workflow-pods-brhstaging-helm"
-      DisableReconciler: false
-      DisableJobCleanup: false
+      DisableReconciler: true
+      DisableJobCleanup: true
       ReconcileRate: 120s
       ReplicaCount: 2
       Executor:
@@ -1182,7 +1185,7 @@ requestor:
   enabled: true
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/requestor
-    tag: '2026.04'
+    tag: '1.10.0'
 revproxy:
   replicaCount: 4
   autoscaling:
