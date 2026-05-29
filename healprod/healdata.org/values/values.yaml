@@ -114,7 +114,7 @@ frontend-framework:
   enabled: true
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/heal-data-commons
-    tag: 1.2.9
+    tag: 1.3.0
 global:
   pdb: true
   aws:
@@ -1464,7 +1464,7 @@ requestor:
   enabled: true
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/requestor
-    tag: '2026.04'
+    tag: '1.10.0'
 revproxy:
   enabled: true
   image:
