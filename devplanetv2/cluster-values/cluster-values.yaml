@@ -98,6 +98,12 @@ karpenter-crds:
       - key: "karpenter.k8s.aws/instance-cpu"
         operator: Gt
         values: ["3"]
+      - key: karpenter.k8s.aws/instance-hypervisor
+        operator: NotIn
+        values: ["xen"]
+      - key: karpenter.k8s.aws/instance-generation
+        operator: Gt
+        values: ["2"]        
   workflow:
     nodeClassRef:
       apiVersion: karpenter.k8s.aws/v1
@@ -162,6 +168,12 @@ karpenter-crds:
       - key: "karpenter.k8s.aws/instance-cpu"
         operator: Lt
         values: ["9"]
+      - key: karpenter.k8s.aws/instance-hypervisor
+        operator: NotIn
+        values: ["xen"]
+      - key: karpenter.k8s.aws/instance-generation
+        operator: Gt
+        values: ["2"]        
 
 
 metrics-server:
