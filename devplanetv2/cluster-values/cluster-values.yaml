@@ -189,7 +189,7 @@ nvidia-device-plugin:
   targetRevision: v0.18.0
 
 vpc-cni:
-  enabled: true
+  enabled: false
   configuration:
     enabled: false
 kube-proxy:
