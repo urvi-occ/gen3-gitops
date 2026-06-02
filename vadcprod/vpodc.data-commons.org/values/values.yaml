@@ -66,6 +66,7 @@ etl:
         doc_type: file
         type: collector
         category: data_file
+        root: None
         injecting_props:
           case:
             props:
