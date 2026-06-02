@@ -76,9 +76,9 @@ gen3-workflow:
   autoscaling:
     enabled: true
     minReplicas: 2
-    maxReplicas: 4
+    maxReplicas: 5
   image:
-    tag: misc-improvements
+    tag: master
   resources:
     limits:
       cpu: 2
@@ -117,9 +117,9 @@ funnel:
     dbcreds: brhstaging-helm-funnel-creds
     funnelOidcClient: brhstaging-helm-funnel-oidc-client
   funnel:
-    image:
-      repository: quay.io/cdis/funnel
-      tag: test-rename_temp_volume
+    # image:
+    #   repository: quay.io/cdis/funnel
+    #   tag: test-rename_temp_volume
     Logger:
       Level: debug
     Kubernetes:
