@@ -141,7 +141,7 @@ funnel:
         # PriorityClassName: "system-cluster-critical"
       Resources:
         Limits:
-          Cpus: 8
+          Cpus: "8"
           RamGb: 32Gi
           DiskGb: 60Gi
 global:
