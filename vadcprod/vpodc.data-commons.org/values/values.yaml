@@ -87,6 +87,9 @@ etl:
         injecting_props:
           case:
             props:
+              - name: _case_id
+                src: id
+                fn: set
               - name: case_submitter_id
                 src: submitter_id
                 fn: set
