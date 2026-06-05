@@ -281,6 +281,13 @@ requestor:
 revproxy:
   replicaCount: 3
   enabled: true
+  extraServices:
+  - name: "agent"
+    path: /qag
+    serviceName: agent
+    authzPolicy: "workspace"
+    authzService: "jupyterhub"
+    csrfCheck: true
 
 sheepdog:
   replicaCount: 2
