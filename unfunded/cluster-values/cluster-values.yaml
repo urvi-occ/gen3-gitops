@@ -76,6 +76,10 @@ karpenter-crds:
         operator: In
         values:
           - r
+      - key: karpenter.k8s.aws/instance-cpu
+        operator: Gt
+        values:
+          - "2"
       - key: karpenter.k8s.aws/instance-memory
         operator: Lt
         values:
