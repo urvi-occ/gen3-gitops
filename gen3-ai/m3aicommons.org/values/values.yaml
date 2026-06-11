@@ -301,7 +301,7 @@ revproxy:
     authzPolicy: "workspace"
     authzService: "jupyterhub"
     csrfCheck: false
-    rewritePath: true
+    rewritePath: false
 
 sheepdog:
   replicaCount: 2
