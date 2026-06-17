@@ -1016,7 +1016,7 @@ indexd:
     serviceCreds: dcfprod-indexd-service-creds
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/indexd
-    tag: '2026.05'
+    tag: '6.2.0'
   resources:
     requests:
       memory: 256Mi
