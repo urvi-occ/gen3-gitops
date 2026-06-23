@@ -167,7 +167,7 @@ hatchery:
     stataG3auto: stata-workspace-gen3-license-healdata
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/hatchery
-    tag: '2026.06'
+    tag: '2.9.0'
   hatchery:
     json: |-
       {
@@ -1428,7 +1428,7 @@ metadata:
     metadataG3auto: healprod-metadata-g3auto
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/metadata-service
-    tag: '2026.06'
+    tag: '4.3.0'
   useAggMds: true
   schedule: 0 9 * * *
   suspendCronjob: false
@@ -1456,7 +1456,7 @@ portal:
     gen3Bundle: heal
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/data-portal
-    tag: '2026.06'
+    tag: '5.41.1'
 requestor:
   enabled: true
   image:
@@ -1501,7 +1501,7 @@ sower:
                 name: manifest-global
           - name: BUCKET
             value: healdata-org-batch-export-bucket
-        image: quay.io/cdis/batch-export:2026.06
+        image: quay.io/cdis/batch-export:6.1.0
         labels:
           internet: 'yes'
         memory-limit: 1Gi
