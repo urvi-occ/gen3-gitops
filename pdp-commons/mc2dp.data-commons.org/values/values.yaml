@@ -101,7 +101,7 @@ global:
     ecr-access-job-role-arn: arn:aws:iam::654654631253:role/EcrRepoPolicyUpdateRole
     kube_bucket: kube_bucket.devplanetv1.gen3
     logs_bucket: logs-devplanetv1-gen3
-  publicDataSets: true
+  publicDataSets: false
   tierAccessLevel: libre
   tierAccessLimit: 50
   portalApp: gitops
