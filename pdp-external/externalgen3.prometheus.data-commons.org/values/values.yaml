@@ -260,6 +260,9 @@ sheepdog:
     dbcreds: "externalgen3_default-sheepdog-creds"
   enabled: true
   replicaCount: 2
+  image:
+    repository: quay.io/cdis/sheepdog
+    tag: 2026.05
 
 metadata:
   useAggMds: false
