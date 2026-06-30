@@ -241,7 +241,10 @@ hatchery:
   hotNode:
     enabled: true
     availabilityZones:
-      - us-east-1c  
+      - us-east-1c
+    workspaceCapacityReservation:
+      memory: "17Gi"
+      cpu: 5
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/hatchery
     tag: "master"
