@@ -114,8 +114,8 @@ etl:
       - name: etl_mickey_file
         doc_type: file
         type: collector
-        category: data_file
         root: None
+        category: data_file
         props:
           - name: source_node
           - name: project_id
