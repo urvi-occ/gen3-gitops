@@ -179,9 +179,9 @@ etl:
                 src: _file_id
       - name: internalstaging_file
         doc_type: file
-        category: data_file
         type: collector
         root: None
+        category: data_file
         props:
           - name: object_id
           - name: md5sum
@@ -213,9 +213,9 @@ etl:
               - name: project_id
       - name: internalstaging_index_file
         doc_type: index_file
-        category: index_file
         type: collector
         root: None
+        category: index_file
         props:
           - name: object_id
           - name: md5sum
