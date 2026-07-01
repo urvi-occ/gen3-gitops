@@ -62,11 +62,60 @@ etl:
   esEndpoint: elasticsearch
   etlMapping:
     mappings:
+      - name: etl_mickey_case
+        doc_type: case
+        type: aggregator
+        root: case
+        props:
+          - name: project_id
+          - name: submitter_id
+        nested_props:
+          - name: clinical_demographics
+            path: clinical_demographics
+            props:
+              - name: Ethnicity
+              - name: Gender
+              - name: Race
+          - name: oncology_primaries
+            path: oncology_primaries
+            props:
+              - name: ICDOSite
+              - name: Stagegroupclinical
+              - name: Texthistologytitle
+              - name: Gradedifferentiation
+              - name: Stagegroupbest
+          - name: somatic_mutations
+            path: somatic_mutations
+            props:
+              - name: Gene
+              - name: Mutation
+        joining_props:
+          - index: file
+            join_on: _case_id
+            props:
+              - name: object_id
+                src: object_id
+                fn: set
+              - name: data_format
+                src: data_format
+                fn: set
+              - name: data_type
+                src: data_type
+                fn: set
+              - name: data_category
+                src: data_category
+                fn: set
+              - name: modality
+                src: modality
+                fn: set
+              - name: body_part_examined
+                src: body_part_examined
+                fn: set
       - name: etl_mickey_file
         doc_type: file
         type: collector
-        category: data_file
         root: None
+        category: data_file
         props:
           - name: source_node
           - name: project_id
@@ -175,6 +224,8 @@ guppy:
   indices:
     - index: etl_mickey
       type: patients
+    - index: etl_mickey_case
+      type: case
     - index: etl_mickey_file
       type: file
     - index: omop_etl_index_cohortb_20251119
@@ -187,9 +238,16 @@ guppy:
       type: vpodc_patients
 hatchery:
   enabled: true
+  hotNode:
+    enabled: true
+    availabilityZones:
+      - us-east-1c
+    workspaceCapacityReservation:
+      memory: "17Gi"
+      cpu: 5
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/hatchery
-    tag: "2.7.2"
+    tag: "master"
   hatchery:
     json: |
       {
