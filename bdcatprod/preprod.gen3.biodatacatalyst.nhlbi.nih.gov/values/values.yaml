@@ -55,8 +55,8 @@ etl:
     mappings:
       - name: internalstaging_subject
         doc_type: subject
-        root: subject
         type: aggregator
+        root: subject
         props:
           - name: submitter_id
           - name: project_id
@@ -180,8 +180,8 @@ etl:
       - name: internalstaging_file
         doc_type: file
         category: data_file
-        root: None
         type: collector
+        root: None
         props:
           - name: object_id
           - name: md5sum
