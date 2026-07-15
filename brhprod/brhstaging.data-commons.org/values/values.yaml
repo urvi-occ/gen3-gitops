@@ -532,7 +532,7 @@ manifestservice:
     manifestserviceG3auto: brhstaging-manifestservice-g3auto
   image:
     repository: 707767160287.dkr.ecr.us-east-1.amazonaws.com/gen3/manifestservice
-    tag: '2026.04'
+    tag: 'master'
   serviceAccount:
     annotations:
       eks.amazonaws.com/role-arn: arn:aws:iam::885078588865:role/brhprod--brhstaging-helm--manifest-service-sa
