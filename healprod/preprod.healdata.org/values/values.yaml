@@ -214,7 +214,7 @@ hatchery:
             },
             "args": [
               "--JupyterNotebookApp.base_url=/lw-workspace/proxy/",
-              "--JupyterNotebookApp.default_url=/lab/tree/heal-welcome.md",
+              "--JupyterNotebookApp.default_url=/lab/tree/heal-welcome.ipynb",
               "--JupyterNotebookApp.password=''",
               "--JupyterNotebookApp.token=''",
               "--JupyterNotebookApp.ip='*'",
